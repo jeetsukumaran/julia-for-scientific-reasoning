@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>basics-of-visualizing-models_01_single-strain-virulence-evolution – Just enough Julia for scientific informatics and reasoning</title>
+<title>Visualizing the single-strain virulence fitness landscape – Just enough Julia for scientific informatics and reasoning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,7 +56,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -66,6 +86,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html" rel="next">
+<link href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -109,10 +131,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-tutorials {
   --color1: #ffffff;
   --color2: #000000;
@@ -121,11 +139,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-resources {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -173,9 +195,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Just enough Julia for scientific informatics and reasoning
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Content</li><li class="breadcrumb-item">Practicals</li><li class="breadcrumb-item"><a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html">02 Basics of Visualizing Mathematical Models</a></li><li class="breadcrumb-item"><a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html">Visualizing the single-strain virulence fitness landscape</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,6 +225,148 @@ window.Quarto = {
         <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/models/frank1996model_pathogen-fitness-single-strain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/models/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Practicals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">02 Basics of Visualizing Mathematical Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of mathematical modeling in Julia: generating sequences of values using the <code>range</code> function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Visualizing the single-strain virulence fitness landscape</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing the single-strain virulence fitness landscape</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">03 Basics of Working with Stochastic Processes and Distributions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random number generation and management</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">index.html</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 01 Introduction to the Computing Ecosystem</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 02 Shell File System Essentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 03 Installing Julia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 04 Julia Runtime Programs Repl Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 05 Julia Environments Packages and Projects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -213,16 +375,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#single-alpha-implicit-plot-quick-exploratory" id="toc-single-alpha-implicit-plot-quick-exploratory" class="nav-link active" data-scroll-target="#single-alpha-implicit-plot-quick-exploratory"><span class="header-section-number">1</span> Single <span class="math inline">\(\alpha\)</span>, implicit plot (quick exploratory)</a></li>
+  <li><a href="#pathogen-fitness-function" id="toc-pathogen-fitness-function" class="nav-link active" data-scroll-target="#pathogen-fitness-function"><span class="header-section-number">1</span> Pathogen fitness function</a></li>
+  <li><a href="#behavior-under-adaptive-evolution" id="toc-behavior-under-adaptive-evolution" class="nav-link" data-scroll-target="#behavior-under-adaptive-evolution"><span class="header-section-number">2</span> Behavior under adaptive evolution</a></li>
+  <li><a href="#visualization-of-fitness-relationship-with-host-exploitation-severity" id="toc-visualization-of-fitness-relationship-with-host-exploitation-severity" class="nav-link" data-scroll-target="#visualization-of-fitness-relationship-with-host-exploitation-severity"><span class="header-section-number">3</span> Visualization of fitness relationship with host exploitation severity</a></li>
+  <li><a href="#single-alpha-implicit-plot-quick-exploratory" id="toc-single-alpha-implicit-plot-quick-exploratory" class="nav-link" data-scroll-target="#single-alpha-implicit-plot-quick-exploratory"><span class="header-section-number">4</span> Single <span class="math inline">\(\alpha\)</span>, implicit plot (quick exploratory)</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Content</li><li class="breadcrumb-item">Practicals</li><li class="breadcrumb-item"><a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html">02 Basics of Visualizing Mathematical Models</a></li><li class="breadcrumb-item"><a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html">Visualizing the single-strain virulence fitness landscape</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Visualization of fitness relationship with host exploitation severity</h1>
+<h1 class="title">Visualizing the single-strain virulence fitness landscape</h1>
 </div>
 
 
@@ -245,6 +410,30 @@ window.Quarto = {
 </header>
 
 
+<section id="pathogen-fitness-function" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="pathogen-fitness-function"><span class="header-section-number">1</span> Pathogen fitness function</h2>
+<p>The <a href="content/models/frank1996model_virulence-transmission-tradeoff">single-strain pathogen fitness model</a> is given as <span class="citation" data-cites="frank1996models">(<a href="#ref-frank1996models" role="doc-biblioref">Frank 1996</a>)</span>:</p>
+<p><span id="eq-frank1996-single-pathogen-fitness-linear"><span class="math display">\[
+\begin{aligned}
+w = z (1 - \alpha z)
+\end{aligned}
+\tag{1}\]</span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(w\)</span> is a measure of pathogen fitness,</li>
+<li><span class="math inline">\(z\)</span> is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and</li>
+<li><span class="math inline">\(\alpha z\)</span> is a measure of <em>virulence</em>, the damage a parasite does to the host as a result of exploitation <span class="math inline">\(z\)</span>, with <span class="math inline">\(\alpha\)</span> a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite.</li>
+</ul>
+</section>
+<section id="behavior-under-adaptive-evolution" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="behavior-under-adaptive-evolution"><span class="header-section-number">2</span> Behavior under adaptive evolution</h2>
+<p>Let us consider host exploitation severity, <span class="math inline">\(z\)</span>, as a heritable trait that affects transmission success and virulence, and let <span class="math inline">\(w(z, \alpha)\)</span> be the fitness of of a parasite with host exploitation severity trait value <span class="math inline">\(z\)</span>, given some virulence impact weight <span class="math inline">\(\alpha\)</span>.</p>
+<p>If parasites vary in <span class="math inline">\(z\)</span> and this variation is heritable, then strategies with larger <span class="math inline">\(w(z)\)</span> tend to leave more descendants (i.e., spread more effectively).<br>
+In this simplified model, we therefore expect evolution to favor values of <span class="math inline">\(z\)</span> that make <span class="math inline">\(w(z)\)</span> as large as possible, so we look for the value of <span class="math inline">\(z\)</span> that maximizes <span class="math inline">\(w(z)\)</span>.</p>
+<p>Conceptually, we can treat <span class="math inline">\(z\)</span> as a control or tuning variable: it is the parasite strategy we imagine changing. The parameter <span class="math inline">\(\alpha\)</span> determines how strongly exploitation reduces host resources (how costly virulence is per unit increase in <span class="math inline">\(z\)</span>). For a fixed <span class="math inline">\(\alpha\)</span>, plotting <span class="math inline">\(w\)</span> against <span class="math inline">\(z\)</span> shows a trade-off: increasing <span class="math inline">\(z\)</span> raises transmission potential, but beyond a point the virulence cost dominates and <span class="math inline">\(w\)</span> declines.</p>
+</section>
+<section id="visualization-of-fitness-relationship-with-host-exploitation-severity" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="visualization-of-fitness-relationship-with-host-exploitation-severity"><span class="header-section-number">3</span> Visualization of fitness relationship with host exploitation severity</h2>
 <div id="curriculum-proficiencies*-1" class="curriculum-proficiencies">
 <details class="curriculum-proficiencies fbx-simplebox fbx-default" open=""><summary><strong>Proficiencies</strong></summary><div>
 <ol type="1">
@@ -266,13 +455,15 @@ w(z;\alpha) = z(1-\alpha z),
 <li><span class="math inline">\(\alpha\)</span> is a fixed scaling parameter that determines how strongly exploitation reduces transmission opportunity,</li>
 <li><span class="math inline">\(w\)</span> is pathogen fitness (new infected hosts per infected host under the model).</li>
 </ul>
+<p>In Julia, we can generate a grid of <span class="math inline">\(z\)</span> values, evaluate <span class="math inline">\(w(z;\alpha)\)</span>, and plot <span class="math inline">\(w\)</span> versus <span class="math inline">\(z\)</span> for one or several choices of <span class="math inline">\(\alpha\)</span>.</p>
 <p>When we plot <span class="math inline">\(w\)</span> versus <span class="math inline">\(z\)</span> for a fixed <span class="math inline">\(\alpha\)</span>, we typically restrict to</p>
 <p><span class="math display">\[
 0 \le z \le \frac{1}{\alpha},
 \]</span></p>
 <p>so that the transmission-opportunity term <span class="math inline">\((1-\alpha z)\)</span> stays nonnegative.</p>
-<section id="single-alpha-implicit-plot-quick-exploratory" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="single-alpha-implicit-plot-quick-exploratory"><span class="header-section-number">1</span> Single <span class="math inline">\(\alpha\)</span>, implicit plot (quick exploratory)</h2>
+</section>
+<section id="single-alpha-implicit-plot-quick-exploratory" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="single-alpha-implicit-plot-quick-exploratory"><span class="header-section-number">4</span> Single <span class="math inline">\(\alpha\)</span>, implicit plot (quick exploratory)</h2>
 <div id="2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">CairoMakie</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -389,9 +580,14 @@ w(z;\alpha) = z(1-\alpha z),
 </div>
 
 
+
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-frank1996models" class="csl-entry" role="listitem">
+Frank, Steven A. 1996. <span>“Models of Parasite Virulence.”</span> <em>The Quarterly Review of Biology</em> 71 (1): 37–78. <a href="https://doi.org/10.1086/419267">https://doi.org/10.1086/419267</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -792,6 +988,18 @@ w(z;\alpha) = z(1-\alpha z),
     }
   });
   </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="pagination-link" aria-label="Basics of visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics of visualization</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html" class="pagination-link" aria-label="Visualizing the single-strain virulence fitness landscape">
+        <span class="nav-page-text">Visualizing the single-strain virulence fitness landscape</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
