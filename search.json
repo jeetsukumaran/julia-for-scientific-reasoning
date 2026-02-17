@@ -396,7 +396,13 @@
     "href": "content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html",
     "title": "Visualizing the single-strain virulence fitness landscape",
     "section": "",
-    "text": "The single-strain pathogen fitness model is given as (Frank 1996):\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of pathogen fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite."
+    "text": "The single-strain pathogen fitness model is given as (Frank 1996):\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of pathogen fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite.",
+    "crumbs": [
+      "Content",
+      "Practicals",
+      "02 Basics of Visualizing Mathematical Models",
+      "Visualizing the single-strain virulence fitness landscape"
+    ]
   },
   {
     "objectID": "content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html#plotting-with-implict-axis-and-figure",
@@ -417,14 +423,26 @@
     "href": "content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html#pathogen-fitness-function",
     "title": "Visualizing the single-strain virulence fitness landscape",
     "section": "",
-    "text": "The single-strain pathogen fitness model is given as (Frank 1996):\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of pathogen fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite."
+    "text": "The single-strain pathogen fitness model is given as (Frank 1996):\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of pathogen fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite.",
+    "crumbs": [
+      "Content",
+      "Practicals",
+      "02 Basics of Visualizing Mathematical Models",
+      "Visualizing the single-strain virulence fitness landscape"
+    ]
   },
   {
     "objectID": "content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html#behavior-under-adaptive-evolution",
     "href": "content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html#behavior-under-adaptive-evolution",
     "title": "Visualizing the single-strain virulence fitness landscape",
     "section": "2 Behavior under adaptive evolution",
-    "text": "2 Behavior under adaptive evolution\nLet us consider host exploitation severity, \\(z\\), as a heritable trait that affects transmission success and virulence, and let \\(w(z, \\alpha)\\) be the fitness of of a parasite with host exploitation severity trait value \\(z\\), given some virulence impact weight \\(\\alpha\\).\nIf parasites vary in \\(z\\) and this variation is heritable, then strategies with larger \\(w(z)\\) tend to leave more descendants (i.e., spread more effectively).\nIn this simplified model, we therefore expect evolution to favor values of \\(z\\) that make \\(w(z)\\) as large as possible, so we look for the value of \\(z\\) that maximizes \\(w(z)\\)."
+    "text": "2 Behavior under adaptive evolution\nLet us consider host exploitation severity, \\(z\\), as a heritable trait that affects transmission success and virulence, and let \\(w(z, \\alpha)\\) be the fitness of of a parasite with host exploitation severity trait value \\(z\\), given some virulence impact weight \\(\\alpha\\).\nIf parasites vary in \\(z\\) and this variation is heritable, then strategies with larger \\(w(z)\\) tend to leave more descendants (i.e., spread more effectively).\nIn this simplified model, we therefore expect evolution to favor values of \\(z\\) that make \\(w(z)\\) as large as possible, so we look for the value of \\(z\\) that maximizes \\(w(z)\\).\nConceptually, we can treat \\(z\\) as a control or tuning variable: it is the parasite strategy we imagine changing. The parameter \\(\\alpha\\) determines how strongly exploitation reduces host resources (how costly virulence is per unit increase in \\(z\\)). For a fixed \\(\\alpha\\), plotting \\(w\\) against \\(z\\) shows a trade-off: increasing \\(z\\) raises transmission potential, but beyond a point the virulence cost dominates and \\(w\\) declines.",
+    "crumbs": [
+      "Content",
+      "Practicals",
+      "02 Basics of Visualizing Mathematical Models",
+      "Visualizing the single-strain virulence fitness landscape"
+    ]
   },
   {
     "objectID": "content/practicals/02_basics-of-visualizing-mathematical-models/02-04_visualizing-single-strain-virulence-evolution.html#visualization-of-fitness-relationship-with-host-exploitation-strength",
