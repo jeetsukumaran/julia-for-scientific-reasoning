@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../content/practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" rel="next">
+<link href="../../../content/practicals/01_orientation-and-tooling/01-03_installing-julia.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,15 +73,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-resources {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-tutorials {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -87,7 +85,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.curriculum-tutorials {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -106,9 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Just enough Julia for scientific informatics and reasoning
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Content</li><li class="breadcrumb-item">Practicals</li><li class="breadcrumb-item"><a href="../../../content/practicals/01_orientation-and-tooling/index.html">index.html</a></li><li class="breadcrumb-item"><a href="../../../content/practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html">01 04 Julia Runtime Programs Repl Files</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,6 +138,142 @@ ul.task-list li input[type="checkbox"] {
         <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/models/frank1996model_pathogen-fitness-single-strain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/models/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Practicals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">02 Basics of Visualizing Mathematical Models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of mathematical modeling in Julia: generating sequences of values using the <code>range</code> function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing the single-strain virulence fitness landscape</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">03 Basics of Working with Stochastic Processes and Distributions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random number generation and management</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">index.html</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 01 Introduction to the Computing Ecosystem</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 02 Shell File System Essentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 03 Installing Julia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">01 04 Julia Runtime Programs Repl Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 05 Julia Environments Packages and Projects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -147,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Content</li><li class="breadcrumb-item">Practicals</li><li class="breadcrumb-item"><a href="../../../content/practicals/01_orientation-and-tooling/index.html">index.html</a></li><li class="breadcrumb-item"><a href="../../../content/practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html">01 04 Julia Runtime Programs Repl Files</a></li></ol></nav>
 <div class="quarto-title">
 </div>
 
@@ -575,6 +711,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="pagination-link" aria-label="01 03 Installing Julia">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01 03 Installing Julia</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="pagination-link" aria-label="01 05 Julia Environments Packages and Projects">
+        <span class="nav-page-text">01 05 Julia Environments Packages and Projects</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
