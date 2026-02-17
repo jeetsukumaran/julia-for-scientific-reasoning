@@ -102,15 +102,15 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-resources {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-tutorials {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-resources {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -212,41 +212,12 @@ window.Quarto = {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">02 Basics of Visualizing Mathematical Models</span></a>
+ <span class="menu-text">03 Basics of Working with Stochastic Processes and Distributions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of mathematical modeling in Julia: generating sequences of values using the <code>range</code> function</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of visualization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing the single-strain virulence fitness landscape</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">03 Basics of Working with Stochastic Processes and Distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content/practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="sidebar-item-text sidebar-link">
@@ -257,13 +228,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction, orientation, and tooling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content/practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="sidebar-item-text sidebar-link">
@@ -296,6 +267,58 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Basics of visualization mathematical models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of mathematical modeling in Julia: generating sequences of values using the <code>range</code> function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing the single-strain virulence fitness landscape</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/models/frank1996model_pathogen-fitness-single-strain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/models/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
