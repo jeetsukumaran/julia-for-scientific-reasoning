@@ -108,11 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.curriculum-resources {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -120,11 +116,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.curriculum-resources {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -448,7 +448,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Int</span>) <span class="co"># Generate a random integer</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">6581752414023885448</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Float64</span>) <span class="co"># Generate a random 64-bit floating point</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Float64</span>) <span class="co"># Generate a random (64-bit) floating point</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5551313236725943</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>) <span class="co"># Generate 10 random integers</span></span>
@@ -464,7 +464,7 @@ window.Quarto = {
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>   <span class="fl">217784465829442243</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span><span class="fl">2477159631785889726</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Float64</span>, <span class="fl">10</span>) <span class="co"># Generate 10 random 64-bit floating point</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">rand</span>(<span class="dt">Float64</span>, <span class="fl">10</span>) <span class="co"># Generate 10 random (64-bit) floating point values</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fl">10</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">Float64</span>}<span class="op">:</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a> <span class="fl">0.8121004451418985</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a> <span class="fl">0.7498281699504885</span></span>
@@ -479,6 +479,7 @@ window.Quarto = {
 </section>
 <section id="sampling-from-a-sequence-list-or-set-with-uniform-random-probability" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="sampling-from-a-sequence-list-or-set-with-uniform-random-probability"><span class="header-section-number">2.2</span> Sampling from a sequence, list, or set with uniform random probability</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="sampling-random-integers-from-a-fixed-range-with-uniform-probability" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="sampling-random-integers-from-a-fixed-range-with-uniform-probability"><span class="header-section-number">2.3</span> Sampling random integers from a fixed range with uniform probability</h3>

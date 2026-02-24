@@ -10,109 +10,258 @@
     ]
   },
   {
+    "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/index.html",
+    "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/index.html",
+    "title": "Basics of visualizing mathematical models",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models"
+    ]
+  },
+  {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html",
     "title": "Plotting containers: Figure and Axis objects",
     "section": "",
-    "text": "For pilot and exploratory work: plotting without explicit Figure and Axis objects.\nCreating a Figure container object to hold all the plots.\nCreating an Axis object onto which you will do the plotting, and placing it in a Figure object.\nUsing a stock plotting functions to plot given 2-dimensional data (\\(x-\\) and \\(y\\)-coordinates, for example).\nSaving the figure to a file or displaying it in-situ."
+    "text": "Proficiencies\n\nFor pilot and exploratory work: plotting without explicit Figure and Axis objects.\nCreating a Figure container object to hold all the plots.\nCreating an Axis object onto which you will do the plotting, and placing it in a Figure object.\nUsing a stock plotting functions to plot given 2-dimensional data (\\(x-\\) and \\(y\\)-coordinates, for example).\nSaving the figure to a file or displaying it in-situ.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Plotting containers: `Figure` and `Axis` objects"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html#plotting-with-implict-axis-and-figure",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html#plotting-with-implict-axis-and-figure",
     "title": "Plotting containers: Figure and Axis objects",
     "section": "1 Plotting with implict Axis and Figure",
-    "text": "1 Plotting with implict Axis and Figure\n\n\n# Load the graphical module\nusing CairoMakie\n\n# Generate x-values from 1 to 100\nx_vals = 1:100\n\n# Generate y-values from function applied to x-values\ny_vals = map(x -&gt; 3x + 2, x_vals)\n\n# Plot (and display) using the `scatter` function\nrender = scatter(x_vals, y_vals)\n\n# Save to file\n# save(\"scatter1.pdf\", render)\n# Show figure in the REPL\n# render.figure"
+    "text": "1 Plotting with implict Axis and Figure\n\n\n# Load the graphical module\nusing CairoMakie\n\n# Generate x-values from 1 to 100\nx_vals = 1:100\n\n# Generate y-values from function applied to x-values\ny_vals = map(x -&gt; 3x + 2, x_vals)\n\n# Plot (and display) using the `scatter` function\nrender = scatter(x_vals, y_vals)\n\n# Save to file\n# save(\"scatter1.pdf\", render)\n# Show figure in the REPL\n# render.figure",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Plotting containers: `Figure` and `Axis` objects"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html#plotting-with-explicit-axis-and-figure-management",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html#plotting-with-explicit-axis-and-figure-management",
     "title": "Plotting containers: Figure and Axis objects",
     "section": "2 Plotting with explicit Axis and Figure management",
-    "text": "2 Plotting with explicit Axis and Figure management\n\n# Load the graphical module\nusing CairoMakie\n\n# Create a `Figure` object\nfigure = Figure();\n\n# Create an `Axis` object, placing it in the center of the figure.\n# `[1, 1]` specifies cell (1, 1) of a grid that grows dynamically as \n# cells are specified. Here, as there is only one cell defined, it\n# effectively places the `Axis` object in the center of the `Figure`\n# object\nax = Axis(figure[1, 1])\n\n# Plot some data onto the Axis object\n\n# x-coordinate values: a sequence from 0.0 to 100.0, in 0.01 step increments\nx_vals = 0:0.1:100.0\n\n# y-coordinate values: a function of the x-coordinate values\n#\n# $$\n# y = 4 x^2 + 2 x + 3\n# $$\n#\ny_vals = map(x -&gt; 4(x^2) + 2x + 3, x_vals)\n\n# Plot using the `scatter!` function\n# Note: the name is `scatter!` not `scatter`, and we pass \n# in the Axis object `ax` as the first argument\nscatter!(ax, x_vals, y_vals)\n\n# Save to file\n# save(\"scatter1.pdf\", render)\n# Show figure in the REPL\n# render.figure\n\nScatter{Tuple{Vector{Point{2, Float64}}}}"
+    "text": "2 Plotting with explicit Axis and Figure management\n\n# Load the graphical module\nusing CairoMakie\n\n# Create a `Figure` object\nfigure = Figure();\n\n# Create an `Axis` object, placing it in the center of the figure.\n# `[1, 1]` specifies cell (1, 1) of a grid that grows dynamically as \n# cells are specified. Here, as there is only one cell defined, it\n# effectively places the `Axis` object in the center of the `Figure`\n# object\nax = Axis(figure[1, 1])\n\n# Plot some data onto the Axis object\n\n# x-coordinate values: a sequence from 0.0 to 100.0, in 0.01 step increments\nx_vals = 0:0.1:100.0\n\n# y-coordinate values: a function of the x-coordinate values\n#\n# $$\n# y = 4 x^2 + 2 x + 3\n# $$\n#\ny_vals = map(x -&gt; 4(x^2) + 2x + 3, x_vals)\n\n# Plot using the `scatter!` function\n# Note: the name is `scatter!` not `scatter`, and we pass \n# in the Axis object `ax` as the first argument\nscatter!(ax, x_vals, y_vals)\n\n# Save to file\n# save(\"scatter1.pdf\", render)\n# Show figure in the REPL\n# render.figure\n\nScatter{Tuple{Vector{Point{2, Float64}}}}",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Plotting containers: `Figure` and `Axis` objects"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html",
+    "title": "Shell and file-system essentials",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling",
+      "Shell and file-system essentials"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/index.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/index.html",
+    "title": "Introduction, orientation, and tooling",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html",
+    "title": "Introduction to the computing ecosystem",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling",
+      "Introduction to the computing ecosystem"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/index.html",
+    "href": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/index.html",
+    "title": "Basics of working with randomness and probabilities",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with randomness and probabilities"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html",
+    "href": "content/02_primers/index.html",
+    "title": "Primers",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Primers"
+    ]
   },
   {
     "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
     "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
     "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
     "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa."
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
   },
   {
     "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
     "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
     "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
     "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa."
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
   },
   {
     "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
     "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
     "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
     "section": "2 Linear decline in host resources due to virulence",
-    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]\n\n\n\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267."
+    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_01.html",
     "href": "content/02_primers/pseudo-random-number-generators_01.html",
     "title": "Pseudo-random number generators",
     "section": "",
-    "text": "Key concept: Pseudo-random number generators use finite internal state and seeded algorithms to produce reproducible sequences that statistically approximate random behavior for practical and scientific use.\n\nA computer algorithm cannot generate a truly random result. Computer algorithms are deterministic. However, a computer algorithm can generate a sequence of numbers based on a series of deterministic calculations that behave like a sequence of random numbers would under statistical analysis. These algorithms are known as pseudo-random number generators (PRNGs). Pseudo-random number generators are deterministic, and, being deterministic, their results — the sequence of numbers they generate — are completely determined by the algorithm and the initial seed.\nA computer program (or algorithm) is a deterministic machine. For some given input, it produces a particular output, based on its programming. It cannot produce a truly random value in the sense of being fundamentally unpredictable from its inputs, as, for any particular input, an algorithm will produce the same output. For many applications, however, what is needed are not values that are absolutely random, but rather a series of numbers that behave as though they are random with respect to each other, at least up to some scale — values that can be generated one after another that do not exhibit detectable periodicities, patterns, ordering, or structure in the sequence, at least for the scale or size relevant to the application. (For applications where true physical unpredictability is strictly required, computers rely on hardware incorporating some physical source of randomness, such as radioactive decay or other entropy-harvesting mechanisms.)\nA pseudo-random number generator is a computer algorithm that can produce a series of values that behave like a random sequence with no detectable periodicity or pattern, statistically or otherwise, for a very long run of numbers. (The number of values a particular PRNG can generate before repeating is known as its period. All PRNGs have finite periods, i.e. will eventually begin repeating the sequence, but good PRNGs, and the ones we will be using, have HUGE periods (\\(2^{128}\\), for example). All PRNGs have finite periods because they must operate with a finite internal state represented with a finite number of bits. The number of bits used to represent the internal state that the PRNG tracks sets the upper bound on the number of distinct states the generator can occupy. This also sets an upper bound on the length of the sequence before repetition must occur. At some point, the update step will produce a state value that has been used before in the sequence, resulting in the sequence repeating from that point. A 32-bit state PRNG might repeat after at most \\(2^{32}\\) steps, while cryptographic applications (and many modern computing platforms, including Julia) use 128-bit or larger states, resulting in periods on the order of \\(2^{128}\\) or larger.)\nThe sequence of numbers generated by a PRNG behaves as though it were random in most practical statistical senses, including measures such as empirical entropy or goodness-of-fit to a uniform probability distribution, except for one crucial feature: the sequence is completely determined by the algorithm and the seed. For most non-cryptographic applications, this determinism is not a limitation. What matters is that there is no detectable ordering, patterns, autocorrelations, cross-correlations, or other structure in the numbers at the scale relevant to the application, and that the empirical frequency distribution of values approximates that of a uniform probability distribution. This a well-designed PRNG can deliver, provided usage does not exceed its intended operational limits. (While the entire sequence of numbers generated by a PRNG is determined by the algorithm and initial seed, predicting future outputs without knowledge of the internal state or transition function may be computationally infeasible in the case of cryptographically secure generators, though it is often feasible for simpler non-cryptographic PRNGs.)\nGiven an initial starting or “seed” value, a PRNG algorithm computes and returns a value, and then updates an internal state that is used to generate the next value, thus forming a chain of state updates and outputs. In more complex algorithms, a separate internal state consisting of multiple values is updated from the previous state, and a separate function is used to calculate the output from this internal state. It is this internal state that is passed to the next step rather than the output value itself. In this way, with each state update deterministically producing the next, a sequence of numbers is generated from the initial seed. The entire sequence is therefore completely determined by the seed value. Any particular seed value given to the algorithm, e.g., 108 or 99, will always return the exact same sequence of numbers. While not truly random in a physical sense, the sequence behaves as random in that there are no detectable autocorrelations, patterns, or short-period repetitions at the scale for which the generator is designed.\nThis determinism of the number sequence from a pseudo-random number generator is not a practical limitation in most scientific computing contexts, and, in fact, has important roles in software engineering as well as research. It can be critically useful in software development: the key to solving a bug is to be able to reliably replicate it, and the reproducibility of a pseudo-random number sequence allows for debugging of programs that rely on randomness, including scientific software (e.g. Bayesian Markov chain Monte Carlo inference programs). It can also be very useful in scientific research: often it is sufficient to record the random seed used for a particular suite of simulations or stochastic heuristic-based inference for replicability purposes, instead of storing the giga-, tera-, or peta-bytes of data generated downstream from the random number sequence itself."
+    "text": "Key concept: Pseudo-random number generators use finite internal state and seeded algorithms to produce reproducible sequences that statistically approximate random behavior for practical and scientific use.\n\nA computer algorithm cannot generate a truly random result. Computer algorithms are deterministic. However, a computer algorithm can generate a sequence of numbers based on a series of deterministic calculations that behave like a sequence of random numbers would under statistical analysis. These algorithms are known as pseudo-random number generators (PRNGs). Pseudo-random number generators are deterministic, and, being deterministic, their results — the sequence of numbers they generate — are completely determined by the algorithm and the initial seed.\nA computer program (or algorithm) is a deterministic machine. For some given input, it produces a particular output, based on its programming. It cannot produce a truly random value in the sense of being fundamentally unpredictable from its inputs, as, for any particular input, an algorithm will produce the same output. For many applications, however, what is needed are not values that are absolutely random, but rather a series of numbers that behave as though they are random with respect to each other, at least up to some scale — values that can be generated one after another that do not exhibit detectable periodicities, patterns, ordering, or structure in the sequence, at least for the scale or size relevant to the application. (For applications where true physical unpredictability is strictly required, computers rely on hardware incorporating some physical source of randomness, such as radioactive decay or other entropy-harvesting mechanisms.)\nA pseudo-random number generator is a computer algorithm that can produce a series of values that behave like a random sequence with no detectable periodicity or pattern, statistically or otherwise, for a very long run of numbers. (The number of values a particular PRNG can generate before repeating is known as its period. All PRNGs have finite periods, i.e. will eventually begin repeating the sequence, but good PRNGs, and the ones we will be using, have HUGE periods (\\(2^{128}\\), for example). All PRNGs have finite periods because they must operate with a finite internal state represented with a finite number of bits. The number of bits used to represent the internal state that the PRNG tracks sets the upper bound on the number of distinct states the generator can occupy. This also sets an upper bound on the length of the sequence before repetition must occur. At some point, the update step will produce a state value that has been used before in the sequence, resulting in the sequence repeating from that point. A 32-bit state PRNG might repeat after at most \\(2^{32}\\) steps, while cryptographic applications (and many modern computing platforms, including Julia) use 128-bit or larger states, resulting in periods on the order of \\(2^{128}\\) or larger.)\nThe sequence of numbers generated by a PRNG behaves as though it were random in most practical statistical senses, including measures such as empirical entropy or goodness-of-fit to a uniform probability distribution, except for one crucial feature: the sequence is completely determined by the algorithm and the seed. For most non-cryptographic applications, this determinism is not a limitation. What matters is that there is no detectable ordering, patterns, autocorrelations, cross-correlations, or other structure in the numbers at the scale relevant to the application, and that the empirical frequency distribution of values approximates that of a uniform probability distribution. This a well-designed PRNG can deliver, provided usage does not exceed its intended operational limits. (While the entire sequence of numbers generated by a PRNG is determined by the algorithm and initial seed, predicting future outputs without knowledge of the internal state or transition function may be computationally infeasible in the case of cryptographically secure generators, though it is often feasible for simpler non-cryptographic PRNGs.)\nGiven an initial starting or “seed” value, a PRNG algorithm computes and returns a value, and then updates an internal state that is used to generate the next value, thus forming a chain of state updates and outputs. In more complex algorithms, a separate internal state consisting of multiple values is updated from the previous state, and a separate function is used to calculate the output from this internal state. It is this internal state that is passed to the next step rather than the output value itself. In this way, with each state update deterministically producing the next, a sequence of numbers is generated from the initial seed. The entire sequence is therefore completely determined by the seed value. Any particular seed value given to the algorithm, e.g., 108 or 99, will always return the exact same sequence of numbers. While not truly random in a physical sense, the sequence behaves as random in that there are no detectable autocorrelations, patterns, or short-period repetitions at the scale for which the generator is designed.\nThis determinism of the number sequence from a pseudo-random number generator is not a practical limitation in most scientific computing contexts, and, in fact, has important roles in software engineering as well as research. It can be critically useful in software development: the key to solving a bug is to be able to reliably replicate it, and the reproducibility of a pseudo-random number sequence allows for debugging of programs that rely on randomness, including scientific software (e.g. Bayesian Markov chain Monte Carlo inference programs). It can also be very useful in scientific research: often it is sufficient to record the random seed used for a particular suite of simulations or stochastic heuristic-based inference for replicability purposes, instead of storing the giga-, tera-, or peta-bytes of data generated downstream from the random number sequence itself.\n\n\n\n Back to top",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html",
     "href": "content/02_primers/pseudo-random-number-generators_03_details.html",
     "title": "Pseudo-random number generators: continuous values from discrete machines",
     "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\)."
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: continuous values from discrete machines"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
     "href": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
     "title": "Pseudo-random number generators: continuous values from discrete machines",
     "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\)."
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: continuous values from discrete machines"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Back to top"
   },
   {
     "objectID": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
     "href": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
     "title": "Virulence-transmission trade-off (Frank, 1996)",
     "section": "",
-    "text": "The classical virulence-transmission trade-off function, following the notation of (Frank 1996), is:\n\\[\nR_0 = \\frac{\\beta(\\nu)N}{\\delta + \\nu + c(\\nu)},\n\\]\nwhere:\n\n\\(R_0\\) The basic reproduction number. The expected number of secondary infections produced by a single infected host introduced into a fully susceptible population of size \\(N\\). The transmission intensity multiplied by mean infectious duration.\n\\(\\nu\\) Virulence. In this formulation, \\(\\nu\\) is the disease-induced host mortality intensity. This represents the per-capita hazard at which infected hosts die because of the pathogen.\n\\(\\beta(\\nu)\\) Transmission coefficient (often called the transmission intensity). It gives the per-capita rate at which an infected host generates new infections per susceptible host, and it is assumed to depend on virulence. The biological trade-off is encoded here: increasing \\(\\nu\\) may increase within-host replication and hence transmission, so \\(\\beta'(\\nu) &gt; 0\\) over some range.\n\\(N\\) Total density (or number) of susceptible hosts in the population at invasion. Because \\(R_0\\) is defined at the start of an epidemic, essentially all hosts are susceptible, so the force of infection scales with \\(N\\).\n\\(\\delta\\) Background host mortality intensity (natural death intensity unrelated to infection). This removes infected hosts independently of the pathogen’s virulence.\n\\(c(\\nu)\\) Additional loss intensity associated with infection that is not direct mortality. Examples include recovery with immunity, behavioral isolation, treatment, or reduced contact rate induced by symptoms. It may depend on virulence if, for example, more virulent infections provoke faster immune clearance or stronger behavioral avoidance.\n\n\n\n\n\n\n\n\nTipIntensity vs. rate\n\n\n\nAll intensities are rates, but not all rates are intensities. A rate is a general term indicating the change of one quantity relative to another, expresed as a ratio (“rate” and “ratio” have the same linguistic root). An “intensity” is a rate, but one some characteristics is the instantaneous hazard parameter (= rate) of a stochastic process. In classical ODE epidemic models (e.g., SIR), “rate” and “intensity” are often used interchangeably because constant hazards produce exponential waiting times and yield linear per-capita ODE terms.\n\nNote that:\n\\[\nR_0 = \\text{transmission intensity} \\times \\text{mean infection duration}.\n\\]\n\nThe numerator, \\(\\beta(\\nu)N\\), is the transmission intensity, i.e. the per-capita intensity (or rate) of generating new infections in a population of size \\(N\\).\nThe denominator \\(\\delta + \\nu + c(\\nu)\\) gives the total removal intensity of infected hosts: the rate of removal of infected hosts from the population. Thus, \\(\\frac{1}{\\delta + \\nu + c(\\nu)}\\) gives the mean infectious duration.\n\nAs \\(R_0\\) measures the net increase of infected host over time, expressed as a ratio of infected hosts gain (the numerator) to infected hosts lost (the denominator), it serves as an index of the epidemiological state of an infectious disease. - If the numerator is greater than the denominator, there will be more infections generated than removed from the population, leading to a net increase in infections: the disease in an epidemic phase. - If the numerator is less than the denominator, there infections will be removed from the population faster than new infections will occur: the disease will “die out” without becoming an epidemic.\n\n\n\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267."
+    "text": "The classical virulence-transmission trade-off function, following the notation of (Frank 1996), is:\n\\[\nR_0 = \\frac{\\beta(\\nu)N}{\\delta + \\nu + c(\\nu)},\n\\]\nwhere:\n\n\\(R_0\\) The basic reproduction number. The expected number of secondary infections produced by a single infected host introduced into a fully susceptible population of size \\(N\\). The transmission intensity multiplied by mean infectious duration.\n\\(\\nu\\) Virulence. In this formulation, \\(\\nu\\) is the disease-induced host mortality intensity. This represents the per-capita hazard at which infected hosts die because of the pathogen.\n\\(\\beta(\\nu)\\) Transmission coefficient (often called the transmission intensity). It gives the per-capita rate at which an infected host generates new infections per susceptible host, and it is assumed to depend on virulence. The biological trade-off is encoded here: increasing \\(\\nu\\) may increase within-host replication and hence transmission, so \\(\\beta'(\\nu) &gt; 0\\) over some range.\n\\(N\\) Total density (or number) of susceptible hosts in the population at invasion. Because \\(R_0\\) is defined at the start of an epidemic, essentially all hosts are susceptible, so the force of infection scales with \\(N\\).\n\\(\\delta\\) Background host mortality intensity (natural death intensity unrelated to infection). This removes infected hosts independently of the pathogen’s virulence.\n\\(c(\\nu)\\) Additional loss intensity associated with infection that is not direct mortality. Examples include recovery with immunity, behavioral isolation, treatment, or reduced contact rate induced by symptoms. It may depend on virulence if, for example, more virulent infections provoke faster immune clearance or stronger behavioral avoidance.\n\n\n\n\n\n\n\n\nTipIntensity vs. rate\n\n\n\nAll intensities are rates, but not all rates are intensities. A rate is a general term indicating the change of one quantity relative to another, expresed as a ratio (“rate” and “ratio” have the same linguistic root). An “intensity” is a rate, but one some characteristics is the instantaneous hazard parameter (= rate) of a stochastic process. In classical ODE epidemic models (e.g., SIR), “rate” and “intensity” are often used interchangeably because constant hazards produce exponential waiting times and yield linear per-capita ODE terms.\n\nNote that:\n\\[\nR_0 = \\text{transmission intensity} \\times \\text{mean infection duration}.\n\\]\n\nThe numerator, \\(\\beta(\\nu)N\\), is the transmission intensity, i.e. the per-capita intensity (or rate) of generating new infections in a population of size \\(N\\).\nThe denominator \\(\\delta + \\nu + c(\\nu)\\) gives the total removal intensity of infected hosts: the rate of removal of infected hosts from the population. Thus, \\(\\frac{1}{\\delta + \\nu + c(\\nu)}\\) gives the mean infectious duration.\n\nAs \\(R_0\\) measures the net increase of infected host over time, expressed as a ratio of infected hosts gain (the numerator) to infected hosts lost (the denominator), it serves as an index of the epidemiological state of an infectious disease. - If the numerator is greater than the denominator, there will be more infections generated than removed from the population, leading to a net increase in infections: the disease in an epidemic phase. - If the numerator is less than the denominator, there infections will be removed from the population faster than new infections will occur: the disease will “die out” without becoming an epidemic.\n\n\n\n\n Back to topReferences\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267.",
+    "crumbs": [
+      "Primers",
+      "Virulence-transmission trade-off (Frank, 1996)"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
     "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
     "title": "Pseudo-random number generators: best practices",
     "section": "",
-    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])"
+    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#use-the-default-random-number-generator-for-convenience",
     "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#use-the-default-random-number-generator-for-convenience",
     "title": "Pseudo-random number generators: best practices",
     "section": "",
-    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])"
+    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
   },
   {
     "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability",
     "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability",
     "title": "Pseudo-random number generators: best practices",
     "section": "2 Explicitly manage the random number generator for robust reproducibility and replicability",
-    "text": "2 Explicitly manage the random number generator for robust reproducibility and replicability\nIn the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.\nusing Random\n\n# Instantiate a PRNG using the \"Xoshiro\" algorithm with the seed value of 42\nrng = Random.Xoshiro(42)\n# Instantiate a PRNG using the \"Mersenne Twister\" with the seed value of 1999\nrng = Random.MersenneTwister(1999)\n\n# Use `rand` with the `rng` to sample an `Int` (integer) value\nrand(rng, Int, 10)\n# Use `rand` with the `rng` to sample a random value from the list\nrand(rng, ['A', 'C', 'G', 'T'])"
+    "text": "2 Explicitly manage the random number generator for robust reproducibility and replicability\nIn the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.\nusing Random\n\n# Instantiate a PRNG using the \"Xoshiro\" algorithm with the seed value of 42\nrng = Random.Xoshiro(42)\n# Instantiate a PRNG using the \"Mersenne Twister\" with the seed value of 1999\nrng = Random.MersenneTwister(1999)\n\n# Use `rand` with the `rng` to sample an `Int` (integer) value\nrand(rng, Int, 10)\n# Use `rand` with the `rng` to sample a random value from the list\nrand(rng, ['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
   },
   {
     "objectID": "content/02_primers/markov-property.html",
     "href": "content/02_primers/markov-property.html",
     "title": "Markov property",
     "section": "",
-    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]"
+    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
+    "crumbs": [
+      "Primers",
+      "Markov property"
+    ]
   },
   {
     "objectID": "content/02_primers/markov-property.html#sec-markov-property",
     "href": "content/02_primers/markov-property.html#sec-markov-property",
     "title": "Markov property",
     "section": "",
-    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]"
+    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
+    "crumbs": [
+      "Primers",
+      "Markov property"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html",
+    "href": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html",
+    "title": "Random number generation",
+    "section": "",
+    "text": "Proficiencies",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with randomness and probabilities",
+      "Random number generation"
+    ]
   },
   {
     "objectID": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html#the-rand-function",
@@ -131,7 +280,7 @@
     "href": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html#methods-of-the-rand-function",
     "title": "Random number generation",
     "section": "2 Methods of the rand function",
-    "text": "2 Methods of the rand function\n\n2.1 Sampling a uniform random value of a particular type\n\njulia&gt; rand(Int) # Generate a random integer\n-6581752414023885448\n\njulia&gt; rand(Float64) # Generate a random 64-bit floating point\n0.5551313236725943\n\njulia&gt; rand(Int, 10) # Generate 10 random integers\n10-element Vector{Int64}:\n  7698269277784285493\n   119518414081352549\n -7810994830346528650\n -2227295384308136057\n -3787444672257423100\n  2454496437854673843\n -4688583217568250768\n  3428356285250979074\n   217784465829442243\n -2477159631785889726\n\njulia&gt; rand(Float64, 10) # Generate 10 random 64-bit floating point\n10-element Vector{Float64}:\n 0.8121004451418985\n 0.7498281699504885\n 0.262689399562409\n 0.551763388172788\n 0.7264346095273245\n 0.8899981043981576\n 0.4991116861348205\n 0.8177168948063814\n 0.8108662080895137\n 0.14549261534858948\n\n\n2.2 Sampling from a sequence, list, or set with uniform random probability\n\n\n2.3 Sampling random integers from a fixed range with uniform probability\n\n\n2.4 Sampling random continuous values from \\((0, 1]\\) with uniform probability",
+    "text": "2 Methods of the rand function\n\n2.1 Sampling a uniform random value of a particular type\n\njulia&gt; rand(Int) # Generate a random integer\n-6581752414023885448\n\njulia&gt; rand(Float64) # Generate a random (64-bit) floating point\n0.5551313236725943\n\njulia&gt; rand(Int, 10) # Generate 10 random integers\n10-element Vector{Int64}:\n  7698269277784285493\n   119518414081352549\n -7810994830346528650\n -2227295384308136057\n -3787444672257423100\n  2454496437854673843\n -4688583217568250768\n  3428356285250979074\n   217784465829442243\n -2477159631785889726\n\njulia&gt; rand(Float64, 10) # Generate 10 random (64-bit) floating point values\n10-element Vector{Float64}:\n 0.8121004451418985\n 0.7498281699504885\n 0.262689399562409\n 0.551763388172788\n 0.7264346095273245\n 0.8899981043981576\n 0.4991116861348205\n 0.8177168948063814\n 0.8108662080895137\n 0.14549261534858948\n\n\n2.2 Sampling from a sequence, list, or set with uniform random probability\n\n\n\n2.3 Sampling random integers from a fixed range with uniform probability\n\n\n2.4 Sampling random continuous values from \\((0, 1]\\) with uniform probability",
     "crumbs": [
       "Practicals",
       "Basics of working with randomness and probabilities",
@@ -151,53 +300,136 @@
     ]
   },
   {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html",
+    "title": "Working with Julia: runtime, REPL, files, and programs",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling",
+      "Working with Julia: runtime, REPL, files, and programs"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html",
+    "title": "Working with Julia: Installing Julia",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling",
+      "Working with Julia: Installing Julia"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html",
+    "href": "content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html",
+    "title": "Working with Julia: environments, projects, packages, and package management",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Practicals",
+      "Introduction, orientation, and tooling",
+      "Working with Julia: environments, projects, packages, and package management"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html",
+    "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html",
+    "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
+    "section": "",
+    "text": "Proficiencies",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Visualizing the single-strain parasite virulence-transmission balance fitness landscape"
+    ]
+  },
+  {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#parasite-fitness-function",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#parasite-fitness-function",
     "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
     "section": "1 Parasite fitness function",
-    "text": "1 Parasite fitness function\n\nThe single-strain parasite fitness model is given as (Frank 1996):\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of parasite fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite."
+    "text": "1 Parasite fitness function\n\nThe single-strain parasite fitness model is given as (Frank 1996):\nAs discussed in ?@sec-markov-property, the defining condition only depends on the present state.\n\\[\n\\begin{aligned}\nw = z (1 - \\alpha z)\n\\end{aligned}\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is a measure of parasite fitness,\n\\(z\\) is a measure of the parasite host exploitation severity, correlating positively with parasite reproductive and host colonization capacity, and\n\\(\\alpha z\\) is a measure of virulence, the damage a parasite does to the host as a result of exploitation \\(z\\), with \\(\\alpha\\) a scaling factor, weighting the damage of the parasite reproductive activity in reducing the host resources available to the parasite.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Visualizing the single-strain parasite virulence-transmission balance fitness landscape"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#behavior-under-adaptive-evolution",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#behavior-under-adaptive-evolution",
     "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
     "section": "2 Behavior under adaptive evolution",
-    "text": "2 Behavior under adaptive evolution\nLet us consider host exploitation severity, \\(z\\), as a heritable trait that affects transmission success and virulence, and let \\(w(z, \\alpha)\\) be the fitness of of a parasite with host exploitation severity trait value \\(z\\), given some virulence impact weight \\(\\alpha\\).\nIf parasites vary in \\(z\\) and this variation is heritable, then strategies with larger \\(w(z)\\) tend to leave more descendants (i.e., spread more effectively).\nIn this simplified model, we therefore expect evolution to favor values of \\(z\\) that make \\(w(z)\\) as large as possible, so we look for the value of \\(z\\) that maximizes \\(w(z)\\).\nConceptually, we can treat \\(z\\) as a control or tuning variable: it is the parasite strategy we imagine changing. The parameter \\(\\alpha\\) determines how strongly exploitation reduces host resources (how costly virulence is per unit increase in \\(z\\)). For a fixed \\(\\alpha\\), plotting \\(w\\) against \\(z\\) shows a trade-off: increasing \\(z\\) raises transmission potential, but beyond a point the virulence cost dominates and \\(w\\) declines."
+    "text": "2 Behavior under adaptive evolution\nLet us consider host exploitation severity, \\(z\\), as a heritable trait that affects transmission success and virulence, and let \\(w(z, \\alpha)\\) be the fitness of of a parasite with host exploitation severity trait value \\(z\\), given some virulence impact weight \\(\\alpha\\).\nIf parasites vary in \\(z\\) and this variation is heritable, then strategies with larger \\(w(z)\\) tend to leave more descendants (i.e., spread more effectively).\nIn this simplified model, we therefore expect evolution to favor values of \\(z\\) that make \\(w(z)\\) as large as possible, so we look for the value of \\(z\\) that maximizes \\(w(z)\\).\nConceptually, we can treat \\(z\\) as a control or tuning variable: it is the parasite strategy we imagine changing. The parameter \\(\\alpha\\) determines how strongly exploitation reduces host resources (how costly virulence is per unit increase in \\(z\\)). For a fixed \\(\\alpha\\), plotting \\(w\\) against \\(z\\) shows a trade-off: increasing \\(z\\) raises transmission potential, but beyond a point the virulence cost dominates and \\(w\\) declines.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Visualizing the single-strain parasite virulence-transmission balance fitness landscape"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#visualization-of-fitness-relationship-with-host-exploitation-severity",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#visualization-of-fitness-relationship-with-host-exploitation-severity",
     "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
     "section": "3 Visualization of fitness relationship with host exploitation severity",
-    "text": "3 Visualization of fitness relationship with host exploitation severity\n\n\nGenerating a 1D grid of input values with range (or start:step:stop).\nComputing model outputs over a grid with map.\nPlotting a single 2D relationship with an implicit figure/axis (quick exploratory plot).\nCreating an explicit Figure and Axis, and adding multiple curves to the same axis with ...! plotting functions.\nVisualizing a 2-parameter model as a surface by evaluating the model on a 2D grid.\n\n\nWe will visualize the single-strain fitness model\n\\[\nw(z;\\alpha) = z(1-\\alpha z),\n\\]\nwhere:\n\n\\(z\\) is host exploitation severity (the model’s adjustable trait variable),\n\\(\\alpha\\) is a fixed scaling parameter that determines how strongly exploitation reduces transmission opportunity,\n\\(w\\) is parasite fitness (new infected hosts per infected host under the model).\n\nIn Julia, we can generate a grid of \\(z\\) values, evaluate \\(w(z;\\alpha)\\), and plot \\(w\\) versus \\(z\\) for one or several choices of \\(\\alpha\\).\nWhen we plot \\(w\\) versus \\(z\\) for a fixed \\(\\alpha\\), we typically restrict to\n\\[\n0 \\le z \\le \\frac{1}{\\alpha},\n\\]\nso that the transmission-opportunity term \\((1-\\alpha z)\\) stays nonnegative."
+    "text": "3 Visualization of fitness relationship with host exploitation severity\n\nProficiencies\n\nGenerating a 1D grid of input values with range (or start:step:stop).\nComputing model outputs over a grid with map.\nPlotting a single 2D relationship with an implicit figure/axis (quick exploratory plot).\nCreating an explicit Figure and Axis, and adding multiple curves to the same axis with ...! plotting functions.\nVisualizing a 2-parameter model as a surface by evaluating the model on a 2D grid.\n\n\n\nWe will visualize the single-strain fitness model\n\\[\nw(z;\\alpha) = z(1-\\alpha z),\n\\]\nwhere:\n\n\\(z\\) is host exploitation severity (the model’s adjustable trait variable),\n\\(\\alpha\\) is a fixed scaling parameter that determines how strongly exploitation reduces transmission opportunity,\n\\(w\\) is parasite fitness (new infected hosts per infected host under the model).\n\nIn Julia, we can generate a grid of \\(z\\) values, evaluate \\(w(z;\\alpha)\\), and plot \\(w\\) versus \\(z\\) for one or several choices of \\(\\alpha\\).\nWhen we plot \\(w\\) versus \\(z\\) for a fixed \\(\\alpha\\), we typically restrict to\n\\[\n0 \\le z \\le \\frac{1}{\\alpha},\n\\]\nso that the transmission-opportunity term \\((1-\\alpha z)\\) stays nonnegative.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Visualizing the single-strain parasite virulence-transmission balance fitness landscape"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#single-alpha-implicit-plot-quick-exploratory",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#single-alpha-implicit-plot-quick-exploratory",
     "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
     "section": "4 Single \\(\\alpha\\), implicit plot (quick exploratory)",
-    "text": "4 Single \\(\\alpha\\), implicit plot (quick exploratory)\n\nusing CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Choose a single α value\nα = 0.5\n\n# Generate z-values over the biologically meaningful range\nz_vals = range(0.0, 1/α; length = 400)\n\n# Evaluate the model on the grid\nw_vals = map(z -&gt; w(z, α), z_vals)\n\n# Quick plot with implicit Figure/Axis\nlines(z_vals, w_vals)\n\n\n\n\nThis produces one curve showing how fitness changes as host exploitation severity \\(z\\) increases, holding \\(\\alpha\\) fixed.\nMultiple \\(\\alpha\\) values on the same plot (explicit Figure and Axis) using CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Choose several α values to compare\nα_values = [0.2, 0.5, 1.0]\n\n# Create Figure and Axis explicitly\nfig = Figure()\nax = Axis(\n    fig[1, 1],\n    xlabel = \"host exploitation severity (z)\",\n    ylabel = \"parasite fitness (w)\",\n    title  = \"Fitness curves for different α\"\n)\n\n# Add one curve per α onto the same axis\nfor α in α_values\n    z_vals = range(0.0, 1/α; length = 400)\n    w_vals = map(z -&gt; w(z, α), z_vals)\n    lines!(ax, z_vals, w_vals, label = \"α = $(α)\")\nend\n\n# Add a legend\naxislegend(ax)\n\nfig\n\n\n\n\nHere, \\(\\alpha\\) plays the role of a parameter you “sweep” across several values, to see how the \\(w\\)–\\(z\\) relationship changes.\nSurface plot: fitness as a function of \\(z\\) and \\(\\alpha\\)\nTo visualize the full two-parameter relationship \\(w(z;\\alpha)\\), we evaluate \\(w\\) on a 2D grid of \\((z,\\alpha)\\) values and plot a surface.\n\nusing CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Grid of α values (parameter axis)\nα_vals = range(0.2, 1.0; length = 120)\n\n# Grid of z values (trait axis)\n# Use a common z-range for the surface; choose up to 1/max(α) so the full grid is comparable\nz_max = 1 / maximum(α_vals)\nz_vals = range(0.0, z_max; length = 200)\n\n# Evaluate w on the (z, α) grid:\n# W[i, j] = w(z_vals[i], α_vals[j])\nW = [w(z, α) for z in z_vals, α in α_vals]\n\n# Plot as a 3D surface\nfig = Figure()\nax3 = Axis3(\n    fig[1, 1],\n    xlabel = \"host exploitation severity (z)\",\n    ylabel = \"virulence scaling (α)\",\n    zlabel = \"parasite fitness (w)\",\n    title  = \"Fitness surface w(z; α)\"\n)\n\nsurface!(ax3, z_vals, α_vals, W)\n\nfig\n\n\n\n\nThis surface makes it visually explicit that \\(w\\) depends on both the trait value (\\(z\\)) and the environment/biology scaling parameter (\\(\\alpha\\)).\n\nSingle-curve practice (implicit plot)\nSet \\(\\alpha = 0.25\\) and reproduce the single-curve plot.\nIncrease the resolution by changing length = 400 to length = 2000.\nRestrict the plotted domain to \\(0 \\le z \\le \\frac{1}{2\\alpha}\\) and compare the shape to the full range \\(0 \\le z \\le \\frac{1}{\\alpha}\\).\n\n\nMultiple-curve practice (explicit Axis, adding curves)\nPlot curves for \\(\\alpha \\in {0.1, 0.2, 0.4, 0.8}\\) on the same axis.\nAdd a second axis below the first that plots the same curves using scatter! instead of lines!.\nChange axis labels and title so that the plot reads well when exported.\n\n\nSurface practice (2D grid evaluation)\nChange the \\(\\alpha\\) grid to range(0.1, 2.0; length = 200) and regenerate the surface.\nReplace the surface with a heatmap of \\(w\\) over \\((z,\\alpha)\\) using heatmap!(…).\nModify the grid so that, for each \\(\\alpha\\), you only include \\(z \\le 1/\\alpha\\) (the nonnegative-opportunity region) by setting \\(w(z,\\alpha) = NaN\\) whenever \\(z &gt; 1/\\alpha\\), and observe how the plotted region changes.\n\n\n\n\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267."
+    "text": "4 Single \\(\\alpha\\), implicit plot (quick exploratory)\n\nusing CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Choose a single α value\nα = 0.5\n\n# Generate z-values over the biologically meaningful range\nz_vals = range(0.0, 1/α; length = 400)\n\n# Evaluate the model on the grid\nw_vals = map(z -&gt; w(z, α), z_vals)\n\n# Quick plot with implicit Figure/Axis\nlines(z_vals, w_vals)\n\n\n\n\nThis produces one curve showing how fitness changes as host exploitation severity \\(z\\) increases, holding \\(\\alpha\\) fixed.\nMultiple \\(\\alpha\\) values on the same plot (explicit Figure and Axis) using CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Choose several α values to compare\nα_values = [0.2, 0.5, 1.0]\n\n# Create Figure and Axis explicitly\nfig = Figure()\nax = Axis(\n    fig[1, 1],\n    xlabel = \"host exploitation severity (z)\",\n    ylabel = \"parasite fitness (w)\",\n    title  = \"Fitness curves for different α\"\n)\n\n# Add one curve per α onto the same axis\nfor α in α_values\n    z_vals = range(0.0, 1/α; length = 400)\n    w_vals = map(z -&gt; w(z, α), z_vals)\n    lines!(ax, z_vals, w_vals, label = \"α = $(α)\")\nend\n\n# Add a legend\naxislegend(ax)\n\nfig\n\n\n\n\nHere, \\(\\alpha\\) plays the role of a parameter you “sweep” across several values, to see how the \\(w\\)–\\(z\\) relationship changes.\nSurface plot: fitness as a function of \\(z\\) and \\(\\alpha\\)\nTo visualize the full two-parameter relationship \\(w(z;\\alpha)\\), we evaluate \\(w\\) on a 2D grid of \\((z,\\alpha)\\) values and plot a surface.\n\nusing CairoMakie\n\n# Fitness model\nw(z, α) = z * (1 - α*z)\n\n# Grid of α values (parameter axis)\nα_vals = range(0.2, 1.0; length = 120)\n\n# Grid of z values (trait axis)\n# Use a common z-range for the surface; choose up to 1/max(α) so the full grid is comparable\nz_max = 1 / maximum(α_vals)\nz_vals = range(0.0, z_max; length = 200)\n\n# Evaluate w on the (z, α) grid:\n# W[i, j] = w(z_vals[i], α_vals[j])\nW = [w(z, α) for z in z_vals, α in α_vals]\n\n# Plot as a 3D surface\nfig = Figure()\nax3 = Axis3(\n    fig[1, 1],\n    xlabel = \"host exploitation severity (z)\",\n    ylabel = \"virulence scaling (α)\",\n    zlabel = \"parasite fitness (w)\",\n    title  = \"Fitness surface w(z; α)\"\n)\n\nsurface!(ax3, z_vals, α_vals, W)\n\nfig\n\n\n\n\nThis surface makes it visually explicit that \\(w\\) depends on both the trait value (\\(z\\)) and the environment/biology scaling parameter (\\(\\alpha\\)).\n\nExerciseSingle-curve practice (implicit plot)\nSet \\(\\alpha = 0.25\\) and reproduce the single-curve plot.\nIncrease the resolution by changing length = 400 to length = 2000.\nRestrict the plotted domain to \\(0 \\le z \\le \\frac{1}{2\\alpha}\\) and compare the shape to the full range \\(0 \\le z \\le \\frac{1}{\\alpha}\\).\n\n\n\nExerciseMultiple-curve practice (explicit Axis, adding curves)\nPlot curves for \\(\\alpha \\in {0.1, 0.2, 0.4, 0.8}\\) on the same axis.\nAdd a second axis below the first that plots the same curves using scatter! instead of lines!.\nChange axis labels and title so that the plot reads well when exported.\n\n\n\nExerciseSurface practice (2D grid evaluation)\nChange the \\(\\alpha\\) grid to range(0.1, 2.0; length = 200) and regenerate the surface.\nReplace the surface with a heatmap of \\(w\\) over \\((z,\\alpha)\\) using heatmap!(…).\nModify the grid so that, for each \\(\\alpha\\), you only include \\(z \\le 1/\\alpha\\) (the nonnegative-opportunity region) by setting \\(w(z,\\alpha) = NaN\\) whenever \\(z &gt; 1/\\alpha\\), and observe how the plotted region changes.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Visualizing the single-strain parasite virulence-transmission balance fitness landscape"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html",
     "title": "Generating sequences of values using the range function",
     "section": "",
-    "text": "This is an example of a mathematical model relating \\(y\\) values to \\(x\\):\nTo visualize this in Julia, we generate sets \\(x\\) and \\(y\\) values conforming to the above relationship and pass these to the plotting function. These values may be generated systematically—a sequence generated by an algorithm—or stochastically—sampled from a probabilistic distribution. Here, we will discuss the first case.\nIn all cases, we have to ensure that the type and range of values conform to the assumptions of the model. In this example, The \\(x\\) and \\(y\\) values will be assumed to be, each, single-dimensional real values, \\(x, y \\in \\mathrm{R}^1\\), taking values in the entire real line. The \\(y\\) values here are deterministic functions of the \\(x\\) values, and so they can be calculated from the \\(x\\) values, once these have been generated."
+    "text": "This is an example of a mathematical model relating \\(y\\) values to \\(x\\):\nTo visualize this in Julia, we generate sets \\(x\\) and \\(y\\) values conforming to the above relationship and pass these to the plotting function. These values may be generated systematically—a sequence generated by an algorithm—or stochastically—sampled from a probabilistic distribution. Here, we will discuss the first case.\nIn all cases, we have to ensure that the type and range of values conform to the assumptions of the model. In this example, The \\(x\\) and \\(y\\) values will be assumed to be, each, single-dimensional real values, \\(x, y \\in \\mathrm{R}^1\\), taking values in the entire real line. The \\(y\\) values here are deterministic functions of the \\(x\\) values, and so they can be calculated from the \\(x\\) values, once these have been generated.",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Generating sequences of values using the `range` function"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html#generating-a-sequence-of-values-with-the-range-function",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html#generating-a-sequence-of-values-with-the-range-function",
     "title": "Generating sequences of values using the range function",
     "section": "1 Generating a sequence of values with the range function",
-    "text": "1 Generating a sequence of values with the range function\n\n\n\n\n\n\n\nNoteRange objects are algorithmic representation of ranges\n\n\n\nThe actual value returned by the range function are not actually arrays of values, but rather a special “lazy” range object, with “lazy” here being a program design term meaning that the resources (particularly memory) will be allocated only if and when needed. What this means is that you can construct very large collections of values, with large ranges and high resolution, but not pay the resource cost of holding all these values in memory at the same time.\njulia&gt; r = range(1e-10, 1e10; step = 0.001)\n1.0e-10:0.001:1.0e10\njulia&gt; length(r)\n10000000000001\njulia&gt; r[begin]\n1.0e-10\njulia&gt; r[end]\n1.0e10\njulia&gt; r[begin + 2]\n0.0020000001\njulia&gt; r[end - 4]\n9.999999999996e9\njulia&gt; r[1]\n1.0e-10\njulia&gt; r[2]\n0.0010000001\njulia&gt; r[3]\n0.0020000001\nTo actually generate the values, use the collect function, which will “unpack” the range object and return a Vector object (a single dimensional array) with the full sequence of values.\njulia&gt; r = range(0, 10; step = 2.5)\n0.0:2.5:10.0\n\njulia&gt; collect(r)\n5-element Vector{Float64}:\n 0.0\n 2.5\n 5.0\n 7.5\n10.0\n\nWe can generate a set of \\(x\\) values over a particular range of values, continuous or otherwise, using the range function in Julia. The range function has a number of different methods, but for our purposes we will focus on specifying the range in terms of a three parameters: a start value, a stop value, and either a step size (interval between consecutive values in the sequence),\njulia&gt; range(0, 10; step = 1)\n0:1:10\njulia&gt; range(0, 10; step = 0.2)\n0.0:0.2:10.0\njulia&gt; range(-10, 10; step = 2)\n-10:2:10\nor length (number of values) in the sequence,\njulia&gt; range(0, 10; length = 11)\n0.0:1.0:10.0\njulia&gt; range(0, 10; length = 5)\n0.0:2.5:10.0\njulia&gt; range(-1, 1; length = 20)\nThe range function has a short-hand syntax, start:step:stop:\njulia&gt; 0.0:2.5:10.0\n0.0:2.5:10.0\n\njulia&gt; collect(0.0:2.5:10.0)\n5-element Vector{Float64}:\n  0.0\n  2.5\n  5.0\n  7.5\n 10.0\n\njulia&gt; 0.0:2.5:10.0 == range(0, 10; step = 2.5)\ntrue"
+    "text": "1 Generating a sequence of values with the range function\n\n\n\n\n\n\n\nNoteRange objects are algorithmic representation of ranges\n\n\n\nThe actual value returned by the range function are not actually arrays of values, but rather a special “lazy” range object, with “lazy” here being a program design term meaning that the resources (particularly memory) will be allocated only if and when needed. What this means is that you can construct very large collections of values, with large ranges and high resolution, but not pay the resource cost of holding all these values in memory at the same time.\njulia&gt; r = range(1e-10, 1e10; step = 0.001)\n1.0e-10:0.001:1.0e10\njulia&gt; length(r)\n10000000000001\njulia&gt; r[begin]\n1.0e-10\njulia&gt; r[end]\n1.0e10\njulia&gt; r[begin + 2]\n0.0020000001\njulia&gt; r[end - 4]\n9.999999999996e9\njulia&gt; r[1]\n1.0e-10\njulia&gt; r[2]\n0.0010000001\njulia&gt; r[3]\n0.0020000001\nTo actually generate the values, use the collect function, which will “unpack” the range object and return a Vector object (a single dimensional array) with the full sequence of values.\njulia&gt; r = range(0, 10; step = 2.5)\n0.0:2.5:10.0\n\njulia&gt; collect(r)\n5-element Vector{Float64}:\n 0.0\n 2.5\n 5.0\n 7.5\n10.0\n\nWe can generate a set of \\(x\\) values over a particular range of values, continuous or otherwise, using the range function in Julia. The range function has a number of different methods, but for our purposes we will focus on specifying the range in terms of a three parameters: a start value, a stop value, and either a step size (interval between consecutive values in the sequence),\njulia&gt; range(0, 10; step = 1)\n0:1:10\njulia&gt; range(0, 10; step = 0.2)\n0.0:0.2:10.0\njulia&gt; range(-10, 10; step = 2)\n-10:2:10\nor length (number of values) in the sequence,\njulia&gt; range(0, 10; length = 11)\n0.0:1.0:10.0\njulia&gt; range(0, 10; length = 5)\n0.0:2.5:10.0\njulia&gt; range(-1, 1; length = 20)\nThe range function has a short-hand syntax, start:step:stop:\njulia&gt; 0.0:2.5:10.0\n0.0:2.5:10.0\n\njulia&gt; collect(0.0:2.5:10.0)\n5-element Vector{Float64}:\n  0.0\n  2.5\n  5.0\n  7.5\n 10.0\n\njulia&gt; 0.0:2.5:10.0 == range(0, 10; step = 2.5)\ntrue",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Generating sequences of values using the `range` function"
+    ]
   },
   {
     "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html#calculating-and-visualizing-function-values-over-a-sequence",
     "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html#calculating-and-visualizing-function-values-over-a-sequence",
     "title": "Generating sequences of values using the range function",
     "section": "2 Calculating and visualizing function values over a sequence",
-    "text": "2 Calculating and visualizing function values over a sequence\nWe calculate the \\(y\\) values corresponding to each \\(x\\) value generated by the range object using the map function, and visualize the relationship between the \\(x\\) and \\(y\\) points using the scatter function from the CairoMakie library:\n\nusing CairoMakie\nx_values = -10:0.01:10\ny_values = map(x -&gt; 6x + 4, x_values)\nscatter(x_values, y_values)\n\n\n\n\nor, if we do not need to store the \\(y\\) values beyond the visualization:\nusing CairoMakie\nX = -10:0.01:10\nscatter(X, map(x -&gt; 6x + 4, X))\n\n\nVisualize larger ranges and higher resolutions (smaller steps) of \\(x\\)-values of this same model\n\\[\ny = 6x + 4\n\\]\nto see if the relationships change:\n\n\\(-1000 &lt; x &lt; 1000\\), with step sizes of 1.0\n\\(0 &lt; x &lt; 1.0\\), with step sizes of 0.001\n\n\n\n\nVisualize the following models in terms of the relationship between the varibles under the specified ranges:\n\n\\(f(x) = \\frac{1}{x}, x \\in \\{1, 2, \\ldots, 100\\}\\)\n\\(f(x) = x^2, -10 \\le x \\le 10\\)"
+    "text": "2 Calculating and visualizing function values over a sequence\nWe calculate the \\(y\\) values corresponding to each \\(x\\) value generated by the range object using the map function, and visualize the relationship between the \\(x\\) and \\(y\\) points using the scatter function from the CairoMakie library:\n\nusing CairoMakie\nx_values = -10:0.01:10\ny_values = map(x -&gt; 6x + 4, x_values)\nscatter(x_values, y_values)\n\n\n\n\nor, if we do not need to store the \\(y\\) values beyond the visualization:\nusing CairoMakie\nX = -10:0.01:10\nscatter(X, map(x -&gt; 6x + 4, X))\n\n\nExercise\nVisualize larger ranges and higher resolutions (smaller steps) of \\(x\\)-values of this same model\n\\[\ny = 6x + 4\n\\]\nto see if the relationships change:\n\n\\(-1000 &lt; x &lt; 1000\\), with step sizes of 1.0\n\\(0 &lt; x &lt; 1.0\\), with step sizes of 0.001\n\n\n\n\n\nExercise\nVisualize the following models in terms of the relationship between the varibles under the specified ranges:\n\n\\(f(x) = \\frac{1}{x}, x \\in \\{1, 2, \\ldots, 100\\}\\)\n\\(f(x) = x^2, -10 \\le x \\le 10\\)",
+    "crumbs": [
+      "Practicals",
+      "Basics of visualizing mathematical models",
+      "Generating sequences of values using the `range` function"
+    ]
   },
   {
     "objectID": "content/01_practicals/index.html",
@@ -207,25 +439,6 @@
     "text": "TipChapter 1: Orientation and tooling\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 1. Introduction to the computing ecosystem\n\n\n\n\n\nIntroduction to the computing ecosystem\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 2. Shell and file-system essentials\n\n\n\n\n\nShell and file-system essentials\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 3. Working with Julia: Installing Julia\n\n\n\n\n\nWorking with Julia: Installing Julia\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 4. Working with Julia: runtime, REPL, files, and programs\n\n\n\n\n\nWorking with Julia: runtime, REPL, files, and programs\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 5. Working with Julia: environments, projects, packages, and package management\n\n\n\n\n\nWorking with Julia: environments, projects, packages, and package management\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipChapter 2: Basics of visualizing mathematical models\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 6. Generating sequences of values using the range function\n\n\n\n\n\nGenerating sequences of values using the range function\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 7. Plotting containers: Figure and Axis objects\n\n\n\n\n\nPlotting containers: Figure and Axis objects\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 8. Visualizing the single-strain parasite virulence-transmission balance fitness landscape\n\n\n\n\n\nVisualizing the single-strain parasite virulence-transmission balance fitness landscape\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nModel: Single-lineage parasite virulence evolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipChapter 3: Basics of working with randomness\n\n\n\n\n\n\n\n\n\n\n\nNoteSection 9. Random number generation\n\n\n\n\n\nRandom number generation\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top",
     "crumbs": [
       "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#sec-markov-property",
-    "href": "content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html#sec-markov-property",
-    "title": "Visualizing the single-strain parasite virulence-transmission balance fitness landscape",
-    "section": "1 Markov property",
-    "text": "1 Markov property\nA stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]"
-  },
-  {
-    "objectID": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html",
-    "href": "content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html",
-    "title": "Random number generation",
-    "section": "",
-    "text": "Proficiencies",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities",
-      "Random number generation"
     ]
   }
 ]
