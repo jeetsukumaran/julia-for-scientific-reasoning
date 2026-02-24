@@ -1,1 +1,6 @@
-/* css styles */
+.listing-section-title {
+    /* color: #884444; */
+    color: #446666;
+    font-size: 125%;
+    font-weight: bold;
+}

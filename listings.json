@@ -1,6 +1,36 @@
 [
   {
     "listing": "/index.html",
-    "items": []
+    "items": [
+      "/content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html",
+      "/content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html",
+      "/content/02_primers/frank1996model_single-strain-parasite-fitness.html",
+      "/content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
+      "/content/02_primers/markov-property.html",
+      "/content/02_primers/pseudo-random-number-generators_01.html",
+      "/content/02_primers/pseudo-random-number-generators_02_best-practices.html",
+      "/content/02_primers/pseudo-random-number-generators_03_details.html"
+    ]
+  },
+  {
+    "listing": "/content/01_practicals/index.html",
+    "items": [
+      "/content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html",
+      "/content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html",
+      "/content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html",
+      "/content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html"
+    ]
   }
 ]
