@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-content-volume-title','listing-content-chapter-title','listing-content-volume-index','listing-content-part-index','listing-content-chapter-index','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-date-created','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-title','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-content-volume-title","listing-content-chapter-title","listing-content-volume-index","listing-content-part-index","listing-content-chapter-index","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-date-created","listing-content-references"],
+      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-title","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-proficiencies {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -112,11 +112,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-tutorials {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-tutorials {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -222,104 +222,41 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction, orientation, and tooling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Shell and file-system essentials</span></a>
+  <a href="../../content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of setting up and running Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: Installing Julia</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: runtime, REPL, files, and programs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: environments, projects, packages, and package management</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of visualizing mathematical models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Generating sequences of values using the <code>range</code> function</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plotting containers: <code>Figure</code> and <code>Axis</code> objects</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing the single-strain parasite virulence-transmission balance fitness landscape</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random number generation</span></a>
   </div>
 </li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/02_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
@@ -399,31 +336,20 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<div class="listing nested chapter-level callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<section id="chapter-1.-introduction-orientation-and-tooling" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1.-introduction-orientation-and-tooling">Chapter 1. <a href="../../content/01_practicals/01_orientation-and-tooling/index.html">Introduction, orientation, and tooling</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Chapter 1: Orientation and tooling
+<span class="screen-reader-only">Note</span>Details
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 1. Introduction to the computing ecosystem
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html">Introduction to the computing ecosystem</a></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -443,19 +369,21 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+</section>
+<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="../../content/01_practicals/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 2. Shell and file-system essentials
+<span class="screen-reader-only">Note</span>Details
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html">Shell and file-system essentials</a></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -475,19 +403,55 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+</section>
+<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 3. Working with Julia: Installing Julia
+<span class="screen-reader-only">Note</span>Details
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html">Working with Julia: Installing Julia</a></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Synopsis</th>
+<th>Requirements</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><a href="../../content/models/02_primers/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="chapter-4.-random-number-generation" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-random-number-generation">Chapter 4. <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html">Random number generation</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -504,235 +468,11 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 4. Working with Julia: runtime, REPL, files, and programs
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html">Working with Julia: runtime, REPL, files, and programs</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 5. Working with Julia: environments, projects, packages, and package management
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html">Working with Julia: environments, projects, packages, and package management</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="listing nested chapter-level callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Chapter 2: Basics of visualizing mathematical models
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 6. Generating sequences of values using the <code>range</code> function
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html">Generating sequences of values using the <code>range</code> function</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 7. Plotting containers: <code>Figure</code> and <code>Axis</code> objects
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html">Plotting containers: <code>Figure</code> and <code>Axis</code> objects</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 8. Visualizing the single-strain parasite virulence-transmission balance fitness landscape
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html">Visualizing the single-strain parasite virulence-transmission balance fitness landscape</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td><a href="../../content/02_primes/models/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="listing nested chapter-level callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Chapter 3: Basics of working with randomness
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div class="listing nested subchapter-level callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Section 9. Random number generation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p><a href="../../content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html">Random number generation</a></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+</section>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

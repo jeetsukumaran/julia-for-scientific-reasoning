@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-content-chapter-title','listing-title','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-title','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-title","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-date-created','listing-content-references','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-date-created","listing-content-references","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,15 +131,11 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -148,6 +144,10 @@ ul.task-list li input[type="checkbox"] {
   --color2: #000000;
 }
 .curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -249,104 +249,41 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction, orientation, and tooling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Shell and file-system essentials</span></a>
+  <a href="./content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of setting up and running Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: Installing Julia</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: runtime, REPL, files, and programs</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Working with Julia: environments, projects, packages, and package management</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of visualizing mathematical models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Generating sequences of values using the <code>range</code> function</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plotting containers: <code>Figure</code> and <code>Axis</code> objects</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing the single-strain parasite virulence-transmission balance fitness landscape</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random number generation</span></a>
   </div>
 </li>
-      </ul>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./content/02_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
@@ -420,230 +357,43 @@ window.Quarto = {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><span class="listing-section-title">Practicals</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span class="listing-section-title">Primers</span></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-practicals" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table table-striped">
-<thead>
-<tr>
-
-<th>
-Chapter
-</th>
-
-<th>
-Section
-</th>
-
-<th>
-References
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-file-modified-sort="1771482870265" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Introduction to the computing ecosystem" data-listing-filename-sort="01-01_introduction-to-the-computing-ecosystem.qmd">
-<td>
-<span class="listing-content-chapter-title">Orientation and tooling</span>
-</td>
-<td>
-<a href="./content/01_practicals/01_orientation-and-tooling/01-01_introduction-to-the-computing-ecosystem.html" class="title listing-title">Introduction to the computing ecosystem</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-file-modified-sort="1771482870265" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Shell and file-system essentials" data-listing-filename-sort="01-02_shell-file-system-essentials.qmd">
-<td>
-<span class="listing-content-chapter-title">Orientation and tooling</span>
-</td>
-<td>
-<a href="./content/01_practicals/01_orientation-and-tooling/01-02_shell-file-system-essentials.html" class="title listing-title">Shell and file-system essentials</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-file-modified-sort="1771482870265" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Working with Julia: Installing Julia" data-listing-filename-sort="01-03_installing-julia.qmd">
-<td>
-<span class="listing-content-chapter-title">Orientation and tooling</span>
-</td>
-<td>
-<a href="./content/01_practicals/01_orientation-and-tooling/01-03_installing-julia.html" class="title listing-title">Working with Julia: Installing Julia</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-file-modified-sort="1771482870265" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Working with Julia: runtime, REPL, files, and programs" data-listing-filename-sort="01-04_julia-runtime-programs-repl-files.qmd">
-<td>
-<span class="listing-content-chapter-title">Orientation and tooling</span>
-</td>
-<td>
-<a href="./content/01_practicals/01_orientation-and-tooling/01-04_julia-runtime-programs-repl-files.html" class="title listing-title">Working with Julia: runtime, REPL, files, and programs</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-file-modified-sort="1771482870265" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Working with Julia: environments, projects, packages, and package management" data-listing-filename-sort="01-05_julia-environments-packages-and-projects.qmd">
-<td>
-<span class="listing-content-chapter-title">Orientation and tooling</span>
-</td>
-<td>
-<a href="./content/01_practicals/01_orientation-and-tooling/01-05_julia-environments-packages-and-projects.html" class="title listing-title">Working with Julia: environments, projects, packages, and package management</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-listing-file-modified-sort="1771573649904" data-listing-reading-time-sort="5" data-listing-word-count-sort="814" data-listing-title-sort="Generating sequences of values using the `range` function" data-listing-filename-sort="02-02_generating-sequences-of-values-with-range-function.qmd">
-<td>
-<span class="listing-content-chapter-title">Basics of visualizing mathematical models</span>
-</td>
-<td>
-<a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-02_generating-sequences-of-values-with-range-function.html" class="title listing-title">Generating sequences of values using the <code>range</code> function</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="6" data-listing-file-modified-sort="1771961854359" data-listing-reading-time-sort="2" data-listing-word-count-sort="277" data-listing-title-sort="Plotting containers: `Figure` and `Axis` objects" data-listing-filename-sort="02-03_basics-of-figures.qmd">
-<td>
-<span class="listing-content-chapter-title">Basics of visualizing mathematical models</span>
-</td>
-<td>
-<a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-03_basics-of-figures.html" class="title listing-title">Plotting containers: <code>Figure</code> and <code>Axis</code> objects</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="7" data-listing-file-modified-sort="1771960913774" data-listing-reading-time-sort="5" data-listing-word-count-sort="979" data-listing-title-sort="Visualizing the single-strain parasite virulence-transmission balance fitness landscape" data-listing-filename-sort="02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.qmd">
-<td>
-<span class="listing-content-chapter-title">Basics of visualizing mathematical models</span>
-</td>
-<td>
-<a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html" class="title listing-title">Visualizing the single-strain parasite virulence-transmission balance fitness landscape</a>
-</td>
-<td>
-<span class="listing-content-references"><a href="./content/02_primes/models/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></span>
-</td>
-
-</tr>
-
-<tr data-index="8" data-listing-file-modified-sort="1771972274475" data-listing-reading-time-sort="2" data-listing-word-count-sort="299" data-listing-title-sort="Random number generation" data-listing-filename-sort="03-01_basics-of-random-number-generation.qmd">
-<td>
-<span class="listing-content-chapter-title">Basics of working with randomness</span>
-</td>
-<td>
-<a href="./content/01_practicals/03_basics-of-working-with-stochastic-processes-and-distributions/03-01_basics-of-random-number-generation.html" class="title listing-title">Random number generation</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
+<div id="listing-practicals" class="quarto-listing quarto-listing-container-custom">
+<section id="chapter-1.-introduction-orientation-and-tooling" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1.-introduction-orientation-and-tooling">Chapter 1. <a href="./content/01_practicals/01_orientation-and-tooling/index.html">Introduction, orientation, and tooling</a></h2>
+</section>
+<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="./content/01_practicals/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h2>
+</section>
+<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h2>
+</section>
+<section id="chapter-4.-random-number-generation" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-random-number-generation">Chapter 4. <a href="./content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html">Random number generation</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
+</section>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-primers" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table table-striped">
-<thead>
-<tr>
-
-<th>
-Section
-</th>
-
-<th>
-References
-</th>
-
-</tr>
-</thead>
-<tbody class="list">
-
-<tr data-index="0" data-listing-file-modified-sort="1771543756107" data-listing-reading-time-sort="2" data-listing-word-count-sort="251" data-listing-title-sort="Pathogen fitness as a function of virulence (Frank, 1996)" data-listing-filename-sort="frank1996model_single-strain-parasite-fitness.qmd">
-<td>
-<a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="title listing-title">Pathogen fitness as a function of virulence (Frank, 1996)</a>
-</td>
-<td>
-<span class="listing-content-references"><a href="./content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.html"><strong>Practicals</strong>: visualization</a></span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-listing-file-modified-sort="1771497392951" data-listing-reading-time-sort="3" data-listing-word-count-sort="539" data-listing-title-sort="Virulence-transmission trade-off (Frank, 1996)" data-listing-filename-sort="frank1996model_virulence-transmission-tradeoff.qmd">
-<td>
-<a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html" class="title listing-title">Virulence-transmission trade-off (Frank, 1996)</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="2" data-listing-file-modified-sort="1771926412610" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="Markov property" data-listing-filename-sort="markov-property.qmd">
-<td>
-<a href="./content/02_primers/markov-property.html" class="title listing-title">Markov property</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-listing-file-modified-sort="1771501449204" data-listing-reading-time-sort="5" data-listing-word-count-sort="901" data-listing-title-sort="Pseudo-random number generators" data-listing-filename-sort="pseudo-random-number-generators_01.qmd">
-<td>
-<a href="./content/02_primers/pseudo-random-number-generators_01.html" class="title listing-title">Pseudo-random number generators</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-listing-file-modified-sort="1771501766191" data-listing-reading-time-sort="1" data-listing-word-count-sort="180" data-listing-title-sort="Pseudo-random number generators: best practices" data-listing-filename-sort="pseudo-random-number-generators_02_best-practices.qmd">
-<td>
-<a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html" class="title listing-title">Pseudo-random number generators: best practices</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-listing-file-modified-sort="1771502994985" data-listing-reading-time-sort="2" data-listing-word-count-sort="286" data-listing-title-sort="Pseudo-random number generators: continuous values from discrete machines" data-listing-filename-sort="pseudo-random-number-generators_03_details.qmd">
-<td>
-<a href="./content/02_primers/pseudo-random-number-generators_03_details.html" class="title listing-title">Pseudo-random number generators: continuous values from discrete machines</a>
-</td>
-<td>
-<span class="listing-content-references">&nbsp;</span>
-</td>
-
-</tr>
-
-</tbody>
-</table>
+<div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
+<section id="chapter-1.-markov-property" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1.-markov-property">Chapter 1. <a href="./content/02_primers/markov-property.html">Markov property</a></h2>
+</section>
+<section id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 2. <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+</section>
+<section id="chapter-3.-pseudo-random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-pseudo-random-number-generators">Chapter 3. <a href="./content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
+</section>
+<section id="chapter-4.-pseudo-random-number-generators-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-pseudo-random-number-generators-best-practices">Chapter 4. <a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+</section>
+<section id="chapter-5.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 5. <a href="./content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+</section>
+<section id="chapter-6.-virulence-transmission-trade-off-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6.-virulence-transmission-trade-off-frank-1996">Chapter 6. <a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
+</section>
 </div>
 </div>
 </div>
