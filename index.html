@@ -131,7 +131,15 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -140,14 +148,6 @@ ul.task-list li input[type="checkbox"] {
   --color2: #000000;
 }
 .curriculum-resources {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -304,6 +304,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
@@ -390,26 +396,29 @@ window.Quarto = {
 <section id="chapter-1.-bernoulli-trial" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/02_primers/bernoulli-trial.html">Bernoulli trial</a></h2>
 </section>
-<section id="chapter-2.-markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-markov-property">Chapter 2. <a href="./content/02_primers/markov-property.html">Markov property</a></h2>
+<section id="chapter-2.-julia-functions-methods-and-signatures" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-julia-functions-methods-and-signatures">Chapter 2. <a href="./content/02_primers/julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
 </section>
-<section id="chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 3. <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+<section id="chapter-3.-markov-property" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-markov-property">Chapter 3. <a href="./content/02_primers/markov-property.html">Markov property</a></h2>
 </section>
-<section id="chapter-4.-probabilty-distributionsessential-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-probabilty-distributionsessential-concepts">Chapter 4. <a href="./content/02_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
+<section id="chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 4. <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
 </section>
-<section id="chapter-5.-pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-pseudo-random-number-generators">Chapter 5. <a href="./content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
+<section id="chapter-5.-probabilty-distributionsessential-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5.-probabilty-distributionsessential-concepts">Chapter 5. <a href="./content/02_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
 </section>
-<section id="chapter-6.-pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-pseudo-random-number-generators-best-practices">Chapter 6. <a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<section id="chapter-6.-pseudo-random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6.-pseudo-random-number-generators">Chapter 6. <a href="./content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
 </section>
-<section id="chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 7. <a href="./content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+<section id="chapter-7.-pseudo-random-number-generators-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators-best-practices">Chapter 7. <a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
 </section>
-<section id="chapter-8.-virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-8.-virulence-transmission-trade-off-frank-1996">Chapter 8. <a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
+<section id="chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 8. <a href="./content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+</section>
+<section id="chapter-9.-virulence-transmission-trade-off-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-9.-virulence-transmission-trade-off-frank-1996">Chapter 9. <a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
 </section>
 </div>
