@@ -135,10 +135,6 @@ div.csl-indent {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
@@ -148,6 +144,10 @@ div.csl-indent {
   --color2: #000000;
 }
 .curriculum-tutorials {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -270,7 +270,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Random number generation</span></a>
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
   </div>
 </li>
       </ul>
@@ -284,6 +284,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
@@ -300,6 +306,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/02_primers/probabitlity-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -657,7 +669,7 @@ In this simplified model, we therefore expect evolution to favor values of <span
 <div id="curriculum-proficiencies*-5" class="curriculum-proficiencies">
 <details class="curriculum-proficiencies fbx-simplebox fbx-default" open=""><summary><strong>Proficiencies</strong></summary><div>
 <ol type="1">
-<li>Generating a 1D grid of input values with <code>range</code> (or <code>start:step:stop</code>).</li>
+<li>Generating a 1D grid of values with <code>range</code> (or <code>start:step:stop</code>).</li>
 <li>Computing model outputs over a grid with <code>map</code>.</li>
 <li>Plotting a single 2D relationship with an implicit figure/axis (quick exploratory plot).</li>
 <li>Creating an explicit <code>Figure</code> and <code>Axis</code>, and adding multiple curves to the same axis with <code>...!</code> plotting functions.</li>
@@ -675,7 +687,7 @@ w(z;\alpha) = z(1-\alpha z),
 <li><span class="math inline">\(\alpha\)</span> is a fixed scaling parameter that determines how strongly exploitation reduces transmission opportunity,</li>
 <li><span class="math inline">\(w\)</span> is parasite fitness (new infected hosts per infected host under the model).</li>
 </ul>
-<p>In Julia, we can generate a grid of <span class="math inline">\(z\)</span> values, evaluate <span class="math inline">\(w(z;\alpha)\)</span>, and plot <span class="math inline">\(w\)</span> versus <span class="math inline">\(z\)</span> for one or several choices of <span class="math inline">\(\alpha\)</span>.</p>
+<p>In Julia, we can generate a set of <span class="math inline">\(z\)</span> values, evaluate <span class="math inline">\(w(z;\alpha)\)</span>, and plot <span class="math inline">\(w\)</span> versus <span class="math inline">\(z\)</span> for one or several choices of <span class="math inline">\(\alpha\)</span>. These values can be generated <em>systematically</em>, following some scheme or algorithm, or <em>stochistically</em>, such as by sampling from a probability distribution or model. Here, we use methods of the <code>range</code> function to generate the sets of values systematically at regular intervals such that they form a “grid” spanning the range of values of interest.</p>
 <p>When we plot <span class="math inline">\(w\)</span> versus <span class="math inline">\(z\)</span> for a fixed <span class="math inline">\(\alpha\)</span>, we typically restrict to</p>
 <p><span class="math display">\[
 0 \le z \le \frac{1}{\alpha},
@@ -1216,8 +1228,8 @@ Frank, Steven A. 1996. <span>“Models of Parasite Virulence.”</span> <em>The 
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="pagination-link" aria-label="Random number generation">
-        <span class="nav-page-text">Random number generation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="pagination-link" aria-label="Basics of working with randomness and probabilities">
+        <span class="nav-page-text">Basics of working with randomness and probabilities</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

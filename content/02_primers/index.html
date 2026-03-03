@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" rel="next">
+<link href="../../content/02_primers/bernoulli-trial.html" rel="next">
 <link href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" rel="prev">
 <script src="../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-date-created','listing-content-references','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-date-created','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-date-created","listing-content-references","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-dated-created"],
+      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-date-created","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-resources {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -210,7 +210,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Learning (just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
+ <span class="menu-text">Just enough Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -237,13 +237,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing the single-strain parasite virulence-transmission balance fitness landscape</span></a>
+ <span class="menu-text">Basics of visualizing mathematical models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Random number generation</span></a>
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
   </div>
 </li>
       </ul>
@@ -257,6 +257,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
@@ -273,6 +279,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -336,8 +348,8 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<section id="chapter-1.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 1. <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+<section id="chapter-1.-bernoulli-trial" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="../../content/02_primers/bernoulli-trial.html">Bernoulli trial</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -362,7 +374,7 @@ window.Quarto = {
 <tr class="odd">
 <td></td>
 <td></td>
-<td><a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.qmd"><strong>Practicals</strong>: visualization</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -370,8 +382,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-2.-virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-virulence-transmission-trade-off-frank-1996">Chapter 2. <a href="../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
+<section id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 2. <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -396,7 +408,7 @@ window.Quarto = {
 <tr class="odd">
 <td></td>
 <td></td>
-<td></td>
+<td><a href="../../content/01_practicals/02_basics-of-visualizing-mathematical-models/02-04_basics-of-visualizing-models_01_single-strain-virulence-evolution.qmd"><strong>Practicals</strong>: visualization</a></td>
 </tr>
 </tbody>
 </table>
@@ -404,8 +416,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-3.-markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-markov-property">Chapter 3. <a href="../../content/02_primers/markov-property.html">Markov property</a></h2>
+<section id="chapter-3.-virulence-transmission-trade-off-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-virulence-transmission-trade-off-frank-1996">Chapter 3. <a href="../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -438,8 +450,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-4.-pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-pseudo-random-number-generators">Chapter 4. <a href="../../content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
+<section id="chapter-4.-markov-property" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-markov-property">Chapter 4. <a href="../../content/02_primers/markov-property.html">Markov property</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -472,8 +484,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-5.-pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-pseudo-random-number-generators-best-practices">Chapter 5. <a href="../../content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<section id="chapter-5.-probabilty-distributionsessential-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5.-probabilty-distributionsessential-concepts">Chapter 5. <a href="../../content/02_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -506,8 +518,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-6.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 6. <a href="../../content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+<section id="chapter-6.-pseudo-random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6.-pseudo-random-number-generators">Chapter 6. <a href="../../content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -519,6 +531,74 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Synopsis</th>
+<th>Requirements</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="chapter-7.-pseudo-random-number-generators-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators-best-practices">Chapter 7. <a href="../../content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Synopsis</th>
+<th>Requirements</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 8. <a href="../../content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Details
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <thead>
@@ -944,13 +1024,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="pagination-link" aria-label="Random number generation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Random number generation</span>
+      <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="pagination-link" aria-label="Basics of working with randomness and probabilities">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics of working with randomness and probabilities</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="pagination-link" aria-label="Pathogen fitness as a function of virulence (Frank, 1996)">
-        <span class="nav-page-text">Pathogen fitness as a function of virulence (Frank, 1996)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/02_primers/bernoulli-trial.html" class="pagination-link" aria-label="Bernoulli trial">
+        <span class="nav-page-text">Bernoulli trial</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

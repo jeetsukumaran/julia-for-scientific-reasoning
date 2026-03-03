@@ -1,7 +1,6 @@
----
-date-created: 2026-02-12T01:12:49
-title: "Generating sequences of values using the `range` function"
----
+## Generating sequences of values using the `range` function
+
+### Visualizing mathematical models require values generated under or sampled from those models
 
 This is an example of a mathematical model relating $y$ values to $x$:
 
@@ -20,7 +19,7 @@ In this example,
 The $x$ and $y$ values will be assumed to be, each, single-dimensional real values, $x, y \in \mathrm{R}^1$, taking values in the entire real line. 
 The $y$ values here are deterministic functions of the $x$ values, and so they can be calculated from the $x$ values, once these have been generated.
 
-## Generating a sequence of values with the `range` function
+### The `range` function generates sequences of values
 
 ::: {.callout-note title="Range objects are algorithmic representation of ranges" .column-margin}
 
@@ -106,7 +105,7 @@ julia> 0.0:2.5:10.0 == range(0, 10; step = 2.5)
 true
 ```
 
-## Calculating and visualizing function values over a sequence
+### Calculating and visualizing function values over a sequence
 
 ::: {.callout-tip title="`map`: to apply a function to every element in a collection" .column-margin}
 

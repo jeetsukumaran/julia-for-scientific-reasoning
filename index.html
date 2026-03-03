@@ -8,7 +8,7 @@
 
 <meta name="author" content="">
 
-<title>Learning (just enough) Julia for scientific informatics, modeling, and reasoning – Just enough Julia for scientific informatics and reasoning</title>
+<title>Just enough Julia for scientific informatics, modeling, and reasoning – Just enough Julia for scientific informatics and reasoning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-date-created','listing-content-references','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-website','listing-custom-numbered-blocks','listing-filters','listing-language','listing-draft-mode','listing-date-created','listing-title','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-date-created","listing-content-references","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-dated-created"],
+      searchColumns: ["listing-author","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-website","listing-custom-numbered-blocks","listing-filters","listing-language","listing-draft-mode","listing-date-created","listing-title","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,15 +131,15 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-resources {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-tutorials {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -216,7 +216,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Learning (just enough) Julia for scientific informatics, modeling, and reasoning</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Just enough Julia for scientific informatics, modeling, and reasoning</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -237,7 +237,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Learning (just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
+ <span class="menu-text">Just enough Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -270,7 +270,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Random number generation</span></a>
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
   </div>
 </li>
       </ul>
@@ -284,6 +284,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
@@ -300,6 +306,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -335,8 +347,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learning (just enough) Julia for scientific informatics, modeling, and reasoning</h1>
-<p class="subtitle lead">A guide to learning the specific computational competencies you need for your research, from ideas to publication and beyond</p>
+<h1 class="title">Just enough Julia for scientific informatics, modeling, and reasoning</h1>
+<p class="subtitle lead">An operational learning approach to the essential computational competencies you need for your research, from ideas to publication and beyond</p>
 </div>
 
 
@@ -367,31 +379,37 @@ window.Quarto = {
 <section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h2>
 </section>
-<section id="chapter-4.-random-number-generation" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-random-number-generation">Chapter 4. <a href="./content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html">Random number generation</a></h2>
+<section id="chapter-4.-basics-of-working-with-randomness-and-probabilities" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-randomness-and-probabilities">Chapter 4. <a href="./content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
 </section>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
-<section id="chapter-1.-markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-markov-property">Chapter 1. <a href="./content/02_primers/markov-property.html">Markov property</a></h2>
+<section id="chapter-1.-bernoulli-trial" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/02_primers/bernoulli-trial.html">Bernoulli trial</a></h2>
 </section>
-<section id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 2. <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+<section id="chapter-2.-markov-property" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-2.-markov-property">Chapter 2. <a href="./content/02_primers/markov-property.html">Markov property</a></h2>
 </section>
-<section id="chapter-3.-pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-pseudo-random-number-generators">Chapter 3. <a href="./content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
+<section id="chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 3. <a href="./content/02_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
 </section>
-<section id="chapter-4.-pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-pseudo-random-number-generators-best-practices">Chapter 4. <a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<section id="chapter-4.-probabilty-distributionsessential-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-4.-probabilty-distributionsessential-concepts">Chapter 4. <a href="./content/02_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
 </section>
-<section id="chapter-5.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 5. <a href="./content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+<section id="chapter-5.-pseudo-random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5.-pseudo-random-number-generators">Chapter 5. <a href="./content/02_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
 </section>
-<section id="chapter-6.-virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-virulence-transmission-trade-off-frank-1996">Chapter 6. <a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
+<section id="chapter-6.-pseudo-random-number-generators-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6.-pseudo-random-number-generators-best-practices">Chapter 6. <a href="./content/02_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
+</section>
+<section id="chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 7. <a href="./content/02_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+</section>
+<section id="chapter-8.-virulence-transmission-trade-off-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-8.-virulence-transmission-trade-off-frank-1996">Chapter 8. <a href="./content/02_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
 </section>
 </div>
