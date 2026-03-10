@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>Markov property – Just enough Julia for scientific informatics and reasoning</title>
+<title>tutorial.dice-combination-code-breaking – Just enough Julia for scientific informatics, modeling, and reasoning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,30 +21,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../content/02_primers/probability-distributions.html" rel="next">
-<link href="../../content/02_primers/julia-functions-methods-and-signatures.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,6 +106,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.curriculum-resources {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
@@ -86,10 +123,6 @@ ul.task-list li input[type="checkbox"] {
   --color2: #000000;
 }
 .curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -125,7 +158,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -135,12 +168,12 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
-    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Just enough Julia for scientific informatics and reasoning</span>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Just enough Julia for scientific informatics, modeling, and reasoning</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -158,7 +191,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/02_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/02_primers/markov-property.html">Markov property</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -169,22 +202,22 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Just enough Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/01_practicals/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../content/01_practicals/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practicals</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -193,33 +226,39 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation and</span></a>
+  <a href="../../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of setting up and running Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of visualizing mathematical models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01_practicals/05_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/02_primers/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../content/02_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -228,55 +267,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: best practices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: continuous values from discrete machines</span></a>
   </div>
 </li>
@@ -292,16 +331,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sec-markov-property" id="toc-sec-markov-property" class="nav-link active" data-scroll-target="#sec-markov-property"><span class="header-section-number">1</span> Markov property</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation"><span class="header-section-number">1</span> Preparation</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up"><span class="header-section-number">2</span> Set up</a></li>
+  <li><a href="#setting-up-the-dice" id="toc-setting-up-the-dice" class="nav-link" data-scroll-target="#setting-up-the-dice"><span class="header-section-number">3</span> Setting up the “dice”</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">4</span> Resources</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tutorial.dice-combination-code-breaking.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/02_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/02_primers/markov-property.html">Markov property</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Markov property</h1>
 </div>
 
 
@@ -324,13 +365,180 @@ window.Quarto = {
 </header>
 
 
-<section id="sec-markov-property" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="sec-markov-property"><span class="header-section-number">1</span> Markov property</h2>
-<p>A stochastic process <span class="math inline">\((X_t)_{t \ge 0}\)</span> has the Markov property if <span class="math display">\[
-\Pr(X_{t+1} = j \mid X_t = i, X_{t-1}, \dots)
-=
-\Pr(X_{t+1} = j \mid X_t = i).
-\]</span></p>
+<section id="preparation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">1</span> Preparation</h2>
+<div class="callout callout-style-default callout-caution callout-titled" title="Review BEFORE session">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Review BEFORE session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://jverzani.github.io/UsingJ/Inference/distributions.html">7&nbsp; Probability distributions – Using Julia for Introductory Statistics</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="set-up" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="set-up"><span class="header-section-number">2</span> Set up</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Set up the computation environment">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Set up the computation environment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create a new directory to host the project directory:</p>
+<pre><code>$HOME/Projects/20251201_dicegames</code></pre>
+<p>and, within this, generate a new Julia project, <code>DiceGames</code>, using the Julia package manager <code>Pkg</code>.</p>
+<p>Then change into the project directory, and, making sure to invoke the correct Julia project path, add the <code>Distributions.jl</code> package.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ~/Projects/20251201_dicegames</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/Projects/20251201_dicegames</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia <span class="at">-e</span> <span class="st">'using Pkg; Pkg.generate("DiceGames")'</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd DiceGames</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> julia <span class="at">--project</span><span class="op">=</span>. <span class="at">-e</span> <span class="st">'using Pkg; Pkg.add("Distributions")'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-up-the-dice" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="setting-up-the-dice"><span class="header-section-number">3</span> Setting up the “dice”</h2>
+<p>We will simulate dice by <em>sampling from their distributions</em>.</p>
+<p>The <code>Distributions.jl</code> package provides an easy way to manipulate statistical distributions in Julia.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Statistical distributions of die values">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Statistical distributions of die values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For each of the standard D&amp;D dice, list the range and distribution of values.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Number of sides</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>d4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>d6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>d8</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>d10</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>d12</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>d20</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Number of sides</th>
+<th>Range</th>
+<th>Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>d4</td>
+<td>4</td>
+<td><span class="math inline">\([1, 4]\)</span></td>
+<td><code>Uniform(1, 4)</code></td>
+</tr>
+<tr class="even">
+<td>d6</td>
+<td>6</td>
+<td><span class="math inline">\([1, 6]\)</span></td>
+<td><code>Uniform(1, 6)</code></td>
+</tr>
+<tr class="odd">
+<td>d8</td>
+<td>8</td>
+<td><span class="math inline">\([1, 8]\)</span></td>
+<td><code>Uniform(1, 8)</code></td>
+</tr>
+<tr class="even">
+<td>d10</td>
+<td>10</td>
+<td><span class="math inline">\([1, 10]\)</span></td>
+<td><code>Uniform(1, 10)</code></td>
+</tr>
+<tr class="odd">
+<td>d12</td>
+<td>12</td>
+<td><span class="math inline">\([1, 12]\)</span></td>
+<td><code>Uniform(1, 12)</code></td>
+</tr>
+<tr class="even">
+<td>d20</td>
+<td>20</td>
+<td><span class="math inline">\([1, 20]\)</span></td>
+<td><code>Uniform(1, 20)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="resources" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="resources"><span class="header-section-number">4</span> Resources</h2>
 
 
 </section>
@@ -736,18 +944,6 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-body">
-  <div class="nav-page nav-page-previous">
-      <a href="../../content/02_primers/julia-functions-methods-and-signatures.html" class="pagination-link" aria-label="Julia: Functions, methods, and signatures">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Julia: Functions, methods, and signatures</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../content/02_primers/probability-distributions.html" class="pagination-link" aria-label="Probabilty distributions--Essential concepts">
-        <span class="nav-page-text">Probabilty distributions–Essential concepts</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

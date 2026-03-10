@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>Markov property – Just enough Julia for scientific informatics and reasoning</title>
+<title>primer.dice-pools – Just enough Julia for scientific informatics, modeling, and reasoning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,27 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../content/02_primers/probability-distributions.html" rel="next">
-<link href="../../content/02_primers/julia-functions-methods-and-signatures.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,15 +71,15 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.curriculum-tutorials {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-tutorials {
+.curriculum-resources {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -89,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-resources {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -125,22 +123,22 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
-    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Just enough Julia for scientific informatics and reasoning</span>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Just enough Julia for scientific informatics, modeling, and reasoning</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -158,7 +156,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/02_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/02_primers/markov-property.html">Markov property</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -169,22 +167,22 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Just enough Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/01_practicals/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../content/01_practicals/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practicals</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -193,33 +191,39 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation and</span></a>
+  <a href="../../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of setting up and running Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of visualizing mathematical models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01_practicals/05_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/02_primers/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../content/02_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -228,55 +232,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: best practices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: continuous values from discrete machines</span></a>
   </div>
 </li>
@@ -292,16 +296,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sec-markov-property" id="toc-sec-markov-property" class="nav-link active" data-scroll-target="#sec-markov-property"><span class="header-section-number">1</span> Markov property</a></li>
+  <li><a href="#appendices" id="toc-appendices" class="nav-link active" data-scroll-target="#appendices"><span class="header-section-number">1</span> Appendices</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/02_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/02_primers/markov-property.html">Markov property</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Markov property</h1>
 </div>
 
 
@@ -324,16 +327,93 @@ window.Quarto = {
 </header>
 
 
-<section id="sec-markov-property" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="sec-markov-property"><span class="header-section-number">1</span> Markov property</h2>
-<p>A stochastic process <span class="math inline">\((X_t)_{t \ge 0}\)</span> has the Markov property if <span class="math display">\[
-\Pr(X_{t+1} = j \mid X_t = i, X_{t-1}, \dots)
-=
-\Pr(X_{t+1} = j \mid X_t = i).
-\]</span></p>
+<section id="dice-pools" class="level4 page-columns page-full" data-number="0.0.1">
+<h4 data-number="0.0.1" class="anchored" data-anchor-id="dice-pools"><span class="header-section-number">0.0.1</span> Dice pools</h4>
+<section id="concepts" class="level5 page-columns page-full">
+<h5 class="anchored" data-anchor-id="concepts">Concepts</h5>
+<section id="a-die-a-physical-randomization-device" class="level6">
+<h6 class="anchored" data-anchor-id="a-die-a-physical-randomization-device">A die: a physical randomization device</h6>
+<p>A “die” (singular; plural is “dice”) is a device used for generating random outcomes in a finite discrete sample space. As a physical object, a die typically corresponds to some device that has a fixed, finite number of distinguishable “sides”, each of which can be mapped unambiguously, if not always uniquely, to a “face”, representing a unique and mutually-exclusive outcome in a fixed sample space <!--consisting of all possible faces.-->. Dice are often marked with symbols to allow for identification of sides with faces. As in many modern dice the outcomes are indexed numerically, representing samples from a subset of the natural numbers, the symbols on these faces are numbers indicating integer values <span class="math inline">\({1, 2, \dots, N}\)</span>, where <span class="math inline">\(N\)</span> is the number of faces.</p>
+</section>
+<section id="example-a-6-sided-die" class="level6 page-columns page-full">
+<h6 class="anchored" data-anchor-id="example-a-6-sided-die">Example: A 6-sided die</h6>
+<p>A type of die most of us are familiar with today is a 6-sided die <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: 🎲. Here, the die has six sides, and each side is marked with a distinct symbol to allow it to unique represent a distinct face in the sample space <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Today, very often, the faces are represented by a subset of the natural numbers <span class="math inline">\(\mathcal{S} \subset \mathrm{N}\)</span>, i.e., <span class="math inline">\(\mathcal{S} = \{1, 2, 3, 4, 5, 6\}\)</span>, though other symbols have and continue to be used (e.g.&nbsp;…).</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;“<code>d6</code>” in <a href="">dice notation</a>, which we will discuss later</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Some forms of dice, especially earlier ones, had more “sides” than faces, with multiple sides marked with the same symbol</p></div></div></section>
+<section id="generating-an-outcome" class="level6 page-columns page-full">
+<h6 class="anchored" data-anchor-id="generating-an-outcome">Generating an outcome</h6>
+<p>A die is “cast” <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> , “thrown”, or “rolled” to generate an outcome from its sample space, (usually) with the face on the side aligned upwards after it stops moving representing the realized outcome.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;“Cast is the die!”, or “<em>Iactea est alea</em>!”, Caesar uttered when moving forward to seize Rome. Classical Latin allows either “Cast is the die!” and the “The die is cast!” as grammatically correct ways to express different emphases. I feel the common translation of “The die is cast” to conform to modern English patterns of expression misses the intended weight of Caesar’s utterance.</p></div></div><p>For example, rolling a six-sided die once will result in one of the six faces, <span class="math inline">\(\{1, 2, 3, 4, 5, 6\}\)</span>, showing as the outcome.</p>
+<div class="Questions">
+<ul>
+<li>What are the <em>elementary outcomes</em> of the sample space of a 6-sided die? Explicitly enumerate them, and then mathematical notation to express them more compactly.</li>
+<li>Assuming a “fair” 6-sided die, what is the probability of each of the outcomes in the sample space?
+<ul>
+<li>Explicitly list all the elementary outcomes.</li>
+<li>Write down a general mathemaIn Ltical expression for</li>
+</ul></li>
+<li>What parametric probability distribution can we use to model this?</li>
+<li>More generally, given a hypothetical fair die with <span class="math inline">\(N\)</span> sides, describe the sample space, probability, and probability distribution of its outcomes.</li>
+</ul>
+</div>
+</section>
+<section id="generalized-polyhedral-dice-to-sample-from-mathrmn." class="level6">
+<h6 class="anchored" data-anchor-id="generalized-polyhedral-dice-to-sample-from-mathrmn.">Generalized polyhedral dice to sample from <span class="math inline">\(\mathrm{N}\)</span>.</h6>
+<p>While the six-sided cuboid die is most familiar to most people today, dice types vary in the number of sides, such as two-sided, four-sided, ten-sided, twenty-sided etc. dice, corresponding to sample spaces with corresponding varying numbers of elementary outcomes (2, 4, 10, 20, etc.)</p>
+<p>A standard set of such six such generalized polyhedral dice types are found across a broad range of games and recreational contexts, consisting of: (1) a four-sided die, (2) a six-sided die, (3) an eight-sided die, (4) a ten-sided die, (5) a twelve-sided die, and (6) a twenty-sided die. For convenience, we may use the dice notation used by these game communities to reference specific types of these dice: <code>d4</code>, <code>d6</code>, <code>d8</code>, <code>d10</code>, <code>d12</code>, and <code>d20</code>, respectively.</p>
+<p>In each of these dice, each of its sides maps to a unique integer from 1 to the number of sides. Thus an <span class="math inline">\(N\)</span>-sided die can be seen as having a sample space consisting of <span class="math inline">\(\{1, 2, \dots N\}\)</span>. This mapping to natural numbers allows construction of more complex sample spaces by allowing for combining outcomes from multiple dice using natural number algebra such as addition.</p>
+<p>Most of us are accustomed to the concept of the familiar cuboid six-sided die used in this way, e.g., when rolling two, three, or more of these and taking the total of the individual values of the roll as the outcome. A <em>dice pool</em>, discussed next, is a generalization of this concept.</p>
+</section>
+<section id="dice-pools-1" class="level6 page-columns page-full">
+<h6 class="anchored" data-anchor-id="dice-pools-1">Dice pools</h6>
+<p>We can model a dice pool as a <em>multiset</em> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> of dice that is constructed by sampling with replacement from a set of candidate dice types. For example, there are many games in which various different moves and plays are effected by sampling from a dice pool made up of two units of single type of die (six-sided).</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;A <strong>multiset</strong> is a collection of distinguishable elements with, unlike sets, allowance for repeats.</p></div></div><div class="Questions">
+<ul>
+<li>With the distribution of each die being uniform with <em>support</em> (range of values over which a non-zero probability is defined) in <span class="math inline">\([1, 6]\)</span>, what is the support of the distribution of the sum of values of two six-sided dice?</li>
+</ul>
+</div>
+</section>
+<section id="dice-pool-notation" class="level6">
+<h6 class="anchored" data-anchor-id="dice-pool-notation">Dice pool notation</h6>
+<p>We can describe the configuration of a dice pool using dice notation, which enumerates all the dice used by the mathematical conventions of indicating products (within types) and additions (across types) to combine them.</p>
+</section>
+</section>
+<section id="probabilistics" class="level5">
+<h5 class="anchored" data-anchor-id="probabilistics">Probabilistics</h5>
+<section id="probability-space" class="level6">
+<h6 class="anchored" data-anchor-id="probability-space">Probability space</h6>
+</section>
+<section id="probability-space-of-a-die-with-n-sides" class="level6">
+<h6 class="anchored" data-anchor-id="probability-space-of-a-die-with-n-sides">Probability space of a die with <span class="math inline">\(N\)</span> sides</h6>
+<p>Each side of each of these dice is indexed uniquely indexed with an integer, starting from one and proceeding in sequence, ${1, 2, }, through each and every side of the dice (with some allowance for what constitutes a “side” due to the geometrical aspects of the physical manifestation of the die, e.g.&nbsp;a pyramid for a 4-sided die has the edges for “side” ). As such, an <span class="math inline">\(N-\)</span>sided die, where <span class="math inline">\(N\)</span> is some natural number greater than 1, <span class="math inline">\(N \in \mathbb{N}, N &gt; 1\)</span> has a sample space consisting of a subset of natural numbers, <span class="math inline">\(\mathcal{S} \subset \mathbb{N}, \mathcal{S} = \{1, 2, \dots, N\}\)</span>.</p>
+</section>
+</section>
+</section>
+<section id="appendices" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="appendices"><span class="header-section-number">1</span> Appendices</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Brute force approach: ALWAYS works, IF you can do it">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Brute force approach: ALWAYS works, IF you can do it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here is a technique that will solve EVERY single probability calculation problem conceivable.</p>
+<p>When asked what is the probability of some event,</p>
+<!-- Enumerate the sample space, $\mathcal{S}$. -->
+<ol>
+<li><p>Count all the elementary outcomes.</p></li>
+<li><p>Count all elementary outcomes that are included in (or correspond to) the event.</p></li>
+</ol>
+<p>Then divide the second by the first.</p>
+</div>
+</div>
 
 
 </section>
+
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -736,18 +816,6 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-body">
-  <div class="nav-page nav-page-previous">
-      <a href="../../content/02_primers/julia-functions-methods-and-signatures.html" class="pagination-link" aria-label="Julia: Functions, methods, and signatures">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Julia: Functions, methods, and signatures</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../content/02_primers/probability-distributions.html" class="pagination-link" aria-label="Probabilty distributions--Essential concepts">
-        <span class="nav-page-text">Probabilty distributions–Essential concepts</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

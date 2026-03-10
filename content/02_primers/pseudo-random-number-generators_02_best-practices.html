@@ -108,7 +108,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.curriculum-tutorials {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-resources {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -117,14 +125,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #000000;
 }
 .curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-tutorials {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Learning (just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
+ <span class="menu-text">Just enough Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/01_practicals/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction, orientation, and tooling</span></a>
+ <span class="menu-text">Orientation and</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -252,13 +252,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../content/02_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/02_primers/probabitlity-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/02_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
@@ -292,8 +298,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#use-the-default-random-number-generator-for-convenience" id="toc-use-the-default-random-number-generator-for-convenience" class="nav-link active" data-scroll-target="#use-the-default-random-number-generator-for-convenience"><span class="header-section-number">1</span> Use the default random number generator for convenience</a></li>
-  <li><a href="#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability" id="toc-explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability" class="nav-link" data-scroll-target="#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability"><span class="header-section-number">2</span> Explicitly manage the random number generator for robust reproducibility and replicability</a></li>
+  <li><a href="#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" id="toc-implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" class="nav-link active" data-scroll-target="#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience"><span class="header-section-number">1</span> Implicitly rely on the default random number generator for ease and convenience</a></li>
+  <li><a href="#explicitly-set-the-default-random-number-generator-seed-for-replicability" id="toc-explicitly-set-the-default-random-number-generator-seed-for-replicability" class="nav-link" data-scroll-target="#explicitly-set-the-default-random-number-generator-seed-for-replicability"><span class="header-section-number">2</span> Explicitly set the default random number generator seed for replicability</a></li>
+  <li><a href="#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" id="toc-explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" class="nav-link" data-scroll-target="#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility"><span class="header-section-number">3</span> Explicitly reference the default random number generator for maintainability and extensibility</a></li>
+  <li><a href="#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" id="toc-ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" class="nav-link" data-scroll-target="#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds"><span class="header-section-number">4</span> Ensure randomness across replicates by using time and process id’s as seeds</a></li>
+  <li><a href="#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" id="toc-explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" class="nav-link" data-scroll-target="#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability"><span class="header-section-number">5</span> Explicitly create anmd manage your own random number generators for robust reproducibility and replicability</a></li>
   </ul>
 </nav>
     </div>
@@ -325,34 +334,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="use-the-default-random-number-generator-for-convenience" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="use-the-default-random-number-generator-for-convenience"><span class="header-section-number">1</span> Use the default random number generator for convenience</h2>
-<p>In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the <code>Random.seed!</code> function to set the seed.</p>
+<section id="implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience"><span class="header-section-number">1</span> Implicitly rely on the default random number generator for ease and convenience</h2>
+<p>In workflows where <em>replicability is not critical or immediately relevant</em> (exploratory, pilot, scaffolding runs, etc.) you can rely on the default random generator being used in the background without explicitly managing it.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get reference to the global random number generator</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">default_rng</span>()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicitly set its seed</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(rng, <span class="fl">42</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>([<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>([<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability"><span class="header-section-number">2</span> Explicitly manage the random number generator for robust reproducibility and replicability</h2>
-<p>In the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.</p>
+<section id="explicitly-set-the-default-random-number-generator-seed-for-replicability" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="explicitly-set-the-default-random-number-generator-seed-for-replicability"><span class="header-section-number">2</span> Explicitly set the default random number generator seed for replicability</h2>
+<p>In most cases, however, replicability is important.</p>
+<p>As discussed in the <a href="content/02_primers/pseudo-random-number-generators_01.qmd">primer on pseudo-random number generators</a>, the random number “seed” value passed to the algorithm determines the value of every number generated from the algorithm: in a sense, it indexes or selects a specific sequence of pre-determined random outcomes to be used.</p>
+<p>Different seed values produce different sequences of random numbers, while conversely, the same seed value repeatedly and reliabily produces the same sequence of randomness across <em>independent</em> runs of the program.</p>
+<p>This latter is what gives PRNG’s their great utility in many research software applications, and is actually useful in programming and software development as well for debugging purposes: you can only reliably be sure of fixing an error if you can reliably reproduce it to be able to work on it.</p>
+<p>You can use default random number implicitly but gain replicability by explicitly setting its seed using the <code>Random.seed!</code> function.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Xoshiro" algorithm with the seed value of 42</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">Xoshiro</span>(<span class="fl">42</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Mersenne Twister" with the seed value of 1999</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">MersenneTwister</span>(<span class="fl">1999</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample an `Int` (integer) value</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, <span class="dt">Int</span>, <span class="fl">10</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample a random value from the list</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, [<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicitly seed the default random number generator with 42</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">42</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Implict usage of global default random number generator, seed globally set previously</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>([<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As before, when <code>rand</code> is called without a random number generator object as its first argument, the default random number genrator will be used as the source of randomness. However, here we have set the seed for this before hand.</p>
+</section>
+<section id="explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility"><span class="header-section-number">3</span> Explicitly reference the default random number generator for maintainability and extensibility</h2>
+<p>While implicit usage of the default random number generator is convenient, it is good practice to always be explicit about the random number generator that is being used event if it is the default.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">default_rng</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(rng, <span class="fl">42</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, <span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, [<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Beyond clarity, it also makes it easy to use other random number generators if the need arises.</p>
+<p>Furthermore, when writing our own methods for <code>rand</code>, the general principle is that any function doing random sampling should ideally accept an <code>rng::AbstractRNG</code> argument with a default of <code>Random.default_rng()</code>, following the convention used throughout Base and most Julia packages.</p>
+</section>
+<section id="ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds"><span class="header-section-number">4</span> Ensure randomness across replicates by using time and process id’s as seeds</h2>
+<p>While replicability is important, at the same time, in almost every case except when actually wanting to reproduce a run for debugging or study purposes, when we are running programs that use these values, we want them to have different random sequences across different independent runs.</p>
+<p>A common convention to have a new explicitly-specified random seed on every independent run without needing to change the code (or force the user to type one in) is to use the system time, specified in nanoseconds, <code>time_ns()</code>, (sometimes with the process id, <code>getpid()</code>, added to avoid correlations when executed in bulk in parallel).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">default_rng</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>seed <span class="op">=</span> <span class="fu">time_ns</span>() <span class="op">+</span> <span class="fu">getpid</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@info</span> <span class="st">"Setting random seed: </span><span class="sc">$</span>(seed)<span class="st">"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(seed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability"><span class="header-section-number">5</span> Explicitly create anmd manage your own random number generators for robust reproducibility and replicability</h2>
+<p>In the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Xoshiro" algorithm with the seed value of 42</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">Xoshiro</span>(<span class="fl">42</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Mersenne Twister" with the seed value of 1999</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">MersenneTwister</span>(<span class="fl">1999</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample an `Int` (integer) value</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, <span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample a random value from the list</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, [<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

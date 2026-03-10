@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html#chapter-1.-introduction-orientation-and-tooling",
-    "href": "index.html#chapter-1.-introduction-orientation-and-tooling",
+    "objectID": "index.html#chapter-1.-orientation-and",
+    "href": "index.html#chapter-1.-orientation-and",
     "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 1. Introduction, orientation, and tooling",
-    "text": "Chapter 1. Introduction, orientation, and tooling",
+    "section": "Chapter 1. Orientation and",
+    "text": "Chapter 1. Orientation and",
     "crumbs": [
       "Just enough Julia for scientific informatics, modeling, and reasoning"
     ]
@@ -12,111 +12,121 @@
   {
     "objectID": "index.html#chapter-2.-basics-of-setting-up-and-running-julia",
     "href": "index.html#chapter-2.-basics-of-setting-up-and-running-julia",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
     "section": "Chapter 2. Basics of setting up and running Julia",
     "text": "Chapter 2. Basics of setting up and running Julia",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
     "objectID": "index.html#chapter-3.-basics-of-visualizing-mathematical-models",
     "href": "index.html#chapter-3.-basics-of-visualizing-mathematical-models",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
     "section": "Chapter 3. Basics of visualizing mathematical models",
     "text": "Chapter 3. Basics of visualizing mathematical models",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
     "objectID": "index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
     "href": "index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
     "section": "Chapter 4. Basics of working with randomness and probabilities",
-    "text": "Chapter 4. Basics of working with randomness and probabilities\nNo matching items",
+    "text": "Chapter 4. Basics of working with randomness and probabilities",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
     "objectID": "index.html#chapter-1.-bernoulli-trial",
     "href": "index.html#chapter-1.-bernoulli-trial",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
     "section": "Chapter 1. Bernoulli trial",
     "text": "Chapter 1. Bernoulli trial",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-2.-markov-property",
-    "href": "index.html#chapter-2.-markov-property",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 2. Markov property",
-    "text": "Chapter 2. Markov property",
+    "objectID": "index.html#chapter-2.-julia-functions-methods-and-signatures",
+    "href": "index.html#chapter-2.-julia-functions-methods-and-signatures",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 2. Julia: Functions, methods, and signatures",
+    "text": "Chapter 2. Julia: Functions, methods, and signatures",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
-    "href": "index.html#chapter-3.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 3. Pathogen fitness as a function of virulence (Frank, 1996)",
-    "text": "Chapter 3. Pathogen fitness as a function of virulence (Frank, 1996)",
+    "objectID": "index.html#chapter-3.-markov-property",
+    "href": "index.html#chapter-3.-markov-property",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 3. Markov property",
+    "text": "Chapter 3. Markov property",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-4.-probabilty-distributionsessential-concepts",
-    "href": "index.html#chapter-4.-probabilty-distributionsessential-concepts",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 4. Probabilty distributions–Essential concepts",
-    "text": "Chapter 4. Probabilty distributions–Essential concepts",
+    "objectID": "index.html#chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
+    "href": "index.html#chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 4. Pathogen fitness as a function of virulence (Frank, 1996)",
+    "text": "Chapter 4. Pathogen fitness as a function of virulence (Frank, 1996)",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-5.-pseudo-random-number-generators",
-    "href": "index.html#chapter-5.-pseudo-random-number-generators",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 5. Pseudo-random number generators",
-    "text": "Chapter 5. Pseudo-random number generators",
+    "objectID": "index.html#chapter-5.-probabilty-distributionsessential-concepts",
+    "href": "index.html#chapter-5.-probabilty-distributionsessential-concepts",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 5. Probabilty distributions–Essential concepts",
+    "text": "Chapter 5. Probabilty distributions–Essential concepts",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-6.-pseudo-random-number-generators-best-practices",
-    "href": "index.html#chapter-6.-pseudo-random-number-generators-best-practices",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 6. Pseudo-random number generators: best practices",
-    "text": "Chapter 6. Pseudo-random number generators: best practices",
+    "objectID": "index.html#chapter-6.-pseudo-random-number-generators",
+    "href": "index.html#chapter-6.-pseudo-random-number-generators",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 6. Pseudo-random number generators",
+    "text": "Chapter 6. Pseudo-random number generators",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "href": "index.html#chapter-7.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 7. Pseudo-random number generators: continuous values from discrete machines",
-    "text": "Chapter 7. Pseudo-random number generators: continuous values from discrete machines",
+    "objectID": "index.html#chapter-7.-pseudo-random-number-generators-best-practices",
+    "href": "index.html#chapter-7.-pseudo-random-number-generators-best-practices",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 7. Pseudo-random number generators: best practices",
+    "text": "Chapter 7. Pseudo-random number generators: best practices",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
-    "objectID": "index.html#chapter-8.-virulence-transmission-trade-off-frank-1996",
-    "href": "index.html#chapter-8.-virulence-transmission-trade-off-frank-1996",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 8. Virulence-transmission trade-off (Frank, 1996)",
-    "text": "Chapter 8. Virulence-transmission trade-off (Frank, 1996)\nNo matching items",
+    "objectID": "index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "href": "index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 8. Pseudo-random number generators: continuous values from discrete machines",
+    "text": "Chapter 8. Pseudo-random number generators: continuous values from discrete machines",
     "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-9.-virulence-transmission-trade-off-frank-1996",
+    "href": "index.html#chapter-9.-virulence-transmission-trade-off-frank-1996",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 9. Virulence-transmission trade-off (Frank, 1996)",
+    "text": "Chapter 9. Virulence-transmission trade-off (Frank, 1996)\nNo matching items",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
     ]
   },
   {
@@ -166,23 +176,23 @@
   {
     "objectID": "content/01_practicals/01_orientation-and-tooling/index.html#file-system-essentials",
     "href": "content/01_practicals/01_orientation-and-tooling/index.html#file-system-essentials",
-    "title": "Introduction, orientation, and tooling",
+    "title": "Orientation",
     "section": "2 File-system essentials",
     "text": "2 File-system essentials\n\nProficiencies\nFile system concepts:\n\nSpatial metaphor of “location” in a hierarchical tree of folders and files.\nThe current working directory.\nSpecifying a location using a “path” string.\nSpecifying absolute vs. relative paths.\nProgram or executable pathss.\nStandard file-system organization",
     "crumbs": [
       "Practicals",
-      "Introduction, orientation, and tooling"
+      "Orientation"
     ]
   },
   {
     "objectID": "content/01_practicals/01_orientation-and-tooling/index.html#shell-essentials",
     "href": "content/01_practicals/01_orientation-and-tooling/index.html#shell-essentials",
-    "title": "Introduction, orientation, and tooling",
+    "title": "Orientation",
     "section": "3 Shell essentials",
     "text": "3 Shell essentials\n\nProficiencies\n\nHow to open a “shell” instance (“terminal”, “command-line”).\nHow to identify the current working directory path.\nHow to list the contents of the current working directory.\nHow to list the contents of any directory given relative and absolute paths.\nHow to change the current working directory based on:\n\nrelative paths\nabsolute paths\n\nHow to specify the location of a directory or a file as an argument to a program using both relative paths and absolute paths.\nHow to communicate or correlate file and directory locations presented in the operating system graphical interface (GUI) as or with path string specifiers in the shell.\nHow to create a new directory.\nHow to rename or move a directory.\nHow to rename or move a file.\nHow to copy a directory.\nHow to copy a file.",
     "crumbs": [
       "Practicals",
-      "Introduction, orientation, and tooling"
+      "Orientation"
     ]
   },
   {
@@ -223,523 +233,6 @@
     "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
     "crumbs": [
       "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/index.html#chapter-4.-markov-property",
-    "href": "content/02_primers/index.html#chapter-4.-markov-property",
-    "title": "Primers",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/index.html#chapter-5.-probabilty-distributionsessential-concepts",
-    "href": "content/02_primers/index.html#chapter-5.-probabilty-distributionsessential-concepts",
-    "title": "Primers",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/index.html#chapter-6.-pseudo-random-number-generators",
-    "href": "content/02_primers/index.html#chapter-6.-pseudo-random-number-generators",
-    "title": "Primers",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/index.html#chapter-7.-pseudo-random-number-generators-best-practices",
-    "href": "content/02_primers/index.html#chapter-7.-pseudo-random-number-generators-best-practices",
-    "title": "Primers",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "href": "content/02_primers/index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "title": "Primers",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Primers"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
-    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
-    "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
-    "crumbs": [
-      "Primers",
-      "Pathogen fitness as a function of virulence (Frank, 1996)"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
-    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
-    "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
-    "crumbs": [
-      "Primers",
-      "Pathogen fitness as a function of virulence (Frank, 1996)"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
-    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
-    "section": "2 Linear decline in host resources due to virulence",
-    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]",
-    "crumbs": [
-      "Primers",
-      "Pathogen fitness as a function of virulence (Frank, 1996)"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
-    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
-    "title": "Pseudo-random number generators: best practices",
-    "section": "",
-    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators: best practices"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#use-the-default-random-number-generator-for-convenience",
-    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#use-the-default-random-number-generator-for-convenience",
-    "title": "Pseudo-random number generators: best practices",
-    "section": "",
-    "text": "In development, exploratary, pilot, or less demanding workflows you can rely on the default random generator, using the Random.seed! function to set the seed.\nusing Random\n\n# Get reference to the global random number generator\nrng = Random.default_rng()\n# Explicitly set its seed\nRandom.seed!(rng, 42)\n\n#  \nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators: best practices"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability",
-    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-manage-the-random-number-generator-for-robust-reproducibility-and-replicability",
-    "title": "Pseudo-random number generators: best practices",
-    "section": "2 Explicitly manage the random number generator for robust reproducibility and replicability",
-    "text": "2 Explicitly manage the random number generator for robust reproducibility and replicability\nIn the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.\nusing Random\n\n# Instantiate a PRNG using the \"Xoshiro\" algorithm with the seed value of 42\nrng = Random.Xoshiro(42)\n# Instantiate a PRNG using the \"Mersenne Twister\" with the seed value of 1999\nrng = Random.MersenneTwister(1999)\n\n# Use `rand` with the `rng` to sample an `Int` (integer) value\nrand(rng, Int, 10)\n# Use `rand` with the `rng` to sample a random value from the list\nrand(rng, ['A', 'C', 'G', 'T'])",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators: best practices"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/probabitlity-distributions.html",
-    "href": "content/02_primers/probabitlity-distributions.html",
-    "title": "Probabilty distributions–Essential concepts",
-    "section": "",
-    "text": "(a) A uniform distribution assigns equal probability to every outcome.\n\n\n\n\n\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\n\n\n\n\n\n(c)\n\n\n\n\n\n\n\nFigure 1: Probability distributions are a Different probability distributions assign different to the same outcome (x = 2.0).",
-    "crumbs": [
-      "Primers",
-      "Probabilty distributions--Essential concepts"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/probabitlity-distributions.html#introductions",
-    "href": "content/02_primers/probabitlity-distributions.html#introductions",
-    "title": "Probabilty distributions–Essential concepts",
-    "section": "1 Introductions",
-    "text": "1 Introductions\n\nThe Main Ideas behind Probability Distributions - YouTube\nGive Me 1 Hour, I’ll Make Probability Click Forever - YouTube\nRandom Variables and Probability Distributions - YouTube",
-    "crumbs": [
-      "Primers",
-      "Probabilty distributions--Essential concepts"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/probabitlity-distributions.html#building-blocks",
-    "href": "content/02_primers/probabitlity-distributions.html#building-blocks",
-    "title": "Probabilty distributions–Essential concepts",
-    "section": "2 Building blocks",
-    "text": "2 Building blocks\n\nKhan Academy - Introduction to random variables and probability distributions\nKhan Academy - Sampling distributions",
-    "crumbs": [
-      "Primers",
-      "Probabilty distributions--Essential concepts"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/probabitlity-distributions.html#foundations",
-    "href": "content/02_primers/probabitlity-distributions.html#foundations",
-    "title": "Probabilty distributions–Essential concepts",
-    "section": "3 Foundations",
-    "text": "3 Foundations\n\nSTARMAST - Introduction to probability; (local source: [[storage/local/attachments/pdf/introtoprobability.pdf]])\nSTARMAST - PMFs, PDFs, and CDFs; (local source: [[storage/local/attachments/pdf/pmfspdfscdfs.pdf]])",
-    "crumbs": [
-      "Primers",
-      "Probabilty distributions--Essential concepts"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html",
-    "href": "content/02_primers/pseudo-random-number-generators_03_details.html",
-    "title": "Pseudo-random number generators: continuous values from discrete machines",
-    "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators: continuous values from discrete machines"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
-    "href": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
-    "title": "Pseudo-random number generators: continuous values from discrete machines",
-    "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators: continuous values from discrete machines"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
-    "href": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
-    "title": "Virulence-transmission trade-off (Frank, 1996)",
-    "section": "",
-    "text": "The classical virulence-transmission trade-off function, following the notation of (Frank 1996), is:\n\\[\nR_0 = \\frac{\\beta(\\nu)N}{\\delta + \\nu + c(\\nu)},\n\\]\nwhere:\n\n\\(R_0\\) The basic reproduction number. The expected number of secondary infections produced by a single infected host introduced into a fully susceptible population of size \\(N\\). The transmission intensity multiplied by mean infectious duration.\n\\(\\nu\\) Virulence. In this formulation, \\(\\nu\\) is the disease-induced host mortality intensity. This represents the per-capita hazard at which infected hosts die because of the pathogen.\n\\(\\beta(\\nu)\\) Transmission coefficient (often called the transmission intensity). It gives the per-capita rate at which an infected host generates new infections per susceptible host, and it is assumed to depend on virulence. The biological trade-off is encoded here: increasing \\(\\nu\\) may increase within-host replication and hence transmission, so \\(\\beta'(\\nu) &gt; 0\\) over some range.\n\\(N\\) Total density (or number) of susceptible hosts in the population at invasion. Because \\(R_0\\) is defined at the start of an epidemic, essentially all hosts are susceptible, so the force of infection scales with \\(N\\).\n\\(\\delta\\) Background host mortality intensity (natural death intensity unrelated to infection). This removes infected hosts independently of the pathogen’s virulence.\n\\(c(\\nu)\\) Additional loss intensity associated with infection that is not direct mortality. Examples include recovery with immunity, behavioral isolation, treatment, or reduced contact rate induced by symptoms. It may depend on virulence if, for example, more virulent infections provoke faster immune clearance or stronger behavioral avoidance.\n\n\n\n\n\n\n\n\nTipIntensity vs. rate\n\n\n\nAll intensities are rates, but not all rates are intensities. A rate is a general term indicating the change of one quantity relative to another, expresed as a ratio (“rate” and “ratio” have the same linguistic root). An “intensity” is a rate, but one some characteristics is the instantaneous hazard parameter (= rate) of a stochastic process. In classical ODE epidemic models (e.g., SIR), “rate” and “intensity” are often used interchangeably because constant hazards produce exponential waiting times and yield linear per-capita ODE terms.\n\nNote that:\n\\[\nR_0 = \\text{transmission intensity} \\times \\text{mean infection duration}.\n\\]\n\nThe numerator, \\(\\beta(\\nu)N\\), is the transmission intensity, i.e. the per-capita intensity (or rate) of generating new infections in a population of size \\(N\\).\nThe denominator \\(\\delta + \\nu + c(\\nu)\\) gives the total removal intensity of infected hosts: the rate of removal of infected hosts from the population. Thus, \\(\\frac{1}{\\delta + \\nu + c(\\nu)}\\) gives the mean infectious duration.\n\nAs \\(R_0\\) measures the net increase of infected host over time, expressed as a ratio of infected hosts gain (the numerator) to infected hosts lost (the denominator), it serves as an index of the epidemiological state of an infectious disease. - If the numerator is greater than the denominator, there will be more infections generated than removed from the population, leading to a net increase in infections: the disease in an epidemic phase. - If the numerator is less than the denominator, there infections will be removed from the population faster than new infections will occur: the disease will “die out” without becoming an epidemic.\n\n\n\n\n Back to topReferences\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267.",
-    "crumbs": [
-      "Primers",
-      "Virulence-transmission trade-off (Frank, 1996)"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/pseudo-random-number-generators_01.html",
-    "href": "content/02_primers/pseudo-random-number-generators_01.html",
-    "title": "Pseudo-random number generators",
-    "section": "",
-    "text": "Key concept: Pseudo-random number generators use finite internal state and seeded algorithms to produce reproducible sequences that statistically approximate random behavior for practical and scientific use.\n\nA computer algorithm cannot generate a truly random result. Computer algorithms are deterministic. However, a computer algorithm can generate a sequence of numbers based on a series of deterministic calculations that behave like a sequence of random numbers would under statistical analysis. These algorithms are known as pseudo-random number generators (PRNGs). Pseudo-random number generators are deterministic, and, being deterministic, their results — the sequence of numbers they generate — are completely determined by the algorithm and the initial seed.\nA computer program (or algorithm) is a deterministic machine. For some given input, it produces a particular output, based on its programming. It cannot produce a truly random value in the sense of being fundamentally unpredictable from its inputs, as, for any particular input, an algorithm will produce the same output. For many applications, however, what is needed are not values that are absolutely random, but rather a series of numbers that behave as though they are random with respect to each other, at least up to some scale — values that can be generated one after another that do not exhibit detectable periodicities, patterns, ordering, or structure in the sequence, at least for the scale or size relevant to the application. (For applications where true physical unpredictability is strictly required, computers rely on hardware incorporating some physical source of randomness, such as radioactive decay or other entropy-harvesting mechanisms.)\nA pseudo-random number generator is a computer algorithm that can produce a series of values that behave like a random sequence with no detectable periodicity or pattern, statistically or otherwise, for a very long run of numbers. (The number of values a particular PRNG can generate before repeating is known as its period. All PRNGs have finite periods, i.e. will eventually begin repeating the sequence, but good PRNGs, and the ones we will be using, have HUGE periods (\\(2^{128}\\), for example). All PRNGs have finite periods because they must operate with a finite internal state represented with a finite number of bits. The number of bits used to represent the internal state that the PRNG tracks sets the upper bound on the number of distinct states the generator can occupy. This also sets an upper bound on the length of the sequence before repetition must occur. At some point, the update step will produce a state value that has been used before in the sequence, resulting in the sequence repeating from that point. A 32-bit state PRNG might repeat after at most \\(2^{32}\\) steps, while cryptographic applications (and many modern computing platforms, including Julia) use 128-bit or larger states, resulting in periods on the order of \\(2^{128}\\) or larger.)\nThe sequence of numbers generated by a PRNG behaves as though it were random in most practical statistical senses, including measures such as empirical entropy or goodness-of-fit to a uniform probability distribution, except for one crucial feature: the sequence is completely determined by the algorithm and the seed. For most non-cryptographic applications, this determinism is not a limitation. What matters is that there is no detectable ordering, patterns, autocorrelations, cross-correlations, or other structure in the numbers at the scale relevant to the application, and that the empirical frequency distribution of values approximates that of a uniform probability distribution. This a well-designed PRNG can deliver, provided usage does not exceed its intended operational limits. (While the entire sequence of numbers generated by a PRNG is determined by the algorithm and initial seed, predicting future outputs without knowledge of the internal state or transition function may be computationally infeasible in the case of cryptographically secure generators, though it is often feasible for simpler non-cryptographic PRNGs.)\nGiven an initial starting or “seed” value, a PRNG algorithm computes and returns a value, and then updates an internal state that is used to generate the next value, thus forming a chain of state updates and outputs. In more complex algorithms, a separate internal state consisting of multiple values is updated from the previous state, and a separate function is used to calculate the output from this internal state. It is this internal state that is passed to the next step rather than the output value itself. In this way, with each state update deterministically producing the next, a sequence of numbers is generated from the initial seed. The entire sequence is therefore completely determined by the seed value. Any particular seed value given to the algorithm, e.g., 108 or 99, will always return the exact same sequence of numbers. While not truly random in a physical sense, the sequence behaves as random in that there are no detectable autocorrelations, patterns, or short-period repetitions at the scale for which the generator is designed.\nThis determinism of the number sequence from a pseudo-random number generator is not a practical limitation in most scientific computing contexts, and, in fact, has important roles in software engineering as well as research. It can be critically useful in software development: the key to solving a bug is to be able to reliably replicate it, and the reproducibility of a pseudo-random number sequence allows for debugging of programs that rely on randomness, including scientific software (e.g. Bayesian Markov chain Monte Carlo inference programs). It can also be very useful in scientific research: often it is sufficient to record the random seed used for a particular suite of simulations or stochastic heuristic-based inference for replicability purposes, instead of storing the giga-, tera-, or peta-bytes of data generated downstream from the random number sequence itself.\n\n\n\n Back to top",
-    "crumbs": [
-      "Primers",
-      "Pseudo-random number generators"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/bernoulli-trial.html",
-    "href": "content/02_primers/bernoulli-trial.html",
-    "title": "Bernoulli trial",
-    "section": "",
-    "text": "A “Bernoulli trial” is a model of randomness in which there are two possible elementary outcomes in the sample space, with the probability of one outcome given by the model parameter \\(p\\) (and the probability of the other is then \\(1-p\\)).\nThe iconic example is that of a single toss of a coin. If the coin is fair, that is, equally likely to land with either of its two sides, typically designated “heads” or “tails”, then it can be modeled as a Bernoulli trial with parameter \\(p = 0.5\\) giving the probability of “heads”. Conversely, a trick coin may have the a “heads” on both sides, thus always landing with a “heads” result, an or a “tails”\n\n\n\n Back to top",
-    "crumbs": [
-      "Primers",
-      "Bernoulli trial"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/markov-property.html",
-    "href": "content/02_primers/markov-property.html",
-    "title": "Markov property",
-    "section": "",
-    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
-    "crumbs": [
-      "Primers",
-      "Markov property"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/markov-property.html#sec-markov-property",
-    "href": "content/02_primers/markov-property.html#sec-markov-property",
-    "title": "Markov property",
-    "section": "",
-    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
-    "crumbs": [
-      "Primers",
-      "Markov property"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
-    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
-    "title": "Basics of working with randomness and probabilities",
-    "section": "",
-    "text": "Proficiencies\n\nSampling a single random value of a specified numeric type (e.g., Int, Float64) using rand.\nSampling multiple random values of the specified type and length using rand.\nSampling uniformly from \\((0, 1]\\) using rand()\nHow to sample a vector of independent uniform random Float64 values in \\((0, 1]\\) by passing a length to rand.\nHow to sample a matrix of independent uniform random Float64 values in \\((0, 1]\\) by passing row and column dimensions to rand.\nHow to sample uniformly at random from a defined integer range using rand with a range argument (e.g., rand(-500:500, n)).\nHow to sample uniformly at random from an explicit collection of values (e.g., an array of floats or characters) using rand.\n\n\n\n\n\n\n\n\n\n\n\n\nTipFunctions vs methods in Julia\n\n\n\nIn Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).\nSee: Julia: Functions, methods, and signatures\n\nThe rand function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The rand function has a number of different methods, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it.\n\n\n\nThe core Julia library provides rand methods that generate values by sampling them from ranges and collections under a uniform probability distribution. Packages such as Distributions.jl, covered separately, provide the ability to sample random values from a broader range of distributions.\n\n\n\n\n\nSampling a random integer between its smallest and largest representible value with uniform random probability:\n\nrand(Int)\n\n8287374779840160872\n\n\nSampling a random real (continuous or floating-point) value from across its 64-bit representation range with uniform random probability:\n\nrand(Float64)\n\n0.758384863521973\n\n\nSampling a random character value from across its possible values with uniform random probability:\n\nrand(Char)\n\n'\\Ud5e94': Unicode U+D5E94 (category Cn: Other, not assigned)\n\n\n\n\n\n\n## Vector of 10 i.i.d uniformly-distributed integers \nrand(Int, 10) \n\n## Sample 10 random (64-bit) floating point values\nrand(Float64, 10) \n\n10-element Vector{Float64}:\n 0.6932874180836047\n 0.3702664963151283\n 0.39185379779755225\n 0.053467627918107774\n 0.23119390657311012\n 0.600760391121938\n 0.2503943229325578\n 0.5204159177346919\n 0.5651345193397107\n 0.9469121471028322\n\n\n\n\n\nMultidimensional collections of values can be generated by the syntax, rand(Type, n, m), where n is the number of rows and m the number of columns.\nSampling a \\(2 \\times 3\\) matrix of random Int values:\nrand(Int, 2, 3) \nSampling a \\(2 \\times 3\\) matrix of random Float64 values:\nrand(Float64, 2, 3) \n\n\n\nWe can use methods of the rand function that take range objects to constrain the values to particular ranges. Instead of a type (Int, Float64, and so on), we can pass the rand function a range object to sample with uniform probability from the intervals or collections of values represented by the range object.\nSampling 10 integer values from the closed interval [-5, 5] with uniform random probability:\n\nrand(-5:5, 10)\n\n10-element Vector{Int64}:\n -4\n -4\n  3\n  0\n -4\n  1\n  1\n  1\n  4\n  1\n\n\nSampling 10 real values from the closed interval [-5.0, 5.0] (binned into 0.1 units) with uniform random probability:\n\nrand(-5.0:0.1:5.0, 10)\n\n10-element Vector{Float64}:\n  0.5\n -0.6\n  4.1\n  1.2\n -2.2\n -0.2\n -0.9\n -4.7\n  1.1\n  5.0\n\n\n\n\n\n\nrand([0.1, 0.2, 0.3, 0.4], 2)\n\n2-element Vector{Float64}:\n 0.4\n 0.2\n\n\n\nrand(['A', 'C', 'G', 'T'], 3)\n\n3-element Vector{Char}:\n 'A': ASCII/Unicode U+0041 (category Lu: Letter, uppercase)\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)\n\n\n\nrand([\"Frodo\", \"Gandalf\", \"Eowyn\", ], 4)\n\n4-element Vector{String}:\n \"Eowyn\"\n \"Frodo\"\n \"Eowyn\"\n \"Frodo\"\n\n\n\n\n\nNote that while both the following produce statistically and computationally identical results, the approaches are different:\n## Sample 10 integer values from the interval $[1, 4]$ \nrand(1:4, , 10)\n## Sample 10 values from the collection of values `[1, 2, 3, 4]`\nrand([1, 2, 3, 4], 10) \n\n\n\nSample a single random Float64 sampled uniformly from $(0, 1]`.\njulia&gt; rand() \n0.3748291736402814\nSample a vector of 5 independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(5)\n5-element Vector{Float64}:\n 0.9182719048123472\n 0.1048821937401286\n 0.5529018823740193\n 0.7712039183746501\n 0.3391184720193847\nSample a \\(2 \\times 3\\) matrix of independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(2, 3)\n2×3 Matrix{Float64}:\n 0.731902  0.184771  0.992814\n 0.442018  0.661203  0.107552\n\n\n\n\nA uniform distribution between value \\(a\\) and \\(b\\), with support of continuous values in the real interval \\([a, b]\\) is denoted\n\\[\n\\mathcal{U}(a, b).\n\\]\nA uniform distribution between value \\(a\\) and \\(b\\), with support of integer values in a finite set of integers in the interval \\([a, b]\\), is denoted\n\\[\n\\mathcal{U}(a, \\dots, b).\n\\]\n\n\n\nThe hist function provides a variety of methods to visualize data in histogram formats.\n\nusing CairoMakie\ndata = rand(Float64, 1000)\nhist(data)\n\n\n\n\n\n\n\n\n\n\nExercise\nGenerate 1000 samples from each of the following distributions, and plot their histograms.\n\n\\(\\mathcal{U}(-10, 10)\\)\n\\(\\mathcal{U}(-10, \\dots, 10)\\)\n\n\n\n\n\n\n\nExerciseWe previously used range to generate a regular grid of value for one set of coordinates:\n\nα = 0.5\nz_vals = range(0.0, 1/α; length = 400)\n\n0.0:0.005012531328320802:2.0\n\n\nInstead of a systematic grid with range, generate a collection of \\(x\\)-coordinates of the same size by sampling independently from a uniform distribution over the same range and type using rand. Calculate the corresponding \\(y\\)-coordinates in the same way, by using map and the function. Visualize the results using scatter.\n\n\n\nExercise\n\nSimulate 1000 independent rolls of a single fair six-sided die by using rand to sample from an integer value in \\(\\{1, 2, 3, 4, 5, 6\\}\\).\nPlot these",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probabilities-distributions-with-rand",
-    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probabilities-distributions-with-rand",
-    "title": "Basics of working with randomness and probabilities",
-    "section": "",
-    "text": "Proficiencies\n\nSampling a single random value of a specified numeric type (e.g., Int, Float64) using rand.\nSampling multiple random values of the specified type and length using rand.\nSampling uniformly from \\((0, 1]\\) using rand()\nHow to sample a vector of independent uniform random Float64 values in \\((0, 1]\\) by passing a length to rand.\nHow to sample a matrix of independent uniform random Float64 values in \\((0, 1]\\) by passing row and column dimensions to rand.\nHow to sample uniformly at random from a defined integer range using rand with a range argument (e.g., rand(-500:500, n)).\nHow to sample uniformly at random from an explicit collection of values (e.g., an array of floats or characters) using rand.\n\n\n\n\n\nThe rand function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The rand function has a number of different methods, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it. The core Julia library provides rand methods that generate values by sampling them from ranges and collections under a uniform probability distribution. Packages such as Distributions.jl, covered separately, provide the ability to sample random values from a broader range of distributions.\n\n\n\n\n\n\n\nTipFunctions vs methods in Julia\n\n\n\nIn Julia, a function is a operation that can accept inputs and returns a value. A method is a specific implementation of that function for particular input types or argument combinations. When you call rand(), rand(Int), or rand(1:6), you are calling different methods of the same function. Julia automatically selects the appropriate method based on the types and number of arguments you provide, as long as someone (the Julia programmers, package programmers, or yourself) has written a function that takes combination of arguments, a mechanism called multiple dispatch.\n\n\n\n\n\n\n\n\n\nrand(Int)\n\n-4565570999891239952\n\n\n\n\n\n\nrand(Float64)\n\n0.7048141924373255\n\n\n\n\n\n\nrand(Char)\n\n'\\Uec30e': Unicode U+EC30E (category Cn: Other, not assigned)\n\n\n\n\n\n\n\n## Vector of 10 i.i.d uniformly-distributed integers \nrand(Int, 10) \n\n## Sample 10 random (64-bit) floating point values\nrand(Float64, 10) \n\n10-element Vector{Float64}:\n 0.9318803940491883\n 0.8476455078002271\n 0.23076857505678683\n 0.8077506930636734\n 0.8777065223705784\n 0.6530856153542098\n 0.2298057832731888\n 0.49123364125016056\n 0.11394533533235862\n 0.7684892135988854\n\n\n\n\n\nMultidimensional collections of values can be generated by the syntax, rand(Type, n, m), where n is the number of rows and m the number of columns.\n\n\nrand(Int, 2, 3) \n\n\n\nrand(Float64, 2, 3) \n\n\n\n\nWe can use methods of the rand function that take range objects to constrain the values to particular ranges. Instead of a type (Int, Float64, and so on), we can pass the rand function a range object to sample with uniform probability from the intervals or collections of values represented by the range object.\n\n\n\nrand(-5:5, 10)\n\n10-element Vector{Int64}:\n  2\n  4\n -3\n  2\n -2\n -5\n -1\n  1\n  2\n  0\n\n\n\n\n\n\nrand(-5.0:0.1:5.0, 10)\n\n10-element Vector{Float64}:\n -3.2\n  4.0\n -3.6\n -0.6\n  4.2\n  2.0\n  0.9\n  3.1\n -0.1\n  4.2\n\n\n\n\n\n\n\n\n\nrand([0.1, 0.2, 0.3, 0.4], 2)\n\n2-element Vector{Float64}:\n 0.2\n 0.3\n\n\n\n\n\n\nrand(['A', 'C', 'G', 'T'], 3)\n\n3-element Vector{Char}:\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'G': ASCII/Unicode U+0047 (category Lu: Letter, uppercase)\n\n\n\n\n\n\nrand([\"Frodo\", \"Gandalf\", \"Eowyn\", ], 4)\n\n4-element Vector{String}:\n \"Eowyn\"\n \"Frodo\"\n \"Gandalf\"\n \"Frodo\"\n\n\n\n\n\nNote that while both the following produce statistically and computationally identical results, the approaches are different:\n## Sample 10 integer values from the interval $[1, 4]$ \nrand(1:4, , 10)\n## Sample 10 values from the collection of values `[1, 2, 3, 4]`\nrand([1, 2, 3, 4], 10) \n\n\n\n\nSample a single random Float64 sampled uniformly from $(0, 1]`.\njulia&gt; rand() \n0.3748291736402814\nSample a vector of 5 independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(5)\n5-element Vector{Float64}:\n 0.9182719048123472\n 0.1048821937401286\n 0.5529018823740193\n 0.7712039183746501\n 0.3391184720193847\nSample a \\(2 \\times 3\\) matrix of independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(2, 3)\n2×3 Matrix{Float64}:\n 0.731902  0.184771  0.992814\n 0.442018  0.661203  0.107552",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#probabilistic-modeling-with-rand",
-    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#probabilistic-modeling-with-rand",
-    "title": "Basics of working with randomness and probabilities",
-    "section": "2 Probabilistic modeling with rand",
-    "text": "2 Probabilistic modeling with rand\n\n2.1 Simulating a Bernoulli trial with rand\nWe can use rand(), which returns a uniformly distributed real value in \\([0, 1)\\) to simulate whether or not an event of a particular probability has occurred: for an event with some given probability value, if the value returned by the rand() function is less than this value we consider the event to have occurred. By default then, if the result of rand() is greater than this value, the event has not occured.\n\nVisualize a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\), and divide it at (a) \\(p = 0.5,\\); (b) \\(p = 0.8\\), and (c) \\(p = 0.75\\).\nIf we consider a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\), and divide it at \\(p\\) of various values, we can see the larger segment of the range assigned to one or the other outcome depending the parameter.\nIf we consider that rand() will return a sample anywhere in that range with equal probability, we can see how a larger \\(p\\) means a value will fall in the part of the range that maps to the first outcome and vice versa.\n\nThat is, if an event has a probability \\(p\\), if the result of rand() is less than \\(p\\), then we have simulated a sample in which the event has occurred, and conversely, if greater than or equal to \\(p\\), to not have occured.\nFor example, consider the classical Bernoulli trial modeling an idealized fair coin toss, where there are two possible outcomes, “heads” or “tails”, with the probability of “heads” in any single realization being given by the model parameter \\(p=0.5\\).\n\nrand() &lt; 0.5 ? \"heads\" : \"tails\"\n\"tails\"\n\n\"tails\"\n\n\n\nmap(x -&gt; x &lt; 0.5 ? \"heads\" : \"tails\", rand())\n\n\"tails\"\n\n\nOr, for a more readable, flexible, extensible, as well as maintanable, we define a named function an:\n\nfunction bernoulli(p::Float64)::String\n    if rand() &lt; p\n        \"heads\"\n    else\n        \"tails\"\n    end\nend\nbernoulli(0.5)\n\n\"heads\"",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#running-julia-programs-the-julia-runtime-repl-and-program-files",
-    "href": "content/01_practicals/02_basics-of-running-julia/index.html#running-julia-programs-the-julia-runtime-repl-and-program-files",
-    "title": "Basics of setting up and running Julia",
-    "section": "2 Running Julia programs: the Julia runtime, REPL, and program files",
-    "text": "2 Running Julia programs: the Julia runtime, REPL, and program files",
-    "crumbs": [
-      "Practicals",
-      "Basics of setting up and running Julia"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#working-with-julia-environments-projects-packages-and-package-management",
-    "href": "content/01_practicals/02_basics-of-running-julia/index.html#working-with-julia-environments-projects-packages-and-package-management",
-    "title": "Basics of setting up and running Julia",
-    "section": "3 Working with Julia: environments, projects, packages, and package management",
-    "text": "3 Working with Julia: environments, projects, packages, and package management\n\n3.1 Basic concepts\n\nThe Julia global environment\nProject environments\nWhen to use what\n\nConventional approaches span somewhere as a mix between two extremes:\n\nInstall and use everything out of the global environment, reserving project environment for specialized processing\nEVERYTHING is a project\n\nRecommendations:\n\nIf you are just starting, and really don’t want to get into the bells and whistles yet: don’t worry about it, go for the “one global environment to rule them all” approach\nWhether or not you are just starting, but you do want to take the more difficult but best-practices road:\n\nKeep your global environment clean\nCreate a global “general purpose scratchpad/calculator” environment, and use THAT for almost everything\nCreate project specific environments when you are working on a package or specialized projects.",
-    "crumbs": [
-      "Practicals",
-      "Basics of setting up and running Julia"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#how-to-organize-your-code",
-    "href": "content/01_practicals/02_basics-of-running-julia/index.html#how-to-organize-your-code",
-    "title": "Basics of setting up and running Julia",
-    "section": "4 How to organize your code",
-    "text": "4 How to organize your code",
-    "crumbs": [
-      "Practicals",
-      "Basics of setting up and running Julia"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/index.html",
-    "href": "content/01_practicals/index.html",
-    "title": "Practicals",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nModel: Single-lineage parasite virulence evolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/index.html#chapter-1.-introduction-orientation-and-tooling",
-    "href": "content/01_practicals/index.html#chapter-1.-introduction-orientation-and-tooling",
-    "title": "Practicals",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/index.html#chapter-2.-basics-of-setting-up-and-running-julia",
-    "href": "content/01_practicals/index.html#chapter-2.-basics-of-setting-up-and-running-julia",
-    "title": "Practicals",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
-    "crumbs": [
-      "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/index.html#chapter-3.-basics-of-visualizing-mathematical-models",
-    "href": "content/01_practicals/index.html#chapter-3.-basics-of-visualizing-mathematical-models",
-    "title": "Practicals",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nModel: Single-lineage parasite virulence evolution",
-    "crumbs": [
-      "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
-    "href": "content/01_practicals/index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
-    "title": "Practicals",
-    "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Practicals"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/probability-distributions.html",
-    "href": "content/02_primers/probability-distributions.html",
-    "title": "Probabilty distributions–Essential concepts",
-    "section": "",
-    "text": "(a) A uniform distribution assigns equal probability to every outcome.\n\n\n\n\n\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\n\n\n\n\n\n(c)\n\n\n\n\n\n\n\nA probability distribution is a probability measure (assignment of probability) on the set of all possible values of a random variable.\n\n\nDifferent probability distributions may assign different probabilities to the same outcome.”\n\n\n\n\nFigure 1: The same class or type distributions may also assign different probabilities to the same outcome, based on its parameter values.”\n\n\n\n\nThe Main Ideas behind Probability Distributions - YouTube\nGive Me 1 Hour, I’ll Make Probability Click Forever - YouTube\nSTARMAST - Introduction to probability\nRandom Variables and Probability Distributions - YouTube\nKhan Academy - Introduction to random variables and probability distributions\nSTARMAST - PMFs, PDFs, and CDFs\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Primers",
-      "Probabilty distributions--Essential concepts"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#simulating-a-bernoulli-trial-with-rand",
-    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#simulating-a-bernoulli-trial-with-rand",
-    "title": "Basics of working with randomness and probabilities",
-    "section": "2 Simulating a Bernoulli trial with rand",
-    "text": "2 Simulating a Bernoulli trial with rand\nWe can use rand(), which returns a uniformly distributed real value in \\([0, 1)\\) to determine whether or not an event of given probability occurs or not in a particular sample (outcome, realization, draw, run, etc.) of a random system.\nFor an event with some given probability value, if the value returned by the rand() function is less than this value we consider the event to have occurred. By default then, if the result of rand() is greater than this value, the event has not occured.\n\n\n\n\n\nConsider 1000 samples from a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\).\nIf we consider a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\), and divide it at \\(p\\) of various values, we can see the larger segment of the range assigned to one or the other outcome depending the parameter.\nIf we consider that rand() will return a sample anywhere in that range with equal probability, we can see how a larger \\(p\\) means a value will fall in the part of the range that maps to the first outcome and vice versa.\nif the result of arand() is less than \\(p\\), then we have simulated a sample in which the event has occurred, and conversely, if greater than or equal to \\(p\\), to not have occured.\nFor example, consider the classical Bernoulli trial modeling an idealized fair coin toss, where there are two possible outcomes, “heads” or “tails”, with the probability of “heads” in any single realization being given by the model parameter \\(p=0.5\\).\nThe short-hand Julia expression for this is:\n\nrand() &lt; 0.5 ? \"heads\" : \"tails\"\n\n\"heads\"\n\n\nOr, for a more readable, flexible, extensible, as well as maintanable, we define a named function that takes an argument which allows us to specify the probability parameter:\n\nfunction bernoulli(p::Float64)::String\n    if rand() &lt; p\n        \"heads\"\n    else\n        \"tails\"\n    end\nend\nbernoulli(0.5)\n\n\"tails\"",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities"
-    ]
-  },
-  {
-    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probability-distributions-with-rand",
-    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probability-distributions-with-rand",
-    "title": "Basics of working with randomness and probabilities",
-    "section": "",
-    "text": "Proficiencies\n\nSampling a single random value of a specified numeric type (e.g., Int, Float64) using rand.\nSampling multiple random values of the specified type and length using rand.\nSampling uniformly from \\((0, 1]\\) using rand()\nHow to sample a vector of independent uniform random Float64 values in \\((0, 1]\\) by passing a length to rand.\nHow to sample a matrix of independent uniform random Float64 values in \\((0, 1]\\) by passing row and column dimensions to rand.\nHow to sample uniformly at random from a defined integer range using rand with a range argument (e.g., rand(-500:500, n)).\nHow to sample uniformly at random from an explicit collection of values (e.g., an array of floats or characters) using rand.\n\n\n\n\n\n\n\n\n\n\n\n\nTipFunctions vs methods in Julia\n\n\n\nIn Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).\nSee: Julia: Functions, methods, and signatures\n\nThe rand function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The rand function has a number of different methods, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it.\n\n\n\nThe core Julia library provides rand methods that generate values by sampling them from ranges and collections under a uniform probability distribution. Packages such as Distributions.jl, covered separately, provide the ability to sample random values from a broader range of distributions.\n\n\n\n\n\nSampling a random integer between its smallest and largest representible value with uniform random probability:\n\nrand(Int)\n\n8287374779840160872\n\n\nSampling a random real (continuous or floating-point) value from across its 64-bit representation range with uniform random probability:\n\nrand(Float64)\n\n0.758384863521973\n\n\nSampling a random character value from across its possible values with uniform random probability:\n\nrand(Char)\n\n'\\Ud5e94': Unicode U+D5E94 (category Cn: Other, not assigned)\n\n\n\n\n\n\n## Vector of 10 i.i.d uniformly-distributed integers \nrand(Int, 10) \n\n## Sample 10 random (64-bit) floating point values\nrand(Float64, 10) \n\n10-element Vector{Float64}:\n 0.6932874180836047\n 0.3702664963151283\n 0.39185379779755225\n 0.053467627918107774\n 0.23119390657311012\n 0.600760391121938\n 0.2503943229325578\n 0.5204159177346919\n 0.5651345193397107\n 0.9469121471028322\n\n\n\n\n\nMultidimensional collections of values can be generated by the syntax, rand(Type, n, m), where n is the number of rows and m the number of columns.\nSampling a \\(2 \\times 3\\) matrix of random Int values:\nrand(Int, 2, 3) \nSampling a \\(2 \\times 3\\) matrix of random Float64 values:\nrand(Float64, 2, 3) \n\n\n\nWe can use methods of the rand function that take range objects to constrain the values to particular ranges. Instead of a type (Int, Float64, and so on), we can pass the rand function a range object to sample with uniform probability from the intervals or collections of values represented by the range object.\nSampling 10 integer values from the closed interval [-5, 5] with uniform random probability:\n\nrand(-5:5, 10)\n\n10-element Vector{Int64}:\n -4\n -4\n  3\n  0\n -4\n  1\n  1\n  1\n  4\n  1\n\n\nSampling 10 real values from the closed interval [-5.0, 5.0] (binned into 0.1 units) with uniform random probability:\n\nrand(-5.0:0.1:5.0, 10)\n\n10-element Vector{Float64}:\n  0.5\n -0.6\n  4.1\n  1.2\n -2.2\n -0.2\n -0.9\n -4.7\n  1.1\n  5.0\n\n\n\n\n\n\nrand([0.1, 0.2, 0.3, 0.4], 2)\n\n2-element Vector{Float64}:\n 0.4\n 0.2\n\n\n\nrand(['A', 'C', 'G', 'T'], 3)\n\n3-element Vector{Char}:\n 'A': ASCII/Unicode U+0041 (category Lu: Letter, uppercase)\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)\n\n\n\nrand([\"Frodo\", \"Gandalf\", \"Eowyn\", ], 4)\n\n4-element Vector{String}:\n \"Eowyn\"\n \"Frodo\"\n \"Eowyn\"\n \"Frodo\"\n\n\n\n\n\nNote that while both the following produce statistically and computationally identical results, the approaches are different:\n## Sample 10 integer values from the interval $[1, 4]$ \nrand(1:4, , 10)\n## Sample 10 values from the collection of values `[1, 2, 3, 4]`\nrand([1, 2, 3, 4], 10) \n\n\n\nSample a single random Float64 sampled uniformly from $(0, 1]`.\njulia&gt; rand() \n0.3748291736402814\nSample a vector of 5 independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(5)\n5-element Vector{Float64}:\n 0.9182719048123472\n 0.1048821937401286\n 0.5529018823740193\n 0.7712039183746501\n 0.3391184720193847\nSample a \\(2 \\times 3\\) matrix of independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(2, 3)\n2×3 Matrix{Float64}:\n 0.731902  0.184771  0.992814\n 0.442018  0.661203  0.107552\n\n\n\n\nA uniform distribution between value \\(a\\) and \\(b\\), with support of continuous values in the real interval \\([a, b]\\) is denoted\n\\[\n\\mathcal{U}(a, b).\n\\]\nA uniform distribution between value \\(a\\) and \\(b\\), with support of integer values in a finite set of integers in the interval \\([a, b]\\), is denoted\n\\[\n\\mathcal{U}(a, \\dots, b).\n\\]\n\n\n\nThe hist function provides a variety of methods to visualize data in histogram formats.\n\nusing CairoMakie\ndata = rand(Float64, 1000)\nhist(data)\n\n\n\n\n\n\n\n\n\n\nExercise\nGenerate 1000 samples from each of the following distributions, and plot their histograms.\n\n\\(\\mathcal{U}(-10, 10)\\)\n\\(\\mathcal{U}(-10, \\dots, 10)\\)\n\n\n\n\n\n\n\nExerciseWe previously used range to generate a regular grid of value for one set of coordinates:\n\nα = 0.5\nz_vals = range(0.0, 1/α; length = 400)\n\n0.0:0.005012531328320802:2.0\n\n\nInstead of a systematic grid with range, generate a collection of \\(x\\)-coordinates of the same size by sampling independently from a uniform distribution over the same range and type using rand. Calculate the corresponding \\(y\\)-coordinates in the same way, by using map and the function. Visualize the results using scatter.\n\n\n\nExercise\n\nSimulate 1000 independent rolls of a single fair six-sided die by using rand to sample from an integer value in \\(\\{1, 2, 3, 4, 5, 6\\}\\).\nPlot these",
-    "crumbs": [
-      "Practicals",
-      "Basics of working with randomness and probabilities"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-2.-julia-functions-methods-and-signatures",
-    "href": "index.html#chapter-2.-julia-functions-methods-and-signatures",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 2. Julia: Functions, methods, and signatures",
-    "text": "Chapter 2. Julia: Functions, methods, and signatures",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-3.-markov-property",
-    "href": "index.html#chapter-3.-markov-property",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 3. Markov property",
-    "text": "Chapter 3. Markov property",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
-    "href": "index.html#chapter-4.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 4. Pathogen fitness as a function of virulence (Frank, 1996)",
-    "text": "Chapter 4. Pathogen fitness as a function of virulence (Frank, 1996)",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-5.-probabilty-distributionsessential-concepts",
-    "href": "index.html#chapter-5.-probabilty-distributionsessential-concepts",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 5. Probabilty distributions–Essential concepts",
-    "text": "Chapter 5. Probabilty distributions–Essential concepts",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-6.-pseudo-random-number-generators",
-    "href": "index.html#chapter-6.-pseudo-random-number-generators",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 6. Pseudo-random number generators",
-    "text": "Chapter 6. Pseudo-random number generators",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-7.-pseudo-random-number-generators-best-practices",
-    "href": "index.html#chapter-7.-pseudo-random-number-generators-best-practices",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 7. Pseudo-random number generators: best practices",
-    "text": "Chapter 7. Pseudo-random number generators: best practices",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "href": "index.html#chapter-8.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 8. Pseudo-random number generators: continuous values from discrete machines",
-    "text": "Chapter 8. Pseudo-random number generators: continuous values from discrete machines",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "index.html#chapter-9.-virulence-transmission-trade-off-frank-1996",
-    "href": "index.html#chapter-9.-virulence-transmission-trade-off-frank-1996",
-    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
-    "section": "Chapter 9. Virulence-transmission trade-off (Frank, 1996)",
-    "text": "Chapter 9. Virulence-transmission trade-off (Frank, 1996)\nNo matching items",
-    "crumbs": [
-      "Just enough Julia for scientific informatics, modeling, and reasoning"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html",
-    "href": "content/02_primers/julia-functions-methods-and-signatures.html",
-    "title": "Julia: Functions, methods, and signatures",
-    "section": "",
-    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
-    "crumbs": [
-      "Primers",
-      "Julia: Functions, methods, and signatures"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#functions",
-    "href": "content/02_primers/julia-functions-methods-and-signatures.html#functions",
-    "title": "Julia: Functions, methods, and signatures",
-    "section": "",
-    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
-    "crumbs": [
-      "Primers",
-      "Julia: Functions, methods, and signatures"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#methods",
-    "href": "content/02_primers/julia-functions-methods-and-signatures.html#methods",
-    "title": "Julia: Functions, methods, and signatures",
-    "section": "2 Methods",
-    "text": "2 Methods\nA method is a specific implementation of that function for particular input types or argument combinations. When you call rand(), rand(Int), or rand(1:6), you are calling different methods of the same function rand. Julia automatically selects the appropriate method based on the types and number of arguments you provide, as long as someone (the Julia programmers, package programmers, or yourself) has written a function that takes combination of arguments, a mechanism called multiple dispatch.",
-    "crumbs": [
-      "Primers",
-      "Julia: Functions, methods, and signatures"
-    ]
-  },
-  {
-    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#signatures",
-    "href": "content/02_primers/julia-functions-methods-and-signatures.html#signatures",
-    "title": "Julia: Functions, methods, and signatures",
-    "section": "3 Signatures",
-    "text": "3 Signatures\nDifferent methods of a functions are distiguished by their signature, which is the particular number (“arity”), order, and type of arguments: e.g.\n\nfoo(a, b)\nfoo(a::Int, b::String, c::Float64)\nfoo(a::Float64, b::Int)\n\nNote that the names of the arguments do not matter, and the following all have the same signature:\n\nfoo(a::Int, b::Float64)\nfoo(first_input::Int, second_input::Float64)",
-    "crumbs": [
-      "Primers",
-      "Julia: Functions, methods, and signatures"
     ]
   },
   {
@@ -800,6 +293,566 @@
     "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/probability-distributions.html",
+    "href": "content/02_primers/probability-distributions.html",
+    "title": "Probabilty distributions–Essential concepts",
+    "section": "",
+    "text": "(a) A uniform distribution assigns equal probability to every outcome.\n\n\n\n\n\n\n\n\n\n\n\n(b)\n\n\n\n\n\n\n\n\n\n\n\n(c)\n\n\n\n\n\n\n\nA probability distribution is a probability measure (assignment of probability) on the set of all possible values of a random variable.\n\n\nDifferent probability distributions may assign different probabilities to the same outcome.”\n\n\n\n\nFigure 1: The same class or type distributions may also assign different probabilities to the same outcome, based on its parameter values.”\n\n\n\n\nThe Main Ideas behind Probability Distributions - YouTube\nGive Me 1 Hour, I’ll Make Probability Click Forever - YouTube\nSTARMAST - Introduction to probability\nRandom Variables and Probability Distributions - YouTube\nKhan Academy - Introduction to random variables and probability distributions\nSTARMAST - PMFs, PDFs, and CDFs\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Primers",
+      "Probabilty distributions--Essential concepts"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html",
+    "href": "content/02_primers/julia-functions-methods-and-signatures.html",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "",
+    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#functions",
+    "href": "content/02_primers/julia-functions-methods-and-signatures.html#functions",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "",
+    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#methods",
+    "href": "content/02_primers/julia-functions-methods-and-signatures.html#methods",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "2 Methods",
+    "text": "2 Methods\nA method is a specific implementation of that function for particular input types or argument combinations. When you call rand(), rand(Int), or rand(1:6), you are calling different methods of the same function rand. Julia automatically selects the appropriate method based on the types and number of arguments you provide, as long as someone (the Julia programmers, package programmers, or yourself) has written a function that takes combination of arguments, a mechanism called multiple dispatch.",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia-functions-methods-and-signatures.html#signatures",
+    "href": "content/02_primers/julia-functions-methods-and-signatures.html#signatures",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "3 Signatures",
+    "text": "3 Signatures\nDifferent methods of a functions are distiguished by their signature, which is the particular number (“arity”), order, and type of arguments: e.g.\n\nfoo(a, b)\nfoo(a::Int, b::String, c::Float64)\nfoo(a::Float64, b::Int)\n\nNote that the names of the arguments do not matter, and the following all have the same signature:\n\nfoo(a::Int, b::Float64)\nfoo(first_input::Int, second_input::Float64)",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "",
+    "text": "In workflows where replicability is not critical or immediately relevant (exploratory, pilot, scaffolding runs, etc.) you can rely on the default random generator being used in the background without explicitly managing it.\nusing Random\n\nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "",
+    "text": "In workflows where replicability is not critical or immediately relevant (exploratory, pilot, scaffolding runs, etc.) you can rely on the default random generator being used in the background without explicitly managing it.\nusing Random\n\nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-set-the-default-random-number-generator-seed-for-replicability",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-set-the-default-random-number-generator-seed-for-replicability",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "2 Explicitly set the default random number generator seed for replicability",
+    "text": "2 Explicitly set the default random number generator seed for replicability\nIn most cases, however, replicability is important.\nAs discussed in the primer on pseudo-random number generators, the random number “seed” value passed to the algorithm determines the value of every number generated from the algorithm: in a sense, it indexes or selects a specific sequence of pre-determined random outcomes to be used.\nDifferent seed values produce different sequences of random numbers, while conversely, the same seed value repeatedly and reliabily produces the same sequence of randomness across independent runs of the program.\nThis latter is what gives PRNG’s their great utility in many research software applications, and is actually useful in programming and software development as well for debugging purposes: you can only reliably be sure of fixing an error if you can reliably reproduce it to be able to work on it.\nYou can use default random number implicitly but gain replicability by explicitly setting its seed using the Random.seed! function.\nusing Random\n\n# Explicitly seed the default random number generator with 42\nRandom.seed!(42)\n\n# Implict usage of global default random number generator, seed globally set previously\nrand(Int, 10)\nrand(['A', 'C', 'G', 'T'])\nAs before, when rand is called without a random number generator object as its first argument, the default random number genrator will be used as the source of randomness. However, here we have set the seed for this before hand.",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "3 Explicitly reference the default random number generator for maintainability and extensibility",
+    "text": "3 Explicitly reference the default random number generator for maintainability and extensibility\nWhile implicit usage of the default random number generator is convenient, it is good practice to always be explicit about the random number generator that is being used event if it is the default.\nrng = Random.default_rng()\nRandom.seed!(rng, 42)\nrand(rng, Int, 10)\nrand(rng, ['A', 'C', 'G', 'T'])\nBeyond clarity, it also makes it easy to use other random number generators if the need arises.\nFurthermore, when writing our own methods for rand, the general principle is that any function doing random sampling should ideally accept an rng::AbstractRNG argument with a default of Random.default_rng(), following the convention used throughout Base and most Julia packages.",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "4 Ensure randomness across replicates by using time and process id’s as seeds",
+    "text": "4 Ensure randomness across replicates by using time and process id’s as seeds\nWhile replicability is important, at the same time, in almost every case except when actually wanting to reproduce a run for debugging or study purposes, when we are running programs that use these values, we want them to have different random sequences across different independent runs.\nA common convention to have a new explicitly-specified random seed on every independent run without needing to change the code (or force the user to type one in) is to use the system time, specified in nanoseconds, time_ns(), (sometimes with the process id, getpid(), added to avoid correlations when executed in bulk in parallel).\nusing Random\n\nrng = Random.default_rng()\nseed = time_ns() + getpid()\n@info \"Setting random seed: $(seed)\"\nRandom.seed!(seed)",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability",
+    "href": "content/02_primers/pseudo-random-number-generators_02_best-practices.html#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability",
+    "title": "Pseudo-random number generators: best practices",
+    "section": "5 Explicitly create anmd manage your own random number generators for robust reproducibility and replicability",
+    "text": "5 Explicitly create anmd manage your own random number generators for robust reproducibility and replicability\nIn the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.\nusing Random\n\n# Instantiate a PRNG using the \"Xoshiro\" algorithm with the seed value of 42\nrng = Random.Xoshiro(42)\n# Instantiate a PRNG using the \"Mersenne Twister\" with the seed value of 1999\nrng = Random.MersenneTwister(1999)\n\n# Use `rand` with the `rng` to sample an `Int` (integer) value\nrand(rng, Int, 10)\n# Use `rand` with the `rng` to sample a random value from the list\nrand(rng, ['A', 'C', 'G', 'T'])",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: best practices"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
+    "href": "content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
+    "title": "Virulence-transmission trade-off (Frank, 1996)",
+    "section": "",
+    "text": "The classical virulence-transmission trade-off function, following the notation of (Frank 1996), is:\n\\[\nR_0 = \\frac{\\beta(\\nu)N}{\\delta + \\nu + c(\\nu)},\n\\]\nwhere:\n\n\\(R_0\\) The basic reproduction number. The expected number of secondary infections produced by a single infected host introduced into a fully susceptible population of size \\(N\\). The transmission intensity multiplied by mean infectious duration.\n\\(\\nu\\) Virulence. In this formulation, \\(\\nu\\) is the disease-induced host mortality intensity. This represents the per-capita hazard at which infected hosts die because of the pathogen.\n\\(\\beta(\\nu)\\) Transmission coefficient (often called the transmission intensity). It gives the per-capita rate at which an infected host generates new infections per susceptible host, and it is assumed to depend on virulence. The biological trade-off is encoded here: increasing \\(\\nu\\) may increase within-host replication and hence transmission, so \\(\\beta'(\\nu) &gt; 0\\) over some range.\n\\(N\\) Total density (or number) of susceptible hosts in the population at invasion. Because \\(R_0\\) is defined at the start of an epidemic, essentially all hosts are susceptible, so the force of infection scales with \\(N\\).\n\\(\\delta\\) Background host mortality intensity (natural death intensity unrelated to infection). This removes infected hosts independently of the pathogen’s virulence.\n\\(c(\\nu)\\) Additional loss intensity associated with infection that is not direct mortality. Examples include recovery with immunity, behavioral isolation, treatment, or reduced contact rate induced by symptoms. It may depend on virulence if, for example, more virulent infections provoke faster immune clearance or stronger behavioral avoidance.\n\n\n\n\n\n\n\n\nTipIntensity vs. rate\n\n\n\nAll intensities are rates, but not all rates are intensities. A rate is a general term indicating the change of one quantity relative to another, expresed as a ratio (“rate” and “ratio” have the same linguistic root). An “intensity” is a rate, but one some characteristics is the instantaneous hazard parameter (= rate) of a stochastic process. In classical ODE epidemic models (e.g., SIR), “rate” and “intensity” are often used interchangeably because constant hazards produce exponential waiting times and yield linear per-capita ODE terms.\n\nNote that:\n\\[\nR_0 = \\text{transmission intensity} \\times \\text{mean infection duration}.\n\\]\n\nThe numerator, \\(\\beta(\\nu)N\\), is the transmission intensity, i.e. the per-capita intensity (or rate) of generating new infections in a population of size \\(N\\).\nThe denominator \\(\\delta + \\nu + c(\\nu)\\) gives the total removal intensity of infected hosts: the rate of removal of infected hosts from the population. Thus, \\(\\frac{1}{\\delta + \\nu + c(\\nu)}\\) gives the mean infectious duration.\n\nAs \\(R_0\\) measures the net increase of infected host over time, expressed as a ratio of infected hosts gain (the numerator) to infected hosts lost (the denominator), it serves as an index of the epidemiological state of an infectious disease. - If the numerator is greater than the denominator, there will be more infections generated than removed from the population, leading to a net increase in infections: the disease in an epidemic phase. - If the numerator is less than the denominator, there infections will be removed from the population faster than new infections will occur: the disease will “die out” without becoming an epidemic.\n\n\n\n\n Back to topReferences\n\nFrank, Steven A. 1996. “Models of Parasite Virulence.” The Quarterly Review of Biology 71 (1): 37–78. https://doi.org/10.1086/419267.",
+    "crumbs": [
+      "Primers",
+      "Virulence-transmission trade-off (Frank, 1996)"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html",
+    "href": "content/02_primers/pseudo-random-number-generators_03_details.html",
+    "title": "Pseudo-random number generators: continuous values from discrete machines",
+    "section": "",
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: continuous values from discrete machines"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
+    "href": "content/02_primers/pseudo-random-number-generators_03_details.html#how-a-discrete-valued-machine-generating-continuous-random-values",
+    "title": "Pseudo-random number generators: continuous values from discrete machines",
+    "section": "",
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators: continuous values from discrete machines"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/pseudo-random-number-generators_01.html",
+    "href": "content/02_primers/pseudo-random-number-generators_01.html",
+    "title": "Pseudo-random number generators",
+    "section": "",
+    "text": "Key concept: Pseudo-random number generators use finite internal state and seeded algorithms to produce reproducible sequences that statistically approximate random behavior for practical and scientific use.\n\nA computer algorithm cannot generate a truly random result. Computer algorithms are deterministic. However, a computer algorithm can generate a sequence of numbers based on a series of deterministic calculations that behave like a sequence of random numbers would under statistical analysis. These algorithms are known as pseudo-random number generators (PRNGs). Pseudo-random number generators are deterministic, and, being deterministic, their results — the sequence of numbers they generate — are completely determined by the algorithm and the initial seed.\nA computer program (or algorithm) is a deterministic machine. For some given input, it produces a particular output, based on its programming. It cannot produce a truly random value in the sense of being fundamentally unpredictable from its inputs, as, for any particular input, an algorithm will produce the same output. For many applications, however, what is needed are not values that are absolutely random, but rather a series of numbers that behave as though they are random with respect to each other, at least up to some scale — values that can be generated one after another that do not exhibit detectable periodicities, patterns, ordering, or structure in the sequence, at least for the scale or size relevant to the application. (For applications where true physical unpredictability is strictly required, computers rely on hardware incorporating some physical source of randomness, such as radioactive decay or other entropy-harvesting mechanisms.)\nA pseudo-random number generator is a computer algorithm that can produce a series of values that behave like a random sequence with no detectable periodicity or pattern, statistically or otherwise, for a very long run of numbers. (The number of values a particular PRNG can generate before repeating is known as its period. All PRNGs have finite periods, i.e. will eventually begin repeating the sequence, but good PRNGs, and the ones we will be using, have HUGE periods (\\(2^{128}\\), for example). All PRNGs have finite periods because they must operate with a finite internal state represented with a finite number of bits. The number of bits used to represent the internal state that the PRNG tracks sets the upper bound on the number of distinct states the generator can occupy. This also sets an upper bound on the length of the sequence before repetition must occur. At some point, the update step will produce a state value that has been used before in the sequence, resulting in the sequence repeating from that point. A 32-bit state PRNG might repeat after at most \\(2^{32}\\) steps, while cryptographic applications (and many modern computing platforms, including Julia) use 128-bit or larger states, resulting in periods on the order of \\(2^{128}\\) or larger.)\nThe sequence of numbers generated by a PRNG behaves as though it were random in most practical statistical senses, including measures such as empirical entropy or goodness-of-fit to a uniform probability distribution, except for one crucial feature: the sequence is completely determined by the algorithm and the seed. For most non-cryptographic applications, this determinism is not a limitation. What matters is that there is no detectable ordering, patterns, autocorrelations, cross-correlations, or other structure in the numbers at the scale relevant to the application, and that the empirical frequency distribution of values approximates that of a uniform probability distribution. This a well-designed PRNG can deliver, provided usage does not exceed its intended operational limits. (While the entire sequence of numbers generated by a PRNG is determined by the algorithm and initial seed, predicting future outputs without knowledge of the internal state or transition function may be computationally infeasible in the case of cryptographically secure generators, though it is often feasible for simpler non-cryptographic PRNGs.)\nGiven an initial starting or “seed” value, a PRNG algorithm computes and returns a value, and then updates an internal state that is used to generate the next value, thus forming a chain of state updates and outputs. In more complex algorithms, a separate internal state consisting of multiple values is updated from the previous state, and a separate function is used to calculate the output from this internal state. It is this internal state that is passed to the next step rather than the output value itself. In this way, with each state update deterministically producing the next, a sequence of numbers is generated from the initial seed. The entire sequence is therefore completely determined by the seed value. Any particular seed value given to the algorithm, e.g., 108 or 99, will always return the exact same sequence of numbers. While not truly random in a physical sense, the sequence behaves as random in that there are no detectable autocorrelations, patterns, or short-period repetitions at the scale for which the generator is designed.\nThis determinism of the number sequence from a pseudo-random number generator is not a practical limitation in most scientific computing contexts, and, in fact, has important roles in software engineering as well as research. It can be critically useful in software development: the key to solving a bug is to be able to reliably replicate it, and the reproducibility of a pseudo-random number sequence allows for debugging of programs that rely on randomness, including scientific software (e.g. Bayesian Markov chain Monte Carlo inference programs). It can also be very useful in scientific research: often it is sufficient to record the random seed used for a particular suite of simulations or stochastic heuristic-based inference for replicability purposes, instead of storing the giga-, tera-, or peta-bytes of data generated downstream from the random number sequence itself.\n\n\n\n Back to top",
+    "crumbs": [
+      "Primers",
+      "Pseudo-random number generators"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/bernoulli-trial.html",
+    "href": "content/02_primers/bernoulli-trial.html",
+    "title": "Bernoulli trial",
+    "section": "",
+    "text": "A “Bernoulli trial” is a model of randomness in which there are two possible elementary outcomes in the sample space, with the probability of one outcome given by the model parameter \\(p\\) (and the probability of the other is then \\(1-p\\)).\nThe iconic example is that of a single toss of a coin. If the coin is fair, that is, equally likely to land with either of its two sides, typically designated “heads” or “tails”, then it can be modeled as a Bernoulli trial with parameter \\(p = 0.5\\) giving the probability of “heads”. Conversely, a trick coin may have the a “heads” on both sides, thus always landing with a “heads” result, an or a “tails”\n\n\n\n Back to top",
+    "crumbs": [
+      "Primers",
+      "Bernoulli trial"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
+    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "",
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
+    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#pathogen-fitness-as-function-of-virulence",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "",
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
+    "href": "content/02_primers/frank1996model_single-strain-parasite-fitness.html#linear-decline-in-host-resources-due-to-virulence",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "2 Linear decline in host resources due to virulence",
+    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]",
+    "crumbs": [
+      "Primers",
+      "Pathogen fitness as a function of virulence (Frank, 1996)"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/markov-property.html",
+    "href": "content/02_primers/markov-property.html",
+    "title": "Markov property",
+    "section": "",
+    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
+    "crumbs": [
+      "Primers",
+      "Markov property"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/markov-property.html#sec-markov-property",
+    "href": "content/02_primers/markov-property.html#sec-markov-property",
+    "title": "Markov property",
+    "section": "",
+    "text": "A stochastic process \\((X_t)_{t \\ge 0}\\) has the Markov property if \\[\n\\Pr(X_{t+1} = j \\mid X_t = i, X_{t-1}, \\dots)\n=\n\\Pr(X_{t+1} = j \\mid X_t = i).\n\\]",
+    "crumbs": [
+      "Primers",
+      "Markov property"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
+    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
+    "title": "Basics of working with randomness and probabilities",
+    "section": "",
+    "text": "Proficiencies\n\nSampling a single random value of a specified numeric type (e.g., Int, Float64) using rand.\nSampling multiple random values of the specified type and length using rand.\nSampling uniformly from \\((0, 1]\\) using rand()\nHow to sample a vector of independent uniform random Float64 values in \\((0, 1]\\) by passing a length to rand.\nHow to sample a matrix of independent uniform random Float64 values in \\((0, 1]\\) by passing row and column dimensions to rand.\nHow to sample uniformly at random from a defined integer range using rand with a range argument (e.g., rand(-500:500, n)).\nHow to sample uniformly at random from an explicit collection of values (e.g., an array of floats or characters) using rand.\n\n\n\n\n\n\n\n\n\n\n\n\nTipFunctions vs methods in Julia\n\n\n\nIn Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).\nSee: Julia: Functions, methods, and signatures\n\nThe rand function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The rand function has a number of different methods, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it.\n\n\n\nThe core Julia library provides rand methods that generate values by sampling them from ranges and collections under a uniform probability distribution. Packages such as Distributions.jl, covered separately, provide the ability to sample random values from a broader range of distributions.\n\n\n\n\n\n\nTipProbability distributions\n\n\n\n\n\n\n\n\n\n\n\nSampling a random integer between its smallest and largest representible value with uniform random probability:\nrand(Int) \nSampling a random real (continuous or floating-point) value from across its 64-bit representation range with uniform random probability:\n\nrand(Float64)\n\n0.449259487025214\n\n\nSampling a random character value from across its possible values with uniform random probability:\n\nrand(Char)\n\n'\\Uce66c': Unicode U+CE66C (category Cn: Other, not assigned)\n\n\n\n\n\nA vector of 10 i.i.d (identically and independently distributed) uniformly-distributed integers:\n\nrand(Int, 10)\n\n10-element Vector{Int64}:\n -4399092293962531736\n  1001184589272749920\n  -300920639444659638\n  4561789495795822746\n -1197636680475637128\n -7911036988514128807\n  8448713532720553394\n  7070288474045446229\n  7741697786170881080\n -8080837324664627061\n\n\nA vector of 10 i.i.d (identically and independently distributed) uniformly-distributed (64-bit) floating-point values:\n\nrand(Float64, 10)\n\n10-element Vector{Float64}:\n 0.20719132280086017\n 0.6932874180836047\n 0.3702664963151283\n 0.39185379779755225\n 0.053467627918107774\n 0.23119390657311012\n 0.600760391121938\n 0.2503943229325578\n 0.611701920479976\n 0.5651345193397107\n\n\n\n\n\nMultidimensional collections of values can be generated by the syntax, rand(Type, n, m), where n is the number of rows and m the number of columns.\nSampling a \\(2 \\times 3\\) matrix of random Int values:\n\nrand(Int, 2, 3)\n\n2×3 Matrix{Int64}:\n -979298035816793142   2708859520235930242  -8867249825632703181\n 2439352477393290232  -4885956833304229138   2052546915428654287\n\n\nSampling a \\(2 \\times 3\\) matrix of random Float64 values:\n\nrand(Float64, 2, 3)\n\n2×3 Matrix{Float64}:\n 0.627242  0.582506  0.587103\n 0.578374  0.833619  0.546572\n\n\n\n\n\nWe can use methods of the rand function that take range objects to constrain the values to particular ranges. Instead of a type (Int, Float64, and so on), we can pass the rand function a range object to sample with uniform probability from the intervals or collections of values represented by the range object.\nSampling 10 integer values from the closed interval [-5, 5] with uniform random probability:\n\nrand(-5:5, 10)\n\n10-element Vector{Int64}:\n -1\n  4\n  1\n -2\n  0\n -1\n -5\n  1\n  5\n  4\n\n\nSampling 10 real values from the closed interval [-5.0, 5.0] (binned into 0.1 units) with uniform random probability:\n\nrand(-5.0:0.1:5.0, 10)\n\n10-element Vector{Float64}:\n -1.3\n -4.4\n -1.8\n  4.6\n  3.7\n -2.5\n  3.9\n -2.2\n  3.2\n  2.4\n\n\n\n\n\n\nrand([0.1, 0.2, 0.3, 0.4], 2)\n\n2-element Vector{Float64}:\n 0.4\n 0.2\n\n\n\nrand(['A', 'C', 'G', 'T'], 3)\n\n3-element Vector{Char}:\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'A': ASCII/Unicode U+0041 (category Lu: Letter, uppercase)\n 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)\n\n\n\nrand([\"Frodo\", \"Gandalf\", \"Eowyn\", ], 4)\n\n4-element Vector{String}:\n \"Eowyn\"\n \"Eowyn\"\n \"Frodo\"\n \"Eowyn\"\n\n\n\n\n\nNote that while both produce identical results. In one, we use the range function (the 1:4 is short-hand for range(1, 4))\nrand(1:4, , 10)\n## Sample 10 values from the collection of values `[1, 2, 3, 4]`\nrand([1, 2, 3, 4], 10) \n\n\n\nSample a single random Float64 sampled uniformly from $(0, 1]`.\nrand() \nSample a vector of 5 independent uniform random values in \\((0, 1]\\).\nrand(5)\nSample a \\(2 \\times 3\\) matrix of independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(2, 3)\n2×3 Matrix{Float64}:\n 0.731902  0.184771  0.992814\n 0.442018  0.661203  0.107552\n\n\n\n\nA uniform distribution between value \\(a\\) and \\(b\\), with support of continuous values in the real interval \\([a, b]\\) is denoted\n\\[\n\\mathcal{U}(a, b).\n\\]\nA uniform distribution between value \\(a\\) and \\(b\\), with support of integer values in a finite set of integers in the interval \\([a, b]\\), is denoted\n\\[\n\\mathcal{U}(a, \\dots, b).\n\\]\n\n\n\nThe hist function provides a variety of methods to visualize data in histogram formats.\n\nusing CairoMakie\ndata = rand(Float64, 1000)\nhist(data)\n\n\n\n\n\n\n\n\n\n\nExercise 1\nGenerate \\(N = 1000\\) samples from each of the following distributions, and plot their histograms.\n\n\\(\\mathcal{U}(-10, 10)\\)\n\\(\\mathcal{U}(-10, \\dots, 10)\\)\n\nAdvanced\n\nWrite a function, plot_uniform that takes three integer (Int) arguments, range_start, range_end, and n_samples, and plots the results.\nUsing this, produce plots of \\(N \\in \\{1 \\times 10^4, 1 \\times 10^5, \\}\\) etc., to see how the histograms appear more and more uniform as the sample size increases.\n\n\n\n\n\n\n\nExercise 2We previously used range to generate a regular grid of value for one set of coordinates:\n\nα = 0.5\nz_vals = range(0.0, 1/α; length = 400)\n\n0.0:0.005012531328320802:2.0\n\n\nThe range range function returns a finite sequence of values, with different methods giving sequences of different data types, bounds, and intervals, depending on the input arguments. Here, range(0.0, 1/α; length = 400) is a method of the range function that returns a sequence of value between \\(0.0\\) and \\(\\frac{1}{\\alpha}\\)\nlength = 400 represent the the number of samples/points in the function call range(…, length = 400) This forms a “grid” (a collection of regular systematic samples) on the x-axis. The y-values come from passing each y-value to the function to get the result. Instead of a systematic sample, we can randomly sample from the same range.\nInstead of a systematic grid with range, generate a collection of \\(x\\)-coordinates of the same size by sampling independently from a uniform distribution over the same range and type using rand. Calculate the corresponding \\(y\\)-coordinates in the same way, by using map and the function. Visualize the results using scatter.\nHere we both regularly (grid) and randomly sample 10 points from between 0.0 and 1/alpha:\njulia&gt; x_vals1 = collect(range(0.0, 1/α, length=10)) 10-element Vector{Float64}: 0.0 0.2222222222222222 0.4444444444444444 0.6666666666666666 0.8888888888888888 1.1111111111111112 1.3333333333333333 1.5555555555555556 1.7777777777777777 2.0\njulia&gt; x_vals2 = rand(0.0:0.01:1/α, 10) 10-element Vector{Float64}: 0.55 1.72 1.09 0.38 0.33 0.38 1.42 1.24 0.76 0.98 These all form one set of coordinates. The other, comes from applying the function to these:\ny_vals1 = map(x -&gt; ???, x_vals1) y_vals2 = map(x -&gt; ???, x_vals2) Randomly sampling values from the model’s x value range as opposed to a regular grid makes sense when the range is huge (e.g. \\(-\\infty\\) to \\(\\infty\\)), and we cannot possibly cover it all with a grid.\n\n\n\nExercise 3\n\nSimulate 1000 independent rolls of a single fair six-sided die by using rand to sample from an integer value in \\(\\{1, 2, 3, 4, 5, 6\\}\\).\nPlot these",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with randomness and probabilities"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probability-distributions-with-rand",
+    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#random-number-generation-under-uniform-probability-distributions-with-rand",
+    "title": "Basics of working with randomness and probabilities",
+    "section": "",
+    "text": "Proficiencies\n\nSampling a single random value of a specified numeric type (e.g., Int, Float64) using rand.\nSampling multiple random values of the specified type and length using rand.\nSampling uniformly from \\((0, 1]\\) using rand()\nHow to sample a vector of independent uniform random Float64 values in \\((0, 1]\\) by passing a length to rand.\nHow to sample a matrix of independent uniform random Float64 values in \\((0, 1]\\) by passing row and column dimensions to rand.\nHow to sample uniformly at random from a defined integer range using rand with a range argument (e.g., rand(-500:500, n)).\nHow to sample uniformly at random from an explicit collection of values (e.g., an array of floats or characters) using rand.\n\n\n\n\n\n\n\n\n\n\n\n\nTipFunctions vs methods in Julia\n\n\n\nIn Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).\nSee: Julia: Functions, methods, and signatures\n\nThe rand function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The rand function has a number of different methods, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it.\n\n\n\nThe core Julia library provides rand methods that generate values by sampling them from ranges and collections under a uniform probability distribution. Packages such as Distributions.jl, covered separately, provide the ability to sample random values from a broader range of distributions.\n\n\n\n\n\n\nTipProbability distributions\n\n\n\n\n\n\n\n\n\n\n\nSampling a random integer between its smallest and largest representible value with uniform random probability:\nrand(Int) \nSampling a random real (continuous or floating-point) value from across its 64-bit representation range with uniform random probability:\n\nrand(Float64)\n\n0.449259487025214\n\n\nSampling a random character value from across its possible values with uniform random probability:\n\nrand(Char)\n\n'\\Uce66c': Unicode U+CE66C (category Cn: Other, not assigned)\n\n\n\n\n\nA vector of 10 i.i.d (identically and independently distributed) uniformly-distributed integers:\n\nrand(Int, 10)\n\n10-element Vector{Int64}:\n -4399092293962531736\n  1001184589272749920\n  -300920639444659638\n  4561789495795822746\n -1197636680475637128\n -7911036988514128807\n  8448713532720553394\n  7070288474045446229\n  7741697786170881080\n -8080837324664627061\n\n\nA vector of 10 i.i.d (identically and independently distributed) uniformly-distributed (64-bit) floating-point values:\n\nrand(Float64, 10)\n\n10-element Vector{Float64}:\n 0.20719132280086017\n 0.6932874180836047\n 0.3702664963151283\n 0.39185379779755225\n 0.053467627918107774\n 0.23119390657311012\n 0.600760391121938\n 0.2503943229325578\n 0.611701920479976\n 0.5651345193397107\n\n\n\n\n\nMultidimensional collections of values can be generated by the syntax, rand(Type, n, m), where n is the number of rows and m the number of columns.\nSampling a \\(2 \\times 3\\) matrix of random Int values:\n\nrand(Int, 2, 3)\n\n2×3 Matrix{Int64}:\n -979298035816793142   2708859520235930242  -8867249825632703181\n 2439352477393290232  -4885956833304229138   2052546915428654287\n\n\nSampling a \\(2 \\times 3\\) matrix of random Float64 values:\n\nrand(Float64, 2, 3)\n\n2×3 Matrix{Float64}:\n 0.627242  0.582506  0.587103\n 0.578374  0.833619  0.546572\n\n\n\n\n\nWe can use methods of the rand function that take range objects to constrain the values to particular ranges. Instead of a type (Int, Float64, and so on), we can pass the rand function a range object to sample with uniform probability from the intervals or collections of values represented by the range object.\nSampling 10 integer values from the closed interval [-5, 5] with uniform random probability:\n\nrand(-5:5, 10)\n\n10-element Vector{Int64}:\n -1\n  4\n  1\n -2\n  0\n -1\n -5\n  1\n  5\n  4\n\n\nSampling 10 real values from the closed interval [-5.0, 5.0] (binned into 0.1 units) with uniform random probability:\n\nrand(-5.0:0.1:5.0, 10)\n\n10-element Vector{Float64}:\n -1.3\n -4.4\n -1.8\n  4.6\n  3.7\n -2.5\n  3.9\n -2.2\n  3.2\n  2.4\n\n\n\n\n\n\nrand([0.1, 0.2, 0.3, 0.4], 2)\n\n2-element Vector{Float64}:\n 0.4\n 0.2\n\n\n\nrand(['A', 'C', 'G', 'T'], 3)\n\n3-element Vector{Char}:\n 'C': ASCII/Unicode U+0043 (category Lu: Letter, uppercase)\n 'A': ASCII/Unicode U+0041 (category Lu: Letter, uppercase)\n 'T': ASCII/Unicode U+0054 (category Lu: Letter, uppercase)\n\n\n\nrand([\"Frodo\", \"Gandalf\", \"Eowyn\", ], 4)\n\n4-element Vector{String}:\n \"Eowyn\"\n \"Eowyn\"\n \"Frodo\"\n \"Eowyn\"\n\n\n\n\n\nNote that while both produce identical results. In one, we use the range function (the 1:4 is short-hand for range(1, 4))\nrand(1:4, , 10)\n## Sample 10 values from the collection of values `[1, 2, 3, 4]`\nrand([1, 2, 3, 4], 10) \n\n\n\nSample a single random Float64 sampled uniformly from $(0, 1]`.\nrand() \nSample a vector of 5 independent uniform random values in \\((0, 1]\\).\nrand(5)\nSample a \\(2 \\times 3\\) matrix of independent uniform random values in \\((0, 1]\\).\njulia&gt; rand(2, 3)\n2×3 Matrix{Float64}:\n 0.731902  0.184771  0.992814\n 0.442018  0.661203  0.107552\n\n\n\n\nA uniform distribution between value \\(a\\) and \\(b\\), with support of continuous values in the real interval \\([a, b]\\) is denoted\n\\[\n\\mathcal{U}(a, b).\n\\]\nA uniform distribution between value \\(a\\) and \\(b\\), with support of integer values in a finite set of integers in the interval \\([a, b]\\), is denoted\n\\[\n\\mathcal{U}(a, \\dots, b).\n\\]\n\n\n\nThe hist function provides a variety of methods to visualize data in histogram formats.\n\nusing CairoMakie\ndata = rand(Float64, 1000)\nhist(data)\n\n\n\n\n\n\n\n\n\n\nExercise 1\nGenerate \\(N = 1000\\) samples from each of the following distributions, and plot their histograms.\n\n\\(\\mathcal{U}(-10, 10)\\)\n\\(\\mathcal{U}(-10, \\dots, 10)\\)\n\nAdvanced\n\nWrite a function, plot_uniform that takes three integer (Int) arguments, range_start, range_end, and n_samples, and plots the results.\nUsing this, produce plots of \\(N \\in \\{1 \\times 10^4, 1 \\times 10^5, \\}\\) etc., to see how the histograms appear more and more uniform as the sample size increases.\n\n\n\n\n\n\n\nExercise 2We previously used range to generate a regular grid of value for one set of coordinates:\n\nα = 0.5\nz_vals = range(0.0, 1/α; length = 400)\n\n0.0:0.005012531328320802:2.0\n\n\nThe range range function returns a finite sequence of values, with different methods giving sequences of different data types, bounds, and intervals, depending on the input arguments. Here, range(0.0, 1/α; length = 400) is a method of the range function that returns a sequence of value between \\(0.0\\) and \\(\\frac{1}{\\alpha}\\)\nlength = 400 represent the the number of samples/points in the function call range(…, length = 400) This forms a “grid” (a collection of regular systematic samples) on the x-axis. The y-values come from passing each y-value to the function to get the result. Instead of a systematic sample, we can randomly sample from the same range.\nInstead of a systematic grid with range, generate a collection of \\(x\\)-coordinates of the same size by sampling independently from a uniform distribution over the same range and type using rand. Calculate the corresponding \\(y\\)-coordinates in the same way, by using map and the function. Visualize the results using scatter.\nHere we both regularly (grid) and randomly sample 10 points from between 0.0 and 1/alpha:\njulia&gt; x_vals1 = collect(range(0.0, 1/α, length=10)) 10-element Vector{Float64}: 0.0 0.2222222222222222 0.4444444444444444 0.6666666666666666 0.8888888888888888 1.1111111111111112 1.3333333333333333 1.5555555555555556 1.7777777777777777 2.0\njulia&gt; x_vals2 = rand(0.0:0.01:1/α, 10) 10-element Vector{Float64}: 0.55 1.72 1.09 0.38 0.33 0.38 1.42 1.24 0.76 0.98 These all form one set of coordinates. The other, comes from applying the function to these:\ny_vals1 = map(x -&gt; ???, x_vals1) y_vals2 = map(x -&gt; ???, x_vals2) Randomly sampling values from the model’s x value range as opposed to a regular grid makes sense when the range is huge (e.g. \\(-\\infty\\) to \\(\\infty\\)), and we cannot possibly cover it all with a grid.\n\n\n\nExercise 3\n\nSimulate 1000 independent rolls of a single fair six-sided die by using rand to sample from an integer value in \\(\\{1, 2, 3, 4, 5, 6\\}\\).\nPlot these",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with randomness and probabilities"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#simulating-a-bernoulli-trial-with-rand",
+    "href": "content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html#simulating-a-bernoulli-trial-with-rand",
+    "title": "Basics of working with randomness and probabilities",
+    "section": "2 Simulating a Bernoulli trial with rand",
+    "text": "2 Simulating a Bernoulli trial with rand\nWe can use rand(), which returns a uniformly distributed real value in \\([0, 1)\\) to determine whether or not an event of given probability occurs or not in a particular sample (outcome, realization, draw, run, etc.) of a random system.\nFor an event with some given probability value, if the value returned by the rand() function is less than this value we consider the event to have occurred. By default then, if the result of rand() is greater than this value, the event has not occured.\n\n\n\n\n\nConsider 1000 samples from a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\).\nIf we consider a uniform distribution on a subset of real number line between \\(0\\) and \\(1\\), and divide it at \\(p\\) of various values, we can see the larger segment of the range assigned to one or the other outcome depending the parameter.\nIf we consider that rand() will return a sample anywhere in that range with equal probability, we can see how a larger \\(p\\) means a value will fall in the part of the range that maps to the first outcome and vice versa.\nif the result of arand() is less than \\(p\\), then we have simulated a sample in which the event has occurred, and conversely, if greater than or equal to \\(p\\), to not have occured.\nFor example, consider the classical Bernoulli trial modeling an idealized fair coin toss, where there are two possible outcomes, “heads” or “tails”, with the probability of “heads” in any single realization being given by the model parameter \\(p=0.5\\).\nThe short-hand Julia expression for this is:\n\nrand() &lt; 0.5 ? \"heads\" : \"tails\"\n\n\"heads\"\n\n\nOr, for a more readable, flexible, extensible, as well as maintanable, we define a named function that takes an argument which allows us to specify the probability parameter:\n\nfunction bernoulli(p::Float64)::String\n    if rand() &lt; p\n        \"heads\"\n    else\n        \"tails\"\n    end\nend\nbernoulli(0.5)\n\n\"tails\"",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with randomness and probabilities"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#running-julia-programs-the-julia-runtime-repl-and-program-files",
+    "href": "content/01_practicals/02_basics-of-running-julia/index.html#running-julia-programs-the-julia-runtime-repl-and-program-files",
+    "title": "Basics of setting up and running Julia",
+    "section": "2 Running Julia programs: the Julia runtime, REPL, and program files",
+    "text": "2 Running Julia programs: the Julia runtime, REPL, and program files",
+    "crumbs": [
+      "Practicals",
+      "Basics of setting up and running Julia"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#working-with-julia-environments-projects-packages-and-package-management",
+    "href": "content/01_practicals/02_basics-of-running-julia/index.html#working-with-julia-environments-projects-packages-and-package-management",
+    "title": "Basics of setting up and running Julia",
+    "section": "3 Working with Julia: environments, projects, packages, and package management",
+    "text": "3 Working with Julia: environments, projects, packages, and package management\n\n3.1 Basic concepts\n\nThe Julia global environment\nProject environments\nWhen to use what\n\nConventional approaches span somewhere as a mix between two extremes:\n\nInstall and use everything out of the global environment, reserving project environment for specialized processing\nEVERYTHING is a project\n\nRecommendations:\n\nIf you are just starting, and really don’t want to get into the bells and whistles yet: don’t worry about it, go for the “one global environment to rule them all” approach\nWhether or not you are just starting, but you do want to take the more difficult but best-practices road:\n\nKeep your global environment clean\nCreate a global “general purpose scratchpad/calculator” environment, and use THAT for almost everything\nCreate project specific environments when you are working on a package or specialized projects.",
+    "crumbs": [
+      "Practicals",
+      "Basics of setting up and running Julia"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/02_basics-of-running-julia/index.html#how-to-organize-your-code",
+    "href": "content/01_practicals/02_basics-of-running-julia/index.html#how-to-organize-your-code",
+    "title": "Basics of setting up and running Julia",
+    "section": "4 How to organize your code",
+    "text": "4 How to organize your code",
+    "crumbs": [
+      "Practicals",
+      "Basics of setting up and running Julia"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html",
+    "href": "content/01_practicals/index.html",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nModel: Single-lineage parasite virulence evolution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-1.-orientation-and",
+    "href": "content/01_practicals/index.html#chapter-1.-orientation-and",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-2.-basics-of-setting-up-and-running-julia",
+    "href": "content/01_practicals/index.html#chapter-2.-basics-of-setting-up-and-running-julia",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-3.-basics-of-visualizing-mathematical-models",
+    "href": "content/01_practicals/index.html#chapter-3.-basics-of-visualizing-mathematical-models",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nModel: Single-lineage parasite virulence evolution",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
+    "href": "content/01_practicals/index.html#chapter-4.-basics-of-working-with-randomness-and-probabilities",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-1.-orientation",
+    "href": "index.html#chapter-1.-orientation",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 1. Orientation",
+    "text": "Chapter 1. Orientation",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-1.-orientation",
+    "href": "content/01_practicals/index.html#chapter-1.-orientation",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-5.-basics-of-working-with-data-tables",
+    "href": "index.html#chapter-5.-basics-of-working-with-data-tables",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 5. Basics of working with data tables",
+    "text": "Chapter 5. Basics of working with data tables\nNo matching items",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/index.html#chapter-5.-basics-of-working-with-data-tables",
+    "href": "content/01_practicals/index.html#chapter-5.-basics-of-working-with-data-tables",
+    "title": "Practicals",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Practicals"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html",
+    "title": "Basics of working with data tables",
+    "section": "",
+    "text": "Proficiencies\n\nBackground concepts:\n\nWhat tabular data is and why it is the dominant format for scientific datasets\nCommon file formats for tabular data: CSV, TSV, and Excel (.xlsx)\nHow to identify a file’s format from its extension and from inspecting its raw content\n\nCore skills:\n\nLoading the DataFrames, CSV, and XLSX packages\nCreating a DataFrame manually from column vectors\nReading a CSV file into a DataFrame using CSV.read\nReading an Excel worksheet into a DataFrame using XLSX.readtable\nInspecting a DataFrame: size, nrow, ncol, names, describe, first, last\nSelecting one or more columns by name and by position\nFiltering rows using logical conditions with boolean indexing\nAdding a new column to a DataFrame\nSelecting subsets of columns and rows simultaneously",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/03_modules/dice-games/primer.dice-pools.html",
+    "href": "content/03_modules/dice-games/primer.dice-pools.html",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "",
+    "text": "A “die” (singular; plural is “dice”) is a device used for generating random outcomes in a finite discrete sample space. As a physical object, a die typically corresponds to some device that has a fixed, finite number of distinguishable “sides”, each of which can be mapped unambiguously, if not always uniquely, to a “face”, representing a unique and mutually-exclusive outcome in a fixed sample space . Dice are often marked with symbols to allow for identification of sides with faces. As in many modern dice the outcomes are indexed numerically, representing samples from a subset of the natural numbers, the symbols on these faces are numbers indicating integer values \\({1, 2, \\dots, N}\\), where \\(N\\) is the number of faces.\n\n\n\nA type of die most of us are familiar with today is a 6-sided die 1: 🎲. Here, the die has six sides, and each side is marked with a distinct symbol to allow it to unique represent a distinct face in the sample space 2. Today, very often, the faces are represented by a subset of the natural numbers \\(\\mathcal{S} \\subset \\mathrm{N}\\), i.e., \\(\\mathcal{S} = \\{1, 2, 3, 4, 5, 6\\}\\), though other symbols have and continue to be used (e.g. …).\n1 “d6” in dice notation, which we will discuss later2 Some forms of dice, especially earlier ones, had more “sides” than faces, with multiple sides marked with the same symbol\n\n\nA die is “cast” 3 , “thrown”, or “rolled” to generate an outcome from its sample space, (usually) with the face on the side aligned upwards after it stops moving representing the realized outcome.\n3 “Cast is the die!”, or “Iactea est alea!”, Caesar uttered when moving forward to seize Rome. Classical Latin allows either “Cast is the die!” and the “The die is cast!” as grammatically correct ways to express different emphases. I feel the common translation of “The die is cast” to conform to modern English patterns of expression misses the intended weight of Caesar’s utterance.For example, rolling a six-sided die once will result in one of the six faces, \\(\\{1, 2, 3, 4, 5, 6\\}\\), showing as the outcome.\n\n\nWhat are the elementary outcomes of the sample space of a 6-sided die? Explicitly enumerate them, and then mathematical notation to express them more compactly.\nAssuming a “fair” 6-sided die, what is the probability of each of the outcomes in the sample space?\n\nExplicitly list all the elementary outcomes.\nWrite down a general mathemaIn Ltical expression for\n\nWhat parametric probability distribution can we use to model this?\nMore generally, given a hypothetical fair die with \\(N\\) sides, describe the sample space, probability, and probability distribution of its outcomes.\n\n\n\n\n\nWhile the six-sided cuboid die is most familiar to most people today, dice types vary in the number of sides, such as two-sided, four-sided, ten-sided, twenty-sided etc. dice, corresponding to sample spaces with corresponding varying numbers of elementary outcomes (2, 4, 10, 20, etc.)\nA standard set of such six such generalized polyhedral dice types are found across a broad range of games and recreational contexts, consisting of: (1) a four-sided die, (2) a six-sided die, (3) an eight-sided die, (4) a ten-sided die, (5) a twelve-sided die, and (6) a twenty-sided die. For convenience, we may use the dice notation used by these game communities to reference specific types of these dice: d4, d6, d8, d10, d12, and d20, respectively.\nIn each of these dice, each of its sides maps to a unique integer from 1 to the number of sides. Thus an \\(N\\)-sided die can be seen as having a sample space consisting of \\(\\{1, 2, \\dots N\\}\\). This mapping to natural numbers allows construction of more complex sample spaces by allowing for combining outcomes from multiple dice using natural number algebra such as addition.\nMost of us are accustomed to the concept of the familiar cuboid six-sided die used in this way, e.g., when rolling two, three, or more of these and taking the total of the individual values of the roll as the outcome. A dice pool, discussed next, is a generalization of this concept.\n\n\n\nWe can model a dice pool as a multiset 4 of dice that is constructed by sampling with replacement from a set of candidate dice types. For example, there are many games in which various different moves and plays are effected by sampling from a dice pool made up of two units of single type of die (six-sided).\n4 A multiset is a collection of distinguishable elements with, unlike sets, allowance for repeats.\n\nWith the distribution of each die being uniform with support (range of values over which a non-zero probability is defined) in \\([1, 6]\\), what is the support of the distribution of the sum of values of two six-sided dice?\n\n\n\n\n\nWe can describe the configuration of a dice pool using dice notation, which enumerates all the dice used by the mathematical conventions of indicating products (within types) and additions (across types) to combine them.\n\n\n\n\n\n\n\n\n\nEach side of each of these dice is indexed uniquely indexed with an integer, starting from one and proceeding in sequence, ${1, 2, }, through each and every side of the dice (with some allowance for what constitutes a “side” due to the geometrical aspects of the physical manifestation of the die, e.g. a pyramid for a 4-sided die has the edges for “side” ). As such, an \\(N-\\)sided die, where \\(N\\) is some natural number greater than 1, \\(N \\in \\mathbb{N}, N &gt; 1\\) has a sample space consisting of a subset of natural numbers, \\(\\mathcal{S} \\subset \\mathbb{N}, \\mathcal{S} = \\{1, 2, \\dots, N\\}\\)."
+  },
+  {
+    "objectID": "content/03_modules/dice-games/primer.dice-pools.html#appendices",
+    "href": "content/03_modules/dice-games/primer.dice-pools.html#appendices",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "1 Appendices",
+    "text": "1 Appendices\n\n\n\n\n\n\nTipBrute force approach: ALWAYS works, IF you can do it\n\n\n\nHere is a technique that will solve EVERY single probability calculation problem conceivable.\nWhen asked what is the probability of some event,\n\n\nCount all the elementary outcomes.\nCount all elementary outcomes that are included in (or correspond to) the event.\n\nThen divide the second by the first."
+  },
+  {
+    "objectID": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html",
+    "href": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "",
+    "text": "CautionReview BEFORE session\n\n\n\n\n7  Probability distributions – Using Julia for Introductory Statistics"
+  },
+  {
+    "objectID": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#preparation",
+    "href": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#preparation",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "",
+    "text": "CautionReview BEFORE session\n\n\n\n\n7  Probability distributions – Using Julia for Introductory Statistics"
+  },
+  {
+    "objectID": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#set-up",
+    "href": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#set-up",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "2 Set up",
+    "text": "2 Set up\n\n\n\n\n\n\nImportantSet up the computation environment\n\n\n\nCreate a new directory to host the project directory:\n$HOME/Projects/20251201_dicegames\nand, within this, generate a new Julia project, DiceGames, using the Julia package manager Pkg.\nThen change into the project directory, and, making sure to invoke the correct Julia project path, add the Distributions.jl package.\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n$ mkdir -p ~/Projects/20251201_dicegames\n$ cd ~/Projects/20251201_dicegames\n$ julia -e 'using Pkg; Pkg.generate(\"DiceGames\")'\n$ cd DiceGames\n$ julia --project=. -e 'using Pkg; Pkg.add(\"Distributions\")'"
+  },
+  {
+    "objectID": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#setting-up-the-dice",
+    "href": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#setting-up-the-dice",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "3 Setting up the “dice”",
+    "text": "3 Setting up the “dice”\nWe will simulate dice by sampling from their distributions.\nThe Distributions.jl package provides an easy way to manipulate statistical distributions in Julia.\n\n\n\n\n\n\nTipStatistical distributions of die values\n\n\n\nFor each of the standard D&D dice, list the range and distribution of values.\n\n\n\nLabel\nNumber of sides\n\n\n\n\nd4\n4\n\n\nd6\n6\n\n\nd8\n8\n\n\nd10\n10\n\n\nd12\n12\n\n\nd20\n20\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\n\n\nLabel\nNumber of sides\nRange\nDistribution\n\n\n\n\nd4\n4\n\\([1, 4]\\)\nUniform(1, 4)\n\n\nd6\n6\n\\([1, 6]\\)\nUniform(1, 6)\n\n\nd8\n8\n\\([1, 8]\\)\nUniform(1, 8)\n\n\nd10\n10\n\\([1, 10]\\)\nUniform(1, 10)\n\n\nd12\n12\n\\([1, 12]\\)\nUniform(1, 12)\n\n\nd20\n20\n\\([1, 20]\\)\nUniform(1, 20)"
+  },
+  {
+    "objectID": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#resources",
+    "href": "content/03_modules/dice-games/tutorial.dice-combination-code-breaking.html#resources",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "4 Resources",
+    "text": "4 Resources"
+  },
+  {
+    "objectID": "content/03_modules/dice-games/exercise.basic-probability.html",
+    "href": "content/03_modules/dice-games/exercise.basic-probability.html",
+    "title": "Just enough Julia for scientific informatics, modeling, and reasoning",
+    "section": "",
+    "text": "0.1 1\n\n0.1.1 Bayes theorem\nSuppose that we have a fair coin and a biased coin that always comes up heads. We run an experiment consisting of three independent events: - we choose one of the two coins at random - we flip that coin once - and then we flip it again. Suppose that the coin we have chosen comes up heads both times. What is the probability that it is biased?\nFor a single toss with the coin, we know:\n\\(\\Pr(H \\mid \\text{biased}) = 1.0\\)\n\\(\\Pr(H \\mid \\text{fair}) = 0.5\\)\nFor two tosses with the coin, we know:\n\\(\\Pr( HH \\mid \\text{biased}) = (1.0)(1.0) = 1.0\\)\n\\(\\Pr( HH \\mid \\text{fair}) = (0.5)(0.5) = 0.25\\)\nFor the prior probability of the coin, we know:\n\\(\\Pr(\\text{biased}) = 0.5\\)\n\\(\\Pr(\\text{fair}) = 0.5\\)\nSo:\n\\[\n\\begin{aligned}\n\\Pr(\\text{biased} \\mid HH) &= \\frac{ \\Pr( HH \\mid \\text{biased}) \\Pr(\\text{biased}) }{ \\left[ \\Pr( HH \\mid \\text{biased}) \\Pr(\\text{biased}) \\right] + \\left[ \\Pr( HH \\mid \\text{fair}) \\Pr(\\text{fair}) \\right] } \\\\\n    &= \\frac{ 1.0 \\cdot 0.5 }{ (1.0)(0.5) + (0.25)(0.5) } \\\\\n    &= \\frac{ 0.5 }{ (0.5) + (0.125) } \\\\\n    &= 0.8\n\\end{aligned}\n\\]\n\n\n0.1.2 Brute force\nSample space:\n𝑆 = {(F, TT), (F, HT), (F, TH), (F, HH), (B, HH)}\n\\(HH\\) occurs \\(\\frac{2}{5}\\) times = \\(0.8\\).\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#what-is-tabular-data",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#what-is-tabular-data",
+    "title": "Basics of working with data tables",
+    "section": "1 What is tabular data?",
+    "text": "1 What is tabular data?\nDatasets are often organized as tables: rectangular grids of values where each row represents one observation (a specimen, a time-point, a site, a sequencing read) and each column represents one variable or attribute measured for every observation (body mass, collection date, latitude, base-call quality score).\n\n\n\n\n\n\n\nTipRows are observations; columns are variables\n\n\n\nThis convention — one row per observation, one column per variable — is called tidy data. It is the standard expected by virtually every data-analysis and plotting library you will encounter. Keeping your own data in this form from the start will save a great deal of reformatting later.\n\nA small example of a tabular dataset:\n\n\n\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\n\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\nBM_003\nMus musculus\n18.7\n2020\n\n\n\nThree rows, four columns. Each row is one specimen; each column is one thing we recorded about every specimen.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#file-formats-for-tabular-data",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#file-formats-for-tabular-data",
+    "title": "Basics of working with data tables",
+    "section": "2 File formats for tabular data",
+    "text": "2 File formats for tabular data\n\n\n\n\n\n\n\nNoteSample files\n\n\n\n\nTab-separated values (“TSV”, with extension .tsv): specimens_10.tsv\nComma-separated values (“CSV”, with extension .csv): specimens_10.csv\nExcel: specimens_10.xlsx\n\n\nTabular datasets are stored in a variety of file formats. The format you receive will determine which Julia function you use to load it, so it is worth being able to identify them.\n\n2.1 CSV and its variants\nThe most common plain-text format for tabular data is CSV (comma-separated values). A CSV file stores the table as lines of text. The first line is typically a header listing the column names; every subsequent line is one row of data. Values within each line are separated by a delimiter — most often a comma (,), giving the format its name, though tabs (\\t) and semicolons (;) are also common.\n\n\n\n\n\n\n\nNoteInspecting a CSV file directly\n\n\n\nBecause CSV files are plain text, you can read them in any text editor or print their first few lines in the shell:\nhead -5 specimens.csv\nor in Julia:\nopen(\"specimens.csv\") do f\n    for _ in 1:5\n        println(readline(f))\n    end\nend\nThis is useful for confirming the delimiter, checking whether there is a header row, and spotting any obvious formatting issues before you try to parse the file.\n\nA CSV file corresponding to the table above would look like this:\nspecimen_id,species,body_mass_g,collection_year\nBM_001,Peromyscus maniculatus,21.4,2019\nBM_002,Peromyscus leucopus,23.1,2019\nBM_003,Mus musculus,18.7,2020\nA TSV (tab-separated values) file is identical in structure, but with tab characters between values rather than commas:\nspecimen_id⟶species⟶body_mass_g⟶collection_year\nBM_001⟶Peromyscus maniculatus⟶21.4⟶2019\nBoth extensions — .csv and .tsv — are strong signals of the format, but always confirm by opening the file.\n\n\n2.2 Excel files\nExcel workbooks (.xlsx, and the older .xls) store tables in a binary format: you cannot read them as plain text. They can contain multiple worksheets in a single file. When working with Excel data in Julia, you will need to specify both the file path and which worksheet you want.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#the-dataframe-type",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#the-dataframe-type",
+    "title": "Basics of working with data tables",
+    "section": "3 The DataFrame type",
+    "text": "3 The DataFrame type\nIn Julia, the standard representation of a data table is a DataFrame object from the DataFrames package. A DataFrame holds a collection of named columns, where each column is a typed Vector. This means every value in a given column must be of the same type (all integers, all floating-point numbers, all strings, and so on), but different columns can have different types — exactly as in a real dataset.\nusing DataFrames\n\n3.1 Creating a DataFrame manually from column vectors\nThe most direct way to construct a DataFrame is to pass named column vectors to the DataFrame constructor:\n\nusing DataFrames\n\nspecimens = DataFrame(\n    specimen_id      = [\"BM_001\", \"BM_002\", \"BM_003\"],\n    species          = [\"Peromyscus maniculatus\", \"Peromyscus leucopus\", \"Mus musculus\"],\n    body_mass_g      = [21.4, 23.1, 18.7],\n    collection_year  = [2019, 2019, 2020]\n)\n\n3×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n\n\n\n\n\n\nEach keyword argument becomes a column: the argument name is the column name, and the vector on the right is the column’s data. All vectors must have the same length.\n\n\n\n\n\n\n\nTipColumn types are inferred automatically\n\n\n\nJulia infers the element type of each column from the vector you supply. [\"BM_001\", \"BM_002\", \"BM_003\"] becomes a Vector{String} column; [21.4, 23.1, 18.7] becomes a Vector{Float64} column. You can confirm the types of all columns at once with describe(df), discussed below.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#reading-tabular-data-from-files",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#reading-tabular-data-from-files",
+    "title": "Basics of working with data tables",
+    "section": "4 Reading tabular data from files",
+    "text": "4 Reading tabular data from files\nIn practice you will almost never type your data in by hand. Most of the time you will load it from a file written by an instrument, a database export, a collaborator’s spreadsheet, or a public data repository.\n\n4.1 Reading CSV files with CSV.jl\nThe CSV package provides the CSV.read function, which parses a delimited text file and, when combined with DataFrame, returns the result as a DataFrame:\nusing CSV, DataFrames\n\nspecimens = CSV.read(\"specimens.csv\", DataFrame)\nCSV.read takes two required arguments: the path to the file, and the sink type that determines what kind of object the parsed data is placed into. Passing DataFrame as the sink is by far the most common usage.\n\n\n\n\n\n\n\nNoteCommon keyword arguments for CSV.read\n\n\n\nCSV.read accepts a large number of optional keyword arguments for handling real-world files that do not follow a perfectly clean format:\n# File uses semicolons as the delimiter\nCSV.read(\"data.csv\", DataFrame; delim = ';')\n\n# File uses tabs as the delimiter\nCSV.read(\"data.tsv\", DataFrame; delim = '\\t')\n\n# Skip the first two lines (e.g., a metadata header)\nCSV.read(\"data.csv\", DataFrame; skipto = 3)\n\n# Treat \"NA\" and \"\" as missing values\nCSV.read(\"data.csv\", DataFrame; missingstring = [\"NA\", \"\"])\n\n# File has no header row; supply column names manually\nCSV.read(\"data.csv\", DataFrame; header = [\"id\", \"mass\", \"year\"])\nWhen a file refuses to parse cleanly, these keyword arguments are the first place to look.\n\nFor a TSV file, specify the delimiter explicitly:\nspecimens = CSV.read(\"specimens.tsv\", DataFrame; delim = '\\t')\n\n\n4.2 Reading Excel files with XLSX.jl\nThe XLSX package provides access to Excel workbooks. The XLSX.readtable function reads one worksheet and returns it in a form that can be passed directly to the DataFrame constructor:\nusing XLSX, DataFrames\n\nspecimens = DataFrame(XLSX.readtable(\"specimens.xlsx\", \"Sheet1\"))\nThe second argument to XLSX.readtable is the name of the worksheet to read.\n\n\n\n\n\n\n\nTipListing the worksheets in a workbook\n\n\n\nIf you do not know the names of the worksheets in an Excel file, you can inspect them:\nxf = XLSX.readxlsx(\"specimens.xlsx\")\nXLSX.sheetnames(xf)\nThis returns a Vector{String} listing the names of all worksheets in the workbook.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#inspecting-a-dataframe",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#inspecting-a-dataframe",
+    "title": "Basics of working with data tables",
+    "section": "5 Inspecting a DataFrame",
+    "text": "5 Inspecting a DataFrame\nBefore doing anything else with a newly loaded dataset, it is good practice to inspect it: confirm that the right number of rows and columns were read, that the column names are what you expect, and that the types were inferred correctly.\n\n5.1 Dimensions\n\nnrow(specimens)   # number of rows\n\n3\n\n\n\nncol(specimens)   # number of columns\n\n4\n\n\n\nsize(specimens)   # (nrow, ncol) as a tuple\n\n(3, 4)\n\n\n\n\n5.2 Column names and types\n\nnames(specimens)  # returns a Vector{String} of column names\n\n4-element Vector{String}:\n \"specimen_id\"\n \"species\"\n \"body_mass_g\"\n \"collection_year\"\n\n\n\ndescribe(specimens)\n\n4×7 DataFrame\n\n\n\nRow\nvariable\nmean\nmin\nmedian\nmax\nnmissing\neltype\n\n\n\nSymbol\nUnion…\nAny\nUnion…\nAny\nInt64\nDataType\n\n\n\n\n1\nspecimen_id\n\nBM_001\n\nBM_003\n0\nString\n\n\n2\nspecies\n\nMus musculus\n\nPeromyscus maniculatus\n0\nString\n\n\n3\nbody_mass_g\n21.0667\n18.7\n21.4\n23.1\n0\nFloat64\n\n\n4\ncollection_year\n2019.33\n2019\n2019.0\n2020\n0\nInt64\n\n\n\n\n\n\ndescribe returns a summary DataFrame with one row per column, showing the column name, element type, and basic summary statistics (minimum, mean, median, maximum, number of missing values). It is one of the most useful first-look tools available.\n\n\n5.3 Previewing rows\n\nfirst(specimens, 5)   # first 5 rows\n\n3×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n\n\n\n\n\n\n\nlast(specimens, 3)    # last 3 rows\n\n3×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDisplaying the full DataFrame\n\n\n\nWhen a DataFrame has many columns, Julia will automatically abbreviate the display. To print every column without truncation:\nshow(specimens, allcols = true)\nTo control the maximum number of rows shown:\nshow(specimens; allrows = true)",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#selecting-columns",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#selecting-columns",
+    "title": "Basics of working with data tables",
+    "section": "6 Selecting columns",
+    "text": "6 Selecting columns\nOnce you have a DataFrame in memory, the most fundamental operation is selecting the columns you want to work with.\n\n6.1 Selecting a single column as a Vector\nUse the . accessor or square-bracket syntax with a Symbol or String:\n\nspecimens.body_mass_g          # returns a Vector{Float64}\n\n3-element Vector{Float64}:\n 21.4\n 23.1\n 18.7\n\n\n\nspecimens[!, :body_mass_g]     # identical result\n\n3-element Vector{Float64}:\n 21.4\n 23.1\n 18.7\n\n\n\nspecimens[!, \"body_mass_g\"]    # also identical\n\n3-element Vector{Float64}:\n 21.4\n 23.1\n 18.7\n\n\n\n\n\n\n\n\n\nTip! vs : as the row selector\n\n\n\nIn DataFrames indexing, the first argument selects rows and the second selects columns. Using ! as the row selector means all rows, without copying — you get a direct reference to the underlying column vector. Using : also selects all rows, but returns a copy. For read-only inspection, ! is fine and slightly more efficient. When you intend to modify the values in the returned vector and do not want to affect the original DataFrame, use :.\n\n\n\n6.2 Selecting multiple columns as a new DataFrame\nPass a Vector of column names to get a new DataFrame containing only those columns:\n\nspecimens[!, [\"specimen_id\", \"body_mass_g\"]]\n\n3×2 DataFrame\n\n\n\nRow\nspecimen_id\nbody_mass_g\n\n\n\nString\nFloat64\n\n\n\n\n1\nBM_001\n21.4\n\n\n2\nBM_002\n23.1\n\n\n3\nBM_003\n18.7\n\n\n\n\n\n\nOr use the equivalent select function, which has a richer syntax:\n\nselect(specimens, :specimen_id, :body_mass_g)\n\n3×2 DataFrame\n\n\n\nRow\nspecimen_id\nbody_mass_g\n\n\n\nString\nFloat64\n\n\n\n\n1\nBM_001\n21.4\n\n\n2\nBM_002\n23.1\n\n\n3\nBM_003\n18.7\n\n\n\n\n\n\nselect does not modify the original DataFrame; it returns a new one.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#filtering-rows",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#filtering-rows",
+    "title": "Basics of working with data tables",
+    "section": "7 Filtering rows",
+    "text": "7 Filtering rows\nTo extract the subset of rows that satisfy some condition, use boolean indexing.\n\n7.1 Boolean indexing\nConstructing a logical (boolean) condition over a column produces a Vector{Bool} — a vector of true/false values, one per row:\n\nspecimens.collection_year .== 2019\n\n3-element BitVector:\n 1\n 1\n 0\n\n\nPassing this boolean vector as the row index returns only the rows where the condition is true:\n\nspecimens[specimens.collection_year .== 2019, :]\n\n2×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteBroadcasting with .\n\n\n\nThe . before comparison operators (.==, .&gt;, .&lt;=, and so on) is Julia’s broadcasting syntax. It applies the operator element-wise across the entire vector, rather than trying to compare the whole vector to a scalar at once. You will need this . prefix whenever applying a scalar comparison across a column.\n# ✓ correct: element-wise comparison\nspecimens.body_mass_g .&gt; 20.0\n\n# ✗ will error: comparing a Vector to a scalar without broadcasting\nspecimens.body_mass_g &gt; 20.0\n\nCombining multiple conditions uses & (and) and | (or), with each condition wrapped in parentheses:\n\nspecimens[(specimens.body_mass_g .&gt; 20.0) .& (specimens.collection_year .== 2019), :]\n\n2×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n\n\n\n\n\n\n7.2 Filtering with filter\nThe filter function provides a more readable alternative for row-filtering. It takes a column name (as a Symbol using =&gt;), a function that returns true or false, and the DataFrame:\n\nfilter(:body_mass_g =&gt; m -&gt; m &gt; 20.0, specimens)\n\n2×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n\n\n\n\n\nfilter(:species =&gt; s -&gt; startswith(s, \"Peromyscus\"), specimens)\n\n2×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n\n\n\n\nfilter returns a new DataFrame and does not modify the original.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#adding-and-modifying-columns",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#adding-and-modifying-columns",
+    "title": "Basics of working with data tables",
+    "section": "8 Adding and modifying columns",
+    "text": "8 Adding and modifying columns\n\n8.1 Adding a new column\nAssign a new vector to a column name that does not yet exist:\n\nspecimens.body_mass_kg = specimens.body_mass_g ./ 1000\nspecimens\n\n3×5 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\nbody_mass_kg\n\n\n\nString\nString\nFloat64\nInt64\nFloat64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n0.0214\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n0.0231\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n0.0187\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipIn-place modification vs. returning a new DataFrame\n\n\n\nAssignment with df.new_column = ... modifies the DataFrame in place, changing the original object. Many DataFrames functions — select, filter, transform — return a new DataFrame instead of modifying the original. This is the standard functional style and is generally preferred because it makes it easy to trace where each transformation happened. Use in-place assignment sparingly and deliberately.\n\n\n\n8.2 Adding a column derived from existing columns using transform\nThe transform function is the idiomatic way to derive new columns from existing ones without modifying the original:\n\ntransform(specimens, :body_mass_g =&gt; (m -&gt; m ./ 1000) =&gt; :body_mass_kg)\n\n3×5 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\nbody_mass_kg\n\n\n\nString\nString\nFloat64\nInt64\nFloat64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n0.0214\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n0.0231\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n0.0187\n\n\n\n\n\n\nThe column specification follows the pattern source_column =&gt; transformation_function =&gt; new_column_name.\n\n\n8.3 Selecting and transforming simultaneously\nselect and transform can be combined with ! for in-place modification, or composed as a pipeline with Julia’s |&gt; operator:\n\nspecimens |&gt;\n    df -&gt; filter(:collection_year =&gt; y -&gt; y == 2020, df) |&gt;\n    df -&gt; select(df, :specimen_id, :species, :body_mass_g)\n\n1×3 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\n\n\n\nString\nString\nFloat64\n\n\n\n\n1\nBM_003\nMus musculus\n18.7",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#exercises",
+    "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#exercises",
+    "title": "Basics of working with data tables",
+    "section": "9 Exercises",
+    "text": "9 Exercises\n\n\nExercise 1\nCreate the following DataFrame manually using the DataFrame constructor:\n\n\n\ngene\nchromosome\nlength_bp\ngc_content\n\n\n\n\nBRCA1\n17\n81189\n0.421\n\n\nTP53\n17\n19149\n0.488\n\n\nFOXP2\n7\n2473559\n0.389\n\n\nGAPDH\n12\n4741\n0.641\n\n\n\nOnce constructed:\n\nPrint the dimensions of the DataFrame.\nUse describe to inspect the column types.\nSelect only the gene and gc_content columns.\nFilter to retain only genes on chromosome 17.\n\n\n\n\n\nExercise 2\nDownload the publicly available Palmer Penguins dataset as a CSV file.\n\nLoad it into a DataFrame using CSV.read.\nInspect it with first, last, and describe.\nHow many rows and columns does it have?\nFilter the dataset to retain only rows for the species \"Adelie\".\nFrom that filtered subset, select only bill_length_mm, bill_depth_mm, and body_mass_g.\nAdd a new column, bill_ratio, defined as bill_length_mm / bill_depth_mm.\n\n\n\n\n\nExercise 3Advanced\nThe describe function returns a DataFrame itself. Use this fact to:\n\nLoad any dataset with at least five columns.\nCall describe on it.\nFilter the resulting summary DataFrame to show only columns whose eltype is Float64.\n\nHint: the eltype column of the describe output contains the Julia type of each column. You can match against it using == or isa.\n\n\n\n\nExercise 4Advanced\nWrite a function load_table with the following signature:\nfunction load_table(path::String)::DataFrame\n    ...\nend\nThe function should:\n\nInspect the file extension of path.\nIf the extension is .csv or .tsv, read the file with CSV.read, inferring the delimiter automatically from the extension.\nIf the extension is .xlsx, read the first worksheet with XLSX.readtable.\nFor any other extension, throw an ArgumentError with an informative message.\n\nHint: use splitext(path) to separate the base filename from its extension, and a series of if/elseif/else branches on the extension string.",
+    "crumbs": [
+      "Practicals",
+      "Basics of working with data tables"
     ]
   }
 ]
