@@ -200,7 +200,7 @@
     "href": "content/02_primers/index.html",
     "title": "Primers",
     "section": "",
-    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nPracticals: visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\nPracticals: visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Primers"
     ]
@@ -771,8 +771,8 @@
     "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#file-formats-for-tabular-data",
     "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#file-formats-for-tabular-data",
     "title": "Basics of working with data tables",
-    "section": "3 File formats for tabular data",
-    "text": "3 File formats for tabular data\n\n\n\n\n\n\n\nNoteSample files\n\n\n\n\nTab-separated values (“TSV”, with extension .tsv): specimens_10.tsv\nComma-separated values (“CSV”, with extension .csv): specimens_10.csv\nExcel: specimens_10.xlsx\n\n\nTabular datasets are stored in a variety of file formats. The format you receive will determine which Julia function you use to load it, so it is worth being able to identify them.\n\n3.1 CSV and its variants\nThe most common plain-text format for tabular data is CSV (comma-separated values). A CSV file stores the table as lines of text. The first line is typically a header listing the column names; every subsequent line is one row of data. Values within each line are separated by a delimiter — most often a comma (,), giving the format its name, though tabs (\\t) and semicolons (;) are also common.\n\n\n\n\n\n\n\nNoteInspecting a CSV file directly\n\n\n\nBecause CSV files are plain text, you can read them in any text editor or print their first few lines in the shell:\nhead -5 specimens.csv\nor in Julia:\nopen(\"specimens.csv\") do f\n    for _ in 1:5\n        println(readline(f))\n    end\nend\nThis is useful for confirming the delimiter, checking whether there is a header row, and spotting any obvious formatting issues before you try to parse the file.\n\nA CSV file corresponding to the table above would look like this:\nspecimen_id,species,body_mass_g,collection_year\nBM_001,Peromyscus maniculatus,21.4,2019\nBM_002,Peromyscus leucopus,23.1,2019\nBM_003,Mus musculus,18.7,2020\nA TSV (tab-separated values) file is identical in structure, but with tab characters between values rather than commas:\nspecimen_id⟶species⟶body_mass_g⟶collection_year\nBM_001⟶Peromyscus maniculatus⟶21.4⟶2019\nBoth extensions — .csv and .tsv — are strong signals of the format, but always confirm by opening the file.\n\n\n3.2 Excel files\nExcel workbooks (.xlsx, and the older .xls) store tables in a binary format: you cannot read them as plain text. They can contain multiple worksheets in a single file. When working with Excel data in Julia, you will need to specify both the file path and which worksheet you want.",
+    "section": "2 File formats for tabular data",
+    "text": "2 File formats for tabular data\n\n\n\n\n\n\nNoteSample files in different formats\n\n\n\n\nComma-separated value (“CSV”) files, with extension .csv: specimens_10.csv\nTab-separated values (“TSV”) files, with extension .tsv: specimens_10.tsv\nExcel files: specimens_10.xlsx\n\n\n\nTabular datasets are stored in a variety of file formats. The format you receive will determine which Julia function you use to load it, so it is worth being able to identify them.\n\n2.1 CSV and its variants\nThe most common plain-text format for tabular data is CSV (comma-separated values). A CSV file stores the table as lines of text. The first line is typically a header listing the column names; every subsequent line is one row of data. Values within each line are separated by a delimiter — most often a comma (,), giving the format its name, though tabs (\\t) and semicolons (;) are also common.\n\n\n\n\n\n\n\nNoteInspecting a CSV file directly\n\n\n\nBecause CSV files are plain text, you can read them in any text editor or print their first few lines in the shell:\nhead -5 specimens.csv\nor in Julia:\nopen(\"specimens.csv\") do f\n    for _ in 1:5\n        println(readline(f))\n    end\nend\nThis is useful for confirming the delimiter, checking whether there is a header row, and spotting any obvious formatting issues before you try to parse the file.\n\nA CSV file corresponding to the table above would look like this:\nspecimen_id,species,body_mass_g,collection_year\nBM_001,Peromyscus maniculatus,21.4,2019\nBM_002,Peromyscus leucopus,23.1,2019\nBM_003,Mus musculus,18.7,2020\nA TSV (tab-separated values) file is identical in structure, but with tab characters between values rather than commas:\nspecimen_id⟶species⟶body_mass_g⟶collection_year\nBM_001⟶Peromyscus maniculatus⟶21.4⟶2019\nBoth extensions — .csv and .tsv — are strong signals of the format, but always confirm by opening the file.\n\n\n2.2 Excel files\nExcel workbooks (.xlsx, and the older .xls) store tables in a binary format: you cannot read them as plain text. They can contain multiple worksheets in a single file. When working with Excel data in Julia, you will need to specify both the file path and which worksheet you want.",
     "crumbs": [
       "Practicals",
       "Basics of working with data tables"
@@ -783,7 +783,7 @@
     "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#the-dataframe-type",
     "title": "Basics of working with data tables",
     "section": "4 The DataFrame type",
-    "text": "4 The DataFrame type\nIn Julia, the standard representation of a data table is a DataFrame object from the DataFrames package. A DataFrame holds a collection of named columns, where each column is a typed Vector. This means every value in a given column must be of the same type (all integers, all floating-point numbers, all strings, and so on), but different columns can have different types — exactly as in a real dataset.\nusing DataFrames\n\n4.1 Creating a DataFrame manually from column vectors\nThe most direct way to construct a DataFrame is to pass named column vectors to the DataFrame constructor:\n\nusing DataFrames\n\nspecimens = DataFrame(\n    specimen_id      = [\"BM_001\", \"BM_002\", \"BM_003\"],\n    species          = [\"Peromyscus maniculatus\", \"Peromyscus leucopus\", \"Mus musculus\"],\n    body_mass_g      = [21.4, 23.1, 18.7],\n    collection_year  = [2019, 2019, 2020]\n)\n\n3×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n\n\n\n\n\n\nEach keyword argument becomes a column: the argument name is the column name, and the vector on the right is the column’s data. All vectors must have the same length.\n\n\n\n\n\n\n\nTipColumn types are inferred automatically\n\n\n\nJulia infers the element type of each column from the vector you supply. [\"BM_001\", \"BM_002\", \"BM_003\"] becomes a Vector{String} column; [21.4, 23.1, 18.7] becomes a Vector{Float64} column. You can confirm the types of all columns at once with describe(df), discussed below.",
+    "text": "4 The DataFrame type\nIn Julia, the standard representation of a data table is a DataFrame object from the DataFrames package.\nA DataFrame holds a collection of named columns, where each column is a typed Vector. This means every value in a given column must be of the same type (all integers, all floating-point numbers, all strings, and so on), but different columns can have different types — exactly as in a real dataset.\nusing DataFrames\n\n4.1 Creating a DataFrame manually from column vectors\nThe most direct way to construct a DataFrame is to pass named column vectors to the DataFrame constructor:\n\nusing DataFrames\n\nspecimens = DataFrame(\n    specimen_id      = [\"BM_001\", \"BM_002\", \"BM_003\"],\n    species          = [\"Peromyscus maniculatus\", \"Peromyscus leucopus\", \"Mus musculus\"],\n    body_mass_g      = [21.4, 23.1, 18.7],\n    collection_year  = [2019, 2019, 2020]\n)\n\n3×4 DataFrame\n\n\n\nRow\nspecimen_id\nspecies\nbody_mass_g\ncollection_year\n\n\n\nString\nString\nFloat64\nInt64\n\n\n\n\n1\nBM_001\nPeromyscus maniculatus\n21.4\n2019\n\n\n2\nBM_002\nPeromyscus leucopus\n23.1\n2019\n\n\n3\nBM_003\nMus musculus\n18.7\n2020\n\n\n\n\n\n\nEach keyword argument becomes a column: the argument name is the column name, and the vector on the right is the column’s data. All vectors must have the same length.\n\n\n\n\n\n\n\nTipColumn types are inferred automatically\n\n\n\nJulia infers the element type of each column from the vector you supply. [\"BM_001\", \"BM_002\", \"BM_003\"] becomes a Vector{String} column; [21.4, 23.1, 18.7] becomes a Vector{Float64} column. You can confirm the types of all columns at once with describe(df), discussed below.",
     "crumbs": [
       "Practicals",
       "Basics of working with data tables"
@@ -849,7 +849,7 @@
     "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#exercises",
     "title": "Basics of working with data tables",
     "section": "10 Exercises",
-    "text": "10 Exercises\n\n\nExercise 1\nCreate the following DataFrame manually using the DataFrame constructor:\n\n\n\ngene\nchromosome\nlength_bp\ngc_content\n\n\n\n\nBRCA1\n17\n81189\n0.421\n\n\nTP53\n17\n19149\n0.488\n\n\nFOXP2\n7\n2473559\n0.389\n\n\nGAPDH\n12\n4741\n0.641\n\n\n\nOnce constructed:\n\nPrint the dimensions of the DataFrame.\nUse describe to inspect the column types.\nSelect only the gene and gc_content columns.\nFilter to retain only genes on chromosome 17.\n\n\n\n\n\nExercise 2\nDownload the publicly available Palmer Penguins dataset as a CSV file.\n\nLoad it into a DataFrame using CSV.read.\nInspect it with first, last, and describe.\nHow many rows and columns does it have?\nFilter the dataset to retain only rows for the species \"Adelie\".\nFrom that filtered subset, select only bill_length_mm, bill_depth_mm, and body_mass_g.\nAdd a new column, bill_ratio, defined as bill_length_mm / bill_depth_mm.\n\n\n\n\n\nExercise 3Advanced\nThe describe function returns a DataFrame itself. Use this fact to:\n\nLoad any dataset with at least five columns.\nCall describe on it.\nFilter the resulting summary DataFrame to show only columns whose eltype is Float64.\n\nHint: the eltype column of the describe output contains the Julia type of each column. You can match against it using == or isa.\n\n\n\n\nExercise 4Advanced\nWrite a function load_table with the following signature:\nfunction load_table(path::String)::DataFrame\n    ...\nend\nThe function should:\n\nInspect the file extension of path.\nIf the extension is .csv or .tsv, read the file with CSV.read, inferring the delimiter automatically from the extension.\nIf the extension is .xlsx, read the first worksheet with XLSX.readtable.\nFor any other extension, throw an ArgumentError with an informative message.\n\nHint: use splitext(path) to separate the base filename from its extension, and a series of if/elseif/else branches on the extension string.",
+    "text": "10 Exercises\n\n\nExercise 1\nCreate the following DataFrame manually using the DataFrame constructor:\n\n\n\ngene\nchromosome\nlength_bp\ngc_content\n\n\n\n\nBRCA1\n17\n81189\n0.421\n\n\nTP53\n17\n19149\n0.488\n\n\nFOXP2\n7\n2473559\n0.389\n\n\nGAPDH\n12\n4741\n0.641\n\n\n\nOnce constructed:\n\nPrint the dimensions of the DataFrame.\nUse describe to inspect the column types.\nSelect only the gene and gc_content columns.\nFilter to retain only genes on chromosome 17.\n\n\n\n\n\nExercise 2\nDownload the publicly available Palmer Penguins dataset as a CSV file.\n\nLoad it into a DataFrame using CSV.read.\nInspect it with first, last, and describe.\nHow many rows and columns does it have?\nFilter the dataset to retain only rows for the species \"Adelie\".\nFrom that filtered subset, select only bill_length_mm, bill_depth_mm, and body_mass_g.\nAdd a new column, bill_ratio, defined as bill_length_mm / bill_depth_mm.",
     "crumbs": [
       "Practicals",
       "Basics of working with data tables"
@@ -859,11 +859,226 @@
     "objectID": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#setting-up-your-julia-environment-for-tabular-data",
     "href": "content/01_practicals/05_basics-of-working-with-data-tables/index.html#setting-up-your-julia-environment-for-tabular-data",
     "title": "Basics of working with data tables",
-    "section": "2 Setting up your Julia environment for tabular data",
-    "text": "2 Setting up your Julia environment for tabular data\n\n\n\n\n\n\nNoteInstalling DataFrames.jl (and CSV.jl, XLSX.jl)\n\n\n\nBefore using DataFrames will work, the package must be installed in your Julia environment. Installation is done through Julia’s built-in package manager, Pkg.\n\n2.1 Install globally\nA global install makes the package available in any Julia session on your machine, regardless of which directory you are in. This is convenient for packages you use constantly — DataFrames, CSV, and XLSX are good candidates.\nusing Pkg\nPkg.add([\"DataFrames\", \"CSV\", \"XLSX\"])\nYou only need to do this once per Julia version. After installation, using DataFrames will work in any session.\n\n\n2.2 Install for a project\nIf you are working inside a project directory — one that contains a Project.toml file — activate the project environment first, then add the packages. This records the dependency in Project.toml and pins exact versions in Manifest.toml, so anyone who clones the project gets the same package versions you used.\nusing Pkg\nPkg.activate(\".\")\nPkg.add([\"DataFrames\", \"CSV\", \"XLSX\"])\nOnce the environment is active, all subsequent Pkg operations in that session apply to the project rather than to the global environment.",
+    "section": "3 Setting up your Julia environment for tabular data",
+    "text": "3 Setting up your Julia environment for tabular data\nBefore we can work with tabular data, we need to install the DataFrames.jl, which gives us the DataFrame object type, In addition, we will install CSV.jl and XLSX.jl to allow us to access data stored in some common file formats. Installation is done through Julia’s built-in package manager, Pkg.\nInstallations can be done either globally, across your entire Julia ecosystem, or restricted to specific project environments.\n\n3.1 Install globally\nA global install makes the package available in any Julia session on your machine, regardless of which directory you are in or which project environment you have activated.\nusing Pkg\nPkg.add([\"DataFrames\", \"CSV\", \"XLSX\"])\nYou only need to do this once per Julia version. After installation, using DataFrames will work in any session.\n\n\n3.2 Install for a project\nIf you are working inside a project directory — one that contains a Project.toml file — activate the project environment first, then add the packages. This records the dependency in Project.toml and pins exact versions in Manifest.toml, so anyone who clones the project gets the same package versions you used.\nusing Pkg\nPkg.activate(\".\")\nPkg.add([\"DataFrames\", \"CSV\", \"XLSX\"])\nOnce the environment is active, all subsequent Pkg operations in that session apply to the project rather than to the global environment.\n:::",
     "crumbs": [
       "Practicals",
       "Basics of working with data tables"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-2.-julia-environments-global-vs-project",
+    "href": "index.html#chapter-2.-julia-environments-global-vs-project",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 2. Julia – Environments – Global vs project",
+    "text": "Chapter 2. Julia – Environments – Global vs project",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-3.-julia-functions-methods-and-signatures",
+    "href": "index.html#chapter-3.-julia-functions-methods-and-signatures",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 3. Julia: Functions, methods, and signatures",
+    "text": "Chapter 3. Julia: Functions, methods, and signatures",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-4.-markov-property",
+    "href": "index.html#chapter-4.-markov-property",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 4. Markov property",
+    "text": "Chapter 4. Markov property",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
+    "href": "index.html#chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 5. Pathogen fitness as a function of virulence (Frank, 1996)",
+    "text": "Chapter 5. Pathogen fitness as a function of virulence (Frank, 1996)",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-6.-probabilty-distributionsessential-concepts",
+    "href": "index.html#chapter-6.-probabilty-distributionsessential-concepts",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 6. Probabilty distributions–Essential concepts",
+    "text": "Chapter 6. Probabilty distributions–Essential concepts",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-7.-pseudo-random-number-generators",
+    "href": "index.html#chapter-7.-pseudo-random-number-generators",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 7. Pseudo-random number generators",
+    "text": "Chapter 7. Pseudo-random number generators",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-8.-pseudo-random-number-generators-best-practices",
+    "href": "index.html#chapter-8.-pseudo-random-number-generators-best-practices",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 8. Pseudo-random number generators: best practices",
+    "text": "Chapter 8. Pseudo-random number generators: best practices",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "href": "index.html#chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 9. Pseudo-random number generators: continuous values from discrete machines",
+    "text": "Chapter 9. Pseudo-random number generators: continuous values from discrete machines",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "index.html#chapter-10.-virulence-transmission-trade-off-frank-1996",
+    "href": "index.html#chapter-10.-virulence-transmission-trade-off-frank-1996",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "Chapter 10. Virulence-transmission trade-off (Frank, 1996)",
+    "text": "Chapter 10. Virulence-transmission trade-off (Frank, 1996)\nNo matching items",
+    "crumbs": [
+      "(Just enough) Julia for scientific informatics, modeling, and reasoning"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia--environments--global-vs-project.html",
+    "href": "content/02_primers/julia--environments--global-vs-project.html",
+    "title": "Julia – Environments – Global vs project",
+    "section": "",
+    "text": "Global installs are convenient, with packages available to any Julia program you run. Some workflows benefit from a “heavy” global environment with most common packages installed there DataFrames.jl, CSV.jl, XLSX.jl, Makie.jl, Distributions.jl and universally available to every project, with project-specific installs limited to specialized needs.\nOn the other hand, the lack of isolation between global and project-specific environments can result in globally-installed packages leaking into project tests, dependency chains, and so on. Workflows incorporating software engineering best practices typically benefit from having heavy (and heavily siloed) project environments, with very small global environments.\nI prefer and recommend the latter approach, not just due to my software developer vocation, but also for robustness and replicability.\nOne way to achieve both the convenience of a global with just a little more friction is to created a dedicated scratch environment into which you can dump all the commonly used packages useful for many tasks and workflows before anything “escalates” into a fully-siloed project.\nalias jc='julia --project=~/.julia-gpc`\nThis, as a full-fledged isolated environment, then gains the benefit of actually being able to be loaded up with useful packages, from fundamentals (e.g., DataFrames.jl, CSV, etc.) to more specialized domain-specific yet project-general ones (e.g. visualization libraries).\n\n\n\n Back to top",
+    "crumbs": [
+      "Primers",
+      "Julia -- Environments -- Global vs project"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia--functions-methods-and-signatures.html",
+    "href": "content/02_primers/julia--functions-methods-and-signatures.html",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "",
+    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia--functions-methods-and-signatures.html#functions",
+    "href": "content/02_primers/julia--functions-methods-and-signatures.html#functions",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "",
+    "text": "In Julia, a function is a operation that can accept inputs and returns outputs. A function of a particular name (e.g. range, rand, my_custom_function) may have a number of different methods, or implementation that are distinguished by the pattern of arguments the function takes (called the signature of the function).",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia--functions-methods-and-signatures.html#methods",
+    "href": "content/02_primers/julia--functions-methods-and-signatures.html#methods",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "2 Methods",
+    "text": "2 Methods\nA method is a specific implementation of that function for particular input types or argument combinations. When you call rand(), rand(Int), or rand(1:6), you are calling different methods of the same function rand. Julia automatically selects the appropriate method based on the types and number of arguments you provide, as long as someone (the Julia programmers, package programmers, or yourself) has written a function that takes combination of arguments, a mechanism called multiple dispatch.",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/julia--functions-methods-and-signatures.html#signatures",
+    "href": "content/02_primers/julia--functions-methods-and-signatures.html#signatures",
+    "title": "Julia: Functions, methods, and signatures",
+    "section": "3 Signatures",
+    "text": "3 Signatures\nDifferent methods of a functions are distiguished by their signature, which is the particular number (“arity”), order, and type of arguments: e.g.\n\nfoo(a, b)\nfoo(a::Int, b::String, c::Float64)\nfoo(a::Float64, b::Int)\n\nNote that the names of the arguments do not matter, and the following all have the same signature:\n\nfoo(a::Int, b::Float64)\nfoo(first_input::Int, second_input::Float64)",
+    "crumbs": [
+      "Primers",
+      "Julia: Functions, methods, and signatures"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-4.-julia-environments-global-vs-project",
+    "href": "content/02_primers/index.html#chapter-4.-julia-environments-global-vs-project",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-5.-julia-functions-methods-and-signatures",
+    "href": "content/02_primers/index.html#chapter-5.-julia-functions-methods-and-signatures",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-6.-markov-property",
+    "href": "content/02_primers/index.html#chapter-6.-markov-property",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-7.-probabilty-distributionsessential-concepts",
+    "href": "content/02_primers/index.html#chapter-7.-probabilty-distributionsessential-concepts",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-8.-pseudo-random-number-generators",
+    "href": "content/02_primers/index.html#chapter-8.-pseudo-random-number-generators",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-9.-pseudo-random-number-generators-best-practices",
+    "href": "content/02_primers/index.html#chapter-9.-pseudo-random-number-generators-best-practices",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences",
+    "crumbs": [
+      "Primers"
+    ]
+  },
+  {
+    "objectID": "content/02_primers/index.html#chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "href": "content/02_primers/index.html#chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines",
+    "title": "Primers",
+    "section": "",
+    "text": "NoteDetails\n\n\n\n\n\n\n\n\nSynopsis\nRequirements\nReferences\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Primers"
     ]
   }
 ]

@@ -115,15 +115,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -178,16 +178,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Introduction</span></span>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Introduction</span></span>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/01_practicals/index.html" class="sidebar-item-text sidebar-link">
@@ -258,7 +258,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/02_primers/julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/02_primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environments – Global vs project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/02_primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
   </div>
 </li>
@@ -305,11 +311,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#what-is-tabular-data" id="toc-what-is-tabular-data" class="nav-link active" data-scroll-target="#what-is-tabular-data"><span class="header-section-number">1</span> What is tabular data?</a></li>
-  <li><a href="#setting-up-your-julia-environment-for-tabular-data" id="toc-setting-up-your-julia-environment-for-tabular-data" class="nav-link" data-scroll-target="#setting-up-your-julia-environment-for-tabular-data"><span class="header-section-number">2</span> Setting up your Julia environment for tabular data</a></li>
-  <li><a href="#file-formats-for-tabular-data" id="toc-file-formats-for-tabular-data" class="nav-link" data-scroll-target="#file-formats-for-tabular-data"><span class="header-section-number">3</span> File formats for tabular data</a>
+  <li><a href="#file-formats-for-tabular-data" id="toc-file-formats-for-tabular-data" class="nav-link" data-scroll-target="#file-formats-for-tabular-data"><span class="header-section-number">2</span> File formats for tabular data</a>
   <ul class="collapse">
-  <li><a href="#csv-and-its-variants" id="toc-csv-and-its-variants" class="nav-link" data-scroll-target="#csv-and-its-variants"><span class="header-section-number">3.1</span> CSV and its variants</a></li>
-  <li><a href="#excel-files" id="toc-excel-files" class="nav-link" data-scroll-target="#excel-files"><span class="header-section-number">3.2</span> Excel files</a></li>
+  <li><a href="#csv-and-its-variants" id="toc-csv-and-its-variants" class="nav-link" data-scroll-target="#csv-and-its-variants"><span class="header-section-number">2.1</span> CSV and its variants</a></li>
+  <li><a href="#excel-files" id="toc-excel-files" class="nav-link" data-scroll-target="#excel-files"><span class="header-section-number">2.2</span> Excel files</a></li>
+  </ul></li>
+  <li><a href="#setting-up-your-julia-environment-for-tabular-data" id="toc-setting-up-your-julia-environment-for-tabular-data" class="nav-link" data-scroll-target="#setting-up-your-julia-environment-for-tabular-data"><span class="header-section-number">3</span> Setting up your Julia environment for tabular data</a>
+  <ul class="collapse">
+  <li><a href="#install-globally" id="toc-install-globally" class="nav-link" data-scroll-target="#install-globally"><span class="header-section-number">3.1</span> Install globally</a></li>
+  <li><a href="#install-for-a-project" id="toc-install-for-a-project" class="nav-link" data-scroll-target="#install-for-a-project"><span class="header-section-number">3.2</span> Install for a project</a></li>
   </ul></li>
   <li><a href="#the-dataframe-type" id="toc-the-dataframe-type" class="nav-link" data-scroll-target="#the-dataframe-type"><span class="header-section-number">4</span> The <code>DataFrame</code> type</a>
   <ul class="collapse">
@@ -448,59 +458,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Three rows, four columns. Each row is one specimen; each column is one thing we recorded about every specimen.</p>
 </section>
-<section id="setting-up-your-julia-environment-for-tabular-data" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="setting-up-your-julia-environment-for-tabular-data"><span class="header-section-number">2</span> Setting up your Julia environment for tabular data</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="Installing DataFrames.jl (and CSV.jl, XLSX.jl)">
+<section id="file-formats-for-tabular-data" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="file-formats-for-tabular-data"><span class="header-section-number">2</span> File formats for tabular data</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample files in different formats">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Installing DataFrames.jl (and CSV.jl, XLSX.jl)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Before <code>using DataFrames</code> will work, the package must be installed in your Julia environment. Installation is done through Julia’s built-in package manager, <code>Pkg</code>.</p>
-<section id="install-globally" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="install-globally"><span class="header-section-number">2.1</span> Install globally</h3>
-<p>A global install makes the package available in any Julia session on your machine, regardless of which directory you are in. This is convenient for packages you use constantly — <code>DataFrames</code>, <code>CSV</code>, and <code>XLSX</code> are good candidates.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>([<span class="st">"DataFrames"</span>, <span class="st">"CSV"</span>, <span class="st">"XLSX"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You only need to do this once per Julia version. After installation, <code>using DataFrames</code> will work in any session.</p>
-</section>
-<section id="install-for-a-project" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="install-for-a-project"><span class="header-section-number">2.2</span> Install for a project</h3>
-<p>If you are working inside a project directory — one that contains a <code>Project.toml</code> file — activate the project environment first, then add the packages. This records the dependency in <code>Project.toml</code> and pins exact versions in <code>Manifest.toml</code>, so anyone who clones the project gets the same package versions you used.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"."</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>([<span class="st">"DataFrames"</span>, <span class="st">"CSV"</span>, <span class="st">"XLSX"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Once the environment is active, all subsequent <code>Pkg</code> operations in that session apply to the project rather than to the global environment.</p>
-</section>
-</div>
-</div>
-</section>
-<section id="file-formats-for-tabular-data" class="level2 page-columns page-full" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="file-formats-for-tabular-data"><span class="header-section-number">3</span> File formats for tabular data</h2>
-
-<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled" title="Sample files">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Sample files
+<span class="screen-reader-only">Note</span>Sample files in different formats
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Tab-separated values (“TSV”, with extension <code>.tsv</code>): <a href="_attachments/specimens_10.tsv">specimens_10.tsv</a></li>
-<li>Comma-separated values (“CSV”, with extension <code>.csv</code>): <a href="_attachments/specimens_10.csv">specimens_10.csv</a></li>
-<li>Excel: <a href="../../../_attachments/specimens_10.xlsx">specimens_10.xlsx</a></li>
+<li>Comma-separated value (“CSV”) files, with extension <code>.csv</code>: <a href="../../../_attachments/specimens_10.csv">specimens_10.csv</a></li>
+<li>Tab-separated values (“TSV”) files, with extension <code>.tsv</code>: <a href="../../../_attachments/specimens_10.tsv">specimens_10.tsv</a></li>
+<li>Excel files: <a href="../../../_attachments/specimens_10.xlsx">specimens_10.xlsx</a></li>
 </ul>
 </div>
-</div></div><p>Tabular datasets are stored in a variety of file formats. The format you receive will determine which Julia function you use to load it, so it is worth being able to identify them.</p>
-<section id="csv-and-its-variants" class="level3 page-columns page-full" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="csv-and-its-variants"><span class="header-section-number">3.1</span> CSV and its variants</h3>
+</div>
+<p>Tabular datasets are stored in a variety of file formats. The format you receive will determine which Julia function you use to load it, so it is worth being able to identify them.</p>
+<section id="csv-and-its-variants" class="level3 page-columns page-full" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="csv-and-its-variants"><span class="header-section-number">2.1</span> CSV and its variants</h3>
 <p>The most common plain-text format for tabular data is <strong>CSV</strong> (comma-separated values). A CSV file stores the table as lines of text. The first line is typically a <em>header</em> listing the column names; every subsequent line is one row of data. Values within each line are separated by a <em>delimiter</em> — most often a comma (<code>,</code>), giving the format its name, though tabs (<code>\t</code>) and semicolons (<code>;</code>) are also common.</p>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled" title="Inspecting a CSV file directly">
@@ -514,13 +493,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>Because CSV files are plain text, you can read them in any text editor or print their first few lines in the shell:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> specimens.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-5</span> specimens.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or in Julia:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">open</span>(<span class="st">"specimens.csv"</span>) <span class="cf">do</span> f</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="fu">readline</span>(f))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">open</span>(<span class="st">"specimens.csv"</span>) <span class="cf">do</span> f</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">println</span>(<span class="fu">readline</span>(f))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is useful for confirming the delimiter, checking whether there is a header row, and spotting any obvious formatting issues before you try to parse the file.</p>
 </div>
 </div></div><p>A CSV file corresponding to the table above would look like this:</p>
@@ -533,14 +512,36 @@ BM_003,Mus musculus,18.7,2020</code></pre>
 BM_001⟶Peromyscus maniculatus⟶21.4⟶2019</code></pre>
 <p>Both extensions — <code>.csv</code> and <code>.tsv</code> — are strong signals of the format, but always confirm by opening the file.</p>
 </section>
-<section id="excel-files" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="excel-files"><span class="header-section-number">3.2</span> Excel files</h3>
+<section id="excel-files" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="excel-files"><span class="header-section-number">2.2</span> Excel files</h3>
 <p>Excel workbooks (<code>.xlsx</code>, and the older <code>.xls</code>) store tables in a <em>binary</em> format: you cannot read them as plain text. They can contain multiple <em>worksheets</em> in a single file. When working with Excel data in Julia, you will need to specify both the file path and which worksheet you want.</p>
+</section>
+</section>
+<section id="setting-up-your-julia-environment-for-tabular-data" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="setting-up-your-julia-environment-for-tabular-data"><span class="header-section-number">3</span> Setting up your Julia environment for tabular data</h2>
+<p>Before we can work with tabular data, we need to install the <code>DataFrames.jl</code>, which gives us the <code>DataFrame</code> object type, In addition, we will install <code>CSV.jl</code> and <code>XLSX.jl</code> to allow us to access data stored in some common file formats. Installation is done through Julia’s built-in package manager, <code>Pkg</code>.</p>
+<p>Installations can be done either globally, across your entire Julia ecosystem, or restricted to specific project environments.</p>
+<section id="install-globally" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="install-globally"><span class="header-section-number">3.1</span> Install globally</h3>
+<p>A global install makes the package available in any Julia session on your machine, regardless of which directory you are in or which project environment you have activated.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>([<span class="st">"DataFrames"</span>, <span class="st">"CSV"</span>, <span class="st">"XLSX"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You only need to do this once per Julia version. After installation, <code>using DataFrames</code> will work in any session.</p>
+</section>
+<section id="install-for-a-project" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="install-for-a-project"><span class="header-section-number">3.2</span> Install for a project</h3>
+<p>If you are working inside a project directory — one that contains a <code>Project.toml</code> file — activate the project environment first, then add the packages. This records the dependency in <code>Project.toml</code> and pins exact versions in <code>Manifest.toml</code>, so anyone who clones the project gets the same package versions you used.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">activate</span>(<span class="st">"."</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>([<span class="st">"DataFrames"</span>, <span class="st">"CSV"</span>, <span class="st">"XLSX"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Once the environment is active, all subsequent <code>Pkg</code> operations in that session apply to the project rather than to the global environment.</p>
+<p>:::</p>
 </section>
 </section>
 <section id="the-dataframe-type" class="level2 page-columns page-full" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="the-dataframe-type"><span class="header-section-number">4</span> The <code>DataFrame</code> type</h2>
-<p>In Julia, the standard representation of a data table is a <code>DataFrame</code> object from the <code>DataFrames</code> package. A <code>DataFrame</code> holds a collection of named columns, where each column is a typed <code>Vector</code>. This means every value in a given column must be of the same type (all integers, all floating-point numbers, all strings, and so on), but different columns can have different types — exactly as in a real dataset.</p>
+<p>In Julia, the standard representation of a data table is a <code>DataFrame</code> object from the <code>DataFrames</code> package.</p>
+<p>A <code>DataFrame</code> holds a collection of named columns, where each column is a typed <code>Vector</code>. This means every value in a given column must be of the same type (all integers, all floating-point numbers, all strings, and so on), but different columns can have different types — exactly as in a real dataset.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="creating-a-dataframe-manually-from-column-vectors" class="level3 page-columns page-full" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="creating-a-dataframe-manually-from-column-vectors"><span class="header-section-number">4.1</span> Creating a <code>DataFrame</code> manually from column vectors</h3>
@@ -1477,35 +1478,6 @@ BM_001⟶Peromyscus maniculatus⟶21.4⟶2019</code></pre>
 <li>From that filtered subset, select only <code>bill_length_mm</code>, <code>bill_depth_mm</code>, and <code>body_mass_g</code>.</li>
 <li>Add a new column, <code>bill_ratio</code>, defined as <code>bill_length_mm / bill_depth_mm</code>.</li>
 </ol>
-</div></details>
-</div>
-<hr>
-<div id="curriculum-exercise-3" class="curriculum-exercise">
-<p></p><details class="curriculum-exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 3</strong></summary><div><strong>Advanced</strong><p></p>
-<p>The <code>describe</code> function returns a <code>DataFrame</code> itself. Use this fact to:</p>
-<ol type="1">
-<li>Load any dataset with at least five columns.</li>
-<li>Call <code>describe</code> on it.</li>
-<li>Filter the resulting summary <code>DataFrame</code> to show only columns whose <code>eltype</code> is <code>Float64</code>.</li>
-</ol>
-<p><em>Hint:</em> the <code>eltype</code> column of the <code>describe</code> output contains the Julia type of each column. You can match against it using <code>==</code> or <code>isa</code>.</p>
-</div></details>
-</div>
-<hr>
-<div id="curriculum-exercise-4" class="curriculum-exercise">
-<p></p><details class="curriculum-exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 4</strong></summary><div><strong>Advanced</strong><p></p>
-<p>Write a function <code>load_table</code> with the following signature:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">load_table</span>(path<span class="op">::</span><span class="dt">String</span>)<span class="op">::</span><span class="dt">DataFrame</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The function should:</p>
-<ul>
-<li>Inspect the file extension of <code>path</code>.</li>
-<li>If the extension is <code>.csv</code> or <code>.tsv</code>, read the file with <code>CSV.read</code>, inferring the delimiter automatically from the extension.</li>
-<li>If the extension is <code>.xlsx</code>, read the <em>first</em> worksheet with <code>XLSX.readtable</code>.</li>
-<li>For any other extension, throw an <code>ArgumentError</code> with an informative message.</li>
-</ul>
-<p><em>Hint:</em> use <code>splitext(path)</code> to separate the base filename from its extension, and a series of <code>if</code>/<code>elseif</code>/<code>else</code> branches on the extension string.</p>
 </div></details>
 </div>
 
