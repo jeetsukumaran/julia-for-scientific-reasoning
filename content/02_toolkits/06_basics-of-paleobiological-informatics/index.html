@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../content/A1_primers/index.html" rel="next">
+<link href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/introduction-to-paleodb.html" rel="next">
 <link href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/howto.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -111,6 +111,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
@@ -120,10 +124,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #000000;
 }
 .model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -255,23 +255,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Basics of paleobiological data acquisition and preparation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Basics of paleobiological data acquisition and preparation</span></a>
+  <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/introduction-to-paleodb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/A1_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
@@ -348,7 +359,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link" data-scroll-target="#setting-up-the-environment"><span class="header-section-number">2</span> Setting up the environment</a></li>
   <li><a href="#exploring-the-package" id="toc-exploring-the-package" class="nav-link" data-scroll-target="#exploring-the-package"><span class="header-section-number">3</span> Exploring the package</a></li>
   <li><a href="#acquiring-occurrence-data" id="toc-acquiring-occurrence-data" class="nav-link" data-scroll-target="#acquiring-occurrence-data"><span class="header-section-number">4</span> Acquiring occurrence data</a></li>
-  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data"><span class="header-section-number">5</span> Inspecting the data</a></li>
+  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data"><span class="header-section-number">5</span> Inspecting the data</a>
+  <ul class="collapse">
+  <li><a href="#list-the-columns-of-the-dataset" id="toc-list-the-columns-of-the-dataset" class="nav-link" data-scroll-target="#list-the-columns-of-the-dataset"><span class="header-section-number">5.1</span> List the columns of the dataset</a></li>
+  <li><a href="#detailed-summary-of-the-dataset-structure" id="toc-detailed-summary-of-the-dataset-structure" class="nav-link" data-scroll-target="#detailed-summary-of-the-dataset-structure"><span class="header-section-number">5.2</span> Detailed summary of the dataset structure</a></li>
+  </ul></li>
   <li><a href="#data-quality-assessment" id="toc-data-quality-assessment" class="nav-link" data-scroll-target="#data-quality-assessment"><span class="header-section-number">6</span> Data quality assessment</a>
   <ul class="collapse">
   <li><a href="#taxonomic-resolution" id="toc-taxonomic-resolution" class="nav-link" data-scroll-target="#taxonomic-resolution"><span class="header-section-number">6.1</span> Taxonomic resolution</a></li>
@@ -3575,6 +3590,9 @@ occs = pbdb_occurrences(
 <section id="inspecting-the-data" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="inspecting-the-data"><span class="header-section-number">5</span> Inspecting the data</h2>
 <p>Before doing anything else, examine what came back.</p>
+<section id="list-the-columns-of-the-dataset" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="list-the-columns-of-the-dataset"><span class="header-section-number">5.1</span> List the columns of the dataset</h3>
+<p>The function <code>foreach</code> applies the first argument, a function, to every element of the second argument. Here the first argument is <code>println</code> and the second argument is <code>names(occs)</code>. The function call <code>names(occs)</code> returns all the column names of the <code>DataFrame</code> object passed to it, <code>occs</code>. Put altogether: the <code>names(occs)</code> call returns an array of column names, and the <code>foreach</code> function then applies the <code>println</code> function to each element of this array, which prints the column name out to the standard output. The end result is each column name in the <code>occs</code> <code>DataFrame</code> being printed on its own line.</p>
 <div id="16" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">foreach</span>(println, <span class="fu">names</span>(occs))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -3715,750 +3733,12 @@ thickness
 reinforcement</code></pre>
 </div>
 </div>
-<div id="18" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">first</span>(occs, <span class="fl">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div><div style="float: left;"><span>5×135 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">35 columns omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
-<table class="data-frame caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">occurrence_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">reid_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">flags</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">collection_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">identified_name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">identified_rank</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">identified_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">difference</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">accepted_name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">accepted_attr</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">accepted_rank</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">accepted_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">early_interval</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">late_interval</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">max_ma</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">min_ma</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">ref_author</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">ref_pubyr</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">reference_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">phylum</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">class</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">order</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">family</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">genus</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">plant_organ</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">abund_value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">abund_unit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lng</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lat</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">occurrence_comments</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">collection_name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">container_no</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">collection_aka</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">cc</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">state</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">county</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">latlng_basis</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">latlng_precision</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">altitude_value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">altitude_unit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">geogscale</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">geogcomments</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">paleomodel</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">geoplate</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">paleoage</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">paleolng</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">paleolat</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">cc_1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">protected</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">direct_ma_value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">direct_ma_error</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">direct_ma_unit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">direct_ma_method</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">max_ma_value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">max_ma_error</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">max_ma_unit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">max_ma_method</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">min_ma_value</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">min_ma_error</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">min_ma_unit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">min_ma_method</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">formation</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">geological_group</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">member</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">stratscale</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">zone</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">zone_type</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">localsection</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">localbed</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">localbedunit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">localorder</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">regionalsection</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">regionalbed</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">regionalbedunit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">regionalorder</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">stratcomments</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithdescript</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithology1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithadj1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithification1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">minor_lithology1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">fossilsfrom1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithology2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithadj2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">lithification2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">minor_lithology2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">fossilsfrom2</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">environment</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">tectonic_setting</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">geology_comments</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">size_classes</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">articulated_parts</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">associated_parts</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">common_body_parts</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rare_body_parts</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">feed_pred_traces</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">artifacts</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">component_comments</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">pres_mode</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">preservation_quality</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">⋯</th>
-</tr>
-<tr class="subheader headerLastRow even">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Int64}">Int64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, String}">String?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String3">String3</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String7">String7</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Int64}">Int64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String7">String7</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String3">String3</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String3">String3</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String3}">String3?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String3}">String3?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String3}">String3?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, Float64}">Float64?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String3}">String3?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, String}">String?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String3}">String3?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String1">String1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String31">String31</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String1">String1</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String31}">String31?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, String}">String?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String15}">String15?</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Missing">Missing</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">String7?</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th" title="Union{Missing, InlineStrings.String7}">⋯</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">occ:117266</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">col:9070</td>
-<td style="text-align: left;">Cynodictis lacustris</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:349281</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Cynodictis lacustris</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:349281</td>
-<td style="text-align: left;">Late Eocene</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">37.71</td>
-<td style="text-align: right;">33.9</td>
-<td style="text-align: left;">Hooker 1994</td>
-<td style="text-align: right;">1994</td>
-<td style="text-align: left;">ref:11154</td>
-<td style="text-align: left;">Chordata</td>
-<td style="text-align: left;">Mammalia</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">Amphicyonidae</td>
-<td style="text-align: left;">Cynodictis</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">-1.0856</td>
-<td style="text-align: right;">50.6772</td>
-<td style="text-align: left;">move</td>
-<td style="text-align: left;">Howgate Bay, Bembridge Marls, Isle of Wight</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">UK</td>
-<td style="text-align: left;">England</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">stated in text</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">outcrop</td>
-<td style="text-align: left;">Howgate Bay, southern end (National Grid Reference SZ 647868)</td>
-<td style="text-align: left;">gplates</td>
-<td style="text-align: left;">315</td>
-<td style="text-align: left;">mid</td>
-<td style="text-align: right;">4.41</td>
-<td style="text-align: right;">44.84</td>
-<td style="text-align: left;">UK</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Bembridge Marls</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">formation</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">Daley calls this Division WH VI (Lattorfian), per his 1973 publication. Most other authors consider this unit to be Upper Eocene.</td>
-<td style="text-align: left;">a thin grey marl, interbedded with poorly fossiliferous, colour mottled, red and green muds</td>
-<td style="text-align: left;">marl</td>
-<td style="text-align: left;">gray</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">mudstone</td>
-<td style="text-align: left;">shelly/skeletal,green,red</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">macrofossils</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">body</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">⋯</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">occ:137493</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">col:11601</td>
-<td style="text-align: left;">Enaliarctos mealsi n. gen. n. sp.</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:71871</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Enaliarctos mealsi</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:71871</td>
-<td style="text-align: left;">Chattian</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">27.3</td>
-<td style="text-align: right;">23.04</td>
-<td style="text-align: left;">Mitchell and Tedford 1973</td>
-<td style="text-align: right;">1973</td>
-<td style="text-align: left;">ref:4383</td>
-<td style="text-align: left;">Chordata</td>
-<td style="text-align: left;">Mammalia</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">NO_FAMILY_SPECIFIED</td>
-<td style="text-align: left;">Enaliarctos</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">specimens</td>
-<td style="text-align: right;">-118.848</td>
-<td style="text-align: right;">35.4928</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Pyramid Hill Sand Member grit zone</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">LACMVP Loc. 1603, 1626, 1627; UCMP Loc. V-7032</td>
-<td style="text-align: left;">US</td>
-<td style="text-align: left;">California</td>
-<td style="text-align: left;">Kern</td>
-<td style="text-align: left;">based on nearby landmark</td>
-<td style="text-align: left;">seconds</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">local area</td>
-<td style="text-align: left;">low hills in a northwest southeast trending belt between the Sierra Nevada and the area of the city of Bakersfield; LACM 1626 is in the "center of SE1/4 of Sect 15, T 28 S, R 29 E" (Howard 1969: basis of coordinate)</td>
-<td style="text-align: left;">gplates</td>
-<td style="text-align: left;">130</td>
-<td style="text-align: left;">mid</td>
-<td style="text-align: right;">-105.16</td>
-<td style="text-align: right;">39.96</td>
-<td style="text-align: left;">US</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Jewett</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Pyramid Hill</td>
-<td style="text-align: left;">bed</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">grit zone; age assignments vary; age for this collection originally listed as Chattian after Scheirer and Magoon, 2007 and Barboza et al., 2017; but Aquitanian after discussion in Shimada et al. 2014</td>
-<td style="text-align: left;">contains pebbles, rounded black chert grains, angular quartz clasts, and is referred to as the ""grit zone"" by some geologists</td>
-<td style="text-align: left;">sandstone</td>
-<td style="text-align: left;">concretionary</td>
-<td style="text-align: left;">lithified</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">marine indet.</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">macrofossils</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">body,concretion,permineralized,original phosphate</td>
-<td style="text-align: left;">good</td>
-<td style="text-align: right;">⋯</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">occ:137495</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">col:11601</td>
-<td style="text-align: left;">Pinnarctidion bishopi</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:72007</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Pinnarctidion bishopi</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:72007</td>
-<td style="text-align: left;">Chattian</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">27.3</td>
-<td style="text-align: right;">23.04</td>
-<td style="text-align: left;">Barnes 1979</td>
-<td style="text-align: right;">1979</td>
-<td style="text-align: left;">ref:4175</td>
-<td style="text-align: left;">Chordata</td>
-<td style="text-align: left;">Mammalia</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">NO_FAMILY_SPECIFIED</td>
-<td style="text-align: left;">Pinnarctidion</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">specimens</td>
-<td style="text-align: right;">-118.848</td>
-<td style="text-align: right;">35.4928</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Pyramid Hill Sand Member grit zone</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">LACMVP Loc. 1603, 1626, 1627; UCMP Loc. V-7032</td>
-<td style="text-align: left;">US</td>
-<td style="text-align: left;">California</td>
-<td style="text-align: left;">Kern</td>
-<td style="text-align: left;">based on nearby landmark</td>
-<td style="text-align: left;">seconds</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">local area</td>
-<td style="text-align: left;">low hills in a northwest southeast trending belt between the Sierra Nevada and the area of the city of Bakersfield; LACM 1626 is in the "center of SE1/4 of Sect 15, T 28 S, R 29 E" (Howard 1969: basis of coordinate)</td>
-<td style="text-align: left;">gplates</td>
-<td style="text-align: left;">130</td>
-<td style="text-align: left;">mid</td>
-<td style="text-align: right;">-105.16</td>
-<td style="text-align: right;">39.96</td>
-<td style="text-align: left;">US</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Jewett</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Pyramid Hill</td>
-<td style="text-align: left;">bed</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">grit zone; age assignments vary; age for this collection originally listed as Chattian after Scheirer and Magoon, 2007 and Barboza et al., 2017; but Aquitanian after discussion in Shimada et al. 2014</td>
-<td style="text-align: left;">contains pebbles, rounded black chert grains, angular quartz clasts, and is referred to as the ""grit zone"" by some geologists</td>
-<td style="text-align: left;">sandstone</td>
-<td style="text-align: left;">concretionary</td>
-<td style="text-align: left;">lithified</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">marine indet.</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">macrofossils</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">body,concretion,permineralized,original phosphate</td>
-<td style="text-align: left;">good</td>
-<td style="text-align: right;">⋯</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">occ:138737</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">col:11798</td>
-<td style="text-align: left;">Indarctos sinensis</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:90198</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Indarctos atticus</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">species</td>
-<td style="text-align: left;">txn:90196</td>
-<td style="text-align: left;">Tortonian</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">11.63</td>
-<td style="text-align: right;">7.246</td>
-<td style="text-align: left;">Qi 1985</td>
-<td style="text-align: right;">1985</td>
-<td style="text-align: left;">ref:11437</td>
-<td style="text-align: left;">Chordata</td>
-<td style="text-align: left;">Mammalia</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">Ursidae</td>
-<td style="text-align: left;">Indarctos</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">102.067</td>
-<td style="text-align: right;">25.0167</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Lufeng</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Yunnan</td>
-<td style="text-align: left;">Lufeng</td>
-<td style="text-align: left;">stated in text</td>
-<td style="text-align: left;">minutes</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">outcrop</td>
-<td style="text-align: left;">Located about 9 km north of Lufeng, at the southern side of Miaoshanpo-Mountain; IVPP-Point 75033, called section D.</td>
-<td style="text-align: left;">gplates</td>
-<td style="text-align: left;">611</td>
-<td style="text-align: left;">mid</td>
-<td style="text-align: right;">101.5</td>
-<td style="text-align: right;">23.6</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">member</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">Quarry sequence is divided into 8 beds (numbered from top), in the Xi River Basin north of Lufeng, China. These unconformably overly Mesozoic sediments. No Formation names are given.\\r\\nHan 1985: "Its geological age is Late Miocene, equivalent to the Turolian of European sequence of land mammal ages." Qi 1986: Age "8 Ma or perhaps a bit later"</td>
-<td style="text-align: left;">Quarry section at Lufeng is 8 m thick. Detailed microstratigraphy given in Qi 1985 and Badgley et al 1988.</td>
-<td style="text-align: left;">lignite</td>
-<td style="text-align: left;">black</td>
-<td style="text-align: left;">unlithified</td>
-<td style="text-align: left;">sandy</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">mudstone</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">unlithified</td>
-<td style="text-align: left;">calcareous</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">fluvial-lacustrine indet.</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">macrofossils,mesofossils,microfossils</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">body</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">⋯</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
-<td style="text-align: left;">occ:138738</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">col:11798</td>
-<td style="text-align: left;">Protursus sp.</td>
-<td style="text-align: left;">genus</td>
-<td style="text-align: left;">txn:116932</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">Protursus</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">genus</td>
-<td style="text-align: left;">txn:116932</td>
-<td style="text-align: left;">Tortonian</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right;">11.63</td>
-<td style="text-align: right;">7.246</td>
-<td style="text-align: left;">Qi 1985</td>
-<td style="text-align: right;">1985</td>
-<td style="text-align: left;">ref:11437</td>
-<td style="text-align: left;">Chordata</td>
-<td style="text-align: left;">Mammalia</td>
-<td style="text-align: left;">Carnivora</td>
-<td style="text-align: left;">Ailuridae</td>
-<td style="text-align: left;">Protursus</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">102.067</td>
-<td style="text-align: right;">25.0167</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Lufeng</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left;">Yunnan</td>
-<td style="text-align: left;">Lufeng</td>
-<td style="text-align: left;">stated in text</td>
-<td style="text-align: left;">minutes</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;">outcrop</td>
-<td style="text-align: left;">Located about 9 km north of Lufeng, at the southern side of Miaoshanpo-Mountain; IVPP-Point 75033, called section D.</td>
-<td style="text-align: left;">gplates</td>
-<td style="text-align: left;">611</td>
-<td style="text-align: left;">mid</td>
-<td style="text-align: right;">101.5</td>
-<td style="text-align: right;">23.6</td>
-<td style="text-align: left;">CN</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">member</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">Quarry sequence is divided into 8 beds (numbered from top), in the Xi River Basin north of Lufeng, China. These unconformably overly Mesozoic sediments. No Formation names are given.\\r\\nHan 1985: "Its geological age is Late Miocene, equivalent to the Turolian of European sequence of land mammal ages." Qi 1986: Age "8 Ma or perhaps a bit later"</td>
-<td style="text-align: left;">Quarry section at Lufeng is 8 m thick. Detailed microstratigraphy given in Qi 1985 and Badgley et al 1988.</td>
-<td style="text-align: left;">lignite</td>
-<td style="text-align: left;">black</td>
-<td style="text-align: left;">unlithified</td>
-<td style="text-align: left;">sandy</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">mudstone</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">unlithified</td>
-<td style="text-align: left;">calcareous</td>
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">fluvial-lacustrine indet.</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">macrofossils,mesofossils,microfossils</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: left; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: right; font-style: italic;">missing</td>
-<td style="text-align: left;">body</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">⋯</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+</section>
+<section id="detailed-summary-of-the-dataset-structure" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="detailed-summary-of-the-dataset-structure"><span class="header-section-number">5.2</span> Detailed summary of the dataset structure</h3>
 <p><code>describe</code> gives the most useful first-look summary: column name, element type, and the number of missing values in each column.</p>
-<div id="20" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(occs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="18" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(occs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>135×7 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">110 rows omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame caption-top table table-sm table-striped small">
@@ -4750,9 +4030,13 @@ reinforcement</code></pre>
 </div>
 </div>
 </div>
+<div class="tip-callout" title="Use `show(..., allrows = true)` to show full data">
+<p>By default, Julia truncates the output being displayed in the REPL, only showing the first and last rows of large results. Use the <code>show</code> functioon with <code>allrows = true</code> keyword argument to show everything.</p>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show</span>(<span class="fu">describe</span>(occs), allrows <span class="op">=</span> <span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Pay attention to the <code>nmissing</code> column. Data from a live database rarely arrives perfectly complete. Coordinates in particular (<code>lng</code>, <code>lat</code>) are sometimes absent from older records that predate GPS-referenced collection practice, and not every occurrence is resolved to species level.</p>
 <p>It is also worth seeing how records are distributed across taxonomic ranks, since finer ranks carry more information for most analyses:</p>
-<div id="22" class="cell" data-execution_count="1">
+<div id="20" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">combine</span>(<span class="fu">groupby</span>(occs, <span class="op">:</span>accepted_rank), nrow)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>6×2 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -4806,6 +4090,7 @@ reinforcement</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="data-quality-assessment" class="level2 page-columns page-full" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="data-quality-assessment"><span class="header-section-number">6</span> Data quality assessment</h2>
 <p>Auditing the data means more than confirming that records are present — it means ensuring the data that is present meets our standards. For paleobiological occurrence data, quality has three distinct dimensions:</p>
@@ -4818,7 +4103,7 @@ reinforcement</code></pre>
 <section id="taxonomic-resolution" class="level3 page-columns page-full" data-number="6.1">
 <h3 data-number="6.1" class="anchored" data-anchor-id="taxonomic-resolution"><span class="header-section-number">6.1</span> Taxonomic resolution</h3>
 <p>Many PBDB occurrences are identified only to genus, family, or higher. For analyses that require species-level identities, those records add noise rather than signal. We define a filter that accepts occurrences at species and subspecies rank:</p>
-<div id="24" class="cell" data-execution_count="1">
+<div id="22" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>clean_taxonomy_flt <span class="op">=</span> row <span class="op">-&gt;</span> row.accepted_rank <span class="op">==</span> <span class="st">"species"</span> <span class="op">||</span> row.accepted_rank <span class="op">==</span> <span class="st">"subspecies"</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>occs_species <span class="op">=</span> <span class="fu">filter</span>(clean_taxonomy_flt, occs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -7774,7 +7059,7 @@ reinforcement</code></pre>
 <section id="chronological-precision" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="chronological-precision"><span class="header-section-number">6.2</span> Chronological precision</h3>
 <p>All PBDB columns that encode dates contain <code>_ma</code> in their names (for <em>millions of years</em>). Selecting them by regex gives a quick overview:</p>
-<div id="26" class="cell" data-execution_count="1">
+<div id="24" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>occs_species[<span class="op">:</span>, <span class="st">r"</span><span class="sc">.*</span><span class="st">_ma</span><span class="sc">.*</span><span class="st">"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>697×14 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">672 rows omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -8270,7 +7555,7 @@ reinforcement</code></pre>
 <li><strong><code>ma_error</code></strong> captures measurement uncertainty — rarely populated.</li>
 </ul>
 <p>Check the data coverage for each:</p>
-<div id="28" class="cell" data-execution_count="1">
+<div id="26" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Direct MA measurements: "</span>, <span class="fu">nrow</span>(<span class="fu">dropmissing</span>(occs_species, <span class="st">r"</span><span class="sc">.*</span><span class="st">direct_ma</span><span class="sc">.*</span><span class="st">"</span>)))</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Max MA measurements:    "</span>, <span class="fu">nrow</span>(<span class="fu">dropmissing</span>(occs_species, <span class="st">r"</span><span class="sc">.*</span><span class="st">max_ma</span><span class="sc">.*</span><span class="st">"</span>)))</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Min MA measurements:    "</span>, <span class="fu">nrow</span>(<span class="fu">dropmissing</span>(occs_species, <span class="st">r"</span><span class="sc">.*</span><span class="st">min_ma</span><span class="sc">.*</span><span class="st">"</span>)))</span>
@@ -8283,7 +7568,7 @@ MA error measurements:  0</code></pre>
 </div>
 </div>
 <p>Requiring <code>direct_ma_value</code> maximizes precision but discards the majority of records. For exploratory work, <code>min_ma</code> and <code>max_ma</code> together are the practical choice — they are present for nearly every record that has been properly entered. We retain <code>direct_ma_value</code> as well, since it is useful when available:</p>
-<div id="30" class="cell" data-execution_count="1">
+<div id="28" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>occs_with_ages <span class="op">=</span> <span class="fu">dropmissing</span>(occs_species, [<span class="op">:</span>direct_ma_value, <span class="op">:</span>max_ma, <span class="op">:</span>min_ma])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>11×135 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">35 columns omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -9652,7 +8937,7 @@ MA error measurements:  0</code></pre>
 <section id="spatial-completeness" class="level3" data-number="6.3">
 <h3 data-number="6.3" class="anchored" data-anchor-id="spatial-completeness"><span class="header-section-number">6.3</span> Spatial completeness</h3>
 <p>The PBDB provides two sets of coordinates for each collection: modern geographic coordinates and reconstructed paleocoordinates (the location of the fossil site at the time of deposition, accounting for plate movement). Check the coverage of each:</p>
-<div id="32" class="cell" data-execution_count="1">
+<div id="30" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>modern_coords <span class="op">=</span> <span class="fu">nrow</span>(<span class="fu">dropmissing</span>(occs_with_ages, [<span class="op">:</span>lng, <span class="op">:</span>lat]))</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Records with modern coordinates:    "</span>, modern_coords)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -9668,7 +8953,7 @@ Records with complete spatial data: 11</code></pre>
 </div>
 </div>
 <p>For visualization on a present-day map, modern coordinates are sufficient. For paleogeographic analyses, paleocoordinates are essential. We require both:</p>
-<div id="34" class="cell" data-execution_count="1">
+<div id="32" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>occs_clean <span class="op">=</span> <span class="fu">dropmissing</span>(occs_with_ages, [<span class="op">:</span>lng, <span class="op">:</span>lat, <span class="op">:</span>paleolng, <span class="op">:</span>paleolat])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>11×135 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">35 columns omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -11037,7 +10322,7 @@ Records with complete spatial data: 11</code></pre>
 <section id="taxonomic-diversity-after-filtering" class="level3" data-number="6.4">
 <h3 data-number="6.4" class="anchored" data-anchor-id="taxonomic-diversity-after-filtering"><span class="header-section-number">6.4</span> Taxonomic diversity after filtering</h3>
 <p>After all three quality filters, examine what diversity remains:</p>
-<div id="36" class="cell" data-execution_count="1">
+<div id="34" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>species_counts <span class="op">=</span> <span class="fu">combine</span>(<span class="fu">groupby</span>(occs_clean, <span class="op">:</span>accepted_name), nrow)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>genus_counts   <span class="op">=</span> <span class="fu">combine</span>(<span class="fu">groupby</span>(occs_clean, <span class="op">:</span>genus), nrow)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>family_counts  <span class="op">=</span> <span class="fu">combine</span>(<span class="fu">groupby</span>(occs_clean, <span class="op">:</span>family), nrow)</span>
@@ -11075,7 +10360,7 @@ Families: 4</code></pre>
 </div></div><p>The <code>dropmissing</code> function accepts an optional column list that restricts the check to only those columns — rows with <code>missing</code> in other columns are kept. This deliberate targeting is important: requiring every column to be non-missing is almost always too aggressive. In our quality assessment above, we applied it three times, each time targeting only the columns relevant to that dimension of quality.</p>
 <p>Called with no column argument, <code>dropmissing(df)</code> removes any row with a <code>missing</code> value in <em>any</em> column. Use this form only when you genuinely need a fully complete dataset.</p>
 <p>Let us confirm that our final filtered dataset is free of missing values in the columns we care about:</p>
-<div id="38" class="cell" data-execution_count="1">
+<div id="36" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(occs_clean[<span class="op">:</span>, [<span class="op">:</span>lng, <span class="op">:</span>lat, <span class="op">:</span>paleolng, <span class="op">:</span>paleolat, <span class="op">:</span>min_ma, <span class="op">:</span>max_ma]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>6×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -11173,7 +10458,7 @@ Families: 4</code></pre>
 <h2 data-number="8" class="anchored" data-anchor-id="focusing-on-a-single-family"><span class="header-section-number">8</span> Focusing on a single family</h2>
 <p>The systematic quality assessment above applies to any clade. With the pipeline established, we can now focus on a single family for the visualization work that follows. <em>Canidae</em> — the family containing wolves, foxes, and their extinct relatives — has a well-sampled fossil record extending back to the Eocene, making it a useful working example.</p>
 <p>We pull the full Canidae dataset with the <code>coords</code> and <code>class</code> show-blocks, which provide geographic coordinates and the higher classification fields we need for grouping:</p>
-<div id="40" class="cell" data-execution_count="1">
+<div id="38" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>canids <span class="op">=</span> <span class="fu">pbdb_occurrences</span>(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    base_name <span class="op">=</span> <span class="st">"Canidae"</span>,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    show      <span class="op">=</span> [<span class="st">"coords"</span>, <span class="st">"class"</span>],</span>
@@ -11919,14 +11204,14 @@ Families: 4</code></pre>
 </div>
 </div>
 </div>
-<div id="42" class="cell" data-execution_count="1">
+<div id="40" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">size</span>(canids)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>(3483, 23)</code></pre>
 </div>
 </div>
 <p>Drop rows missing either coordinate:</p>
-<div id="44" class="cell" data-execution_count="1">
+<div id="42" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>canids_geo <span class="op">=</span> <span class="fu">dropmissing</span>(canids, [<span class="op">:</span>lng, <span class="op">:</span>lat])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>3483×23 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">3458 rows omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -12667,20 +11952,20 @@ Families: 4</code></pre>
 </div>
 </div>
 </div>
-<div id="46" class="cell" data-execution_count="1">
+<div id="44" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(canids) <span class="op">-</span> <span class="fu">nrow</span>(canids_geo)   <span class="co"># rows removed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="48" class="cell" data-execution_count="1">
+<div id="46" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(canids_geo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3483</code></pre>
 </div>
 </div>
 <p>Confirm the coordinate columns are clean:</p>
-<div id="50" class="cell" data-execution_count="1">
+<div id="48" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(canids_geo[<span class="op">:</span>, [<span class="op">:</span>lng, <span class="op">:</span>lat]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>2×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -12737,7 +12022,7 @@ Families: 4</code></pre>
 <section id="examining-the-temporal-data" class="level2 page-columns page-full" data-number="9">
 <h2 data-number="9" class="anchored" data-anchor-id="examining-the-temporal-data"><span class="header-section-number">9</span> Examining the temporal data</h2>
 <p>Each occurrence record carries two age fields: <code>min_ma</code> (the minimum estimated age in millions of years, i.e.&nbsp;the younger bound) and <code>max_ma</code> (the maximum estimated age, i.e.&nbsp;the older bound). These bounds reflect the age range of the stratigraphic unit in which the fossil was found — they are not point estimates.</p>
-<div id="52" class="cell" data-execution_count="1">
+<div id="50" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(canids_geo[<span class="op">:</span>, [<span class="op">:</span>min_ma, <span class="op">:</span>max_ma, <span class="op">:</span>early_interval, <span class="op">:</span>late_interval]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>4×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -12811,7 +12096,7 @@ Families: 4</code></pre>
 </div>
 </div>
 <p>A natural summary age for plotting purposes is the midpoint of the range. We add this as a derived column using <code>transform</code>:</p>
-<div id="54" class="cell" data-execution_count="1">
+<div id="52" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>canids_geo <span class="op">=</span> <span class="fu">transform</span>(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    canids_geo,</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    [<span class="op">:</span>min_ma, <span class="op">:</span>max_ma] <span class="op">=&gt;</span> ((lo, hi) <span class="op">-&gt;</span> (lo <span class="op">.+</span> hi) <span class="op">./</span> <span class="fl">2</span>) <span class="op">=&gt;</span> <span class="op">:</span>mid_ma</span>
@@ -13597,7 +12882,7 @@ Families: 4</code></pre>
 <p>The specification <code>[:min_ma, :max_ma] =&gt; function =&gt; :mid_ma</code> tells <code>transform</code> to pass both source columns together as arguments to the function, and store the result in the new column <code>:mid_ma</code>.</p>
 <p>The function receives two vectors and returns one. Broadcasting with <code>.+</code> and <code>./</code> ensures the arithmetic is applied element-wise.</p>
 </div>
-</div></div><div id="56" class="cell" data-execution_count="1">
+</div></div><div id="54" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(canids_geo[<span class="op">:</span>, [<span class="op">:</span>min_ma, <span class="op">:</span>max_ma, <span class="op">:</span>mid_ma]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><div style="float: left;"><span>3×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
@@ -13680,7 +12965,7 @@ Families: 4</code></pre>
 </div>
 </div></div><section id="building-the-map" class="level3 page-columns page-full" data-number="10.1">
 <h3 data-number="10.1" class="anchored" data-anchor-id="building-the-map"><span class="header-section-number">10.1</span> Building the map</h3>
-<div id="58" class="cell" data-execution_count="1">
+<div id="56" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">900</span>, <span class="fl">500</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>ga <span class="op">=</span> <span class="fu">GeoAxis</span>(</span>
@@ -13726,7 +13011,7 @@ Families: 4</code></pre>
 <section id="coloring-by-age" class="level3 page-columns page-full" data-number="10.2">
 <h3 data-number="10.2" class="anchored" data-anchor-id="coloring-by-age"><span class="header-section-number">10.2</span> Coloring by age</h3>
 <p>A single color for all points treats all epochs identically. We can encode the midpoint age as a color using a continuous colormap, which reveals whether canid occurrences in different parts of the world tend to be from different time periods.</p>
-<div id="60" class="cell" data-execution_count="1">
+<div id="58" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">900</span>, <span class="fl">520</span>))</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>ga2 <span class="op">=</span> <span class="fu">GeoAxis</span>(</span>
@@ -13775,7 +13060,7 @@ Families: 4</code></pre>
 <section id="distribution-of-midpoint-ages" class="level3 page-columns page-full" data-number="11.1">
 <h3 data-number="11.1" class="anchored" data-anchor-id="distribution-of-midpoint-ages"><span class="header-section-number">11.1</span> Distribution of midpoint ages</h3>
 <p>A histogram is the natural first look at the temporal distribution. The x-axis is geological age in millions of years; note that by convention, time on paleontological plots runs <em>right to left</em> (older on the right), so that “forward in time” means moving left.</p>
-<div id="62" class="cell" data-execution_count="1">
+<div id="60" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">700</span>, <span class="fl">350</span>))</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>ax3  <span class="op">=</span> <span class="fu">Axis</span>(</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    fig3[<span class="fl">1</span>, <span class="fl">1</span>];</span>
@@ -13809,7 +13094,7 @@ Families: 4</code></pre>
 <section id="age-uncertainty" class="level3" data-number="11.2">
 <h3 data-number="11.2" class="anchored" data-anchor-id="age-uncertainty"><span class="header-section-number">11.2</span> Age uncertainty</h3>
 <p>Each record’s age is a <em>range</em> (<code>min_ma</code> to <code>max_ma</code>), not a precise date. We can visualise the spread of this uncertainty by plotting the width of each record’s age bracket:</p>
-<div id="64" class="cell" data-execution_count="1">
+<div id="62" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>canids_geo <span class="op">=</span> <span class="fu">transform</span>(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    canids_geo,</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    [<span class="op">:</span>min_ma, <span class="op">:</span>max_ma] <span class="op">=&gt;</span> ((lo, hi) <span class="op">-&gt;</span> hi <span class="op">.-</span> lo) <span class="op">=&gt;</span> <span class="op">:</span>age_range_ma</span>
@@ -14319,8 +13604,8 @@ Families: 4</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../content/A1_primers/index.html" class="pagination-link" aria-label="Primers">
-        <span class="nav-page-text">Primers</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/introduction-to-paleodb.html" class="pagination-link" aria-label="(Just enough) Julia for scientific informatics, modeling, and reasoning">
+        <span class="nav-page-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

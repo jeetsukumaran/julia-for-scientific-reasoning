@@ -22,6 +22,13 @@
     ]
   },
   {
+    "listing": "/content/02_toolkits/index.html",
+    "items": [
+      "/content/02_toolkits/06_basics-of-paleobiological-informatics/index.html",
+      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html"
+    ]
+  },
+  {
     "listing": "/content/01_foundations/index.html",
     "items": [
       "/content/01_foundations/01_orientation-and-tooling/index.html",
@@ -29,13 +36,6 @@
       "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
       "/content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html",
       "/content/01_foundations/05_basics-of-working-with-data-tables/index.html"
-    ]
-  },
-  {
-    "listing": "/content/02_toolkits/index.html",
-    "items": [
-      "/content/02_toolkits/06_basics-of-paleobiological-informatics/index.html",
-      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html"
     ]
   },
   {
