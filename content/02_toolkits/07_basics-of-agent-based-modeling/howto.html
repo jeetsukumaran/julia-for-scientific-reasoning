@@ -66,6 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" rel="next">
+<link href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,15 +108,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -155,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/index.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/howto.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -226,13 +228,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Primers</span></a>
+            <a href="../../../content/02_toolkits/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of specialized workflows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/howto.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of paleobiological data acquisition and preparation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/A1_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
@@ -327,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/index.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/howto.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</h1>
 <p class="subtitle lead">An operational learning approach to the essential computational competencies you need for your research, from ideas to publication and beyond</p>
@@ -1066,6 +1102,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/02_toolkits/07_basics-of-agent-based-modeling/index.html" class="pagination-link" aria-label="Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" class="pagination-link" aria-label="Basics of paleobiological data acquisition and preparation">
+        <span class="nav-page-text">Basics of paleobiological data acquisition and preparation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
