@@ -111,11 +111,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-proficiencies {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -458,14 +458,8 @@ Note
 <div id="6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_canids <span class="op">=</span> <span class="fu">dropmissing</span>(canids, [<span class="op">:</span>lat, <span class="op">:</span>lng])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">## The PBDB API may return coordinates as String — coerce to Float64 before plotting</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>clean_canids <span class="op">=</span> <span class="fu">transform</span>(clean_canids,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span>lat <span class="op">=&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">parse</span>.(<span class="dt">Float64</span>, <span class="fu">string</span>.(x))) <span class="op">=&gt;</span> <span class="op">:</span>lat,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span>lng <span class="op">=&gt;</span> (x <span class="op">-&gt;</span> <span class="fu">parse</span>.(<span class="dt">Float64</span>, <span class="fu">string</span>.(x))) <span class="op">=&gt;</span> <span class="op">:</span>lng,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Records with valid coordinates: "</span>, <span class="fu">nrow</span>(clean_canids))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Records dropped: "</span>, <span class="fu">nrow</span>(canids) <span class="op">-</span> <span class="fu">nrow</span>(clean_canids))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Records with valid coordinates: "</span>, <span class="fu">nrow</span>(clean_canids))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Records dropped: "</span>, <span class="fu">nrow</span>(canids) <span class="op">-</span> <span class="fu">nrow</span>(clean_canids))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Records with valid coordinates: 1345
 Records dropped: 0</code></pre>
