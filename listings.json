@@ -2,46 +2,59 @@
   {
     "listing": "/index.html",
     "items": [
-      "/content/01_practicals/01_orientation-and-tooling/index.html",
-      "/content/01_practicals/02_basics-of-running-julia/index.html",
-      "/content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html",
-      "/content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
-      "/content/01_practicals/05_basics-of-working-with-data-tables/index.html",
-      "/content/02_primers/bernoulli-trial.html",
-      "/content/02_primers/julia--environments--global-vs-project.html",
-      "/content/02_primers/julia--functions-methods-and-signatures.html",
-      "/content/02_primers/markov-property.html",
-      "/content/02_primers/frank1996model_single-strain-parasite-fitness.html",
-      "/content/02_primers/probability-distributions.html",
-      "/content/02_primers/pseudo-random-number-generators_01.html",
-      "/content/02_primers/pseudo-random-number-generators_02_best-practices.html",
-      "/content/02_primers/pseudo-random-number-generators_03_details.html",
-      "/content/02_primers/frank1996model_virulence-transmission-tradeoff.html"
+      "/content/01_foundations/01_orientation-and-tooling/index.html",
+      "/content/01_foundations/02_basics-of-running-julia/index.html",
+      "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
+      "/content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html",
+      "/content/01_foundations/05_basics-of-working-with-data-tables/index.html",
+      "/content/02_toolkits/06_basics-of-paleobiological-informatics/index.html",
+      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html",
+      "/content/A1_primers/bernoulli-trial.html",
+      "/content/A1_primers/julia--environments--global-vs-project.html",
+      "/content/A1_primers/julia--functions-methods-and-signatures.html",
+      "/content/A1_primers/markov-property.html",
+      "/content/A1_primers/frank1996model_single-strain-parasite-fitness.html",
+      "/content/A1_primers/probability-distributions.html",
+      "/content/A1_primers/pseudo-random-number-generators_01.html",
+      "/content/A1_primers/pseudo-random-number-generators_02_best-practices.html",
+      "/content/A1_primers/pseudo-random-number-generators_03_details.html",
+      "/content/A1_primers/frank1996model_virulence-transmission-tradeoff.html"
     ]
   },
   {
-    "listing": "/content/02_primers/index.html",
+    "listing": "/content/01_foundations/index.html",
     "items": [
-      "/content/02_primers/bernoulli-trial.html",
-      "/content/02_primers/frank1996model_single-strain-parasite-fitness.html",
-      "/content/02_primers/frank1996model_virulence-transmission-tradeoff.html",
-      "/content/02_primers/julia--environments--global-vs-project.html",
-      "/content/02_primers/julia--functions-methods-and-signatures.html",
-      "/content/02_primers/markov-property.html",
-      "/content/02_primers/probability-distributions.html",
-      "/content/02_primers/pseudo-random-number-generators_01.html",
-      "/content/02_primers/pseudo-random-number-generators_02_best-practices.html",
-      "/content/02_primers/pseudo-random-number-generators_03_details.html"
+      "/content/01_foundations/01_orientation-and-tooling/index.html",
+      "/content/01_foundations/02_basics-of-running-julia/index.html",
+      "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
+      "/content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html",
+      "/content/01_foundations/05_basics-of-working-with-data-tables/index.html"
     ]
   },
   {
-    "listing": "/content/01_practicals/index.html",
+    "listing": "/content/02_toolkits/index.html",
     "items": [
-      "/content/01_practicals/01_orientation-and-tooling/index.html",
-      "/content/01_practicals/02_basics-of-running-julia/index.html",
-      "/content/01_practicals/03_basics-of-visualizing-mathematical-models/index.html",
-      "/content/01_practicals/04_basics-of-working-with-random-numbers-and-distributions/index.html",
-      "/content/01_practicals/05_basics-of-working-with-data-tables/index.html"
+      "/content/02_toolkits/06_basics-of-paleobiological-informatics/index.html",
+      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html"
+    ]
+  },
+  {
+    "listing": "/content/00_drafts/index.html",
+    "items": []
+  },
+  {
+    "listing": "/content/A1_primers/index.html",
+    "items": [
+      "/content/A1_primers/bernoulli-trial.html",
+      "/content/A1_primers/frank1996model_single-strain-parasite-fitness.html",
+      "/content/A1_primers/frank1996model_virulence-transmission-tradeoff.html",
+      "/content/A1_primers/julia--environments--global-vs-project.html",
+      "/content/A1_primers/julia--functions-methods-and-signatures.html",
+      "/content/A1_primers/markov-property.html",
+      "/content/A1_primers/probability-distributions.html",
+      "/content/A1_primers/pseudo-random-number-generators_01.html",
+      "/content/A1_primers/pseudo-random-number-generators_02_best-practices.html",
+      "/content/A1_primers/pseudo-random-number-generators_03_details.html"
     ]
   }
 ]

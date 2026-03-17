@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
+<meta name="author" content="Jeet Sukumaran">
 
-<title>(Just enough) Julia for scientific informatics, modeling, and reasoning</title>
+<title>Pseudo-random number generators: best practices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,31 +21,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./content/01_foundations/index.html" rel="next">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../content/A1_primers/pseudo-random-number-generators_03_details.html" rel="next">
+<link href="../../content/A1_primers/pseudo-random-number-generators_01.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-52f07c583881858fa8b73311cc9c8de3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,64 +107,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-practicals .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-author','listing-title','listing-subtitle','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-author","listing-title","listing-subtitle","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-practicals'] = new List('listing-practicals', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-primers .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-author','listing-title','listing-subtitle','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-date-created','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-author","listing-title","listing-subtitle","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-date-created","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-primers'] = new List('listing-primers', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
@@ -139,47 +124,10 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed quarto-light">
@@ -189,9 +137,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
-    <img src="./_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -209,7 +157,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">(Just enough) Julia for scientific informatics, modeling, and reasoning</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/A1_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/A1_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -220,16 +168,16 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
   </div>
 </li>
@@ -239,7 +187,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./content/01_foundations/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../content/01_foundations/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic frameworks and mechanisms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -248,31 +196,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Orientation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_foundations/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of setting up and running Julia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of visualizing mathematical models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of working with randomness and probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/05_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/01_foundations/05_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
@@ -280,7 +228,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -289,61 +237,61 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/markov-property.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Pseudo-random number generators: best practices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/A1_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: continuous values from discrete machines</span></a>
   </div>
 </li>
@@ -354,22 +302,38 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" id="toc-implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" class="nav-link active" data-scroll-target="#implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience"><span class="header-section-number">1</span> Implicitly rely on the default random number generator for ease and convenience</a></li>
+  <li><a href="#explicitly-set-the-default-random-number-generator-seed-for-replicability" id="toc-explicitly-set-the-default-random-number-generator-seed-for-replicability" class="nav-link" data-scroll-target="#explicitly-set-the-default-random-number-generator-seed-for-replicability"><span class="header-section-number">2</span> Explicitly set the default random number generator seed for replicability</a></li>
+  <li><a href="#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" id="toc-explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" class="nav-link" data-scroll-target="#explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility"><span class="header-section-number">3</span> Explicitly reference the default random number generator for maintainability and extensibility</a></li>
+  <li><a href="#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" id="toc-ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" class="nav-link" data-scroll-target="#ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds"><span class="header-section-number">4</span> Ensure randomness across replicates by using time and process id’s as seeds</a></li>
+  <li><a href="#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" id="toc-explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" class="nav-link" data-scroll-target="#explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability"><span class="header-section-number">5</span> Explicitly create anmd manage your own random number generators for robust reproducibility and replicability</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/A1_primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/A1_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">(Just enough) Julia for scientific informatics, modeling, and reasoning</h1>
+<h1 class="title">Pseudo-random number generators: best practices</h1>
 <p class="subtitle lead">An operational learning approach to the essential computational competencies you need for your research, from ideas to publication and beyond</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeet Sukumaran </p>
+          </div>
+  </div>
     
   
     
@@ -380,75 +344,69 @@ window.Quarto = {
 </header>
 
 
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><span class="listing-section-title">Practicals</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span class="listing-section-title">Primers</span></a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-practicals" class="quarto-listing quarto-listing-container-custom">
-<section id="chapter-1.-orientation" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-orientation">Chapter 1. <a href="./content/01_foundations/01_orientation-and-tooling/index.html">Orientation</a></h2>
+<section id="implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="implicitly-rely-on-the-default-random-number-generator-for-ease-and-convenience"><span class="header-section-number">1</span> Implicitly rely on the default random number generator for ease and convenience</h2>
+<p>In workflows where <em>replicability is not critical or immediately relevant</em> (exploratory, pilot, scaffolding runs, etc.) you can rely on the default random generator being used in the background without explicitly managing it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>([<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="./content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h2>
+<section id="explicitly-set-the-default-random-number-generator-seed-for-replicability" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="explicitly-set-the-default-random-number-generator-seed-for-replicability"><span class="header-section-number">2</span> Explicitly set the default random number generator seed for replicability</h2>
+<p>In most cases, however, replicability is important.</p>
+<p>As discussed in the <a href="content/02_primers/pseudo-random-number-generators_01.qmd">primer on pseudo-random number generators</a>, the random number “seed” value passed to the algorithm determines the value of every number generated from the algorithm: in a sense, it indexes or selects a specific sequence of pre-determined random outcomes to be used.</p>
+<p>Different seed values produce different sequences of random numbers, while conversely, the same seed value repeatedly and reliabily produces the same sequence of randomness across <em>independent</em> runs of the program.</p>
+<p>This latter is what gives PRNG’s their great utility in many research software applications, and is actually useful in programming and software development as well for debugging purposes: you can only reliably be sure of fixing an error if you can reliably reproduce it to be able to work on it.</p>
+<p>You can use default random number implicitly but gain replicability by explicitly setting its seed using the <code>Random.seed!</code> function.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicitly seed the default random number generator with 42</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(<span class="fl">42</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Implict usage of global default random number generator, seed globally set previously</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(<span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>([<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As before, when <code>rand</code> is called without a random number generator object as its first argument, the default random number genrator will be used as the source of randomness. However, here we have set the seed for this before hand.</p>
 </section>
-<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h2>
+<section id="explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="explicitly-reference-the-default-random-number-generator-for-maintainability-and-extensibility"><span class="header-section-number">3</span> Explicitly reference the default random number generator for maintainability and extensibility</h2>
+<p>While implicit usage of the default random number generator is convenient, it is good practice to always be explicit about the random number generator that is being used event if it is the default.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">default_rng</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(rng, <span class="fl">42</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, <span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, [<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Beyond clarity, it also makes it easy to use other random number generators if the need arises.</p>
+<p>Furthermore, when writing our own methods for <code>rand</code>, the general principle is that any function doing random sampling should ideally accept an <code>rng::AbstractRNG</code> argument with a default of <code>Random.default_rng()</code>, following the convention used throughout Base and most Julia packages.</p>
 </section>
-<section id="chapter-4.-basics-of-working-with-randomness-and-probabilities" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-randomness-and-probabilities">Chapter 4. <a href="./content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h2>
+<section id="ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ensure-randomness-across-replicates-by-using-time-and-process-ids-as-seeds"><span class="header-section-number">4</span> Ensure randomness across replicates by using time and process id’s as seeds</h2>
+<p>While replicability is important, at the same time, in almost every case except when actually wanting to reproduce a run for debugging or study purposes, when we are running programs that use these values, we want them to have different random sequences across different independent runs.</p>
+<p>A common convention to have a new explicitly-specified random seed on every independent run without needing to change the code (or force the user to type one in) is to use the system time, specified in nanoseconds, <code>time_ns()</code>, (sometimes with the process id, <code>getpid()</code>, added to avoid correlations when executed in bulk in parallel).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">default_rng</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>seed <span class="op">=</span> <span class="fu">time_ns</span>() <span class="op">+</span> <span class="fu">getpid</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@info</span> <span class="st">"Setting random seed: </span><span class="sc">$</span>(seed)<span class="st">"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">Random</span>.<span class="fu">seed!</span>(seed)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="chapter-5.-basics-of-working-with-data-tables" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-data-tables">Chapter 5. <a href="./content/01_foundations/05_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h2>
-</section>
-<section id="chapter-6.-basics-of-paleobiological-data-acquisition-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-basics-of-paleobiological-data-acquisition-and-preparation">Chapter 6. <a href="./content/02_toolkits/06_basics-of-paleobiological-informatics/index.html">Basics of paleobiological data acquisition and preparation</a></h2>
-</section>
-<section id="chapter-7.-basics-of-agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-7.-basics-of-agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl">Chapter 7. <a href="./content/02_toolkits/07_basics-of-agent-based-modeling/index.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></h2>
-<div class="listing-no-matching d-none">No matching items</div>
-</section>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
-<section id="chapter-1.-bernoulli-trial" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/A1_primers/bernoulli-trial.html">Bernoulli trial</a></h2>
-</section>
-<section id="chapter-2.-julia-environments-global-vs-project" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-julia-environments-global-vs-project">Chapter 2. <a href="./content/A1_primers/julia--environments--global-vs-project.html">Julia – Environments – Global vs project</a></h2>
-</section>
-<section id="chapter-3.-julia-functions-methods-and-signatures" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-julia-functions-methods-and-signatures">Chapter 3. <a href="./content/A1_primers/julia--functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
-</section>
-<section id="chapter-4.-markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-markov-property">Chapter 4. <a href="./content/A1_primers/markov-property.html">Markov property</a></h2>
-</section>
-<section id="chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 5. <a href="./content/A1_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
-</section>
-<section id="chapter-6.-probabilty-distributionsessential-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-probabilty-distributionsessential-concepts">Chapter 6. <a href="./content/A1_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
-</section>
-<section id="chapter-7.-pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators">Chapter 7. <a href="./content/A1_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
-</section>
-<section id="chapter-8.-pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators-best-practices">Chapter 8. <a href="./content/A1_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
-</section>
-<section id="chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 9. <a href="./content/A1_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
-</section>
-<section id="chapter-10.-virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-10.-virulence-transmission-trade-off-frank-1996">Chapter 10. <a href="./content/A1_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
-<div class="listing-no-matching d-none">No matching items</div>
-</section>
-</div>
-</div>
-</div>
-</div>
+<section id="explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="explicitly-create-anmd-manage-your-own-random-number-generators-for-robust-reproducibility-and-replicability"><span class="header-section-number">5</span> Explicitly create anmd manage your own random number generators for robust reproducibility and replicability</h2>
+<p>In the full and final production-grade software, you should design all your programs to (1) optionally take a user-specific random number seed and, if not given, generate your own; (2) report and log the random number seed used; and (3) instantiate and use your own random number generator object in all computation, passing it around to different functions or objects that need them.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Random</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Xoshiro" algorithm with the seed value of 42</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">Xoshiro</span>(<span class="fl">42</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate a PRNG using the "Mersenne Twister" with the seed value of 1999</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> <span class="bu">Random</span>.<span class="fu">MersenneTwister</span>(<span class="fl">1999</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample an `Int` (integer) value</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, <span class="dt">Int</span>, <span class="fl">10</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use `rand` with the `rng` to sample a random value from the list</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>(rng, [<span class="ch">'A'</span>, <span class="ch">'C'</span>, <span class="ch">'G'</span>, <span class="ch">'T'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -851,12 +809,15 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
+      <a href="../../content/A1_primers/pseudo-random-number-generators_01.html" class="pagination-link" aria-label="Pseudo-random number generators">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pseudo-random number generators</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./content/01_foundations/index.html" class="pagination-link" aria-label="Basic frameworks and mechanisms">
-        <span class="nav-page-text">Basic frameworks and mechanisms</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/A1_primers/pseudo-random-number-generators_03_details.html" class="pagination-link" aria-label="Pseudo-random number generators: continuous values from discrete machines">
+        <span class="nav-page-text">Pseudo-random number generators: continuous values from discrete machines</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
