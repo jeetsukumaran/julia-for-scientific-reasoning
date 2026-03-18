@@ -7,8 +7,9 @@
       "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
       "/content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html",
       "/content/01_foundations/05_basics-of-working-with-data-tables/index.html",
-      "/content/02_toolkits/06_basics-of-paleobiological-analyses/index.html",
-      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html",
+      "/content/02_toolkits/06_basics-of-species-distribution-modeling/index.html",
+      "/content/02_toolkits/07_basics-of-paleobiological-analyses/index.html",
+      "/content/02_toolkits/08_basics-of-agent-based-modeling/index.html",
       "/content/A1_primers/bernoulli-trial.html",
       "/content/A1_primers/julia--environments--global-vs-project.html",
       "/content/A1_primers/julia--functions-methods-and-signatures.html",
@@ -34,8 +35,9 @@
   {
     "listing": "/content/02_toolkits/index.html",
     "items": [
-      "/content/02_toolkits/06_basics-of-paleobiological-analyses/index.html",
-      "/content/02_toolkits/07_basics-of-agent-based-modeling/index.html"
+      "/content/02_toolkits/06_basics-of-species-distribution-modeling/index.html",
+      "/content/02_toolkits/07_basics-of-paleobiological-analyses/index.html",
+      "/content/02_toolkits/08_basics-of-agent-based-modeling/index.html"
     ]
   },
   {
