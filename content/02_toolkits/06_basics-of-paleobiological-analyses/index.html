@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>Basics of paleobioinformatics</title>
+<title>Basics of paleobiological analyses</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,11 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-proficiencies {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -123,7 +119,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html">Basics of paleobioinformatics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/06_basics-of-paleobiological-analyses/index.html">Basics of paleobiological analyses</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -240,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Basics of paleobioinformatics</span></a>
+  <a href="../../../content/02_toolkits/06_basics-of-paleobiological-analyses/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Basics of paleobiological analyses</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -346,10 +346,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#walkthrough-of-an-example-analysis" id="toc-walkthrough-of-an-example-analysis" class="nav-link active" data-scroll-target="#walkthrough-of-an-example-analysis"><span class="header-section-number">1</span> Walkthrough of an example analysis</a>
   <ul class="collapse">
-  <li><a href="#preparation-loading-your-tools" id="toc-preparation-loading-your-tools" class="nav-link" data-scroll-target="#preparation-loading-your-tools"><span class="header-section-number">1.1</span> Preparation: Loading Your Tools</a></li>
-  <li><a href="#step-1-download-the-data" id="toc-step-1-download-the-data" class="nav-link" data-scroll-target="#step-1-download-the-data"><span class="header-section-number">1.2</span> Step 1: Download the Data</a></li>
-  <li><a href="#step-2-clean-the-data" id="toc-step-2-clean-the-data" class="nav-link" data-scroll-target="#step-2-clean-the-data"><span class="header-section-number">1.3</span> Step 2: Clean the Data</a></li>
-  <li><a href="#step-3-visualize-on-a-world-map" id="toc-step-3-visualize-on-a-world-map" class="nav-link" data-scroll-target="#step-3-visualize-on-a-world-map"><span class="header-section-number">1.4</span> Step 3: Visualize on a World Map</a></li>
+  <li><a href="#set-up-the-environment" id="toc-set-up-the-environment" class="nav-link" data-scroll-target="#set-up-the-environment"><span class="header-section-number">1.1</span> 0. Set up the environment</a></li>
+  <li><a href="#download-the-data" id="toc-download-the-data" class="nav-link" data-scroll-target="#download-the-data"><span class="header-section-number">1.2</span> 1. Download the data</a></li>
+  <li><a href="#step-2-prepare-the-data" id="toc-step-2-prepare-the-data" class="nav-link" data-scroll-target="#step-2-prepare-the-data"><span class="header-section-number">1.3</span> Step 2: Prepare the data</a></li>
+  <li><a href="#step-3-visualize-the-data" id="toc-step-3-visualize-the-data" class="nav-link" data-scroll-target="#step-3-visualize-the-data"><span class="header-section-number">1.4</span> Step 3: Visualize the data</a></li>
   <li><a href="#biological-context-analysis" id="toc-biological-context-analysis" class="nav-link" data-scroll-target="#biological-context-analysis"><span class="header-section-number">1.5</span> Biological Context &amp; Analysis</a></li>
   <li><a href="#optional-compare-with-another-taxon" id="toc-optional-compare-with-another-taxon" class="nav-link" data-scroll-target="#optional-compare-with-another-taxon"><span class="header-section-number">1.6</span> Optional: Compare with Another Taxon</a></li>
   </ul></li>
@@ -376,9 +376,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content page-columns page-full column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/06_basics-of-paleobiological-informatics/index.html">Basics of paleobioinformatics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/02_toolkits/index.html">Basics of specialized workflows</a></li><li class="breadcrumb-item"><a href="../../../content/02_toolkits/06_basics-of-paleobiological-analyses/index.html">Basics of paleobiological analyses</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Basics of paleobioinformatics</h1>
+<h1 class="title">Basics of paleobiological analyses</h1>
 <p class="subtitle lead">An operational learning approach to the essential computational competencies you need for your research, from ideas to publication and beyond</p>
 </div>
 
@@ -430,30 +430,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div></details>
 </div>
-<section id="walkthrough-of-an-example-analysis" class="level2 page-columns page-full" data-number="1">
+<section id="walkthrough-of-an-example-analysis" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="walkthrough-of-an-example-analysis"><span class="header-section-number">1</span> Walkthrough of an example analysis</h2>
 <p>This tutorial introduces you to the digital side of paleontology. Instead of manually shading paper charts, you will use Julia to “hunt” for fossils across the globe. We will focus on the <strong>Canidae</strong> (the dog family) during the <strong>Miocene</strong> (about 23 to 5 million years ago), a critical time for their diversification.</p>
 <div id="curriculum-proficiencies*-2" class="curriculum-proficiencies">
 <details class="curriculum-proficiencies fbx-simplebox fbx-default" open=""><summary><strong>Proficiencies</strong></summary><div>
 <p>By the end of this activity, you will be able to:</p>
 <ol type="1">
-<li><strong>Download</strong> real fossil data directly from the Paleobiology Database.</li>
-<li><strong>Clean</strong> that data so it is ready for a map.</li>
-<li><strong>Visualize</strong> exactly where these ancient dogs lived using a geographic map.</li>
+<li><strong>Download</strong> fossil data from the Paleobiology Database.</li>
+<li><strong>Prepare</strong> that data so it meets the requirements for analysis (visualization).</li>
+<li><strong>Visualize</strong> fossil localities on a geographic map.</li>
 </ol>
 </div></details>
 </div>
-<section id="preparation-loading-your-tools" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="preparation-loading-your-tools"><span class="header-section-number">1.1</span> Preparation: Loading Your Tools</h3>
+<section id="set-up-the-environment" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="set-up-the-environment"><span class="header-section-number">1.1</span> 0. Set up the environment</h3>
 <div id="2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PaleobiologyDB</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">DataFrames</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GeoMakie</span>, <span class="bu">CairoMakie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="step-1-download-the-data" class="level3 page-columns page-full" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="step-1-download-the-data"><span class="header-section-number">1.2</span> Step 1: Download the Data</h3>
-<p>We will ask the database for every recorded occurrence of a Canidae fossil from the Miocene epoch. We specifically request <strong>coordinates</strong> so we know where each specimen was found.</p>
+<section id="download-the-data" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="download-the-data"><span class="header-section-number">1.2</span> 1. Download the data</h3>
+<p>We will ask the database for every recorded occurrence of a Canidae fossil from the Miocene epoch.</p>
 <div id="4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>canids <span class="op">=</span> <span class="fu">pbdb_occurrences</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    base_name <span class="op">=</span> <span class="st">"Canidae"</span>,</span>
@@ -467,22 +467,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Found 1345 Miocene canid fossils!</code></pre>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <code>vocab = "pbdb"</code> argument returns human-readable column names such as <code>"latitude"</code> and <code>"longitude"</code> rather than the raw API codes.</p>
-</div>
-</div></div></section>
-<section id="step-2-clean-the-data" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="step-2-clean-the-data"><span class="header-section-number">1.3</span> Step 2: Clean the Data</h3>
+<ul>
+<li>The <code>base_name</code> keyword argument of <code>Canidae</code> filters for occurrences of fossils identified as Canidae <em>and</em> lower taxonomic levels (that is, occurrences of all fossils identified to the level of species or genera as belonging to the Canidae, as well as fossils identified only to the level of family as “Canidae” itself).</li>
+<li>The <code>interval</code> keyword argument of <code>Miocene</code> filters for fossil occurrences in the Miocene Epoch.</li>
+<li>The <code>show</code> keyword argument to specify we want geographical coordinates as well as as extended taxonomic information data fields, so we know where each specimen was found and the resolution and reliabilility of the identification. The <code>vocab = "pbdb"</code> argument returns human-readable column names such rather than the raw API codes.</li>
+</ul>
+</section>
+<section id="step-2-prepare-the-data" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="step-2-prepare-the-data"><span class="header-section-number">1.3</span> Step 2: Prepare the data</h3>
 <p>Real-world data is often messy. Some fossil records may be missing exact GPS coordinates. Before we can make a map, we must remove any rows that lack a latitude or longitude value.</p>
 <div id="6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean_canids <span class="op">=</span> <span class="fu">dropmissing</span>(canids, [<span class="op">:</span>lat, <span class="op">:</span>lng])</span>
@@ -495,8 +487,8 @@ Records dropped: 0</code></pre>
 </div>
 </div>
 </section>
-<section id="step-3-visualize-on-a-world-map" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="step-3-visualize-on-a-world-map"><span class="header-section-number">1.4</span> Step 3: Visualize on a World Map</h3>
+<section id="step-3-visualize-the-data" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="step-3-visualize-the-data"><span class="header-section-number">1.4</span> Step 3: Visualize the data</h3>
 <p>Now we will plot these points on a world map. In the Miocene the continents were roughly where they are today, but the climate and faunal dispersal corridors were quite different.</p>
 <div id="8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>()</span>
