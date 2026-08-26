@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>index</title>
+<title>(Just enough) Julia for scientific informatics, modeling, and reasoning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,10 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/01_foundations/01_computing-ecosystem/index.html" rel="next">
-<link href="../../index.html" rel="prev">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -74,37 +70,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
-.model-notation {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -116,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -182,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/01_foundations/index.html">Basic frameworks and mechanisms</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">(Just enough) Julia for scientific informatics, modeling, and reasoning</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -212,7 +179,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/01_foundations/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../content/01_foundations/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic frameworks and mechanisms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -221,8 +188,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup and tooling</span></a>
+  <a href="../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orientation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -421,19 +388,26 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">0.1</span> 1</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">(Just enough) Julia for scientific informatics, modeling, and reasoning</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -451,266 +425,41 @@ window.Quarto = {
 </header>
 
 
+<section id="section" class="level3" data-number="0.1">
+<h3 data-number="0.1" class="anchored" data-anchor-id="section"><span class="header-section-number">0.1</span> 1</h3>
+<section id="bayes-theorem" class="level4" data-number="0.1.1">
+<h4 data-number="0.1.1" class="anchored" data-anchor-id="bayes-theorem"><span class="header-section-number">0.1.1</span> Bayes theorem</h4>
+<p>Suppose that we have a fair coin and a biased coin that always comes up heads. We run an experiment consisting of three independent events: - we choose one of the two coins at random - we flip that coin once - and then we flip it again. Suppose that the coin we have chosen comes up heads both times. What is the probability that it is biased?</p>
+<p>For a single toss with the coin, we know:</p>
+<p><span class="math inline">\(\Pr(H \mid \text{biased}) = 1.0\)</span></p>
+<p><span class="math inline">\(\Pr(H \mid \text{fair}) = 0.5\)</span></p>
+<p>For two tosses with the coin, we know:</p>
+<p><span class="math inline">\(\Pr( HH \mid \text{biased}) = (1.0)(1.0) = 1.0\)</span></p>
+<p><span class="math inline">\(\Pr( HH \mid \text{fair}) = (0.5)(0.5) = 0.25\)</span></p>
+<p>For the prior probability of the coin, we know:</p>
+<p><span class="math inline">\(\Pr(\text{biased}) = 0.5\)</span></p>
+<p><span class="math inline">\(\Pr(\text{fair}) = 0.5\)</span></p>
+<p>So:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr(\text{biased} \mid HH) &amp;= \frac{ \Pr( HH \mid \text{biased}) \Pr(\text{biased}) }{ \left[ \Pr( HH \mid \text{biased}) \Pr(\text{biased}) \right] + \left[ \Pr( HH \mid \text{fair}) \Pr(\text{fair}) \right] } \\
+    &amp;= \frac{ 1.0 \cdot 0.5 }{ (1.0)(0.5) + (0.25)(0.5) } \\
+    &amp;= \frac{ 0.5 }{ (0.5) + (0.125) } \\
+    &amp;= 0.8
+\end{aligned}
+\]</span></p>
+</section>
+<section id="brute-force" class="level4" data-number="0.1.2">
+<h4 data-number="0.1.2" class="anchored" data-anchor-id="brute-force"><span class="header-section-number">0.1.2</span> Brute force</h4>
+<p>Sample space:</p>
+<p>𝑆 = {(F, TT), (F, HT), (F, TH), (F, HH), (B, HH)}</p>
+<p><span class="math inline">\(HH\)</span> occurs <span class="math inline">\(\frac{2}{5}\)</span> times = <span class="math inline">\(0.8\)</span>.</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Part 1. Foundations
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<section id="chapter-1.-setup-and-tooling" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-1.-setup-and-tooling">Chapter 1. <a href="../../content/01_foundations/01_computing-ecosystem/index.html">Setup and tooling</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="../../content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="../../content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td><a href="../../content/models/02_primers/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-4.-basics-of-working-with-data-tables" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-data-tables">Chapter 4. <a href="../../content/01_foundations/04_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-6.-basics-of-working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-working-with-phylogenies">Chapter 6. <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html">Basics of working with phylogenies</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-7.-basics-of-geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-7.-basics-of-geospatial-coordinate-reference-systems">Chapter 7. <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1111,18 +860,6 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
-  <div class="nav-page nav-page-previous">
-      <a href="../../index.html" class="pagination-link" aria-label="(Just enough) Julia for scientific informatics, modeling, and reasoning">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="pagination-link" aria-label="Setup and tooling">
-        <span class="nav-page-text">Setup and tooling</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

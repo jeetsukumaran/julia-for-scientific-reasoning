@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-date-created"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-date-created','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-date-created","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-proficiencies {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -143,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -190,8 +190,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
-    <img src="./_annex/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    <img src="./_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="./_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -221,8 +221,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./_annex/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./_annex/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./_quarto/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./_quarto/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -248,8 +248,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
+  <a href="./content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup and tooling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -266,124 +266,178 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/01_foundations/04_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with data tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basics of working with randomness and probabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/05_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with data tables</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/02_toolkits/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of specialized workflows</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/02_toolkits/07_basics-of-paleobiological-analyses/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of paleobiological fossil collection analyses</span></a>
+  <a href="./content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with phylogenies</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./content/02_toolkits/08_basics-of-agent-based-modeling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of geospatial coordinate reference systems</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/02_toolkits/08_basics-of-agent-based-modeling/howto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
+  <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/plotting-across-the-antimeridian-with-vector-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing data for plotting across the antimeridian with vector data</span></a>
   </div>
 </li>
       </ul>
   </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./content/03_basic-data-workflows/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic data workflows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/02_toolkits/06_basics-of-species-distribution-modeling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of species distribution modeling</span></a>
+  <a href="./content/03_basic-data-workflows/05_geospatial-data/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with geospatial data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/03_basic-data-workflows/06_biodiversity-distribution-data/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with biodiversity distribution data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/03_basic-data-workflows/07_fossil-distribution-data/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with paleobiological fossil distribution data</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Basic data workflows</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./content/A1_primers/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Primers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Basic simulation workflows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./content/06_basic-simulation-workflows/08_basics-of-agent-based-modeling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/06_basic-simulation-workflows/08_basics-of-agent-based-modeling/howto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Recipes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./content/primers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primers</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/geospatial-data-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/markov-property.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: best practices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/A1_primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pseudo-random number generators: continuous values from discrete machines</span></a>
   </div>
 </li>
@@ -425,66 +479,48 @@ window.Quarto = {
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div id="listing-practicals" class="quarto-listing quarto-listing-container-custom">
-<section id="chapter-1.-orientation" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-orientation">Chapter 1. <a href="./content/01_foundations/01_orientation-and-tooling/index.html">Orientation</a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Part 1. Foundations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="chapter-1.-setup-and-tooling" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-1.-setup-and-tooling">Chapter 1. <a href="./content/01_foundations/01_computing-ecosystem/index.html">Setup and tooling</a></h3>
 </section>
-<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="./content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h2>
+<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="./content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h3>
 </section>
-<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h2>
+<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h3>
 </section>
-<section id="chapter-4.-basics-of-working-with-randomness-and-probabilities" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-randomness-and-probabilities">Chapter 4. <a href="./content/01_foundations/04_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h2>
+<section id="chapter-4.-basics-of-working-with-data-tables" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-data-tables">Chapter 4. <a href="./content/01_foundations/04_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h3>
 </section>
-<section id="chapter-5.-basics-of-working-with-data-tables" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-data-tables">Chapter 5. <a href="./content/01_foundations/05_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h2>
+<section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="./content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
 </section>
-<section id="chapter-6.-basics-of-species-distribution-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-basics-of-species-distribution-modeling">Chapter 6. <a href="./content/02_toolkits/06_basics-of-species-distribution-modeling/index.html">Basics of species distribution modeling</a></h2>
+<section id="chapter-6.-basics-of-working-with-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-working-with-phylogenies">Chapter 6. <a href="./content/01_foundations/06_basics-of-working-phylogenies/index.html">Basics of working with phylogenies</a></h3>
 </section>
-<section id="chapter-7.-basics-of-paleobiological-fossil-collection-analyses" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-7.-basics-of-paleobiological-fossil-collection-analyses">Chapter 7. <a href="./content/02_toolkits/07_basics-of-paleobiological-analyses/index.html">Basics of paleobiological fossil collection analyses</a></h2>
+<section id="chapter-7.-basics-of-geospatial-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-7.-basics-of-geospatial-coordinate-reference-systems">Chapter 7. <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
 </section>
-<section id="chapter-8.-basics-of-agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-8.-basics-of-agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl">Chapter 8. <a href="./content/02_toolkits/08_basics-of-agent-based-modeling/index.html">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</a></h2>
+</div>
+</div>
+</div>
 <div class="listing-no-matching d-none">No matching items</div>
-</section>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
-<section id="chapter-1.-bernoulli-trial" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/A1_primers/bernoulli-trial.html">Bernoulli trial</a></h2>
-</section>
-<section id="chapter-2.-julia-environments-global-vs-project" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-2.-julia-environments-global-vs-project">Chapter 2. <a href="./content/A1_primers/julia--environments--global-vs-project.html">Julia – Environments – Global vs project</a></h2>
-</section>
-<section id="chapter-3.-julia-functions-methods-and-signatures" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-3.-julia-functions-methods-and-signatures">Chapter 3. <a href="./content/A1_primers/julia--functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
-</section>
-<section id="chapter-4.-markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-4.-markov-property">Chapter 4. <a href="./content/A1_primers/markov-property.html">Markov property</a></h2>
-</section>
-<section id="chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-5.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 5. <a href="./content/A1_primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
-</section>
-<section id="chapter-6.-probabilty-distributionsessential-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-6.-probabilty-distributionsessential-concepts">Chapter 6. <a href="./content/A1_primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h2>
-</section>
-<section id="chapter-7.-pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-7.-pseudo-random-number-generators">Chapter 7. <a href="./content/A1_primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h2>
-</section>
-<section id="chapter-8.-pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators-best-practices">Chapter 8. <a href="./content/A1_primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h2>
-</section>
-<section id="chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-9.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 9. <a href="./content/A1_primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
-</section>
-<section id="chapter-10.-virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="chapter-10.-virulence-transmission-trade-off-frank-1996">Chapter 10. <a href="./content/A1_primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 <div class="listing-no-matching d-none">No matching items</div>
-</section>
 </div>
 </div>
 </div>
@@ -916,7 +952,7 @@ window.Quarto = {
 </ul>
     </div>   
     <div class="nav-footer-center">
-<p>Please share or adapt under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
+<p>All rights reserved, but please share or use under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
