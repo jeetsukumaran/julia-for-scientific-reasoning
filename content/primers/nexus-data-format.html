@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>index</title>
+<title>The NEXUS phylogenetic data format</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,10 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/01_foundations/01_computing-ecosystem/index.html" rel="next">
-<link href="../../index.html" rel="prev">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
+<link href="../../content/primers/phylip-data-format.html" rel="next">
+<link href="../../content/primers/newick-data-format.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -74,45 +72,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
-.model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -120,37 +81,16 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -182,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/01_foundations/index.html">Basic frameworks and mechanisms</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/primers/nexus-data-format.html">The NEXUS phylogenetic data format</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -212,7 +152,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/01_foundations/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../content/01_foundations/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic frameworks and mechanisms</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -222,7 +162,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of the computing ecosystem</span></a>
+ <span class="menu-text">The computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -404,7 +344,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">The NEXUS phylogenetic data format</span></a>
   </div>
 </li>
@@ -445,19 +385,42 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-nexus-phylogenetic-data-format" id="toc-the-nexus-phylogenetic-data-format" class="nav-link active" data-scroll-target="#the-nexus-phylogenetic-data-format"><span class="header-section-number">1</span> The NEXUS phylogenetic data format</a>
+  <ul class="collapse">
+  <li><a href="#the-nexus-format" id="toc-the-nexus-format" class="nav-link" data-scroll-target="#the-nexus-format"><span class="header-section-number">1.1</span> The NEXUS format</a></li>
+  <li><a href="#the-nexus-format-1" id="toc-the-nexus-format-1" class="nav-link" data-scroll-target="#the-nexus-format-1"><span class="header-section-number">1.2</span> The NEXUS format</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-paup-and-the-nexus-data-file-format" id="toc-introduction-to-paup-and-the-nexus-data-file-format" class="nav-link" data-scroll-target="#introduction-to-paup-and-the-nexus-data-file-format"><span class="header-section-number">2</span> Introduction to PAUP* and the NEXUS data file format</a>
+  <ul class="collapse">
+  <li><a href="#nexus-blocks" id="toc-nexus-blocks" class="nav-link" data-scroll-target="#nexus-blocks"><span class="header-section-number">2.1</span> NEXUS blocks</a></li>
+  <li><a href="#nexus-commands" id="toc-nexus-commands" class="nav-link" data-scroll-target="#nexus-commands"><span class="header-section-number">2.2</span> NEXUS commands</a></li>
+  <li><a href="#nexus-comments" id="toc-nexus-comments" class="nav-link" data-scroll-target="#nexus-comments"><span class="header-section-number">2.3</span> NEXUS comments</a></li>
+  <li><a href="#commonly-used-nexus-blocks" id="toc-commonly-used-nexus-blocks" class="nav-link" data-scroll-target="#commonly-used-nexus-blocks"><span class="header-section-number">2.4</span> Commonly used NEXUS blocks</a></li>
+  <li><a href="#trees-block" id="toc-trees-block" class="nav-link" data-scroll-target="#trees-block"><span class="header-section-number">2.5</span> Trees block</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-ii-newick-and-nexus-tree-files" id="toc-exercise-ii-newick-and-nexus-tree-files" class="nav-link" data-scroll-target="#exercise-ii-newick-and-nexus-tree-files"><span class="header-section-number">3.1</span> Exercise II: Newick and NEXUS tree files</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/primers/index.html">Primers</a></li><li class="breadcrumb-item"><a href="../../content/primers/nexus-data-format.html">The NEXUS phylogenetic data format</a></li></ol></nav>
 <div class="quarto-title">
+<h1 class="title">The NEXUS phylogenetic data format</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -475,266 +438,291 @@ window.Quarto = {
 </header>
 
 
+<section id="the-nexus-phylogenetic-data-format" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format"><span class="header-section-number">1</span> The NEXUS phylogenetic data format</h2>
+<section id="the-nexus-format" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="the-nexus-format"><span class="header-section-number">1.1</span> The NEXUS format</h3>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li><code>#NEXUS</code> header followed by ``blocks’’.</li>
+<li>All data contained in blocks.</li>
+<li>Blocks defined by <code>begin'' and</code>end’’ (case-insenstive) followed by block type name followed by semi-colon.</li>
+<li>Programs ignore blocks with names they do not understand.</li>
+<li>Programs look for particular blocks with particular names for particular kinds of data.</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<pre><code>#NEXUS
+
+begin block1;
+    ...stuff...
+end;
+
+begin block2;
+    ...stuff...
+end;
+
+begin block3;
+    ...stuff...
+end;
+
+.
+.
+.</code></pre>
+</div>
+</div>
+</section>
+<section id="the-nexus-format-1" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="the-nexus-format-1"><span class="header-section-number">1.2</span> The NEXUS format</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="small">
+<ul>
+<li>Common blocks: <code>TAXA</code>, <code>CHARACTERS</code>, <code>TREES</code>.</li>
+<li>The tree statements in the ``TREES’’ blocks are Newick expressions.</li>
+<li>Trees are optionally preceded with a <em>rooting</em> token, which indicates whether the trees should be treated as rooted or unrooted.</li>
+<li>Handling of rooting states very inconsistent across programs.</li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="tiny">
+<pre><code>#NEXUS
+
+begin taxa;
+    dimensions ntax=8;
+    taxlabels
+        bilbo
+        frodo
+        pippin
+        merry
+        aragorn
+        boromir
+        gimli
+        legolas;
+end;
+
+begin trees;
+    tree "a_rooted_tree" =
+        [&amp;R](((((bilbo,frodo),merry),pippin),(aragorn,boromir)),(gimli,legolas));
+    tree "an_unrooted_tree" =
+        [&amp;U](((((bilbo,frodo),merry),pippin),(aragorn,boromir)),(gimli,legolas));
+end;</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="introduction-to-paup-and-the-nexus-data-file-format" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="introduction-to-paup-and-the-nexus-data-file-format"><span class="header-section-number">2</span> Introduction to PAUP* and the NEXUS data file format</h2>
+<section id="nexus-blocks" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="nexus-blocks"><span class="header-section-number">2.1</span> NEXUS blocks</h3>
+<p>PAUP* (and many, many, many, many other phylogenetic programs) uses a data file format known as Nexus. This file format is now shared among several programs. Nexus data files always begin with the characters “#nexus” but are otherwise organized into major units known as blocks. Some blocks are recognized by most of the programs using the Nexus file format, whereas other blocks are private blocks (recognized by only one program). A Nexus block has the following basic structure:</p>
+<pre><code>#nexus
+...
+begin characters;
+...
+end;</code></pre>
+<p>Note that the elipsis (...) is never used in a Nexus data file; it is used here simply to indicate that some text has been omitted. The name of the Nexus block used as an example above is characters. Because Nexus data files are organized in named blocks, PAUP* and other programs are able to read blocks whose names they recognize and ignore blocks that are not recognized. This allows many different programs to use the same overall format without crashing when they encounter data they cannot interpret.</p>
+</section>
+<section id="nexus-commands" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="nexus-commands"><span class="header-section-number">2.2</span> NEXUS commands</h3>
+<p>Blocks are in turn organized into semicolon-terminated commands. It is very important that you remember to terminate all commands with a semicolon. This is especially hard to remember for very long commands. PAUP* is pretty good about pointing out forgotten semicolons, but sometimes it doesn’t realize you’ve left something out until some distance downstream, which can make the problem point difficult to find. Some common commands will be provided below in the description of the common blocks.</p>
+</section>
+<section id="nexus-comments" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="nexus-comments"><span class="header-section-number">2.3</span> NEXUS comments</h3>
+<p>Comments can be placed in a Nexus file using square brackets. Comments can be placed anywhere, and they are used for many purposes. For example, you can effectively remove some of your data by commenting it out. You can also annotate your sequences using comments. For example, a comment like that below is useful for locating specific sites in your alignment:</p>
+<pre><code>[            ----+--10|----+--20|----+--30|----+--40|----+--50|----]
+Ephedra      TTAAGCCATGCATGTCTAAGTATGAACTAATT-CAAACGGTGAAACTGCGGATG
+Gnetum       TTAAGCCATGCATGTCTATGTACGAACTAATC-AGAACGGTGAAACTGCGGATG
+Welwitschia  TTAAGCCATGCACGTGTAAGTATGAACTAGTC-GAAACGGTGAAACTGCGGATG</code></pre>
+<p>If you would like your comment printed out in the output when PAUP* executes the data file, just insert an exclamation point (!) as the first character inside the opening left square bracket:</p>
+<pre><code>[!This is the data file used for my dissertation]</code></pre>
+</section>
+<section id="commonly-used-nexus-blocks" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="commonly-used-nexus-blocks"><span class="header-section-number">2.4</span> Commonly used NEXUS blocks</h3>
+<p>Here is a list of common Nexus blocks and the most-common commands within these blocks. For a complete description of the Nexus file format, take a look at this paper:</p>
+<p>Maddison, David R., Swofford, David L. and Maddison, Wayne P. 1997. NEXUS: an extensible file format for systematic information. Systematic Biology 46: 590-621 <a href="http://informatics.nescent.org/w/images/8/8b/NEXUS_Final.pdf" class="uri">http://informatics.nescent.org/w/images/8/8b/NEXUS_Final.pdf</a></p>
+<p>You can also find more information here: <a href="http://wiki.christophchamp.com/index.php?title=NEXUS_file_format" class="uri">http://wiki.christophchamp.com/index.php?title=NEXUS_file_format</a></p>
+<section id="taxa-block" class="level4" data-number="2.4.1">
+<h4 data-number="2.4.1" class="anchored" data-anchor-id="taxa-block"><span class="header-section-number">2.4.1</span> Taxa block</h4>
+<p>The purpose of a taxa block is to provide names for your taxa (i.e., sequences). You may not use a taxa block very often, since you can also supply names for your taxa directly in the data block (see below). Here is an example of a taxa block.</p>
+<pre><code>#nexus
+...
+begin taxa;
+  dimensions ntax=5;
+  taxlabels
+    Giardia
+    Thermus
+    Deinococcus
+    Sulfolobus
+    Haobacterium
+  ;
+end;</code></pre>
+<p>Note that there are four commands in this example of a taxa block. Can you find the terminating semicolon for each of them?</p>
+<ul>
+<li><p>the begin command giving the block’s name</p></li>
+<li><p>the dimensions command giving the number of taxa</p></li>
+<li><p>the taxlabels command providing the actual taxon labels</p></li>
+<li><p>the end command, telling PAUP* that there are no more commands to process for this block</p></li>
+</ul>
+</section>
+<section id="characters-block" class="level4" data-number="2.4.2">
+<h4 data-number="2.4.2" class="anchored" data-anchor-id="characters-block"><span class="header-section-number">2.4.2</span> Characters block</h4>
+<p>The data block is the workhorse of Nexus blocks. This is where you place the actual sequence data, and, as mentioned above, this can also be where you define the names of your sequences. Here is an example of a data block:</p>
+<pre><code>#nexus
+...
+begin characters;
+  dimensions nchar=54;
+  format datatype=dna missing=? gap=-;
+  matrix
+    Ephedra       TTAAGCCATGCATGTCTAAGTATGAACTAATTCCAAACGGTGAAACTGCGGATG
+    Gnetum        TTAAGCCATGCATGTCTATGTACGAACTAATC-AGAACGGTGAAACTGCGGATG
+    Welwitschia   TTAAGCCATGCACGTGTAAGTATGAACTAGTC-GAAACGGTGAAACTGCGGATG
+    Ginkgo        TTAAGCCATGCATGTGTAAGTATGAACTCTTTACAGACTGTGAAACTGCGAATG
+    Pinus         TTAAGCCATGCATGTCTAAGTATGAACTAATTGCAGACTGTGAAACTGCGGATG
+                 [----+--10|----+--20|----+--30|----+--40|----+--50|----]
+  ;
+end;</code></pre>
+<p>Note that there is an alternative (older, simpler) specification where we use a “DATA” block instead of “CHARACTERS”. The format of the block is identical, except the “DIMENSIONS” statement includes the number of taxa as well as the number of characters:</p>
+<pre><code>dimensions ntax=5 nchar=54;</code></pre>
+<p>You can see an example of this format here: <a href="http://mrbayes.sourceforge.net/wiki/index.php/Primates.nex" class="uri">http://mrbayes.sourceforge.net/wiki/index.php/Primates.nex</a></p>
+<p>Some things to note in this example are:</p>
+<ul>
+<li><p>The dimensions command comes first in a characters block, and specifies the number of sites (characters; nchar).</p></li>
+<li><p>The format command tells PAUP* what kind of data follow (dna, rna, protein, or standard), and provides the symbols used for missing data (?) and gaps (-).</p></li>
+<li><p>The matrix command dominates the data block, providing the sequences themselves (as well as the taxon names). Note the semicolon terminating the matrix command!!!</p></li>
+<li><p>You can use upper or lower case symbols for nucleotides</p></li>
+<li><p>You can place whitespace anywhere except inside a taxon name or keyword (e.g., data type = dna would cause problems because datatype should not have embedded whitespace).</p></li>
+<li><p>If you simply must have a space in one of your taxon names, either use an underscore character in place of the space (e.g., Ginkgo_biloba) or surround the taxon name in single quotes (e.g., ‘Ginkgo biloba’). In either case, PAUP* will output the space in its output.</p></li>
+<li><p>One item missing from the format command in the example above but which is quite useful is something known as an equate list. The following format statement will cause all occurrences of T to be changed to C and all occurrences of G to be changed to A as the data are being read into PAUP*:</p>
+<pre><code>format datatype=dna missing=? gap=- equate="T=C G=A";</code></pre>
+<p>This is like telling PAUP* to do a search-and-replace operation on the sequences before reading them in, except that your original file remains intact. Be careful when using equate, because the replacement is case sensitive (i.e., equate="t=c g=a" would have had no effect if all the nucleotides are represented by upper case letters!).</p></li>
+<li><p>PAUP* recognizes all the standard ambiguity codes (e.g., R for purine, Y for pyrimidine, N for undetermined, etc.).</p></li>
+</ul>
+</section>
+</section>
+<section id="trees-block" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="trees-block"><span class="header-section-number">2.5</span> Trees block</h3>
+<p>A trees block has the following structure:</p>
+<pre><code>#nexus
+...
+begin trees;
+  translate
+    1 Ephedra,
+    2 Gnetum,
+    3 Welwitschia,
+    4 Ginkgo,
+    5 Pinus
+  ;
+  tree one = [&amp;U] (1,2,(3,(4,5));
+  tree two = [&amp;U] (1,3,(5,(2,4));
+end;</code></pre>
+<p>Some things to note in this example are:</p>
+<ul>
+<li><p>The translate command provides short alternatives to the taxon names, making the tree descriptions shorter (takes up fewer bytes of disk space).</p></li>
+<li><p>the translate command is not necessary however; it is ok to use the taxon names directly in the tree descriptions</p></li>
+<li><p>the tree command denotes the start of a tree description, which consists of a tree name (e.g., one and two are used here), followed by an equals sign and then the tree topology in the standard, parenthetical notation (often referred to as the Newick or New Hampshire format).</p></li>
+<li><p>The special comments consisting of an ampersand symbol followed by the letter U tell PAUP* to interpret the tree as being an unrooted tree.</p></li>
+<li><p>Files containing only the “#nexus” plus a trees block are called tree files</p></li>
+</ul>
+<section id="sets-block" class="level4" data-number="2.5.1">
+<h4 data-number="2.5.1" class="anchored" data-anchor-id="sets-block"><span class="header-section-number">2.5.1</span> Sets block</h4>
+<p>The only commands you need to know at this point from a sets block are the charset and the taxset commands.</p>
+<pre><code>#nexus
+...
+begin sets;
+  charset trnL_intron = 562-4226;
+  taxset gnetales = Ephedra Gnetum Welwitschia;
+end;</code></pre>
+<p>This sets block defines both a set of characters (in this case the sites composing the trnL intron) and a set of taxa (consisting of the three genera in the seed plant order Gnetales: Ephedra, Gnetum and Welwitschia). We could have used the taxon numbers for the taxset definition (e.g., taxset gnetales = 1-3;) but using the actual names is clearer and less prone to error (just think of what might happen if you decided to reorder your sequences!). These definitions may be used in other blocks. A common use is in commands placed inside a paup block (see below) or typed directly at the PAUP* command prompt.</p>
+</section>
+<section id="assumptions-block" class="level4" data-number="2.5.2">
+<h4 data-number="2.5.2" class="anchored" data-anchor-id="assumptions-block"><span class="header-section-number">2.5.2</span> Assumptions block</h4>
+<p>There is only one command I will introduce from the assumptions block (although there are a number of others that exist). The exset command (the word exset stands for "exclusion set") is useful for creating a set of characters that are automatically excluded whenever the data file is executed. Given the following block:</p>
+<pre><code>#nexus
+...
+begin assumptions;
+  exset* badsites = 1 5 47-.;
+end;</code></pre>
+<p>PAUP* would automatically exclude characters (i.e., sites) 1, 5, and 47 through the end of the sequence. It is the asterisk after the newterm exset that denotes this as the default exclusion set. If you left out the asterisk, PAUP* would define the exclusion set but would not automatically exclude these sites as the data file was being executed.</p>
+</section>
+<section id="paup-block" class="level4" data-number="2.5.3">
+<h4 data-number="2.5.3" class="anchored" data-anchor-id="paup-block"><span class="header-section-number">2.5.3</span> PAUP block</h4>
+<p>Paup blocks provide a way to give PAUP* commands from within a data file itself. Any command you can type at the command prompt or perform using menu commands you can place in the data file. This allows you to specify an entire analysis right in the data file. For any serious analysis, I always run PAUP* using a paup block. That way I know exactly what I did for a given analysis several days or weeks in the future. Paup blocks are also a handy way to perform certain commands every time the data file is executed. For example, you can set up your favorite likelihood substitution model, delete certain taxa or exclude certain sites from a paup block located just after your data block. Here is an example of a typical paup block:</p>
+<pre><code>#nexus
+...
+begin paup;
+  log file=myoutput.txt start stop;
+  outgroup Ephedra;
+  set criterion=likelihood;
+  lset nst=2 basefreq=empir rates=equal tratio=estim variant=hky;
+  hsearch swap=tbr addseq=random nreps=100 start=stepwise;
+  describe 1 / plot=phylogram;
+  savetrees file=mytrees.tre brlens;
+  log stop;
+  quit;
+end;</code></pre>
+<p>Here is what each line does:</p>
+<ul>
+<li><p>The log command starts a log file (the file will be called myoutput.txt and will be overwritten if it already exists)</p></li>
+<li><p>The outgroup command specifies that the resulting trees should be rooted between Ephedra and everything else (this just affects the appearance of the tree when drawn)</p></li>
+<li><p>The set command changes the optimality criterion from the default (parsimony) to maximum likelihood</p></li>
+<li><p>The lset command sets up PAUP* so that the HKY85 model will be used (number of substitution rates is 2, empirical base frequencies, rates are homogeneous across sites, estimate the transition/transversion ratio, and use the HKY model rather than the other, similar F84 model)</p></li>
+<li><p>The hsearch command causes PAUP* to conduct 100 heuristic searches (each beginning from a different, random starting tree); each search will start with a stepwise addition tree using random addition of taxa, and this starting tree will be rearranged using the tree bisection/reconnection branch swapping method</p></li>
+<li><p>The describe command produces a depiction of the tree (rooted at the specified outgroup) on the output (and in the log file, since we opened a log file earlier); the tree will be shown as a phylogram, which means branch lengths will appear proportional to the average number of nucleotide substitutions per site that were inferred for that branch.</p></li>
+<li><p>The savetrees command saves the best tree found during the search (this is quite important and easy to forget to do!). The brlens keyword tells PAUP to save branch length information along with the tree topology.</p></li>
+<li><p>The log command stops the logging of output to the file myoutput.txt</p></li>
+<li><p>The quit command causes PAUP* to quit running; if you left out this command, PAUP* would remain running at this point, allowing you to issue other commands</p></li>
+</ul>
+<p>Note that because PAUP* ignores blocks whose names it does not recognize, you can easily "comment out" a paup block by simply adding a character to its name. For example, adding an underscore</p>
+<pre><code>#nexus
+...
+begin _paup;
+.
+.
+.
+end;</code></pre>
+<p>is enough to cause PAUP* to completely ignore this paup block. This is handy because it allows you to create multiple paup blocks for different purposes and turn them off and on whenever you need them.</p>
+<p>You can also "comment out" a portion of a paup block using the leave command. For example, in this paup block, PAUP* will be set up for doing a likelihood analysis but will not actually conduct the search; the leave command causes PAUP* to exit the block early:</p>
+<pre><code>#nexus
+...
+begin paup;
+  log file=myoutput.txt start stop;
+  outgroup Ephedra;
+  set criterion=likelihood;
+  lset nst=2 basefreq=empir rates=equal tratio=estim variant=hky;
+  leave;
+  hsearch swap=tbr addseq=random nreps=100 start=stepwise;
+  describe 1 / plot=phylogram;
+  savetrees file=mytrees.tre brlens;
+  log stop;
+  quit;
+end;</code></pre>
+</section>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3</span> Exercises</h2>
+<section id="exercise-ii-newick-and-nexus-tree-files" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="exercise-ii-newick-and-nexus-tree-files"><span class="header-section-number">3.1</span> Exercise II: Newick and NEXUS tree files</h3>
+<div class="small">
+<ul>
+<li>Sketch out what the following trees should look like.</li>
+<li>Using a text editor, create a new Newick file containing them, and open them up in a tree visualizer to check your answers.</li>
+<li>Create a copy of the file with a ``.nex’’ extension, and then use a text editor to convert it to NEXUS format. Trying opening the file in a visualizer again to check.</li>
+</ul>
+</div>
+<ol type="1">
+<li><code>(((A:2,(B:1,C:1):2):4,(D:2,E:1):3):2,F:1):1;</code></li>
+<li><code>(((((A:1,C:1):4,B:3):1,D:6):2,E:1):1,F:1):1;</code></li>
+<li><code>(((((E:4,D:2):4,A:1):4,F:6):4,C:3):1,B:14):8;</code></li>
+</ol>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Part 1. Foundations
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<section id="chapter-1.-basics-of-the-computing-ecosystem" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-1.-basics-of-the-computing-ecosystem">Chapter 1. <a href="../../content/01_foundations/01_computing-ecosystem/index.html">Basics of the computing ecosystem</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="../../content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="../../content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td><a href="../../content/models/02_primers/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-4.-basics-of-working-with-data-tables" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-data-tables">Chapter 4. <a href="../../content/01_foundations/04_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-6.-basics-of-working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-working-with-phylogenies">Chapter 6. <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html">Basics of working with phylogenies</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-7.-basics-of-geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-7.-basics-of-geospatial-coordinate-reference-systems">Chapter 7. <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1135,15 +1123,15 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../index.html" class="pagination-link" aria-label="(Just enough) Julia for scientific informatics, modeling, and reasoning">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span>
+      <a href="../../content/primers/newick-data-format.html" class="pagination-link" aria-label="The Newick tree format">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Newick tree format</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="pagination-link" aria-label="Basics of the computing ecosystem">
-        <span class="nav-page-text">Basics of the computing ecosystem</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/primers/phylip-data-format.html" class="pagination-link" aria-label="The PHYLIP data format">
+        <span class="nav-page-text">The PHYLIP data format</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
