@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.model-notation {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -112,7 +112,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -243,18 +247,6 @@ window.Quarto = {
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
@@ -272,6 +264,18 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -336,8 +340,21 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -376,6 +393,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/geospatial-data-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -481,7 +504,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -490,7 +513,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <section id="chapter-1.-basics-of-the-computing-ecosystem" class="level3">
 <h3 class="anchored" data-anchor-id="chapter-1.-basics-of-the-computing-ecosystem">Chapter 1. <a href="../../content/01_foundations/01_computing-ecosystem/index.html">Basics of the computing ecosystem</a></h3>
@@ -586,7 +609,7 @@ window.Quarto = {
 <tr class="odd">
 <td></td>
 <td></td>
-<td><a href="../../content/models/02_primers/frank1996model_single-strain-parasite-fitness.qmd"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
+<td><a href="../../content/primers/frank1996model_single-strain-parasite-fitness.html"><strong>Model</strong>: Single-lineage parasite virulence evolution</a></td>
 </tr>
 </tbody>
 </table>
@@ -629,7 +652,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
+<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -662,8 +685,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="chapter-6.-basics-of-working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-working-with-phylogenies">Chapter 6. <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html">Basics of working with phylogenies</a></h3>
+<section id="chapter-6.-basics-of-geospatial-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-geospatial-coordinate-reference-systems">Chapter 6. <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -675,40 +698,6 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Synopsis</th>
-<th>Requirements</th>
-<th>References</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-7.-basics-of-geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-7.-basics-of-geospatial-coordinate-reference-systems">Chapter 7. <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Details
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <thead>

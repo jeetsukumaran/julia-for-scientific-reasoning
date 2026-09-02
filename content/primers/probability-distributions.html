@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../content/primers/pseudo-random-number-generators_01.html" rel="next">
-<link href="../../content/primers/markov-property.html" rel="prev">
+<link href="../../content/primers/phylip-data-format.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -76,7 +76,11 @@ ul.task-list li input[type="checkbox"] {
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-exercise {
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -84,11 +88,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -164,8 +168,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
+  <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,18 +190,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
@@ -215,6 +207,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -279,8 +283,21 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -295,6 +312,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The FASTA data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -317,6 +340,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
@@ -331,6 +360,24 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newick tree format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The NEXUS phylogenetic data format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The PHYLIP data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -877,8 +924,8 @@ Figure&nbsp;1: The same class or type distributions may also assign different pr
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/primers/markov-property.html" class="pagination-link" aria-label="Markov property">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Markov property</span>
+      <a href="../../content/primers/phylip-data-format.html" class="pagination-link" aria-label="The PHYLIP data format">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The PHYLIP data format</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/primers/julia--environments--global-vs-project.html" rel="next">
+<link href="../../content/primers/julia--environment-provisioning.html" rel="next">
 <link href="../../content/primers/frank1996model_virulence-transmission-tradeoff.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -111,19 +111,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
 .model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -199,8 +203,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
+  <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -221,18 +225,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
@@ -250,6 +242,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -314,8 +318,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -330,6 +347,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The FASTA data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -352,6 +375,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
@@ -366,6 +395,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newick tree format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The NEXUS phylogenetic data format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The PHYLIP data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -440,9 +487,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="geospatial-data-coordinate-reference-systems" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="geospatial-data-coordinate-reference-systems"><span class="header-section-number">1</span> Geospatial data coordinate reference systems</h2>
-<p>::: {curriculum-definition title=“Coordinate reference system (CRS)”}</p>
-<p>A coordinate reference system (CRS) defines how spatial coordinates correspond to positions on the Earth, specifying the datum, coordinate system, and units; when projected, it also includes a map projection from the ellipsoid to a plane.</p>
-<p>:::</p>
+<div id="curriculum-definition*-1" class="curriculum-definition" title="Coordinate reference system (CRS)">
+<p></p><details class="curriculum-definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Coordinate reference system (CRS)</summary><div>A coordinate reference system (CRS) defines how spatial coordinates correspond to positions on the Earth, specifying the datum, coordinate system, and units; when projected, it also includes a map projection from the ellipsoid to a plane.<p></p>
+</div></details>
+</div>
 <p>Geospatial data is typically stored using a <strong>coordinate reference system (CRS)</strong>. A CRS specifies how positions are described (e.g.&nbsp;longitude and latitude in degrees) and what those coordinates mean relative to the Earth.</p>
 </section>
 <section id="plotting-geospatial-data-with-standard-axis" class="level2" data-number="2">
@@ -888,8 +936,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/primers/julia--environments--global-vs-project.html" class="pagination-link" aria-label="Julia -- Environments -- Global vs project">
-        <span class="nav-page-text">Julia – Environments – Global vs project</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/primers/julia--environment-provisioning.html" class="pagination-link" aria-label="Julia -- Environment provisioning">
+        <span class="nav-page-text">Julia – Environment provisioning</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../content/primers/julia--functions-methods-and-signatures.html" rel="next">
-<link href="../../content/primers/geospatial-data-coordinate-reference-systems.html" rel="prev">
+<link href="../../content/primers/julia--environment-provisioning.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -108,11 +108,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.model-notation {
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -120,7 +120,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -196,8 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
+  <a href="../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -218,18 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
@@ -247,6 +239,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -311,8 +315,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -327,6 +344,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The FASTA data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -349,6 +372,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
@@ -363,6 +392,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newick tree format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The NEXUS phylogenetic data format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/primers/phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The PHYLIP data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -431,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>On the other hand, the lack of isolation between global and project-specific environments can result in globally-installed packages leaking into project tests, dependency chains, and so on. Workflows incorporating software engineering best practices typically benefit from having light global environments and heavy project environments: little to no packages installed globally, with all packages installed into project specific environments.</p>
 <p>I prefer and recommend the latter approach, not just due to my software developer vocation, but also for robustness and replicability.</p>
 <p>One way to achieve both the convenience of a global with just a little more friction is to created a dedicated scratch environment into which you can dump all the commonly used packages useful for many tasks and workflows before anything “escalates” into a fully-siloed project.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> jc=<span class="st">'julia --project=~/.julia-gpc`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> jc=<span class="st">'julia --project=~/.julia-calc`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This, as a full-fledged isolated environment, then gains the benefit of actually being able to be loaded up with useful packages, from fundamentals (e.g., <code>DataFrames.jl</code>, <code>CSV</code>, etc.) to more specialized domain-specific yet project-general ones (e.g.&nbsp;visualization libraries).</p>
 
 
@@ -839,8 +886,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/primers/geospatial-data-coordinate-reference-systems.html" class="pagination-link" aria-label="`GeoMakie.GeoAxis` and coordinate reference systems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span>
+      <a href="../../content/primers/julia--environment-provisioning.html" class="pagination-link" aria-label="Julia -- Environment provisioning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Julia – Environment provisioning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

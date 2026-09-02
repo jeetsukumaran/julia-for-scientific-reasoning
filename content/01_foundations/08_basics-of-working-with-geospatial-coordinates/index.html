@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/plotting-across-the-antimeridian-with-vector-data.html" rel="next">
-<link href="../../../content/01_foundations/06_basics-of-working-phylogenies/index.html" rel="prev">
+<link href="../../../content/01_foundations/04_basics-of-working-with-data-tables/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,15 +111,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -228,8 +232,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/01_foundations/01_orientation-and-tooling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Orientation</span></a>
+  <a href="../../../content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of the computing ecosystem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -250,18 +254,6 @@ window.Quarto = {
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link active">
@@ -279,6 +271,18 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -343,8 +347,21 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -359,6 +376,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli trial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/primers/fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The FASTA data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -381,6 +404,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Julia – Environments – Global vs project</span></a>
   </div>
@@ -395,6 +424,24 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov property</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/primers/newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newick tree format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The NEXUS phylogenetic data format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/primers/phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The PHYLIP data format</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -528,11 +575,11 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><a href="../../../content/A1_recipes/A_walkthrough--geomakie--geoaxis.qmd">Geospatial data visualization recipes</a></p>
+<p><a href="../../../content/recipes/walkthrough--geomakie--geoaxis.html">Geospatial data visualization recipes</a></p>
 </div>
 </div>
 </div>
-<p>Geospatial data coordinates are encoded using a <a href="../../../content/A1_primers/geospatial-data-coordinate-reference-systems.qmd">coordinate reference systems</a>, and we need to use a special type of plotting axis, the <code>GeoMake.GeoAxis</code>, to convert these values to Cartesian plotting coordinates.</p>
+<p>Geospatial data coordinates are encoded using a <a href="../../../content/primers/geospatial-data-coordinate-reference-systems.html">coordinate reference systems</a>, and we need to use a special type of plotting axis, the <code>GeoMake.GeoAxis</code>, to convert these values to Cartesian plotting coordinates.</p>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-tip callout-titled" title="Coordinate projections">
 <div class="callout-header d-flex align-content-center">
@@ -893,7 +940,7 @@ Figure&nbsp;2
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The axis-aware <code>GeoMakie.coastlines(ax)</code> approach works for the built-in coastlines dataset. If you are plotting your <em>own</em> polygon or linestring geometries from, say, a GeoDataFrame or a NaturalEarth dataset loaded with <code>NaturalEarth.jl</code>, you will need to handle antimeridian splitting yourself before passing coordinates to <code>lines!</code> or <code>poly!</code>. One approach is to preprocess geometries using <code>GeoInterface.jl</code>-compatible tools to split any segment that crosses <span class="math inline">\(\pm180°\)</span> into two segments terminating at the boundary:</p>
-<p><a href="../../../content/01_foundations/06_basics-of-visualizing-geospatial-data/plotting-across-the-antimeridian-with-vector-data.qmd">Plotting across the antimeridian</a></p>
+<p><a href="../../../content/01_foundations/08_basics-of-working-with-geospatial-coordinates/plotting-across-the-antimeridian-with-vector-data.html">Plotting across the antimeridian</a></p>
 </div>
 </div>
 </div>
@@ -1398,8 +1445,8 @@ Figure&nbsp;2
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../../content/01_foundations/06_basics-of-working-phylogenies/index.html" class="pagination-link" aria-label="Basics of working with phylogenies">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics of working with phylogenies</span>
+      <a href="../../../content/01_foundations/04_basics-of-working-with-data-tables/index.html" class="pagination-link" aria-label="Basics of working with data tables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics of working with data tables</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

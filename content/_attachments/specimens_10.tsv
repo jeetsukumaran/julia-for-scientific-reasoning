@@ -1,0 +1,11 @@
+specimen_id	species	body_mass_g	collection_year	sex	site	collector
+BM_001	Peromyscus maniculatus	21.4	2019	F	Arroyo Seco	Reyes
+BM_002	Peromyscus leucopus	23.1	2019	M	Arroyo Seco	Reyes
+BM_003	Mus musculus	18.7	2020	F	Pasadena Urban	Singh
+BM_004	Peromyscus maniculatus	19.8	2020	M	Millard Canyon	Torres
+BM_005	Neotoma fuscipes	112.3	2019	F	Millard Canyon	Torres
+BM_006	Peromyscus californicus	38.5	2021	M	Arroyo Seco	Reyes
+BM_007	Mus musculus	17.2	2021	F	Pasadena Urban	Singh
+BM_008	Neotoma fuscipes	98.6	2020	M	Eaton Canyon	Okafor
+BM_009	Peromyscus maniculatus	22.7	2021	F	Eaton Canyon	Okafor
+BM_010	Peromyscus leucopus	24.0	2022	M	Millard Canyon	Torres

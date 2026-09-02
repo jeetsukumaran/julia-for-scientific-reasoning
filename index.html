@@ -111,9 +111,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-date-created','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-date-created","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,15 +131,19 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -270,18 +274,6 @@ window.Quarto = {
  <span class="menu-text">Basics of working with data tables</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/06_basics-of-working-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with phylogenies</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
@@ -299,6 +291,18 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of working with randomness and probabilities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of visualizing phylogenies</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -363,8 +367,21 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Recipes</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="./content/recipes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -403,6 +420,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./content/primers/geospatial-data-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia – Environment provisioning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -528,13 +551,10 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-data-tables">Chapter 4. <a href="./content/01_foundations/04_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h3>
 </section>
 <section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="./content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
+<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="./content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
 </section>
-<section id="chapter-6.-basics-of-working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-working-with-phylogenies">Chapter 6. <a href="./content/01_foundations/06_basics-of-working-phylogenies/index.html">Basics of working with phylogenies</a></h3>
-</section>
-<section id="chapter-7.-basics-of-geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-7.-basics-of-geospatial-coordinate-reference-systems">Chapter 7. <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
+<section id="chapter-6.-basics-of-geospatial-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-geospatial-coordinate-reference-systems">Chapter 6. <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
 </section>
 </div>
 </div>
@@ -544,6 +564,69 @@ window.Quarto = {
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Part 1. (untitled)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="chapter-1.-bernoulli-trial" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/primers/bernoulli-trial.html">Bernoulli trial</a></h3>
+</section>
+<section id="chapter-2.-julia-environment-provisioning" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-2.-julia-environment-provisioning">Chapter 2. <a href="./content/primers/julia--environment-provisioning.html">Julia – Environment provisioning</a></h3>
+</section>
+<section id="chapter-3.-julia-environments-global-vs-project" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-3.-julia-environments-global-vs-project">Chapter 3. <a href="./content/primers/julia--environments--global-vs-project.html">Julia – Environments – Global vs project</a></h3>
+</section>
+<section id="chapter-4.-julia-functions-methods-and-signatures" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-4.-julia-functions-methods-and-signatures">Chapter 4. <a href="./content/primers/julia--functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h3>
+</section>
+<section id="chapter-5.-markov-property" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-5.-markov-property">Chapter 5. <a href="./content/primers/markov-property.html">Markov property</a></h3>
+</section>
+<section id="chapter-6.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-6.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 6. <a href="./content/primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h3>
+</section>
+<section id="chapter-7.-probabilty-distributionsessential-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-7.-probabilty-distributionsessential-concepts">Chapter 7. <a href="./content/primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h3>
+</section>
+<section id="chapter-8.-pseudo-random-number-generators" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators">Chapter 8. <a href="./content/primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h3>
+</section>
+<section id="chapter-9.-pseudo-random-number-generators-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-9.-pseudo-random-number-generators-best-practices">Chapter 9. <a href="./content/primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h3>
+</section>
+<section id="chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 10. <a href="./content/primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h3>
+</section>
+<section id="chapter-11.-the-fasta-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-11.-the-fasta-data-format">Chapter 11. <a href="./content/primers/fasta-data-format.html">The FASTA data format</a></h3>
+</section>
+<section id="chapter-12.-the-nexus-phylogenetic-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-12.-the-nexus-phylogenetic-data-format">Chapter 12. <a href="./content/primers/nexus-data-format.html">The NEXUS phylogenetic data format</a></h3>
+</section>
+<section id="chapter-13.-the-newick-tree-format" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-13.-the-newick-tree-format">Chapter 13. <a href="./content/primers/newick-data-format.html">The Newick tree format</a></h3>
+</section>
+<section id="chapter-14.-the-phylip-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-14.-the-phylip-data-format">Chapter 14. <a href="./content/primers/phylip-data-format.html">The PHYLIP data format</a></h3>
+</section>
+<section id="chapter-15.-virulence-transmission-trade-off-frank-1996" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-15.-virulence-transmission-trade-off-frank-1996">Chapter 15. <a href="./content/primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h3>
+</section>
+<section id="chapter-16.-geomakie.geoaxis-and-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="chapter-16.-geomakie.geoaxis-and-coordinate-reference-systems">Chapter 16. <a href="./content/primers/geospatial-data-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h3>
+</section>
+</div>
+</div>
+</div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </div>

@@ -6,9 +6,41 @@
       "/content/01_foundations/02_basics-of-running-julia/index.html",
       "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
       "/content/01_foundations/04_basics-of-working-with-data-tables/index.html",
-      "/content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html",
-      "/content/01_foundations/06_basics-of-working-phylogenies/index.html",
+      "/content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html",
+      "/content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html",
+      "/content/primers/bernoulli-trial.html",
+      "/content/primers/julia--environment-provisioning.html",
+      "/content/primers/julia--environments--global-vs-project.html",
+      "/content/primers/julia--functions-methods-and-signatures.html",
+      "/content/primers/markov-property.html",
+      "/content/primers/frank1996model_single-strain-parasite-fitness.html",
+      "/content/primers/probability-distributions.html",
+      "/content/primers/pseudo-random-number-generators_01.html",
+      "/content/primers/pseudo-random-number-generators_02_best-practices.html",
+      "/content/primers/pseudo-random-number-generators_03_details.html",
+      "/content/primers/fasta-data-format.html",
+      "/content/primers/nexus-data-format.html",
+      "/content/primers/newick-data-format.html",
+      "/content/primers/phylip-data-format.html",
+      "/content/primers/frank1996model_virulence-transmission-tradeoff.html",
+      "/content/primers/geospatial-data-coordinate-reference-systems.html"
+    ]
+  },
+  {
+    "listing": "/content/01_foundations/index.html",
+    "items": [
+      "/content/01_foundations/01_computing-ecosystem/index.html",
+      "/content/01_foundations/02_basics-of-running-julia/index.html",
+      "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
+      "/content/01_foundations/04_basics-of-working-with-data-tables/index.html",
+      "/content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html",
       "/content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html"
+    ]
+  },
+  {
+    "listing": "/content/recipes/index.html",
+    "items": [
+      "/content/recipes/walkthrough--geomakie--geoaxis.html"
     ]
   },
   {
@@ -19,6 +51,7 @@
       "/content/primers/frank1996model_single-strain-parasite-fitness.html",
       "/content/primers/frank1996model_virulence-transmission-tradeoff.html",
       "/content/primers/geospatial-data-coordinate-reference-systems.html",
+      "/content/primers/julia--environment-provisioning.html",
       "/content/primers/julia--environments--global-vs-project.html",
       "/content/primers/julia--functions-methods-and-signatures.html",
       "/content/primers/markov-property.html",
@@ -29,26 +62,6 @@
       "/content/primers/pseudo-random-number-generators_01.html",
       "/content/primers/pseudo-random-number-generators_02_best-practices.html",
       "/content/primers/pseudo-random-number-generators_03_details.html"
-    ]
-  },
-  {
-    "listing": "/content/recipes/index.html",
-    "items": []
-  },
-  {
-    "listing": "/drafts/index.html",
-    "items": []
-  },
-  {
-    "listing": "/content/01_foundations/index.html",
-    "items": [
-      "/content/01_foundations/01_computing-ecosystem/index.html",
-      "/content/01_foundations/02_basics-of-running-julia/index.html",
-      "/content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html",
-      "/content/01_foundations/04_basics-of-working-with-data-tables/index.html",
-      "/content/01_foundations/05_basics-of-working-with-random-numbers-and-distributions/index.html",
-      "/content/01_foundations/06_basics-of-working-phylogenies/index.html",
-      "/content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html"
     ]
   },
   {
