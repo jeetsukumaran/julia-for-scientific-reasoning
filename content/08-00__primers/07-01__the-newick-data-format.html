@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeet Sukumaran">
+
+<title>The Newick data format</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../content/08-00__primers/07-02__the-nexus-data-format.html" rel="next">
+<link href="../../content/08-00__primers/06-01__markov-property.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-814259f4bb4f29d3679909d06d088a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/indexed-content-1.0.0/indexed-content.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutorials.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/07-00__recipes/index.html"> 
+<span class="menu-text">Recipes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../content/08-00__primers/index.html" aria-current="page"> 
+<span class="menu-text">Primers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/08-00__primers/07-01__the-newick-data-format.html"><span class="indexed-content-entry"><span class="indexed-content-number">07-01</span> <span class="indexed-content-title">The Newick data format</span></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/01-01__bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Bernoulli trial</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/02-01__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">The FASTA data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-01</span> <span class="indexed-content-title">Pathogen fitness as a function of virulence (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-02</span> <span class="indexed-content-title">Virulence-transmission trade-off (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-01__julia-environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-02__julia-environments-global-vs-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Julia – Environments – Global vs project</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-03__julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-03</span> <span class="indexed-content-title">Julia: Functions, methods, and signatures</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/06-01__markov-property.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">06-01</span> <span class="indexed-content-title">Markov property</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-01__the-newick-data-format.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-01</span> <span class="indexed-content-title">The Newick data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-02__the-nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-03__the-phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-03</span> <span class="indexed-content-title">The PHYLIP data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-04__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-04</span> <span class="indexed-content-title">The fasta data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-05__downloading-and-aligning-genbank-molecular-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-05</span> <span class="indexed-content-title">Downloading and aligning GenBank molecular data</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/08-01__probability-distributions-essential-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">08-01</span> <span class="indexed-content-title">Probabilty distributions–Essential concepts</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-01__pseudo-random-number-generators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-01</span> <span class="indexed-content-title">Pseudo-random number generators</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-02</span> <span class="indexed-content-title">Pseudo-random number generators: best practices</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-03</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#newick-tree-expressions" id="toc-newick-tree-expressions" class="nav-link active" data-scroll-target="#newick-tree-expressions"><span class="header-section-number">1</span> Newick tree expressions</a></li>
+  <li><a href="#read-a-newick-expression-from-the-inside-out" id="toc-read-a-newick-expression-from-the-inside-out" class="nav-link" data-scroll-target="#read-a-newick-expression-from-the-inside-out"><span class="header-section-number">2</span> Read a Newick expression from the inside out</a></li>
+  <li><a href="#internal-node-labels" id="toc-internal-node-labels" class="nav-link" data-scroll-target="#internal-node-labels"><span class="header-section-number">3</span> Internal-node labels</a></li>
+  <li><a href="#branch-lengths" id="toc-branch-lengths" class="nav-link" data-scroll-target="#branch-lengths"><span class="header-section-number">4</span> Branch lengths</a></li>
+  <li><a href="#labels-and-branch-lengths-together" id="toc-labels-and-branch-lengths-together" class="nav-link" data-scroll-target="#labels-and-branch-lengths-together"><span class="header-section-number">5</span> Labels and branch lengths together</a></li>
+  <li><a href="#portable-node-labels" id="toc-portable-node-labels" class="nav-link" data-scroll-target="#portable-node-labels"><span class="header-section-number">6</span> Portable node labels</a></li>
+  <li><a href="#reserved-characters-and-quoted-labels" id="toc-reserved-characters-and-quoted-labels" class="nav-link" data-scroll-target="#reserved-characters-and-quoted-labels"><span class="header-section-number">7</span> Reserved characters and quoted labels</a></li>
+  <li><a href="#newick-data-files" id="toc-newick-data-files" class="nav-link" data-scroll-target="#newick-data-files"><span class="header-section-number">8</span> Newick data files</a></li>
+  <li><a href="#interpretation-checkpoint" id="toc-interpretation-checkpoint" class="nav-link" data-scroll-target="#interpretation-checkpoint"><span class="header-section-number">9</span> Interpretation checkpoint</a></li>
+  <li><a href="#topology-exercises" id="toc-topology-exercises" class="nav-link" data-scroll-target="#topology-exercises"><span class="header-section-number">10</span> Topology exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Newick data format</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeet Sukumaran </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A Newick expression represents a phylogeny as nested text. Parentheses record hierarchical relationships, labels identify nodes, and optional numbers record branch lengths.</p>
+<p>This primer describes the serialized format. The <a href="../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">phylogeny representations tutorial</a> explains how Julia parses Newick content and reads Newick files.</p>
+<section id="newick-tree-expressions" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="newick-tree-expressions"><span class="header-section-number">1</span> Newick tree expressions</h2>
+<p>The following expression represents a phylogeny with 5 labeled tips:</p>
+<pre class="text"><code>((A,B),(C,(D,E)));</code></pre>
+<p>The core punctuation is:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 27%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Symbol</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>,</code></td>
+<td>Separate sibling nodes.</td>
+<td><code>(A,B)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>(</code> and <code>)</code></td>
+<td>Enclose the descendants of 1 internal node.</td>
+<td><code>((A,B),C)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>:</code></td>
+<td>Introduce the incoming branch length for a node.</td>
+<td><code>A:0.5</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>;</code></td>
+<td>Terminate 1 phylogeny expression.</td>
+<td><code>(A,B);</code></td>
+</tr>
+</tbody>
+</table>
+<p>Tip nodes appear as labels such as <code>A</code> and <code>B</code>. A pair of parentheses represents an internal node, and the comma-separated expressions inside the parentheses represent its immediate descendants.</p>
+</section>
+<section id="read-a-newick-expression-from-the-inside-out" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="read-a-newick-expression-from-the-inside-out"><span class="header-section-number">2</span> Read a Newick expression from the inside out</h2>
+<p>Consider this formatted expression:</p>
+<pre class="text"><code>(
+    (A,B)AB,
+    (C,(D,E)DE)CDE
+)root;</code></pre>
+<ul>
+<li><code>(A,B)AB</code> groups <code>A</code> and <code>B</code> and labels their ancestor <code>AB</code>.</li>
+<li><code>(D,E)DE</code> groups <code>D</code> and <code>E</code> and labels their ancestor <code>DE</code>.</li>
+<li><code>(C,(D,E)DE)CDE</code> joins <code>C</code> to the <code>DE</code> clade and labels their ancestor <code>CDE</code>.</li>
+<li>The outer parentheses join <code>AB</code> and <code>CDE</code> and label the root <code>root</code>.</li>
+</ul>
+<p>Nested parentheses can describe pectinate, balanced, bifurcating, or multifurcating topologies.</p>
+<div id="cell-fig-newick-topology-ladder" class="cell" data-fig-width="12" data-fig-height="3.6" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-newick-topology-ladder" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three phylogenies with six tips progress from a highly pectinate topology to a balanced topology.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-newick-topology-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-ladder-output-1.svg" class="img-fluid figure-img" alt="Three phylogenies with six tips progress from a highly pectinate topology to a balanced topology.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-topology-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Three Newick expressions with progressively more balanced topologies.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="internal-node-labels" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="internal-node-labels"><span class="header-section-number">3</span> Internal-node labels</h2>
+<p>Text immediately after an internal node’s closing parenthesis labels that node:</p>
+<pre class="text"><code>((A,B)hello,(C,D)world)apple;</code></pre>
+<p>The labels <code>hello</code> and <code>world</code> identify 2 internal nodes. The final label <code>apple</code> identifies the root.</p>
+<div id="cell-fig-newick-internal-node-labels" class="cell" data-fig-width="8" data-fig-height="3.2" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-newick-internal-node-labels" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny has internal nodes labeled hello and world and a root labeled apple.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-newick-internal-node-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-internal-node-labels-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny has internal nodes labeled hello and world and a root labeled apple.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-internal-node-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: A Newick tree with labels on its internal nodes and root.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="branch-lengths" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="branch-lengths"><span class="header-section-number">4</span> Branch lengths</h2>
+<p>A colon followed by a number records the length of the branch leading to a node:</p>
+<pre class="text"><code>((A:1,B:2):3,(C:4,D:5):6):7;</code></pre>
+<div id="cell-fig-newick-branch-lengths" class="cell" data-fig-width="8" data-fig-height="3.2" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-newick-branch-lengths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny has unequal horizontal branch lengths and a number beside every branch.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-newick-branch-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-branch-lengths-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny has unequal horizontal branch lengths and a number beside every branch.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-branch-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: A Newick tree scaled and annotated with its stored branch lengths.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Branch lengths may represent time, expected substitutions, or another edge-associated quantity. Their biological meaning comes from the analysis or data source rather than from Newick punctuation itself.</p>
+</section>
+<section id="labels-and-branch-lengths-together" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="labels-and-branch-lengths-together"><span class="header-section-number">5</span> Labels and branch lengths together</h2>
+<p>A node label precedes its branch length:</p>
+<pre class="text"><code>((A:1,B:2)hello:3,(C:4,D:5)world:6)root:7;</code></pre>
+<p>For an internal node, the order is:</p>
+<pre class="text"><code>( descendants ) node_label : incoming_branch_length</code></pre>
+<p>The node label and branch length are independently optional. The colon is required when a branch length is present.</p>
+</section>
+<section id="portable-node-labels" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="portable-node-labels"><span class="header-section-number">6</span> Portable node labels</h2>
+<p>A conservative label subset works across most phylogenetic software:</p>
+<ul>
+<li>lowercase and uppercase letters;</li>
+<li>numerals;</li>
+<li>periods; and</li>
+<li>underscores.</li>
+</ul>
+<pre class="text"><code>(Agkistrodon_contortrix,Agkistrodon.piscivorus);</code></pre>
+<p>The original Newick convention interprets an underscore in an unquoted label as a blank. Some software preserves the underscore instead. Normalize labels deliberately when their exact spelling must survive a multi-program workflow.</p>
+</section>
+<section id="reserved-characters-and-quoted-labels" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="reserved-characters-and-quoted-labels"><span class="header-section-number">7</span> Reserved characters and quoted labels</h2>
+<p>An unquoted label cannot contain whitespace or these syntax characters:</p>
+<pre class="text"><code>( ) [ ] ' : ; ,</code></pre>
+<p>Use single quotes when a label requires spaces or syntax punctuation:</p>
+<pre class="text"><code>('Population 01 (N)','Population 01 (S)');</code></pre>
+<p>Represent a literal single quote inside a quoted label with 2 consecutive single quotes. Quoted-label support and underscore handling can still vary among software implementations, so simple normalized labels remain preferable for portable pipelines.</p>
+</section>
+<section id="newick-data-files" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="newick-data-files"><span class="header-section-number">8</span> Newick data files</h2>
+<p>A Newick data file contains 1 or more terminated Newick expressions:</p>
+<pre class="text"><code>(A,(B,(C,D)));
+(D,(A,(B,C)));
+(A,(C,(D,B)));</code></pre>
+<p>The semicolon terminates each expression. Placing 1 expression on each line is a readable convention, not a format requirement. Outside an unquoted label or branch length, whitespace and line breaks may separate syntax elements.</p>
+<p>NEXUS trees blocks also use Newick expressions, but NEXUS adds its own block structure and statements around those expressions.</p>
+</section>
+<section id="interpretation-checkpoint" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="interpretation-checkpoint"><span class="header-section-number">9</span> Interpretation checkpoint</h2>
+<p>Interpret this expression before plotting it:</p>
+<pre class="text"><code>((A:0.5,B:0.5)AB:1.0,C:1.5)root;</code></pre>
+<ol type="1">
+<li>Identify the sister tips.</li>
+<li>Identify the internal-node label.</li>
+<li>Identify the branch entering that internal node.</li>
+<li>Compare the total root-to-tip length for <code>A</code>, <code>B</code>, and <code>C</code>.</li>
+</ol>
+<p>All 3 root-to-tip lengths equal <code>1.5</code>.</p>
+</section>
+<section id="topology-exercises" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="topology-exercises"><span class="header-section-number">10</span> Topology exercises</h2>
+<p>The first row below contains alternative Newick representations of the same topology. Rotating descendants around an internal node changes the drawing but not the relationships. Each tree in the second row has a different topology.</p>
+<div id="cell-fig-newick-topology-exercises" class="cell" data-fig-width="12" data-fig-height="6" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="fig-newick-topology-exercises" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Eight six-tip phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-newick-topology-exercises-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-exercises-output-1.svg" class="img-fluid figure-img" alt="Eight six-tip phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-topology-exercises-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Equivalent node rotations and genuinely different phylogenetic topologies.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For each expression:</p>
+<ol type="1">
+<li>List the clades implied by its nested parentheses.</li>
+<li>Rewrite the expression using at least 1 node rotation.</li>
+<li>Confirm which relationships remain unchanged.</li>
+<li>Save several terminated expressions in 1 Newick file.</li>
+</ol>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../content/08-00__primers/06-01__markov-property.html" class="pagination-link" aria-label="[[06-01]{.indexed-content-number} [Markov property]{.indexed-content-title}]{.indexed-content-entry}">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="indexed-content-entry"><span class="indexed-content-number">06-01</span> <span class="indexed-content-title">Markov property</span></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../content/08-00__primers/07-02__the-nexus-data-format.html" class="pagination-link" aria-label="[[07-02]{.indexed-content-number} [The NEXUS phylogenetic data format]{.indexed-content-title}]{.indexed-content-entry}">
+        <span class="nav-page-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:jeetsukumaran@gmail.com">
+<p>© Jeet Sukumaran</p>
+</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+<p>All rights reserved, but please share or use under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jeetsukumaran">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

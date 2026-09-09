@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./content/01_foundations/index.html" rel="next">
+<link href="./tutorials.html" rel="next">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -46,6 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-814259f4bb4f29d3679909d06d088a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/indexed-content-1.0.0/indexed-content.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,20 +77,48 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-practicals .list');
+    const listingTargetEl = window.document.querySelector('#listing-tutorials .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-date-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-practicals'] = new List('listing-practicals', options);
+    window['quarto-listings']['listing-tutorials'] = new List('listing-tutorials', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-recipes .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-recipes'] = new List('listing-recipes', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -111,9 +140,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-date-created','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-date-created','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-date-created","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-content-references","listing-dated-created"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-date-created","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,14 +160,6 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .model-notation {
   --color1: #ffffff;
   --color2: #000000;
@@ -148,6 +169,14 @@ ul.task-list li input[type="checkbox"] {
   --color2: #000000;
 }
 .curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -198,14 +227,45 @@ window.Quarto = {
     <img src="./_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
     </a>
   </div>
-        <div class="quarto-navbar-tools tools-end">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./tutorials.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./content/07-00__recipes/index.html"> 
+<span class="menu-text">Recipes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./content/08-00__primers/index.html"> 
+<span class="menu-text">Primers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
-          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
@@ -213,7 +273,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">(Just enough) Julia for scientific informatics, modeling, and reasoning</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -223,7 +283,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./_quarto/decor/project-logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
       <img src="./_quarto/decor/project-logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
@@ -234,262 +294,39 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">(Just enough) Julia for scientific informatics, modeling, and reasoning</span></a>
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Introduction</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/01_foundations/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic frameworks and mechanisms</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/01_computing-ecosystem/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of the computing ecosystem</span></a>
+  <a href="./tutorials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/02_basics-of-running-julia/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of setting up and running Julia</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of visualizing mathematical models</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/04_basics-of-working-with-data-tables/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with data tables</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of geospatial coordinate reference systems</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/plotting-across-the-antimeridian-with-vector-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Processing data for plotting across the antimeridian with vector data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with randomness and probabilities</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/01_foundations/05_basics-of-visualizing-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of visualizing phylogenies</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/03_basic-data-workflows/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic data workflows</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/03_basic-data-workflows/05_geospatial-data/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with geospatial data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/03_basic-data-workflows/06_biodiversity-distribution-data/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with biodiversity distribution data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/03_basic-data-workflows/07_fossil-distribution-data/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of working with paleobiological fossil distribution data</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Basic data workflows</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Basic simulation workflows</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/06_basic-simulation-workflows/08_basics-of-agent-based-modeling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/06_basic-simulation-workflows/08_basics-of-agent-based-modeling/howto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basics of agent-based modeling: spatial epidemic dynamics with Agents.jl</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/recipes/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/07-00__recipes/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recipes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/recipes/walkthrough--geomakie--geoaxis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Geospatial data visualization with <code>GeoMakie.GeoAxis</code></span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./content/primers/index.html" class="sidebar-item-text sidebar-link">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/08-00__primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/bernoulli-trial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bernoulli trial</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/primers/fasta-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The FASTA data format</span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/primers/frank1996model_single-strain-parasite-fitness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pathogen fitness as a function of virulence (Frank, 1996)</span></a>
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/frank1996model_virulence-transmission-tradeoff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Virulence-transmission trade-off (Frank, 1996)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/geospatial-data-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/julia--environment-provisioning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia – Environment provisioning</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/julia--environments--global-vs-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia – Environments – Global vs project</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/julia--functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Julia: Functions, methods, and signatures</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/markov-property.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Markov property</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/newick-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The Newick tree format</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/nexus-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The NEXUS phylogenetic data format</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/phylip-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The PHYLIP data format</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/probability-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Probabilty distributions–Essential concepts</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/pseudo-random-number-generators_01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pseudo-random number generators</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/pseudo-random-number-generators_02_best-practices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pseudo-random number generators: best practices</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./content/primers/pseudo-random-number-generators_03_details.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pseudo-random number generators: continuous values from discrete machines</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -522,39 +359,151 @@ window.Quarto = {
 
 
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><span class="listing-section-title">Practicals</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span class="listing-section-title">Primers</span></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><span class="listing-section-title">Tutorials</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span class="listing-section-title">Recipes</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""><span class="listing-section-title">Primers</span></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-practicals" class="quarto-listing quarto-listing-container-custom">
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="listing-tutorials" class="quarto-listing quarto-listing-container-custom">
+<div class="indexed-content-listing">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Part 1. Foundations
+<span class="screen-reader-only">Important</span>Basic frameworks and mechanisms
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<section id="chapter-1.-basics-of-the-computing-ecosystem" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-1.-basics-of-the-computing-ecosystem">Chapter 1. <a href="./content/01_foundations/01_computing-ecosystem/index.html">Basics of the computing ecosystem</a></h3>
+<section id="the-computing-ecosystem" class="level3">
+<h3 class="anchored" data-anchor-id="the-computing-ecosystem">01-01. <a href="./content/01-00__foundations/01-01__the-computing-ecosystem/index.html">The computing ecosystem</a></h3>
 </section>
-<section id="chapter-2.-basics-of-setting-up-and-running-julia" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-2.-basics-of-setting-up-and-running-julia">Chapter 2. <a href="./content/01_foundations/02_basics-of-running-julia/index.html">Basics of setting up and running Julia</a></h3>
+<section id="setting-up-and-running-julia" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-and-running-julia">02-01. <a href="./content/01-00__foundations/02-01__setting-up-and-running-julia/index.html">Setting up and running Julia</a></h3>
 </section>
-<section id="chapter-3.-basics-of-visualizing-mathematical-models" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-3.-basics-of-visualizing-mathematical-models">Chapter 3. <a href="./content/01_foundations/03_basics-of-visualizing-mathematical-models/index.html">Basics of visualizing mathematical models</a></h3>
+<section id="julia-help-and-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="julia-help-and-documentation">02-02. <a href="./content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html">Julia help and documentation</a></h3>
 </section>
-<section id="chapter-4.-basics-of-working-with-data-tables" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-4.-basics-of-working-with-data-tables">Chapter 4. <a href="./content/01_foundations/04_basics-of-working-with-data-tables/index.html">Basics of working with data tables</a></h3>
+<section id="julia-programs-and-programming" class="level3">
+<h3 class="anchored" data-anchor-id="julia-programs-and-programming">03-01. <a href="./content/01-00__foundations/03-01__julia-programs-and-programming/index.html">Julia programs and programming</a></h3>
 </section>
-<section id="chapter-5.-basics-of-working-with-randomness-and-probabilities" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-basics-of-working-with-randomness-and-probabilities">Chapter 5. <a href="./content/01_foundations/06_basics-of-working-with-random-numbers-and-distributions/index.html">Basics of working with randomness and probabilities</a></h3>
+<section id="working-with-data-tables" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-data-tables">04-01. <a href="./content/01-00__foundations/04-01__working-with-data-tables/index.html">Working with data tables</a></h3>
 </section>
-<section id="chapter-6.-basics-of-geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-basics-of-geospatial-coordinate-reference-systems">Chapter 6. <a href="./content/01_foundations/08_basics-of-working-with-geospatial-coordinates/index.html">Basics of geospatial coordinate reference systems</a></h3>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Creative visualization with Makie
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="creating-a-figure" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-figure">05-01. <a href="./content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html">Creating a figure</a></h3>
+</section>
+<section id="styling-a-figure" class="level3">
+<h3 class="anchored" data-anchor-id="styling-a-figure">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html">Styling a figure</a></h3>
+</section>
+<section id="plotting-geometries" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-geometries">05-03. <a href="./content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+</section>
+<section id="visualizing-mathematical-models" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-mathematical-models">06-01. <a href="./content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html">Visualizing mathematical models</a></h3>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Probabilistic reasoning and analyses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<section id="working-with-randomness-and-probabilities" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="working-with-randomness-and-probabilities">07-01. <a href="./content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html">Working with randomness and probabilities</a></h3>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Phylogenetic reasoning and analyses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="working-with-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__working-with-phylogenies/index.html">Working with phylogenies</a></h3>
+</section>
+<section id="adding-images-to-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">01-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
+</section>
+<section id="adding-phylopic-images-to-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">01-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-04__adding-phylopic-images/index.html">Adding PhyloPic images to phylogenies</a></h3>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Geospatial reasoning and analyses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="geospatial-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="geospatial-coordinate-reference-systems">01-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html">Geospatial coordinate reference systems</a></h3>
+</section>
+<section id="working-with-geospatial-data" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-geospatial-data">01-02. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html">Working with geospatial data</a></h3>
+</section>
+<section id="processing-data-for-plotting-across-the-antimeridian-with-vector-data" class="level3">
+<h3 class="anchored" data-anchor-id="processing-data-for-plotting-across-the-antimeridian-with-vector-data">01-03. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html">Processing data for plotting across the antimeridian with vector data</a></h3>
+</section>
+<section id="working-with-biodiversity-distribution-data" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-biodiversity-distribution-data">06-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html">Working with biodiversity distribution data</a></h3>
+</section>
+<section id="working-with-paleobiological-fossil-distribution-data" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-paleobiological-fossil-distribution-data">07-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html">Working with paleobiological fossil distribution data</a></h3>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Simulation-based reasoning and analyses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<section id="agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl">08-01. <a href="./content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html">Agent-based modeling: spatial epidemic dynamics with Agents.jl</a></h3>
 </section>
 </div>
 </div>
@@ -563,69 +512,64 @@ window.Quarto = {
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="listing-recipes" class="quarto-listing quarto-listing-container-custom">
+<section id="geospatial-data-visualization-with-geomakie.geoaxis" class="level2 indexed-content-listing">
+<h2 class="anchored" data-anchor-id="geospatial-data-visualization-with-geomakie.geoaxis">01-01. <a href="./content/07-00__recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html">Geospatial data visualization with `GeoMakie.GeoAxis`</a></h2>
+</section>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Part 1. (untitled)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<section id="chapter-1.-bernoulli-trial" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-1.-bernoulli-trial">Chapter 1. <a href="./content/primers/bernoulli-trial.html">Bernoulli trial</a></h3>
+<div class="indexed-content-listing">
+<section id="bernoulli-trial" class="level2">
+<h2 class="anchored" data-anchor-id="bernoulli-trial">01-01. <a href="./content/08-00__primers/01-01__bernoulli-trial.html">Bernoulli trial</a></h2>
 </section>
-<section id="chapter-2.-julia-environment-provisioning" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-2.-julia-environment-provisioning">Chapter 2. <a href="./content/primers/julia--environment-provisioning.html">Julia – Environment provisioning</a></h3>
+<section id="the-fasta-data-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-fasta-data-format">02-01. <a href="./content/08-00__primers/02-01__the-fasta-data-format.html">The FASTA data format</a></h2>
 </section>
-<section id="chapter-3.-julia-environments-global-vs-project" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-3.-julia-environments-global-vs-project">Chapter 3. <a href="./content/primers/julia--environments--global-vs-project.html">Julia – Environments – Global vs project</a></h3>
+<section id="pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="pathogen-fitness-as-a-function-of-virulence-frank-1996">03-01. <a href="./content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
 </section>
-<section id="chapter-4.-julia-functions-methods-and-signatures" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-4.-julia-functions-methods-and-signatures">Chapter 4. <a href="./content/primers/julia--functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h3>
+<section id="virulence-transmission-trade-off-frank-1996" class="level2">
+<h2 class="anchored" data-anchor-id="virulence-transmission-trade-off-frank-1996">03-02. <a href="./content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 </section>
-<section id="chapter-5.-markov-property" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-5.-markov-property">Chapter 5. <a href="./content/primers/markov-property.html">Markov property</a></h3>
+<section id="geomakie.geoaxis-and-coordinate-reference-systems" class="level2">
+<h2 class="anchored" data-anchor-id="geomakie.geoaxis-and-coordinate-reference-systems">04-01. <a href="./content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h2>
 </section>
-<section id="chapter-6.-pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-6.-pathogen-fitness-as-a-function-of-virulence-frank-1996">Chapter 6. <a href="./content/primers/frank1996model_single-strain-parasite-fitness.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h3>
+<section id="julia-environment-provisioning" class="level2">
+<h2 class="anchored" data-anchor-id="julia-environment-provisioning">05-01. <a href="./content/08-00__primers/05-01__julia-environment-provisioning.html">Julia – Environment provisioning</a></h2>
 </section>
-<section id="chapter-7.-probabilty-distributionsessential-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-7.-probabilty-distributionsessential-concepts">Chapter 7. <a href="./content/primers/probability-distributions.html">Probabilty distributions–Essential concepts</a></h3>
+<section id="julia-environments-global-vs-project" class="level2">
+<h2 class="anchored" data-anchor-id="julia-environments-global-vs-project">05-02. <a href="./content/08-00__primers/05-02__julia-environments-global-vs-project.html">Julia – Environments – Global vs project</a></h2>
 </section>
-<section id="chapter-8.-pseudo-random-number-generators" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-8.-pseudo-random-number-generators">Chapter 8. <a href="./content/primers/pseudo-random-number-generators_01.html">Pseudo-random number generators</a></h3>
+<section id="julia-functions-methods-and-signatures" class="level2">
+<h2 class="anchored" data-anchor-id="julia-functions-methods-and-signatures">05-03. <a href="./content/08-00__primers/05-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
 </section>
-<section id="chapter-9.-pseudo-random-number-generators-best-practices" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-9.-pseudo-random-number-generators-best-practices">Chapter 9. <a href="./content/primers/pseudo-random-number-generators_02_best-practices.html">Pseudo-random number generators: best practices</a></h3>
+<section id="markov-property" class="level2">
+<h2 class="anchored" data-anchor-id="markov-property">06-01. <a href="./content/08-00__primers/06-01__markov-property.html">Markov property</a></h2>
 </section>
-<section id="chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-10.-pseudo-random-number-generators-continuous-values-from-discrete-machines">Chapter 10. <a href="./content/primers/pseudo-random-number-generators_03_details.html">Pseudo-random number generators: continuous values from discrete machines</a></h3>
+<section id="the-newick-tree-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-newick-tree-format">07-01. <a href="./content/08-00__primers/07-01__the-newick-tree-format.html">The Newick tree format</a></h2>
 </section>
-<section id="chapter-11.-the-fasta-data-format" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-11.-the-fasta-data-format">Chapter 11. <a href="./content/primers/fasta-data-format.html">The FASTA data format</a></h3>
+<section id="the-nexus-phylogenetic-data-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">07-02. <a href="./content/08-00__primers/07-02__the-nexus-phylogenetic-data-format.html">The NEXUS phylogenetic data format</a></h2>
 </section>
-<section id="chapter-12.-the-nexus-phylogenetic-data-format" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-12.-the-nexus-phylogenetic-data-format">Chapter 12. <a href="./content/primers/nexus-data-format.html">The NEXUS phylogenetic data format</a></h3>
+<section id="the-phylip-data-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-phylip-data-format">07-03. <a href="./content/08-00__primers/07-03__the-phylip-data-format.html">The PHYLIP data format</a></h2>
 </section>
-<section id="chapter-13.-the-newick-tree-format" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-13.-the-newick-tree-format">Chapter 13. <a href="./content/primers/newick-data-format.html">The Newick tree format</a></h3>
+<section id="probabilty-distributionsessential-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">08-01. <a href="./content/08-00__primers/08-01__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h2>
 </section>
-<section id="chapter-14.-the-phylip-data-format" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-14.-the-phylip-data-format">Chapter 14. <a href="./content/primers/phylip-data-format.html">The PHYLIP data format</a></h3>
+<section id="pseudo-random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators">09-01. <a href="./content/08-00__primers/09-01__pseudo-random-number-generators.html">Pseudo-random number generators</a></h2>
 </section>
-<section id="chapter-15.-virulence-transmission-trade-off-frank-1996" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-15.-virulence-transmission-trade-off-frank-1996">Chapter 15. <a href="./content/primers/frank1996model_virulence-transmission-tradeoff.html">Virulence-transmission trade-off (Frank, 1996)</a></h3>
+<section id="pseudo-random-number-generators-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-best-practices">09-02. <a href="./content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html">Pseudo-random number generators: best practices</a></h2>
 </section>
-<section id="chapter-16.-geomakie.geoaxis-and-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="chapter-16.-geomakie.geoaxis-and-coordinate-reference-systems">Chapter 16. <a href="./content/primers/geospatial-data-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h3>
+<section id="pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-continuous-values-from-discrete-machines">09-03. <a href="./content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
 </section>
-</div>
-</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
@@ -1041,8 +985,8 @@ window.Quarto = {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./content/01_foundations/index.html" class="pagination-link" aria-label="Basic frameworks and mechanisms">
-        <span class="nav-page-text">Basic frameworks and mechanisms</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorials.html" class="pagination-link" aria-label="Tutorials">
+        <span class="nav-page-text">Tutorials</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

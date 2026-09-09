@@ -1,0 +1,18 @@
+#quarto-sidebar.sidebar-navigation .indexed-content-entry {
+  align-items: baseline;
+  column-gap: 0.45rem;
+  display: inline-grid;
+  grid-template-columns:
+    var(--indexed-content-number-width, 4rem) minmax(0, 1fr);
+  width: 100%;
+}
+
+#quarto-sidebar.sidebar-navigation .indexed-content-number {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.72;
+  white-space: nowrap;
+}
+
+#quarto-sidebar.sidebar-navigation .indexed-content-title {
+  min-width: 0;
+}
