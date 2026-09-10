@@ -112,23 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -136,7 +120,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -434,17 +434,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-the-plotting-packages" id="toc-load-the-plotting-packages" class="nav-link active" data-scroll-target="#load-the-plotting-packages"><span class="header-section-number">1</span> Load the plotting packages</a></li>
-  <li><a href="#generate-the-phylogeny-from-a-string-source" id="toc-generate-the-phylogeny-from-a-string-source" class="nav-link" data-scroll-target="#generate-the-phylogeny-from-a-string-source"><span class="header-section-number">2</span> Generate the phylogeny from a string source</a></li>
-  <li><a href="#plot-the-phylogeny" id="toc-plot-the-phylogeny" class="nav-link" data-scroll-target="#plot-the-phylogeny"><span class="header-section-number">3</span> Plot the phylogeny</a></li>
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link active" data-scroll-target="#setting-up-the-environment"><span class="header-section-number">1</span> Setting up the environment</a></li>
+  <li><a href="#generating-the-phylogeny" id="toc-generating-the-phylogeny" class="nav-link" data-scroll-target="#generating-the-phylogeny"><span class="header-section-number">2</span> Generating the phylogeny</a></li>
+  <li><a href="#plotting-the-phylogeny" id="toc-plotting-the-phylogeny" class="nav-link" data-scroll-target="#plotting-the-phylogeny"><span class="header-section-number">3</span> Plotting the phylogeny</a></li>
   <li><a href="#adding-images-to-the-phylogeny" id="toc-adding-images-to-the-phylogeny" class="nav-link" data-scroll-target="#adding-images-to-the-phylogeny"><span class="header-section-number">4</span> Adding images to the phylogeny</a>
   <ul class="collapse">
   <li><a href="#adding-images-from-urls" id="toc-adding-images-from-urls" class="nav-link" data-scroll-target="#adding-images-from-urls"><span class="header-section-number">4.1</span> Adding images from URLs</a></li>
   </ul></li>
-  <li><a href="#describe-the-image-annotations" id="toc-describe-the-image-annotations" class="nav-link" data-scroll-target="#describe-the-image-annotations"><span class="header-section-number">5</span> Describe the image annotations</a></li>
-  <li><a href="#plot-the-images-before-moving-the-labels" id="toc-plot-the-images-before-moving-the-labels" class="nav-link" data-scroll-target="#plot-the-images-before-moving-the-labels"><span class="header-section-number">6</span> Plot the images before moving the labels</a></li>
-  <li><a href="#move-the-tip-labels-past-the-images" id="toc-move-the-tip-labels-past-the-images" class="nav-link" data-scroll-target="#move-the-tip-labels-past-the-images"><span class="header-section-number">7</span> Move the tip labels past the images</a></li>
-  <li><a href="#repl-checkpoint" id="toc-repl-checkpoint" class="nav-link" data-scroll-target="#repl-checkpoint"><span class="header-section-number">8</span> REPL checkpoint</a></li>
+  <li><a href="#describing-the-image-annotations" id="toc-describing-the-image-annotations" class="nav-link" data-scroll-target="#describing-the-image-annotations"><span class="header-section-number">5</span> Describing the image annotations</a></li>
+  <li><a href="#adjusting-the-labels" id="toc-adjusting-the-labels" class="nav-link" data-scroll-target="#adjusting-the-labels"><span class="header-section-number">6</span> Adjusting the labels</a></li>
   </ul>
 </nav>
     </div>
@@ -476,8 +474,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="load-the-plotting-packages" class="level2 page-columns page-full" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="load-the-plotting-packages"><span class="header-section-number">1</span> Load the plotting packages</h2>
+<section id="setting-up-the-environment" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">1</span> Setting up the environment</h2>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled" title="Required packages">
 <div class="callout-header d-flex align-content-center">
@@ -499,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GLMakie</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PhyloMakie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="generate-the-phylogeny-from-a-string-source" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="generate-the-phylogeny-from-a-string-source"><span class="header-section-number">2</span> Generate the phylogeny from a string source</h2>
+<section id="generating-the-phylogeny" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="generating-the-phylogeny"><span class="header-section-number">2</span> Generating the phylogeny</h2>
 <div id="4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>phylogeny_newick <span class="op">=</span> <span class="st">"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -514,8 +512,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="plot-the-phylogeny" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="plot-the-phylogeny"><span class="header-section-number">3</span> Plot the phylogeny</h2>
+<section id="plotting-the-phylogeny" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="plotting-the-phylogeny"><span class="header-section-number">3</span> Plotting the phylogeny</h2>
 <div id="cell-fig-color-phylogeny" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_result <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
@@ -630,8 +628,8 @@ Figure&nbsp;1: The ladderized phylogeny before tip images are added.
 </div>
 </div></div></section>
 </section>
-<section id="describe-the-image-annotations" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="describe-the-image-annotations"><span class="header-section-number">5</span> Describe the image annotations</h2>
+<section id="describing-the-image-annotations" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="describing-the-image-annotations"><span class="header-section-number">5</span> Describing the image annotations</h2>
 <p><code>ImageAnnotation</code> controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.</p>
 <div id="14" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>image_height <span class="op">=</span> <span class="fl">0.65</span></span>
@@ -672,8 +670,8 @@ Figure&nbsp;1: The ladderized phylogeny before tip images are added.
 </tbody>
 </table>
 </section>
-<section id="plot-the-images-before-moving-the-labels" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="plot-the-images-before-moving-the-labels"><span class="header-section-number">6</span> Plot the images before moving the labels</h2>
+<section id="adjusting-the-labels" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="adjusting-the-labels"><span class="header-section-number">6</span> Adjusting the labels</h2>
 <p>First, keep the small <code>tipoffset</code> from the original tree plot. This lets us see why image placement and text placement need to be adjusted separately.</p>
 <div id="cell-fig-color-phylogeny-images-close-labels" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>close_labels_result <span class="op">=</span> <span class="fu">plot</span>(</span>
@@ -703,9 +701,6 @@ Figure&nbsp;2: With the original tip-label offset, the labels begin inside the i
 <li><code>tipoffset = 0.12</code> places each tip label only <code>0.12</code> x-axis data units to the right of its tip node.</li>
 </ul>
 <p>The image and the label therefore occupy some of the same space. Changing <code>position</code> would move the image. To move only the text, change <code>tipoffset</code>.</p>
-</section>
-<section id="move-the-tip-labels-past-the-images" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="move-the-tip-labels-past-the-images"><span class="header-section-number">7</span> Move the tip labels past the images</h2>
 <p>Increase <code>tipoffset</code> while leaving <code>tip_images</code> unchanged. The tree topology, image size, and image placement all remain the same.</p>
 <div id="cell-fig-color-phylogeny-images" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>illustrated_result <span class="op">=</span> <span class="fu">plot</span>(</span>
@@ -730,11 +725,6 @@ Figure&nbsp;3: The ladderized phylogeny with a supplied color image mapped to ea
 </div>
 </div>
 <p>The <code>nodeimages</code> argument adds the image dictionary to the live tree plot. The larger <code>tipoffset</code> moves the tip-label text past the images, and the explicit axis limits reserve space for both the images and the labels.</p>
-</section>
-<section id="repl-checkpoint" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="repl-checkpoint"><span class="header-section-number">8</span> REPL checkpoint</h2>
-<p>First change the final plot’s <code>tipoffset</code> from <code>0.9</code> to <code>1.2</code> and rerun that plotting cell. Only the text should move. Then change <code>image_height</code> from <code>0.65</code> to <code>0.45</code>, rebuild <code>tip_images</code>, and rerun the plotting cell again. Only the image size should change on the second pass. The topology and the tip-image matches should stay the same.</p>
-<p>If a tip has no image, compare its Newick label with the corresponding <code>image_urls</code> key. The 2 strings must match exactly.</p>
 
 
 </section>

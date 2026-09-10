@@ -822,8 +822,8 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#load-the-plotting-packages",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#load-the-plotting-packages",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#setting-up-the-environment",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#setting-up-the-environment",
     "title": "Adding images to phylogenies",
     "section": "",
     "text": "NoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nLoad the packages with:\nusing GLMakie\nusing PhyloMakie",
@@ -834,11 +834,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generate-the-phylogeny-from-a-string-source",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generate-the-phylogeny-from-a-string-source",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generating-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generating-the-phylogeny",
     "title": "Adding images to phylogenies",
-    "section": "2 Generate the phylogeny from a string source",
-    "text": "2 Generate the phylogeny from a string source\n\nphylogeny_newick = \"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\n\nphylogeny = parsephylogeny(NewickFormat(), phylogeny_newick)\n\nLineageNetwork(13 nodes, 12 edges, 7 tips, 0 hybrid nodes, rooted)",
+    "section": "2 Generating the phylogeny",
+    "text": "2 Generating the phylogeny\n\nphylogeny_newick = \"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\n\nphylogeny = parsephylogeny(NewickFormat(), phylogeny_newick)\n\nLineageNetwork(13 nodes, 12 edges, 7 tips, 0 hybrid nodes, rooted)",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -846,11 +846,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-phylogeny",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-phylogeny",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plotting-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plotting-the-phylogeny",
     "title": "Adding images to phylogenies",
-    "section": "3 Plot the phylogeny",
-    "text": "3 Plot the phylogeny\n\nplot_result = plot(\n    phylogeny;\n    useedgelength = false,\n    tipoffset = 0.12,\n)\n\n\n\n\n\n\nFigure 1: The ladderized phylogeny before tip images are added.",
+    "section": "3 Plotting the phylogeny",
+    "text": "3 Plotting the phylogeny\n\nplot_result = plot(\n    phylogeny;\n    useedgelength = false,\n    tipoffset = 0.12,\n)\n\n\n\n\n\n\nFigure 1: The ladderized phylogeny before tip images are added.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -870,11 +870,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describe-the-image-annotations",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describe-the-image-annotations",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describing-the-image-annotations",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describing-the-image-annotations",
     "title": "Adding images to phylogenies",
-    "section": "5 Describe the image annotations",
-    "text": "5 Describe the image annotations\nImageAnnotation controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.\n\nimage_height = 0.65\n\ntip_images = Dict(\n    label =&gt; ImageAnnotation(\n        url;\n        position = :right,\n        height = image_height,\n    ) for (label, url) in image_urls\n);\n\nWe now have 3 objects with separate jobs:\n\n\n\n\n\n\n\nObject\nRole\n\n\n\n\nphylogeny\nStores the topology parsed from the Newick string.\n\n\nimage_urls\nMaps each exact tip label to a supplied image URL.\n\n\ntip_images\nAdds placement and sizing instructions for each image.",
+    "section": "5 Describing the image annotations",
+    "text": "5 Describing the image annotations\nImageAnnotation controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.\n\nimage_height = 0.65\n\ntip_images = Dict(\n    label =&gt; ImageAnnotation(\n        url;\n        position = :right,\n        height = image_height,\n    ) for (label, url) in image_urls\n);\n\nWe now have 3 objects with separate jobs:\n\n\n\n\n\n\n\nObject\nRole\n\n\n\n\nphylogeny\nStores the topology parsed from the Newick string.\n\n\nimage_urls\nMaps each exact tip label to a supplied image URL.\n\n\ntip_images\nAdds placement and sizing instructions for each image.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -882,35 +882,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-images-before-moving-the-labels",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-images-before-moving-the-labels",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#adjusting-the-labels",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#adjusting-the-labels",
     "title": "Adding images to phylogenies",
-    "section": "6 Plot the images before moving the labels",
-    "text": "6 Plot the images before moving the labels\nFirst, keep the small tipoffset from the original tree plot. This lets us see why image placement and text placement need to be adjusted separately.\n\nclose_labels_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.12,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nclose_labels_result.figure\n\n\n\n\n\n\nFigure 2: With the original tip-label offset, the labels begin inside the images.\n\n\n\n\nTwo arguments are doing different jobs:\n\nposition = :right places the left edge of each image at its tip node, so the image extends to the right of the tree.\ntipoffset = 0.12 places each tip label only 0.12 x-axis data units to the right of its tip node.\n\nThe image and the label therefore occupy some of the same space. Changing position would move the image. To move only the text, change tipoffset.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-03]{.indexed-content-number} [Adding images to phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#move-the-tip-labels-past-the-images",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#move-the-tip-labels-past-the-images",
-    "title": "Adding images to phylogenies",
-    "section": "7 Move the tip labels past the images",
-    "text": "7 Move the tip labels past the images\nIncrease tipoffset while leaving tip_images unchanged. The tree topology, image size, and image placement all remain the same.\n\nillustrated_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.9,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nillustrated_result.figure\n\n\n\n\n\n\nFigure 3: The ladderized phylogeny with a supplied color image mapped to each tip.\n\n\n\n\nThe nodeimages argument adds the image dictionary to the live tree plot. The larger tipoffset moves the tip-label text past the images, and the explicit axis limits reserve space for both the images and the labels.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-03]{.indexed-content-number} [Adding images to phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#repl-checkpoint",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#repl-checkpoint",
-    "title": "Adding images to phylogenies",
-    "section": "8 REPL checkpoint",
-    "text": "8 REPL checkpoint\nFirst change the final plot’s tipoffset from 0.9 to 1.2 and rerun that plotting cell. Only the text should move. Then change image_height from 0.65 to 0.45, rebuild tip_images, and rerun the plotting cell again. Only the image size should change on the second pass. The topology and the tip-image matches should stay the same.\nIf a tip has no image, compare its Newick label with the corresponding image_urls key. The 2 strings must match exactly.",
+    "section": "6 Adjusting the labels",
+    "text": "6 Adjusting the labels\nFirst, keep the small tipoffset from the original tree plot. This lets us see why image placement and text placement need to be adjusted separately.\n\nclose_labels_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.12,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nclose_labels_result.figure\n\n\n\n\n\n\nFigure 2: With the original tip-label offset, the labels begin inside the images.\n\n\n\n\nTwo arguments are doing different jobs:\n\nposition = :right places the left edge of each image at its tip node, so the image extends to the right of the tree.\ntipoffset = 0.12 places each tip label only 0.12 x-axis data units to the right of its tip node.\n\nThe image and the label therefore occupy some of the same space. Changing position would move the image. To move only the text, change tipoffset.\nIncrease tipoffset while leaving tip_images unchanged. The tree topology, image size, and image placement all remain the same.\n\nillustrated_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.9,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nillustrated_result.figure\n\n\n\n\n\n\nFigure 3: The ladderized phylogeny with a supplied color image mapped to each tip.\n\n\n\n\nThe nodeimages argument adds the image dictionary to the live tree plot. The larger tipoffset moves the tip-label text past the images, and the explicit axis limits reserve space for both the images and the labels.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
