@@ -112,15 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -129,6 +125,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #000000;
 }
 .curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -426,18 +434,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals"><span class="header-section-number">1</span> Learning goals</a></li>
-  <li><a href="#load-the-plotting-packages" id="toc-load-the-plotting-packages" class="nav-link" data-scroll-target="#load-the-plotting-packages"><span class="header-section-number">2</span> Load the plotting packages</a></li>
-  <li><a href="#store-a-small-phylogeny" id="toc-store-a-small-phylogeny" class="nav-link" data-scroll-target="#store-a-small-phylogeny"><span class="header-section-number">3</span> Store a small phylogeny</a></li>
-  <li><a href="#create-a-complete-plot" id="toc-create-a-complete-plot" class="nav-link" data-scroll-target="#create-a-complete-plot"><span class="header-section-number">4</span> Create a complete plot</a></li>
-  <li><a href="#compare-topology-and-branch-length-layouts" id="toc-compare-topology-and-branch-length-layouts" class="nav-link" data-scroll-target="#compare-topology-and-branch-length-layouts"><span class="header-section-number">5</span> Compare topology and branch-length layouts</a></li>
-  <li><a href="#display-node-and-edge-information" id="toc-display-node-and-edge-information" class="nav-link" data-scroll-target="#display-node-and-edge-information"><span class="header-section-number">6</span> Display node and edge information</a></li>
-  <li><a href="#draw-into-an-existing-makie-axis" id="toc-draw-into-an-existing-makie-axis" class="nav-link" data-scroll-target="#draw-into-an-existing-makie-axis"><span class="header-section-number">7</span> Draw into an existing Makie axis</a></li>
-  <li><a href="#query-the-plotted-node-positions" id="toc-query-the-plotted-node-positions" class="nav-link" data-scroll-target="#query-the-plotted-node-positions"><span class="header-section-number">8</span> Query the plotted node positions</a></li>
-  <li><a href="#plotting-entry-points" id="toc-plotting-entry-points" class="nav-link" data-scroll-target="#plotting-entry-points"><span class="header-section-number">9</span> Plotting entry points</a></li>
-  <li><a href="#guided-practice" id="toc-guided-practice" class="nav-link" data-scroll-target="#guided-practice"><span class="header-section-number">10</span> Guided practice</a></li>
-  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes"><span class="header-section-number">11</span> Common failure modes</a></li>
-  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">12</span> Next steps</a></li>
+  <li><a href="#setting-up-the-environment" id="toc-setting-up-the-environment" class="nav-link active" data-scroll-target="#setting-up-the-environment"><span class="header-section-number">1</span> Setting up the environment</a></li>
+  <li><a href="#generating-the-phylogeny" id="toc-generating-the-phylogeny" class="nav-link" data-scroll-target="#generating-the-phylogeny"><span class="header-section-number">2</span> Generating the phylogeny</a></li>
+  <li><a href="#plotting-the-phylogeny" id="toc-plotting-the-phylogeny" class="nav-link" data-scroll-target="#plotting-the-phylogeny"><span class="header-section-number">3</span> Plotting the phylogeny</a></li>
+  <li><a href="#setting-plot-attributes" id="toc-setting-plot-attributes" class="nav-link" data-scroll-target="#setting-plot-attributes"><span class="header-section-number">4</span> Setting plot attributes</a></li>
+  <li><a href="#interactive-and-live-updating" id="toc-interactive-and-live-updating" class="nav-link" data-scroll-target="#interactive-and-live-updating"><span class="header-section-number">5</span> Interactive and live updating</a></li>
+  <li><a href="#compose-using-an-existing-makie-axis" id="toc-compose-using-an-existing-makie-axis" class="nav-link" data-scroll-target="#compose-using-an-existing-makie-axis"><span class="header-section-number">6</span> Compose using an existing Makie axis</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="header-section-number">7</span> Practice</a></li>
   </ul>
 </nav>
     </div>
@@ -469,16 +472,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This tutorial develops a phylogeny visualization in the same order that we would work through it at the Julia REPL:</p>
-<pre class="text"><code>phylogeny object
-    -&gt; tree plot
-    -&gt; plot attributes
-    -&gt; Makie composition
-    -&gt; coordinate-based annotations</code></pre>
-<p>The <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">phylogeny representations tutorial</a> explains how to parse strings and read files. The <a href="../../../content/08-00__primers/07-01__the-newick-data-format.html">Newick primer</a> describes the format’s punctuation and grammar.</p>
-<section id="learning-goals" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1</span> Learning goals</h2>
-<p>By the end of this tutorial, you should be able to:</p>
+<div id="curriculum-proficiencies*-1" class="curriculum-proficiencies">
+<details class="curriculum-proficiencies fbx-simplebox fbx-default" open=""><summary><strong>Proficiencies</strong></summary><div>
 <ul>
 <li>create a phylogeny plot with <code>plot</code>;</li>
 <li>distinguish topology-only and branch-length-scaled layouts;</li>
@@ -486,9 +481,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>draw a phylogeny into an existing Makie <code>Axis</code> with <code>plot!</code>; and</li>
 <li>use the plotted node coordinates to add another Makie graphic.</li>
 </ul>
-</section>
-<section id="load-the-plotting-packages" class="level2 page-columns page-full" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="load-the-plotting-packages"><span class="header-section-number">2</span> Load the plotting packages</h2>
+</div></details>
+</div>
+<div id="curriculum-related*-2" class="curriculum-related">
+<details class="curriculum-related fbx-simplebox fbx-default" open=""><summary><strong>Related</strong></summary><div>
+<ul>
+<li><a href="content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.qmd">Creating Makie figures</a></li>
+<li>The <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">phylogeny representations tutorial</a> explains how to parse strings and read files.</li>
+<li>The <a href="../../../content/08-00__primers/07-01__the-newick-data-format.html">Newick primer</a> describes the format’s punctuation and grammar.</li>
+</ul>
+</div></details>
+</div>
+<section id="setting-up-the-environment" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="setting-up-the-environment"><span class="header-section-number">1</span> Setting up the environment</h2>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled" title="Required packages">
 <div class="callout-header d-flex align-content-center">
@@ -501,379 +506,237 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p><code>GLMakie</code> and <code>PhyloMakie.jl</code> need to be <a href="../../../content/08-00__primers/05-01__julia-environment-provisioning.html">installed in the active environment</a>. If this has not already been done, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"GLMakie"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"PhyloMakie"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"GLMakie"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"PhyloMakie"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div></div><p>Load the packages with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GLMakie</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PhyloMakie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The interactive REPL workflow uses GLMakie. This rendered page uses CairoMakie to produce static SVG figures.</p>
+</div></div><p>We load the PhyloMakie library into the active environment using:</p>
+<div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">PhyloMakie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We also load the “<a href="content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.qmd">Makie backend</a>” rendering engine:</p>
+<!-- User-facing code uses GLMakie, but document render uses CairoMakie -->
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">GLMakie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="store-a-small-phylogeny" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="store-a-small-phylogeny"><span class="header-section-number">3</span> Store a small phylogeny</h2>
-<p>Use the <code>newick</code> string macro when the source is 1 literal Newick expression:</p>
-<div id="cell-visualization-phylogeny" class="cell" data-execution_count="1">
+<section id="generating-the-phylogeny" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="generating-the-phylogeny"><span class="header-section-number">2</span> Generating the phylogeny</h2>
+<p>The <code>newick</code> string macro converts a phylogeny represented as a Julia string (that is, a value of the Julia type, <code>Base.String</code>) in Newick format to a representation that PhyloMakie knows how to work with (a value of the type <code>PhyloMakie.LineageNetwork</code>):</p>
+<div id="6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>phylogeny <span class="op">=</span> newick<span class="st">"((A:1,B:4)AB:8,(C:2,D:6)CD:2)R:2;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="visualization-phylogeny" class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>LineageNetwork(7 nodes, 6 edges, 4 tips, 0 hybrid nodes, rooted)</code></pre>
 </div>
 </div>
-<p>The variable <code>phylogeny</code> contains a phylogeny object rather than Newick text. The representations tutorial covers the other constructors and readers.</p>
+<div class="{.workflow-detail">
+<ul>
+<li>The construct <code>"((A:1,B:4)AB:8,(C:2,D:6)CD:2)R:2;"</code> is evaluated by Julia as a <code>Base.String</code> literal value.</li>
+<li>The <code>newick</code> macro provided by PhyloMakie calls <code>PhyloMakie.parsephylogeny</code> to create and return a value of <code>LineageNetwork</code> type corresponding to the string value passed to it as its input argument.</li>
+</ul>
+</div>
 </section>
-<section id="create-a-complete-plot" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="create-a-complete-plot"><span class="header-section-number">4</span> Create a complete plot</h2>
-<p><code>plot(phylogeny)</code> creates a new figure, a new axis, and a <code>PhyloPlot</code>:</p>
+<section id="plotting-the-phylogeny" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="plotting-the-phylogeny"><span class="header-section-number">3</span> Plotting the phylogeny</h2>
+<p><code>plot(phylogeny)</code> creates a new figure (a value of type <code>Makie.Figure</code>), a new axis (<code>Makie.Axis</code>), and then plots the given phylogeny onto the new axis, with the result being a <code>FigureAxisPlot</code> value.</p>
 <div id="cell-fig-convenience-phylogeny" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tree_result <span class="op">=</span> <span class="fu">plot</span>(phylogeny)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tree_result.figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-convenience-phylogeny" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A rooted phylogeny with tips A, B, C, and D and internal nodes AB, CD, and R.">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot_result <span class="op">=</span> <span class="fu">plot</span>(phylogeny)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fig-convenience-phylogeny" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-convenience-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-convenience-phylogeny-output-1.svg" class="img-fluid figure-img" alt="A rooted phylogeny with tips A, B, C, and D and internal nodes AB, CD, and R.">
+<img width="672" height="480" style="object-fit: contain; height: auto;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAIABJREFUeAHtwQu4EHRhN/4v8OMiBxE8RyxvCHi/cUpLy0jEcE2fyCs2Q91y5tCWmo9u5ipIV6JzKjraynxUbLplo6nZCqfWcFORvNYsxUQRlIEoyOEczuHw/5/3eXhe5pT33Qv8PJx9Pp+y7v8XAACopAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikreYzNmzMjTTz+d3XffPQAAdG8vvvhiDjzwwJxzzjn5f1XyHnv44YfzwgsvZLvttgsb197eno6OjmyzzTahZ2hvb09HR0e22Wab0DO0t7eno6Mj22yzTegZ2tvb09HRkW222Sb0DB0dHVmzZk0GDhwY/vuefvrprFq1Kuecc07+X5W8x0aOHJmRI0dmypQpYeNWrVqV1tbWNDY2hp5h1apVaW1tTWNjY+gZWlpa0tLSkqamptAztLS0pKWlJU1NTaFnWL16dd56663ssMMO4b9vypQp2VQlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlm9mzzz6bvfbaK7179w4AQHe2atWqfOtb38p6vXr1yi677JKxY8dmxx13DFtGyWZ0xx135Pd+7/eyfPnyDBkyJAAA3dncuXNz0UUX5dOf/nS6rFmzJk888URaWlryD//wDxk3blzY/Eo2kwULFmTy5MkBANhaPPLII9ljjz3ywx/+MOu1trbmpJNOyllnnZX58+eHza9kM1i7dm0++9nP5tRTT82MGTMCALA1eOSRR3LooYdmQwMGDMgFF1yQT3ziE1m8eHHe//73h82rZDP4+te/nu233z6TJ0/OjBkzAgCwNXj00Udz8cUX5+369++fLn379g2bX8kmmjNnTm666aY8/vjjefXVV7Mx1113XaZPn54N7bXXXtlvv/2yaNGisHEtLS1pa2tLW1tb6BlaWlrS1taWtra20DP8+te/zhe+8IWsWrUq9AydnZ1Zt25d+vTpE3qGzs7OTJ8+PcOHD88rr7ySUaNGZdGiRdnQvHnzMnTo0KxZsyaLFi0K/9vKlSuz7bbbZlOUbII33ngjp512Wm666aY0NTXl1Vdfzcacfvrp+dSnPpUNffvb306/fv0ybNiwsHGrVq1Ka2trGhsbQ8+watWqtLa2prGxMfQMP/3pT7PLLrvkhhtuCD3D6tWrs3r16my//fahZ2htbc3gwYMzd+7c9OvXL2PHjk3//v2zoV/+8pdpbm7OsGHDwn/W0NCQTVWyCX70ox9l6dKlmTZtWqZNm5ZVq1aly3HHHZfTTjstZ555ZjY0dOjQDB06NBsaMGBAupRSwsaVUlJKSSkl9AyllJRSUkoJPUPv3r0zcODA7LnnnqFnaGlpSUtLS5qamkLPsHr16rz11luZN29eRo8enYaGhmxoyZIlmTlzZn74wx+mlBL+s969e2dTlWyCj3zkI7n++uuz3iuvvJKHH344EydOTHNzcwAAuqtHHnkkhx56aDb0xhtv5KSTTsrHPvax/M7v/E7YMko2wciRIzNy5Mis98wzz+TP/uzPcuqpp2bIkCEBAOiOOjs789hjj2XnnXfOjTfemM7Ozjz11FO555570tzcnNtuuy1sOSWbUUNDQ4444oiUUgIA0F299tpr+eAHP5iXX345t912W3r37p0dd9wxl19+eU499dT07t07bDklm9GIESPy4IMPBgCgO3v/+9+fBx98MLw3SgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiErYaa9asyde+9rW0t7eHnqGjoyMdHR0ZMGBA6Bmee+659O/fPwC8uxK2Gn//93+fxx9/PGeccUboGdra2tLR0ZGGhobQM7S3t2fJkiUB4N2VsFUZPnx4Pv/5z4eeYdWqVWltbU1jY2PoGQYMGJBZs2YFgHdXAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAwP/y2muvpbW1Nbvttlt69eoVtoySzeAHP/hB7rvvvnR2dubII4/MKaeckl69egUAoLtbt25dvvGNb+TGG2/MokWL0t7enj333DN/+7d/m4MPPjhsfiWb6LLLLsv06dNz7rnn5vXXX8/kyZPz+OOPZ9q0aQEA6M5Wr16dz3zmM3nhhRfy3e9+N4cffnhaWlpy+umn5zOf+Uz+/d//PaWUsHmVbKJrr702M2bMyCmnnJIuw4cPzze+8Y1MmzYtAADd2V/8xV/k+eefz4MPPpgddtghXfr3759p06Zl//33zy9/+cuMHj06bF4lm6CtrS1nnXVWxo4dm/X23nvv9OvXLwAA3dmrr76aK6+8MnfeeWd22GGHbGifffbJv/3bv2W33XYLm1/JJujfv3+uuOKKdPnJT36Shx56KLfffnsuu+yyvJMXXnghL7zwQja0fPnybLvttmltbQ0b197enrVr16a1tTX0DK2trWlra0tra2voGdrb27N06dLce++9oWdoa2tLW1tbBg8eHHqGNWvWZJ999smsWbOy66675ogjjkhra2verrm5OV1aW1vD/9bR0ZFSSjZFyWby/PPPZ968eVm5cmX69++fdzJnzpzMnDkzGxo0aFD22GOPrFixImxca2tr2tvbs2LFitAztLS0pK2tLaWU0DN86EMfyp133plp06aFnqGzszNr165N3759Q8/Q2dmZSy+9NI899lgOOuigrFixIvzfa2trSyklm6JkMzn33HNz7rnn5tFHH82hhx6a8ePH533ve182dPrpp+f000/PhqZMmZIuw4YNCxu37bbbZsCAARk2bFjoGVatWpXW1tY0NjaGnmHQoEGZOXNmmpqaQs/Q0tKSlpaWNDU1hZ5h9erVeeutt/Knf/qn+fSnP51hw4bl7e666660trZm4sSJ4T9raGjIpirZBM8880wuuuii3HvvvenVq1e6fOhDH0rfvn3z9NNP533ve18AALqjQYMGZcGCBXm7V199NaeeempuueWWsGWUbIJddtkl//zP/5wf//jHOeaYY9Jl9uzZWbduXfbff/8AAHRXRx11VK666qpceOGFOfDAA9Pl9ddfz4knnpgjjjgiJ554YtgySjbBkCFD8ud//uc54YQTMn78+Kxbty73339/rrzyyuy0004BAOiuLr744tx333059NBDM27cuHSZM2dOjjjiiNx+++1hyynZRBdddFGOPvroPPzwwyml5C//8i+z1157BQCgO2toaMi//Mu/5Mc//nGeeeaZDB48OFOnTs3BBx8ctqySzWD06NEZPXp0AAC2Jr17986xxx6bY489NtRTAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgDwP1RLS0t+9atfZb1evXqlsbExw4cPT69evcKWUbKJ1qxZk29+85uZNWtWVq5cmcMOOyyXX355RowYEQCA7uyee+7JZz7zmQwePDhd2tra0tramoMPPjizZ8/O0KFDw+ZXsommTJmS2267LX/1V3+VpqamXHXVVTnyyCPz9NNPZ9tttw0AQHf1yCOP5CMf+UgeeuihdOns7MzPf/7zjBs3Lt/73vfyhS98IWx+JZvolltuyeWXX55PfepT6XL77bensbExDzzwQCZMmBAAgO7qkUceyYc//OGs17t374wdOzZNTU3Zfffdw5ZRsgnWrl2bz33ucxk/fnzW6+joyNq1a9PR0REAgO6qo6Mjv/jFL/KFL3wh661bty7Tp09PY2NjjjrqqLBllGyCPn365LLLLst67e3tmTx5cpqamvLJT34yb3frrbdm5syZ2dCgQYOyxx57ZMmSJWHjVq5cmdbW1ixZsiT0DC0tLWlra8vatWtDz/Dqq6/mT/7kT9LS0hJ6hs7OzqxduzZ9+/YNPUNnZ2cuvfTS9OvXL6tXr86ll16ayy+/POvWrcvixYvT0NCQBx54ICtXrszKlSvDf7Zq1ao0NDRkU5RsJv/0T/+UCy+8ML17985Pf/rTDBw4MG/3sY99LDvttFM2dPfdd6d///4ZPHhw2LgBAwakb9++GTx4cOgZ+vTpk379+mXw4MGhZ7j77rvz1ltv5ZJLLgk9Q1tbW9ra2jJ48ODQM6xZsya777577rvvvmy//faZMmVK1lu4cGGuv/76XH755fnrv/7r8F/1798/m6pkE3V0dOTss8/OXXfdlSlTpuTss89OKSXvZOTIkRk5cmQ2NGfOnHQZMGBA2Li+ffumT58+GTBgQOgZ1q5dmy4DBgwIPUPfvn3T1NSUY445JvQMLS0taWlpSVNTU+gZVq9enbfeeiu/+MUv8pGPfCSnnXZaNtTZ2ZlvfetbGTBgQPivSinZVCWb6IILLsiTTz6ZX/3qV9lhhx0CALA1eOSRR3LKKafk7V588cUccMABYcsp2QRvvvlmvvOd7+TKK6/MggULsmDBgqw3atSoDB06NAAA3c1bb72VZ599NjvttFOef/75dGltbc2PfvSjzJw5Mz//+c/DllOyCZ599tm0tbXlvPPOy9t9//vfz0knnRQAgO7miSeeSGdnZ84666ysN2jQoHzoQx/Kgw8+mA9/+MNhyynZBIceemjWrVsXAICtycc+9rGsW7cuvDdKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKIStioLFizIt7/97dAztLW1paOjIw0NDaFnePjhh9Pe3h4A3l0JW42JEyfm6aefzrx580LP0NHRkY6OjgwYMCD0DC+++GL69+8fAN5dCVuNfv36ZerUqWlsbAw9w6pVq9La2prGxsbQM9x6662ZNWtWAHh3JQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRyWZ055135nd/93fT0NAQAICtyfXXX5+f/OQnueSSS3L44YeHLadkM3n55ZczadKkPP/882loaAgAwNZiwYIFufjii9PlqKOOyuGHHx62nJJN9Oyzz+a6667LrFmz0tbWFgCArc1FF12UsWPHZt26dZk/f37Ysko2USkle++9dz7/+c/nsssuCwDA1uShhx7KD3/4wzz55JO55pprMn/+/LBllWyiPfbYI+eff35efPHFXHbZZdmY5cuXZ/ny5dlQa2tr+vXrl46OjrBxHR0d6ejoSEdHR+gZOjo60tHRkY6OjtAzdHZ2pqWlJc8991zoGVavXp3Vq1dn+fLloWdobW3N4MGD09HRkXXr1uW8887LH/3RH2XPPffMrrvumvvvvz8dHR3hnXV2dqZ3797ZFCUV3XrrrZk+fXo2tNdee2W//fbLkiVLwsa1tLSkra0ta9euDT1DS0tL2trasnbt2tAzDB8+PAsXLsz48eNDz9DZ2Zl169alT58+oWfo7OzM9OnT07dv39x555357W9/m9tuuy1LlizJdtttlwULFmTRokUppYT/atWqVdl2222zKUoqOu+883LeeedlQ1OmTEmXnXbaKWzcqlWr0tramsbGxtAzrFq1Kq2trWlsbAw9w5AhQ/Kzn/0sTU1NoWdoaWlJS0tLmpqaQs+wevXqvPXWWxk4cGCmTZuWoUOHZsqUKemyePHidHR0pKOjI7vttlv4r7bddttsqhIAgP+BrrjiigwaNCiTJ0/OeitXrszPf/7zzJ8/PyNHjgxbRgkAwP8wCxcuzNVXX53vf//7OfbYY7Pe2rVrc9lll2X+/PkZP3582DJKAAD+h7nsssty+OGH59hjj82G+vTpk1133TXz588PW07JZjJkyJB87Wtfy+DBgwMA0F21tLRkjz32yJlnnpl3cumll2a77bYLW07JZjJkyJBMmTIlAADd2cCBA3PRRRdlhx12yDv53Oc+F7asEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCikvfYSy+9lJdffjnTpk0LG7dmzZp0dHRk4MCBoWdYs2ZNOjo6MnDgwNAztLe3Z82aNWloaAg9Q3t7e9asWZOGhobQM7S3t2fNmjVpaGgI/30PPfRQdt1112yKkvfYPvvsk5aWlixfvjxs3H/8x39kxYoVGTVqVOgZli5dmjfffDOjRo0KPcOyZcvy+uuvZ8899ww9w+uvv55ly5Zlzz33DD3D8uXLs2TJkuy9997hv6+xsTH77LNPNkXJe+ziiy8O/3duvvnm/OxnP8sVV1wReobbbrstP/nJT3LFFVeEnuHv/u7vMmvWrFxxxRWhZ/jBD36Q22+/PVdccUXoGe66665897vfzRVXXBHeGyUAAFBRCQAAVFQCAAAVlbDVOPDAA9PQ0BB6jv333z99+/YNPce+++6btWvXhp5j7733znHHHRd6jj333DMnnHBCeO+UsNU4+OCDc/DBB4ee4wMf+EA+8IEPhJ7joIMOykEHHRR6jgMOOCAHHHBA6Dn23Xff7LvvvuG9UwIAABWVAABARSUAAFBRCQAAVFRCt3TTTTdlzz33zJgxY7Ix99xzT+69994MHTo0kyZNyr777hu6p5tuuil77rlnxowZk3czZ86czJkzJxvab7/9MmHChNB9vPDCC7nxxhvzyiuvZO+9987ZZ5+dxsbGvJt77rkn9957b4YOHZpJkyZl3333Dd3LCy+8kBtvvDGvvPJK9t5775x99tlpbGzMO5kzZ07mzJmTDe23336ZMGFC6D4ee+yx3H777Vm2bFlGjx6ds88+OwMHDsy7efLJJ3P77bdn1apVmTBhQsaPHx+2nBK6nZdeeimXXnpprrrqqowZMybvZsaMGfnyl7+cc845JwsWLMhHP/rRzJkzJ/vvv3/oXl566aVceumlueqqqzJmzJi8m1tuuSWzZ8/O7rvvnvXWrFmTCRMmhO7hN7/5TZqbmzNhwoQccsghuffee3P99dfniSeeyI477pi3mzFjRr785S/nnHPOyYIFC/LRj340c+bMyf777x+6h9/85jdpbm7OhAkTcsghh+Tee+/N9ddfnyeeeCI77rhj3u6WW27J7Nmzs/vuu2e9NWvWZMKECaF7ePDBB/PJT34yf/iHf5jhw4fnhhtuyPe///3MmTMnvXv3zts9+uijOeqoo3LKKaeksbExxx13XP7mb/4mkyZNCltGCd3GihUrctRRR+XJJ59Me3t7Nqa9vT1Tp07NDTfckEmTJqXLCSeckGuuuSY33nhj6B5WrFiRo446Kk8++WTa29vzf/Lcc8/l4osvzjnnnBO6p2uuuSZjxozJHXfckS4XXHBBmpubM2PGjEydOjUbam9vz9SpU3PDDTdk0qRJ6XLCCSfkmmuuyY033hi6h2uuuSZjxozJHXfckS4XXHBBmpubM2PGjEydOjVv99xzz+Xiiy/OOeecE7qn6dOn5w/+4A9yww03pMuECRNyyCGH5JlnnslBBx2Ut/vmN7+ZU045JTfeeGO67Lzzzpk6dWomTZoUtowSuo2GhoZ85zvfSZdjjjkmGzN37twsW7Ysxx13XNY76aSTcuGFF4buo6GhId/5znfS5Zhjjsn/yfz58zNy5Mg8+uij6d+/f/bbb7/07ds3dB+llJx66qlZr0+fPhk+fHgWL16ct5s7d26WLVuW4447LuuddNJJufDCC0P3UUrJqaeemvX69OmT4cOHZ/HixXkn8+fPz8iRI/Poo4+mf//+2W+//dK3b9/QfRx55JE55JBDst5ee+2VXr16pV+/fnm7devW5cc//nFmzZqV9U466aScd955+fWvf5299947bH4ldBt9+vRJc3NzuvTr1y8bs3jx4gwdOjSDBg3KervttluWLFmStWvXpk+fPuG916dPnzQ3N6dLv379sjGrV6/OK6+8kjPOOCPbbLNNli9fnh122CF33nlnmpubQ/dw/fXXZ0Nz587N/fffn5kzZ+btFi9enKFDh2bQoEFZb7fddsuSJUuydu3a9OnTJ7z3rr/++mxo7ty5uf/++zNz5sy83erVq/PKK6/kjDPOyDbbbJPly5dnhx12yJ133pnm5ubQPfzxH/9xuvzyl7/MXXfdlX/8x3/M7//+72efffbJ273++utpa2vLbrvtlvV22mmnlFKyePHi7L333mHzK2GrtGLFijQ0NGRDgwYNSmdnZ1asWJGhQ4eGrcuyZcty1FFH5ZJLLsm4cePS1taWz372szn99NPz1FNPhe6lra0t1113Xb7+9a/n3HPPzYknnpi3W7FiRRoaGrKhQYMGpbOzMytWrMjQoUND99HW1pbrrrsuX//613PuuefmxBNPzNstW7YsRx11VC655JKMGzcubW1t+exnP5vTTz89Tz31VOheXnvttTz22GN56aWXcsQRR2TNmjXp169fNrRixYp0aWhoyIYaGhqyfPnysGWUsFVqbGzMihUrsqE33ngjpZRst912Yeuzyy67ZPbs2Vmvf//++cpXvpLm5uYsWbIkw4YNC93D3Llzc9ppp2XQoEG55557Mnbs2LyTxsbGrFixIht64403UkrJdtttF7qPuXPn5rTTTsugQYNyzz33ZOzYsXknu+yyS2bPnp31+vfvn6985Stpbm7OkiVLMmzYsNB9jBs3LuPGjcubb76ZfffdNx/84AdzyimnZEONjY3psmLFiqzX2dmZlStXpqmpKWwZJWyVhg8fnjfeeCNLly5NU1NTusyfPz+77LJLevfuHbY+8+fPz6JFizJmzJisN2jQoHTp3bt36B4ef/zxjB8/PlOnTs0Xv/jF9OrVK+9m+PDheeONN7J06dI0NTWly/z587PLLrukd+/eoXt4/PHHM378+EydOjVf/OIX06tXr7yb+fPnZ9GiRRkzZkzWGzRoULr07t07vPc6Oztz7LHH5qqrrsoBBxyQLtttt13233//PPXUUznllFOyocGDB2fIkCF57rnnctBBB6XLb3/723R2dma33XYLW0YJW42FCxdm2bJlGT16dEaPHp299tort90BPo7kAAADzklEQVR2W84///ysW7cu3/ve9zJx4sSw9Vi4cGGWLVuW0aNHZ9GiRRk7dmzmzZuX5ubmdLn11ltz4IEHpqmpKXQPX/3qV3PyySfnvPPOyztZuHBhli1bltGjR2f06NHZa6+9ctttt+X888/PunXr8r3vfS8TJ04M3cdXv/rVnHzyyTnvvPPyThYuXJhly5Zl9OjRWbRoUcaOHZt58+alubk5XW699dYceOCBaWpqCu+93r17Z9myZbn11ltz5ZVXpstrr72WefPm5ayzzkqXhQsXZtmyZRk9enS6nHzyyZk5c2ZOPPHEdJk5c2Y+/OEPZ/jw4WHLKGGrce211+bmm2/O0qVL02X69OmZOHFi5s6dm5dffjnLli3Ll770pbD1uPbaa3PzzTdn6dKlGTNmTCZNmpTDDjssRx55ZN58883Mnz8/d999d+g+5syZk9WrV+f222/Phs4+++xcffXVufbaa3PzzTdn6dKl6TJ9+vRMnDgxc+fOzcsvv5xly5blS1/6Uug+5syZk9WrV+f222/Phs4+++xcffXVufbaa3PzzTdn6dKlGTNmTCZNmpTDDjssRx55ZN58883Mnz8/d999d+g+rrrqqhx77LH513/917z//e/Pgw8+mHHjxuXkk09Ol2uvvTY333xzli5dmi6XXnppjjzyyBx99NEZMmRI7rvvvtx9991hyymhW7rjjjsyYsSIbGjy5Mk5/vjjs97RRx+dxx9/PA888ECGDBmST3ziExk8eHDonu64446MGDEiG5o8eXKOP/74rHfLLbfkzDPPzJNPPplhw4Zl/Pjx2X777UP3MWvWrLyTnXfeOV0mT56c448/PusdffTRefzxx/PAAw9kyJAh+cQnPpHBgweH7mPWrFl5JzvvvHO6TJ48Occff3zWu+WWW3LmmWfmySefzLBhwzJ+/Phsv/32ofs44ogj8pvf/CazZ8/OW2+9lfPPPz+HH3541ps8eXKOP/74rDd8+PDMmzcvs2fPTktLS66++ursuuuuYcspoVs67LDD8najRo3KqFGjsqERI0ZkxIgRofs77LDD8najRo3KqFGjsqGPf/zj+fjHPx66p7Fjx2ZjRo0alVGjRmVDI0aMyIgRI0L3NHbs2GzMqFGjMmrUqGzo4x//eD7+8Y+H7munnXbKGWeckXcyatSojBo1KhsaOnRoJk6cGOooAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAq+v8AXYw8lCHAgycAAAAASUVORK5CYII=" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convenience-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A phylogeny displayed with PhyloMakie’s default topology-only layout.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-convenience-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
 </div>
-</div>
-<p>The returned <code>FigureAxisPlot</code> provides all 3 objects:</p>
-<div id="cell-inspect-figure-axis-plot" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tree_result.figure</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tree_result.axis</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tree_result.plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="inspect-figure-axis-plot" class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>Plot{phyloplot, Tuple{LineageNetwork{Nothing, Nothing, Nothing}}}</code></pre>
-</div>
-</div>
-<p>Use <code>.figure</code> to display or save the figure, <code>.axis</code> to add Makie content, and <code>.plot</code> to query or update the live phylogeny plot.</p>
-<p>PhyloMakie also provides <code>phyloplot(phylogeny)</code> as a package-specific alias for <code>plot(phylogeny)</code>.</p>
-</section>
-<section id="compare-topology-and-branch-length-layouts" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="compare-topology-and-branch-length-layouts"><span class="header-section-number">5</span> Compare topology and branch-length layouts</h2>
-<p>The default <code>useedgelength = false</code> draws the topology without scaling branches by their stored lengths. Set <code>useedgelength = true</code> when horizontal distance should represent branch length.</p>
-<div id="cell-fig-layout-comparison" class="cell" data-fig-width="10" data-fig-height="4" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>layout_figure <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">1000</span>, <span class="fl">400</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column, use_lengths, title) <span class="kw">in</span> (</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        (<span class="fl">1</span>, <span class="cn">false</span>, <span class="st">"Topology only"</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        (<span class="fl">2</span>, <span class="cn">true</span>, <span class="st">"Stored branch lengths"</span>),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    layout_axis <span class="op">=</span> <span class="fu">Axis</span>(layout_figure[<span class="fl">1</span>, column]; title <span class="op">=</span> title)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hidedecorations!</span>(layout_axis)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hidespines!</span>(layout_axis)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot!</span>(</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        layout_axis,</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        phylogeny;</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        useedgelength <span class="op">=</span> use_lengths,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        tipoffset <span class="op">=</span> <span class="fl">0.12</span>,</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>layout_figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This value has the properties <code>figure</code>, <code>axis</code>, and <code>plot</code>, holding the new <code>Figure</code>, <code>Axis</code>, and the phylogeny <code>PhyloMakie.PhyloPlot</code> values respectively:</p>
+<div id="10" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">propertynames</span>(plot_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-layout-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two panels show the same four-tip phylogeny. The left panel uses evenly stepped branches, while the right panel uses unequal horizontal branch lengths.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-layout-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-layout-comparison-output-1.svg" class="img-fluid figure-img" alt="Two panels show the same four-tip phylogeny. The left panel uses evenly stepped branches, while the right panel uses unequal horizontal branch lengths.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The same phylogeny drawn as a topology-only tree and with branches scaled by their stored lengths.
-</figcaption>
-</figure>
+<pre><code>(:figure, :axis, :plot)</code></pre>
 </div>
 </div>
-</div>
-<p>The topology is identical in both panels. Only the horizontal placement of the nodes changes.</p>
-</section>
-<section id="display-node-and-edge-information" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="display-node-and-edge-information"><span class="header-section-number">6</span> Display node and edge information</h2>
-<p>The phylogeny stores labels on its internal nodes and lengths on its branches. Plot attributes control whether the figure displays that information.</p>
-<div id="cell-fig-annotated-phylogeny" class="cell" data-fig-width="8" data-fig-height="4" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>annotated_result <span class="op">=</span> <span class="fu">plot</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    useedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    shownodelabel <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    showedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    edgefontsize <span class="op">=</span> <span class="fl">13</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    nodefontsize <span class="op">=</span> <span class="fl">14</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>, <span class="fl">13</span>),</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>annotated_result.figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>plot_result.figure</code> is a <a href="https://docs.makie.org/stable/explanations/figure.html">Makie <code>Figure</code></a>, used to display or save as-is, or for additional composition with Makie.</li>
+<li><code>plot_result.axis</code> is a <a href="https://docs.makie.org/stable/explanations/axis.html">Makie <code>Axis</code></a>, used as a destination if we want to plot additional elements to the same drawing region and coordinate reference system as the phylogeny.</li>
+<li><code>plot_result.plot</code> is a <a href="">PhyloMakie.PhyloPlot</a>, the collectionh of points, lines, polygons, and other marks that make up the visualization of the phylogeny itself, used if we want to update the live plot with different values or aesthetics, or retrieve information about the phylogeny plot, such as the plotting coordinates of its nodes and iedges.</li>
+</ul>
+<p>For example, to display the figure, just ask the REPL to evaluate its value:</p>
+<div id="12" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_result.figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-annotated-phylogeny" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny with internal labels AB, CD, and R and numeric branch lengths printed beside the branches.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-annotated-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-annotated-phylogeny-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny with internal labels AB, CD, and R and numeric branch lengths printed beside the branches.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-annotated-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: A branch-length-scaled phylogeny with internal-node labels and branch-length annotations.
-</figcaption>
-</figure>
+<img width="672" height="480" style="object-fit: contain; height: auto;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAIABJREFUeAHtwQu4EHRhN/4v8OMiBxE8RyxvCHi/cUpLy0jEcE2fyCs2Q91y5tCWmo9u5ipIV6JzKjraynxUbLplo6nZCqfWcFORvNYsxUQRlIEoyOEczuHw/5/3eXhe5pT33Qv8PJx9Pp+y7v8XAACopAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikreYzNmzMjTTz+d3XffPQAAdG8vvvhiDjzwwJxzzjn5f1XyHnv44YfzwgsvZLvttgsb197eno6OjmyzzTahZ2hvb09HR0e22Wab0DO0t7eno6Mj22yzTegZ2tvb09HRkW222Sb0DB0dHVmzZk0GDhwY/vuefvrprFq1Kuecc07+X5W8x0aOHJmRI0dmypQpYeNWrVqV1tbWNDY2hp5h1apVaW1tTWNjY+gZWlpa0tLSkqamptAztLS0pKWlJU1NTaFnWL16dd56663ssMMO4b9vypQp2VQlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlm9mzzz6bvfbaK7179w4AQHe2atWqfOtb38p6vXr1yi677JKxY8dmxx13DFtGyWZ0xx135Pd+7/eyfPnyDBkyJAAA3dncuXNz0UUX5dOf/nS6rFmzJk888URaWlryD//wDxk3blzY/Eo2kwULFmTy5MkBANhaPPLII9ljjz3ywx/+MOu1trbmpJNOyllnnZX58+eHza9kM1i7dm0++9nP5tRTT82MGTMCALA1eOSRR3LooYdmQwMGDMgFF1yQT3ziE1m8eHHe//73h82rZDP4+te/nu233z6TJ0/OjBkzAgCwNXj00Udz8cUX5+369++fLn379g2bX8kmmjNnTm666aY8/vjjefXVV7Mx1113XaZPn54N7bXXXtlvv/2yaNGisHEtLS1pa2tLW1tb6BlaWlrS1taWtra20DP8+te/zhe+8IWsWrUq9AydnZ1Zt25d+vTpE3qGzs7OTJ8+PcOHD88rr7ySUaNGZdGiRdnQvHnzMnTo0KxZsyaLFi0K/9vKlSuz7bbbZlOUbII33ngjp512Wm666aY0NTXl1Vdfzcacfvrp+dSnPpUNffvb306/fv0ybNiwsHGrVq1Ka2trGhsbQ8+watWqtLa2prGxMfQMP/3pT7PLLrvkhhtuCD3D6tWrs3r16my//fahZ2htbc3gwYMzd+7c9OvXL2PHjk3//v2zoV/+8pdpbm7OsGHDwn/W0NCQTVWyCX70ox9l6dKlmTZtWqZNm5ZVq1aly3HHHZfTTjstZ555ZjY0dOjQDB06NBsaMGBAupRSwsaVUlJKSSkl9AyllJRSUkoJPUPv3r0zcODA7LnnnqFnaGlpSUtLS5qamkLPsHr16rz11luZN29eRo8enYaGhmxoyZIlmTlzZn74wx+mlBL+s969e2dTlWyCj3zkI7n++uuz3iuvvJKHH344EydOTHNzcwAAuqtHHnkkhx56aDb0xhtv5KSTTsrHPvax/M7v/E7YMko2wciRIzNy5Mis98wzz+TP/uzPcuqpp2bIkCEBAOiOOjs789hjj2XnnXfOjTfemM7Ozjz11FO555570tzcnNtuuy1sOSWbUUNDQ4444oiUUgIA0F299tpr+eAHP5iXX345t912W3r37p0dd9wxl19+eU499dT07t07bDklm9GIESPy4IMPBgCgO3v/+9+fBx98MLw3SgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiErYaa9asyde+9rW0t7eHnqGjoyMdHR0ZMGBA6Bmee+659O/fPwC8uxK2Gn//93+fxx9/PGeccUboGdra2tLR0ZGGhobQM7S3t2fJkiUB4N2VsFUZPnx4Pv/5z4eeYdWqVWltbU1jY2PoGQYMGJBZs2YFgHdXAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAwP/y2muvpbW1Nbvttlt69eoVtoySzeAHP/hB7rvvvnR2dubII4/MKaeckl69egUAoLtbt25dvvGNb+TGG2/MokWL0t7enj333DN/+7d/m4MPPjhsfiWb6LLLLsv06dNz7rnn5vXXX8/kyZPz+OOPZ9q0aQEA6M5Wr16dz3zmM3nhhRfy3e9+N4cffnhaWlpy+umn5zOf+Uz+/d//PaWUsHmVbKJrr702M2bMyCmnnJIuw4cPzze+8Y1MmzYtAADd2V/8xV/k+eefz4MPPpgddtghXfr3759p06Zl//33zy9/+cuMHj06bF4lm6CtrS1nnXVWxo4dm/X23nvv9OvXLwAA3dmrr76aK6+8MnfeeWd22GGHbGifffbJv/3bv2W33XYLm1/JJujfv3+uuOKKdPnJT36Shx56KLfffnsuu+yyvJMXXnghL7zwQja0fPnybLvttmltbQ0b197enrVr16a1tTX0DK2trWlra0tra2voGdrb27N06dLce++9oWdoa2tLW1tbBg8eHHqGNWvWZJ999smsWbOy66675ogjjkhra2verrm5OV1aW1vD/9bR0ZFSSjZFyWby/PPPZ968eVm5cmX69++fdzJnzpzMnDkzGxo0aFD22GOPrFixImxca2tr2tvbs2LFitAztLS0pK2tLaWU0DN86EMfyp133plp06aFnqGzszNr165N3759Q8/Q2dmZSy+9NI899lgOOuigrFixIvzfa2trSyklm6JkMzn33HNz7rnn5tFHH82hhx6a8ePH533ve182dPrpp+f000/PhqZMmZIuw4YNCxu37bbbZsCAARk2bFjoGVatWpXW1tY0NjaGnmHQoEGZOXNmmpqaQs/Q0tKSlpaWNDU1hZ5h9erVeeutt/Knf/qn+fSnP51hw4bl7e666660trZm4sSJ4T9raGjIpirZBM8880wuuuii3HvvvenVq1e6fOhDH0rfvn3z9NNP533ve18AALqjQYMGZcGCBXm7V199NaeeempuueWWsGWUbIJddtkl//zP/5wf//jHOeaYY9Jl9uzZWbduXfbff/8AAHRXRx11VK666qpceOGFOfDAA9Pl9ddfz4knnpgjjjgiJ554YtgySjbBkCFD8ud//uc54YQTMn78+Kxbty73339/rrzyyuy0004BAOiuLr744tx333059NBDM27cuHSZM2dOjjjiiNx+++1hyynZRBdddFGOPvroPPzwwyml5C//8i+z1157BQCgO2toaMi//Mu/5Mc//nGeeeaZDB48OFOnTs3BBx8ctqySzWD06NEZPXp0AAC2Jr17986xxx6bY489NtRTAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgDwP1RLS0t+9atfZb1evXqlsbExw4cPT69evcKWUbKJ1qxZk29+85uZNWtWVq5cmcMOOyyXX355RowYEQCA7uyee+7JZz7zmQwePDhd2tra0tramoMPPjizZ8/O0KFDw+ZXsommTJmS2267LX/1V3+VpqamXHXVVTnyyCPz9NNPZ9tttw0AQHf1yCOP5CMf+UgeeuihdOns7MzPf/7zjBs3Lt/73vfyhS98IWx+JZvolltuyeWXX55PfepT6XL77bensbExDzzwQCZMmBAAgO7qkUceyYc//OGs17t374wdOzZNTU3Zfffdw5ZRsgnWrl2bz33ucxk/fnzW6+joyNq1a9PR0REAgO6qo6Mjv/jFL/KFL3wh661bty7Tp09PY2NjjjrqqLBllGyCPn365LLLLst67e3tmTx5cpqamvLJT34yb3frrbdm5syZ2dCgQYOyxx57ZMmSJWHjVq5cmdbW1ixZsiT0DC0tLWlra8vatWtDz/Dqq6/mT/7kT9LS0hJ6hs7OzqxduzZ9+/YNPUNnZ2cuvfTS9OvXL6tXr86ll16ayy+/POvWrcvixYvT0NCQBx54ICtXrszKlSvDf7Zq1ao0NDRkU5RsJv/0T/+UCy+8ML17985Pf/rTDBw4MG/3sY99LDvttFM2dPfdd6d///4ZPHhw2LgBAwakb9++GTx4cOgZ+vTpk379+mXw4MGhZ7j77rvz1ltv5ZJLLgk9Q1tbW9ra2jJ48ODQM6xZsya777577rvvvmy//faZMmVK1lu4cGGuv/76XH755fnrv/7r8F/1798/m6pkE3V0dOTss8/OXXfdlSlTpuTss89OKSXvZOTIkRk5cmQ2NGfOnHQZMGBA2Li+ffumT58+GTBgQOgZ1q5dmy4DBgwIPUPfvn3T1NSUY445JvQMLS0taWlpSVNTU+gZVq9enbfeeiu/+MUv8pGPfCSnnXZaNtTZ2ZlvfetbGTBgQPivSinZVCWb6IILLsiTTz6ZX/3qV9lhhx0CALA1eOSRR3LKKafk7V588cUccMABYcsp2QRvvvlmvvOd7+TKK6/MggULsmDBgqw3atSoDB06NAAA3c1bb72VZ599NjvttFOef/75dGltbc2PfvSjzJw5Mz//+c/DllOyCZ599tm0tbXlvPPOy9t9//vfz0knnRQAgO7miSeeSGdnZ84666ysN2jQoHzoQx/Kgw8+mA9/+MNhyynZBIceemjWrVsXAICtycc+9rGsW7cuvDdKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKIStioLFizIt7/97dAztLW1paOjIw0NDaFnePjhh9Pe3h4A3l0JW42JEyfm6aefzrx580LP0NHRkY6OjgwYMCD0DC+++GL69+8fAN5dCVuNfv36ZerUqWlsbAw9w6pVq9La2prGxsbQM9x6662ZNWtWAHh3JQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRyWZ055135nd/93fT0NAQAICtyfXXX5+f/OQnueSSS3L44YeHLadkM3n55ZczadKkPP/882loaAgAwNZiwYIFufjii9PlqKOOyuGHHx62nJJN9Oyzz+a6667LrFmz0tbWFgCArc1FF12UsWPHZt26dZk/f37Ysko2USkle++9dz7/+c/nsssuCwDA1uShhx7KD3/4wzz55JO55pprMn/+/LBllWyiPfbYI+eff35efPHFXHbZZdmY5cuXZ/ny5dlQa2tr+vXrl46OjrBxHR0d6ejoSEdHR+gZOjo60tHRkY6OjtAzdHZ2pqWlJc8991zoGVavXp3Vq1dn+fLloWdobW3N4MGD09HRkXXr1uW8887LH/3RH2XPPffMrrvumvvvvz8dHR3hnXV2dqZ3797ZFCUV3XrrrZk+fXo2tNdee2W//fbLkiVLwsa1tLSkra0ta9euDT1DS0tL2trasnbt2tAzDB8+PAsXLsz48eNDz9DZ2Zl169alT58+oWfo7OzM9OnT07dv39x555357W9/m9tuuy1LlizJdtttlwULFmTRokUppYT/atWqVdl2222zKUoqOu+883LeeedlQ1OmTEmXnXbaKWzcqlWr0tramsbGxtAzrFq1Kq2trWlsbAw9w5AhQ/Kzn/0sTU1NoWdoaWlJS0tLmpqaQs+wevXqvPXWWxk4cGCmTZuWoUOHZsqUKemyePHidHR0pKOjI7vttlv4r7bddttsqhIAgP+BrrjiigwaNCiTJ0/OeitXrszPf/7zzJ8/PyNHjgxbRgkAwP8wCxcuzNVXX53vf//7OfbYY7Pe2rVrc9lll2X+/PkZP3582DJKAAD+h7nsssty+OGH59hjj82G+vTpk1133TXz588PW07JZjJkyJB87Wtfy+DBgwMA0F21tLRkjz32yJlnnpl3cumll2a77bYLW07JZjJkyJBMmTIlAADd2cCBA3PRRRdlhx12yDv53Oc+F7asEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCikvfYSy+9lJdffjnTpk0LG7dmzZp0dHRk4MCBoWdYs2ZNOjo6MnDgwNAztLe3Z82aNWloaAg9Q3t7e9asWZOGhobQM7S3t2fNmjVpaGgI/30PPfRQdt1112yKkvfYPvvsk5aWlixfvjxs3H/8x39kxYoVGTVqVOgZli5dmjfffDOjRo0KPcOyZcvy+uuvZ8899ww9w+uvv55ly5Zlzz33DD3D8uXLs2TJkuy9997hv6+xsTH77LNPNkXJe+ziiy8O/3duvvnm/OxnP8sVV1wReobbbrstP/nJT3LFFVeEnuHv/u7vMmvWrFxxxRWhZ/jBD36Q22+/PVdccUXoGe66665897vfzRVXXBHeGyUAAFBRCQAAVFQCAAAVlbDVOPDAA9PQ0BB6jv333z99+/YNPce+++6btWvXhp5j7733znHHHRd6jj333DMnnHBCeO+UsNU4+OCDc/DBB4ee4wMf+EA+8IEPhJ7joIMOykEHHRR6jgMOOCAHHHBA6Dn23Xff7LvvvuG9UwIAABWVAABARSUAAFBRCQAAVFRCt3TTTTdlzz33zJgxY7Ix99xzT+69994MHTo0kyZNyr777hu6p5tuuil77rlnxowZk3czZ86czJkzJxvab7/9MmHChNB9vPDCC7nxxhvzyiuvZO+9987ZZ5+dxsbGvJt77rkn9957b4YOHZpJkyZl3333Dd3LCy+8kBtvvDGvvPJK9t5775x99tlpbGzMO5kzZ07mzJmTDe23336ZMGFC6D4ee+yx3H777Vm2bFlGjx6ds88+OwMHDsy7efLJJ3P77bdn1apVmTBhQsaPHx+2nBK6nZdeeimXXnpprrrqqowZMybvZsaMGfnyl7+cc845JwsWLMhHP/rRzJkzJ/vvv3/oXl566aVceumlueqqqzJmzJi8m1tuuSWzZ8/O7rvvnvXWrFmTCRMmhO7hN7/5TZqbmzNhwoQccsghuffee3P99dfniSeeyI477pi3mzFjRr785S/nnHPOyYIFC/LRj340c+bMyf777x+6h9/85jdpbm7OhAkTcsghh+Tee+/N9ddfnyeeeCI77rhj3u6WW27J7Nmzs/vuu2e9NWvWZMKECaF7ePDBB/PJT34yf/iHf5jhw4fnhhtuyPe///3MmTMnvXv3zts9+uijOeqoo3LKKaeksbExxx13XP7mb/4mkyZNCltGCd3GihUrctRRR+XJJ59Me3t7Nqa9vT1Tp07NDTfckEmTJqXLCSeckGuuuSY33nhj6B5WrFiRo446Kk8++WTa29vzf/Lcc8/l4osvzjnnnBO6p2uuuSZjxozJHXfckS4XXHBBmpubM2PGjEydOjUbam9vz9SpU3PDDTdk0qRJ6XLCCSfkmmuuyY033hi6h2uuuSZjxozJHXfckS4XXHBBmpubM2PGjEydOjVv99xzz+Xiiy/OOeecE7qn6dOn5w/+4A9yww03pMuECRNyyCGH5JlnnslBBx2Ut/vmN7+ZU045JTfeeGO67Lzzzpk6dWomTZoUtowSuo2GhoZ85zvfSZdjjjkmGzN37twsW7Ysxx13XNY76aSTcuGFF4buo6GhId/5znfS5Zhjjsn/yfz58zNy5Mg8+uij6d+/f/bbb7/07ds3dB+llJx66qlZr0+fPhk+fHgWL16ct5s7d26WLVuW4447LuuddNJJufDCC0P3UUrJqaeemvX69OmT4cOHZ/HixXkn8+fPz8iRI/Poo4+mf//+2W+//dK3b9/QfRx55JE55JBDst5ee+2VXr16pV+/fnm7devW5cc//nFmzZqV9U466aScd955+fWvf5299947bH4ldBt9+vRJc3NzuvTr1y8bs3jx4gwdOjSDBg3KervttluWLFmStWvXpk+fPuG916dPnzQ3N6dLv379sjGrV6/OK6+8kjPOOCPbbLNNli9fnh122CF33nlnmpubQ/dw/fXXZ0Nz587N/fffn5kzZ+btFi9enKFDh2bQoEFZb7fddsuSJUuydu3a9OnTJ7z3rr/++mxo7ty5uf/++zNz5sy83erVq/PKK6/kjDPOyDbbbJPly5dnhx12yJ133pnm5ubQPfzxH/9xuvzyl7/MXXfdlX/8x3/M7//+72efffbJ273++utpa2vLbrvtlvV22mmnlFKyePHi7L333mHzK2GrtGLFijQ0NGRDgwYNSmdnZ1asWJGhQ4eGrcuyZcty1FFH5ZJLLsm4cePS1taWz372szn99NPz1FNPhe6lra0t1113Xb7+9a/n3HPPzYknnpi3W7FiRRoaGrKhQYMGpbOzMytWrMjQoUND99HW1pbrrrsuX//613PuuefmxBNPzNstW7YsRx11VC655JKMGzcubW1t+exnP5vTTz89Tz31VOheXnvttTz22GN56aWXcsQRR2TNmjXp169fNrRixYp0aWhoyIYaGhqyfPnysGWUsFVqbGzMihUrsqE33ngjpZRst912Yeuzyy67ZPbs2Vmvf//++cpXvpLm5uYsWbIkw4YNC93D3Llzc9ppp2XQoEG55557Mnbs2LyTxsbGrFixIht64403UkrJdtttF7qPuXPn5rTTTsugQYNyzz33ZOzYsXknu+yyS2bPnp31+vfvn6985Stpbm7OkiVLMmzYsNB9jBs3LuPGjcubb76ZfffdNx/84AdzyimnZEONjY3psmLFiqzX2dmZlStXpqmpKWwZJWyVhg8fnjfeeCNLly5NU1NTusyfPz+77LJLevfuHbY+8+fPz6JFizJmzJisN2jQoHTp3bt36B4ef/zxjB8/PlOnTs0Xv/jF9OrVK+9m+PDheeONN7J06dI0NTWly/z587PLLrukd+/eoXt4/PHHM378+EydOjVf/OIX06tXr7yb+fPnZ9GiRRkzZkzWGzRoULr07t07vPc6Oztz7LHH5qqrrsoBBxyQLtttt13233//PPXUUznllFOyocGDB2fIkCF57rnnctBBB6XLb3/723R2dma33XYLW0YJW42FCxdm2bJlGT16dEaPHp299tort90BPo7kAAADzklEQVR2W84///ysW7cu3/ve9zJx4sSw9Vi4cGGWLVuW0aNHZ9GiRRk7dmzmzZuX5ubmdLn11ltz4IEHpqmpKXQPX/3qV3PyySfnvPPOyztZuHBhli1bltGjR2f06NHZa6+9ctttt+X888/PunXr8r3vfS8TJ04M3cdXv/rVnHzyyTnvvPPyThYuXJhly5Zl9OjRWbRoUcaOHZt58+alubk5XW699dYceOCBaWpqCu+93r17Z9myZbn11ltz5ZVXpstrr72WefPm5ayzzkqXhQsXZtmyZRk9enS6nHzyyZk5c2ZOPPHEdJk5c2Y+/OEPZ/jw4WHLKGGrce211+bmm2/O0qVL02X69OmZOHFi5s6dm5dffjnLli3Ll770pbD1uPbaa3PzzTdn6dKlGTNmTCZNmpTDDjssRx55ZN58883Mnz8/d999d+g+5syZk9WrV+f222/Phs4+++xcffXVufbaa3PzzTdn6dKl6TJ9+vRMnDgxc+fOzcsvv5xly5blS1/6Uug+5syZk9WrV+f222/Phs4+++xcffXVufbaa3PzzTdn6dKlGTNmTCZNmpTDDjssRx55ZN58883Mnz8/d999d+g+rrrqqhx77LH513/917z//e/Pgw8+mHHjxuXkk09Ol2uvvTY333xzli5dmi6XXnppjjzyyBx99NEZMmRI7rvvvtx9991hyymhW7rjjjsyYsSIbGjy5Mk5/vjjs97RRx+dxx9/PA888ECGDBmST3ziExk8eHDonu64446MGDEiG5o8eXKOP/74rHfLLbfkzDPPzJNPPplhw4Zl/Pjx2X777UP3MWvWrLyTnXfeOV0mT56c448/PusdffTRefzxx/PAAw9kyJAh+cQnPpHBgweH7mPWrFl5JzvvvHO6TJ48Occff3zWu+WWW3LmmWfmySefzLBhwzJ+/Phsv/32ofs44ogj8pvf/CazZ8/OW2+9lfPPPz+HH3541ps8eXKOP/74rDd8+PDMmzcvs2fPTktLS66++ursuuuuYcspoVs67LDD8najRo3KqFGjsqERI0ZkxIgRofs77LDD8najRo3KqFGjsqGPf/zj+fjHPx66p7Fjx2ZjRo0alVGjRmVDI0aMyIgRI0L3NHbs2GzMqFGjMmrUqGzo4x//eD7+8Y+H7munnXbKGWeckXcyatSojBo1KhsaOnRoJk6cGOooAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAq+v8AXYw8lCHAgycAAAAASUVORK5CYII=">
 </div>
 </div>
-</div>
-<p>High-value attributes include:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Attribute</th>
-<th>Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>useedgelength</code></td>
-<td>Scale the horizontal layout with stored branch lengths.</td>
-</tr>
-<tr class="even">
-<td><code>showtiplabel</code></td>
-<td>Display terminal-node labels.</td>
-</tr>
-<tr class="odd">
-<td><code>shownodelabel</code></td>
-<td>Display internal-node labels.</td>
-</tr>
-<tr class="even">
-<td><code>showedgelength</code></td>
-<td>Annotate branches with their stored lengths.</td>
-</tr>
-<tr class="odd">
-<td><code>tipoffset</code></td>
-<td>Separate tip labels from terminal nodes.</td>
-</tr>
-<tr class="even">
-<td><code>tipfontsize</code>, <code>nodefontsize</code>, <code>edgefontsize</code></td>
-<td>Set text sizes.</td>
-</tr>
-<tr class="odd">
-<td><code>edgecolor</code>, <code>edgewidth</code></td>
-<td>Set branch appearance.</td>
-</tr>
-<tr class="even">
-<td><code>xlim</code>, <code>ylim</code></td>
-<td>Reserve or restrict axis data space.</td>
-</tr>
-</tbody>
-</table>
-<p>Change 1 attribute at a time when diagnosing its effect.</p>
+<p>while to save it to a file we would pass the figure to <code>save</code>:</p>
+<pre><code>save("phylogeny.png", plot_result.figure)</code></pre>
 </section>
-<section id="draw-into-an-existing-makie-axis" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="draw-into-an-existing-makie-axis"><span class="header-section-number">7</span> Draw into an existing Makie axis</h2>
-<p>Use <code>plot!</code> when the figure and axis already exist:</p>
+<section id="setting-plot-attributes" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="setting-plot-attributes"><span class="header-section-number">4</span> Setting plot attributes</h2>
+<p>Plot attributes control various aspects of the render.</p>
+<p>For example the default <code>useedgelength = false</code> draws the topology without scaling branches by their stored lengths, so we have to explicitly overrride this with <code>useedgelength = true</code> to have branch extension in the plot proportional to the phylogeny edge weight values:</p>
+<div id="14" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phylogeny, useedgelength <span class="op">=</span> <span class="cn">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<img width="672" height="480" style="object-fit: contain; height: auto;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAHgFJREFUeAHtwXuMHmSBL+Bf27fXKaVlBnRbaaWlDEGQZlUuQcKlW9iFqGRBylbgDxYvaA0aAptNN9kiCC2XdSmRi7BstMhNFCK3RVAQaKQsqCxeMKUgqICs0NIy33zT+WbmnPGke3qI8RSnfR06z/OUgf8tAABQSQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZX8mV1xxRV56qmn8u53vzsAAAxvv/zlL7Pffvvl05/+dP5UJX9mjz76aJ599tnsvPPOGQ56e3vTarUyceLEwEjW29ubVquViRMnBkay3t7etFqtTJw4MTCStVqtbNq0KU899VS6urry6U9/On+qkj+z2bNnZ/bs2Vm6dGmGg66urjSbzbS3twdGsq6urjSbzbS3twdGskajkUajkY6OjsBI1t3dnTfeeCNf/vKXM1QlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUl29jTTz+dvfbaK6NHjw4AvFVdXV258sors9moUaPyrne9K4cffnje8Y53BHj7K9mGbrrppvzd3/1d1q1bl6lTpwYA3qr//M//zNlnn52PfOQjGbRp06b8+Mc/TqPRyLe+9a0ceeSRAd7eSraR559/PmeccUYAYChWr16dPffcM7fffns2azabOeGEE/Lxj388a9euDfD2VrIN9PX15WMf+1gWLVqUK664IgDwp1q9enUOPPDAbGnChAn5/Oc/n7/6q7/KSy+9lL/4i78I8PZVsg184QtfyC677JIzzjgjV1xxRQDgT/XYY4/lnHPOyZuNHz8+g8aOHRvg7a1kiB555JFcd911+dGPfpSXX345f8xll12WFStWZEt77bVX9tlnn7z44osZDhqNRnp6etLT0xN2DM8991w+8YlPpKurK2y9/v7+DAwMZMyYMYEarr/++rS1teU3v/lN5syZkxdffDFbeuKJJzJt2rRs2rQpL774Ymrp7u5Od3d3Nm3aFBjJms1murq6snHjxuy0004ZipIhWL9+fU455ZRcd9116ejoyMsvv5w/5tRTT82HPvShbOkrX/lKxo0bl9122y3DQVdXV5rNZtrb28OO4Tvf+U46OzuzfPnysPUajUZ6enoybdq0QA0zZszI3XffnXHjxuXwww/P+PHjs6Wf/vSnmTdvXnbbbbfU1Gg00mg00tHRERjJuru7M3HixLS1tWWoSobgrrvuyu9+97ssX748y5cvT1dXVwYdd9xxOeWUU/L3f//32dK0adMybdq0bGnChAkZVErJcFBKSSklpZSwYxgzZkwmT56cuXPnhq3X1dWVZrOZ9vb2QC1PPPFE9t9//7S1tWVLr7zySlauXJnbb789pZTUVEpJKSWllMBIVkpJKSWjR4/OUJUMwcEHH5zLL788m/3mN7/Jo48+mhNPPDHz5s0LALwVq1evzoEHHpgtrV+/PieccEI++MEP5uijjw7w9lcyBLNnz87s2bOz2U9+8pP80z/9UxYtWpSpU6cGALZWf39/Hn/88cyYMSPXXntt+vv781//9V+58847M2/evFx//fUBdgwl21BbW1sOO+ywlFICAG/FSy+9lL/8y7/Mr371q1x//fUZPXp03vGOd+T888/PokWLMnr06AA7hpJtaI899siDDz4YAHirZsyYkQcffDDAjq8EAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKirhbWPTpk1ZsmRJNmzYELbemjVr0tHREQBgeCjhbeOGG27IY489lo997GNh6/X29qa7uzsAwPBQwtvK7Nmz84lPfCJsvYkTJ+a+++4LADA8lAAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFZUAvEW//e1v02w2M3PmzIwaNSoA8FaUbAPf/OY3c//996e/vz9HHHFEFi5cmFGjRgXYcQwMDOSCCy7ItddemxdffDG9vb2ZO3dubrjhhrzvfe8LAGytkiE677zzsmLFinzmM5/Ja6+9ljPOOCM/+tGPsnz58gA7hu7u7px00kl59tln82//9m855JBD0mg0cuqpp+akk07Kz3/+85RSAgBbo2SI/vVf/zVXXHFFFi5cmEGzZs3KBRdckOXLlwfYMVxyySV55pln8uCDD2bXXXfNoPHjx2f58uV5z3vek5/+9KfZf//9AwBbo2QIenp68vGPfzyHH354Nuvs7My4ceMC7BhefvnlXHTRRbn11luz6667Zkt77713fvCDH2TmzJkBgK1VMgTjx4/PsmXLMujee+/NqlWrcuONN+a8887LH/Lss8/m2WefzZbWrVuXnXbaKc1mM8NBs9lMT09Pms1mhpve3t709fWl2WyGrdfb25uXX345d999d9h6zWYz+++/f2655ZbsvvvuOeyww9JsNvNm8+bNy6BmsxnYETWbzfT09KTZbAZGsmazmZ6enrRarZRSMhQl28gzzzyTJ554Ihs3bsz48ePzhzzyyCNZuXJltjR58uTsueee2bBhQ4aDRqORnp6elFIy3HR3d6e3tzcbNmwIW++QQw7Jt771rSxfvjxsvb6+vnzxi1/M448/nve+973ZsGFDYCTq7u5Od3d3xo4dGxjJms1murq60tPTk1JKhqJk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DAwMhD+PEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKiohLeVZ599Nl/5ylcC21tPT09arVba2toC29sPf/jDbNq0KcDIUMLbxqJFi/LTn/40TzzxRGB7a7VaabVamTBhQmB7e/bZZzN+/PgAI0MJbxvjxo3LxRdfHKihq6srzWYz7e3tge3t1ltvzc033xxgZCgBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikq2oVtvvTV/8zd/k7a2tgDAjuzyyy/Pvffem3/8x3/MIYccEmDrlWwjv/rVr3LyySfnmWeeSVtbWwBgR/X888/nnHPOyaD58+fnkEMOCbD1Sobo6aefzmWXXZbbbrstPT09AYAd3dlnn53DDz88AwMDWbt2bYC3pmSISinp7OzMJz7xiZx33nkBgB3ZqlWrcvvtt+fJJ5/Ml770paxduzbAW1MyRHvuuWc+97nP5Ze//GXOO++8/DHr1q3LunXrsqVms5lx48al1WplOGi1Wmm1Wmm1WoGRrNVqpdVqpdVqBba3vr6+dHV1Zc2aNRluuru7M23atLRarQwMDOTMM8/Mpz71qcydOze77757vve976XVagV2dK1WK61WK/39/Rk9enSGoqSir33ta1mxYkW2tNdee2WfffbJK6+8kuGg0Wikp6cnfX19gZGs0Wikp6cnfX19ge1t1qxZefHFF7NgwYIMN/39/bniiisyZsyY3HrrrXnuuedy/fXX55VXXsnOO++c559/Pi+++GJKKYEdWbPZTFdXV7q6urLTTjtlKEoqOvPMM3PmmWdmS0uXLs2g6dOnZzjo6upKs9lMe3t7YCTr6upKs9lMe3t7YHubPn16fvzjH2c4ajQaaTQamThxYpYvX55p06Zl6dKlGfTSSy+l1Wql1Wpl5syZgR1Zd3d33njjjey0004ZqhIA4P9r2bJlmTx5cs4444xstnHjxjz00ENZu3ZtZs+eHWDrlAAAf9Svf/3rXHrppfnGN76RY489Npv19fXlvPPOy9q1a7NgwYIAW6cEAPijvvCFL+SQQw7Jsccemy2NGTMmu+++e9auXRtg65VsI1OnTs0///M/Z8qUKQGAHUWj0cjcuXNz2mmn5Q9ZsmRJdt555wBbr2QbmTp1apYuXRoA2JFMmjQpZ599djo6OvKHnHbaaQHemhIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgohIAAKioBAAAKioBAICKSgAAoKISAACoqAQAACoqAQCAikoAAKCiEgAAqKgEAAAqKgEAgIpKAACgopI/sxdeeCG/+tWvsnz58gwHmzZtSqvVyqRJkwIj2aZNm9JqtTJp0qTASNbb25tNmzalra0tMJL19vZm06ZN+cEPfpDdd989Q1HyZ7b33nun0Whk3bp1GQ7++7//Oxs2bMicOXMCI9nvfve7rF+/PnvuuWdgJHvttdfy6quvZu7cuYGRbP369fntb3+b9vb27L333hmKkj+zc845J8PJv//7v+fhhx/OsmXLAiPZDTfckLvuuivLli0LjGTf/OY3c+ONN2bZsmWBkeyuu+7KlVdemdtuuy1DVQIAABWVAABARSUAAFBRCf+P/fbbLzvttFNgpNtnn30yevTowEjX2dmZ4447LjDSzZkzJyeccEK2hRL+H+9///vz/ve/PzDSzZs3L/PmzQuMdPvuu2/23XffwEi39957Z++99862UAIAABWVAABARSUAAFBRCQAAVFTC/3jyySdz4403pqurKx/+8IezYMGCwEjzwgsv5IYbbsiWJk+enMWLFwdGiuuuuy5z587NoYcemi09+eSTufHGG9PV1ZUPf/jDWbBgQWBHdt1112Xu3Lk59NBDs9kLL7yQG264IVuaPHlyFi9enK1Vwu899thjmT9/fhYuXJj29vYcd9xxufrqq3PyyScHRpKHH344y5Yty7x587LZLrvsksWLFwdGghdeeCFLlizJxRdfnEMPPTSbPfbYY5k/f34WLlyY9vb2HHfccbn66qtz8sknB3ZEL7zwQpYsWZKLL744hx56aDZ7+OGHs2zZssybNy+b7bLLLlm8eHG2Vgm/d+GFF2bhwoW59tprM2jGjBk599xzc/LJJwdGkjVr1uSoo47KLbfcEhhJNmzYkPnz5+fJJ59Mb29v3uzCCy/MwoULc+2112bQjBkzcu655+bkk08O7Eg2bNiQ+fPn58knn0xvb2/ebM2aNTnqqKNyyy235E9VQgYGBnLPPffktttuy2YnnHBCzjzzzPziF79IZ2dnYKRYu3ZtOjs78/Of/zyvv/569t1330yePDmwo2tra8s111yTQcccc0y2NDAwkHvuuSe33XZbNjvhhBNy5pln5he/+EU6OzsDO4q2trZcc801GXTMMcfkzdauXZvOzs78/Oc/z+uvv5599903kydPzltRQl577bX09PRk5syZ2Wz69OkppeSll15KZ2dnYKR45plncu+99+bqq69OKSVvvPFGrrrqqixatCiwIxszZkzmzZuXQePGjcuWXnvttfT09GTmzJnZbPr06Sml5KWXXkpnZ2dgRzFmzJjMmzcvg8aNG5c3e+aZZ3Lvvffm6quvTiklb7zxRq666qosWrQoW6uEbNiwIYPa2tqypba2tqxbty4wksycOTMLFy7M5z73uQy65JJLcvrpp+ewww7LjBkzAiPRhg0bMqitrS1bamtry7p16wIjycyZM7Nw4cJ87nOfy6BLLrkkp59+eg477LDMmDEjW6OEtLe3Z9CGDRuyWX9/fzZu3JiOjo7ASHLzzTdnS2eddVYuuOCCrFq1KieeeGJgJGpvb8+gDRs2ZLP+/v5s3LgxHR0dgZHk5ptvzpbOOuusXHDBBVm1alVOPPHEbI0SMmXKlEydOjVr1qzJe9/73gx67rnn0t/fn5kzZwZGivXr12fVqlU5+uijU0rJoFGjRqWtrS1jxowJjFRTpkzJ1KlTs2bNmrz3ve/NoOeeey79/f2ZOXNmYKRYv359Vq1alaOPPjqllAwaNWpU2traMmbMmGytEn7vox/9aFauXJnjjz8+g1auXJkDDjggs2bNCowU48aNy0knnZQLLrggn/3sZzPogQceyKuvvpqDDjooMJJ99KMfzcqVK3P88cdn0MqVK3PAAQdk1qxZgZFi3LhxOemkk3LBBRfks5/9bAY98MADefXVV3PQQQdla5Xwe0uWLMkRRxyRo446KlOnTs3999+fO+64IzCSTJo0KV/60pfyqU99Kl//+tfT3t6e73//+7nssssyY8aMwEi2ZMmSHHHEETnqqKMyderU3H///bnjjjsCI8mkSZPypS99KZ/61Kfy9a9/Pe3t7fn+97+fyy67LDNmzMjWKuH3Zs2alSeeeCL33XdfGo1GLr300uy+++6Bkeb000/PoYcemgcffDBjx47NihUrMmfOnMBIctNNN2WPPfbIlmbNmpUnnngi9913XxqNRi699NLsvvvugR3ZTTfdlD322CNbOv3003PooYfmwQcfzNixY7NixYrMmTMnb0UJ/2PatGk58cQTAyNdZ2dnOjs7AyPVQQcdlD9k2rRpOfHEEwMjxUEHHZQ/pLOzM52dnflTlQAAQEUlAABQUQkAAFRUAgAAFZUAAEBFJQAAUFEJAABUVAIAABWVAABARSUAAFBRCQAAVFQCAAAVlQAAQEUlAABQUQkAAFRUAgAAFf0vLTRcWxgj24QAAAAASUVORK5CYII=">
+</div>
+</div>
+<p>The full interface of the plotting function can be seen by inspecting the documentation of the plot type:</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="`julia> @doc PhyloMakie.phyloplot`">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span><code>julia&gt; @doc PhyloMakie.phyloplot</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@doc</span> PhyloMakie.phyloplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="16" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>```
+  phyloplot(phylogeny; kwargs...) -&gt; Makie.FigureAxisPlot
+  phyloplot!(axis, phylogeny; kwargs...) -&gt; PhyloPlot
+
+  Plot any AbstractPhylogeny implementing the Phylogenies accessor interface
+  with the PhyloMakie Makie recipe.
+
+  Use plot(phylogeny; kwargs...) and plot!(axis, phylogeny; kwargs...) for the
+  standard Makie API. phyloplot and phyloplot! are package-specific aliases
+  generated by the recipe. Supported attributes control layout style, edge
+  lengths, tip labels, node labels, edge labels, colors, widths, hybrid-edge
+  arrows, and data limits. Use nodeimages and edgeimages to attach image
+  annotations without depending on implementation-assigned node or edge
+  indices.
+
+  Plot type
+  =========
+
+  The plot type alias for the phyloplot function is PhyloPlot.
+
+  Attributes
+  ==========
+
+  arrowlen = nothing — Set the minor hybrid edge arrow length.
+
+  clip_planes = @inherit clip_planes Makie.automatic — Inherited Makie clip
+  planes for the rendered primitives.
+
+  defaultedgecolor = nothing — Set the fallback edge color when edgecolor is a
+  dictionary.
+
+  edgecolor = "black" — Set one edge color or a dictionary keyed by edge
+  number.
+
+  edgefontsize = @inherit fontsize 16.0f0 — Set the edge label font size,
+  following Makie's fontsize convention.
+
+  edgeimages = nothing — Map edge endpoints or objects to images.
+
+  edgelabel = DataFrame() — Supply an edge label table.
+
+  edgelabeladj = [0.5, 0] — Set edge label alignment.
+
+  edgelabelcolor = "black" — Set edge label color.
+
+  edgenumbercolor = "grey" — Set edge number color.
+
+  edgewidth = 1 — Set one edge width or a dictionary keyed by edge number.
+
+  majorhybridedgecolor = "deepskyblue4" — Set the color for major hybrid edges.
+
+  minorhybridedgecolor = "deepskyblue" — Set the color for minor hybrid edges.
+
+  minorlinetype = nothing — Set the line style for minor hybrid edges, or
+  "blank" to hide them.
+
+  nodefontsize = @inherit fontsize 16.0f0 — Set the node label font size,
+  following Makie's fontsize convention.
+
+  nodeimages = nothing — Map node labels, regular expressions, or objects to
+  images.
+
+  nodelabel = DataFrame() — Supply a node label table.
+
+  nodelabeladj = 1 — Set node label alignment.
+
+  nodelabelcolor = "black" — Set node label color.
+
+  showedgelength = false — Show edge lengths.
+
+  showedgenumber = false — Show edge numbers.
+
+  showgamma = false — Show hybrid-edge inheritance probabilities.
+
+  shownodelabel = false — Show internal node names.
+
+  shownodenumber = false — Show node numbers.
+
+  showtiplabel = true — Show tip labels.
+
+  style = :fulltree — Choose :fulltree or :majortree layout style.
+
+  tipfontsize = @inherit fontsize 16.0f0 — Set the tip and internal-node label
+  font size, following Makie's fontsize convention.
+
+  tipoffset = 0 — Move tip labels away from tip positions.
+
+  useedgelength = false — Use phylogeny edge lengths on the x axis.
+
+  xlim = nothing — Set x data limits.
+
+  ylim = nothing — Set y data limits.
+```</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-and-live-updating" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="interactive-and-live-updating"><span class="header-section-number">5</span> Interactive and live updating</h2>
+<p>Some attributes can be updated live in interactive figures.</p>
+</section>
+<section id="compose-using-an-existing-makie-axis" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="compose-using-an-existing-makie-axis"><span class="header-section-number">6</span> Compose using an existing Makie axis</h2>
+<p>When composing complex figures with Makie, it is useful to develop the figure in layers, which typically has us being responsible for the <code>Figure</code> and <code>Axis</code> creation. We use the mutating function variant of <code>plot</code>, <code>plot!</code>, passing it the <code>Axis</code> to mutate by adding the phylogeny plot as the first argument, and the phylogeny to plot as the second.</p>
 <div id="compose-phylogeny" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>composed_figure <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">900</span>, <span class="fl">460</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>composed_axis <span class="op">=</span> <span class="fu">Axis</span>(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    composed_figure[<span class="fl">1</span>, <span class="fl">1</span>];</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">"A composed phylogeny figure"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hidedecorations!</span>(composed_axis)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hidespines!</span>(composed_axis)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>composed_tree_plot <span class="op">=</span> <span class="fu">plot!</span>(</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    composed_axis,</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    useedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>, <span class="fl">13</span>),</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>composed_figure <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">900</span>, <span class="fl">460</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>composed_axis <span class="op">=</span> <span class="fu">Axis</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    composed_figure[<span class="fl">1</span>, <span class="fl">1</span>];</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">"A composed phylogeny figure"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>composed_tree_plot <span class="op">=</span> <span class="fu">plot!</span>(</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    composed_axis,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    useedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="op">-</span><span class="fl">1</span>, <span class="fl">13</span>),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>plot!</code> returns the live <code>PhyloPlot</code> object. PhyloMakie’s <code>phyloplot!(axis, phylogeny)</code> is an alias for the same operation.</p>
 <div id="cell-fig-composed-phylogeny" class="cell" data-fig-width="9" data-fig-height="4.6" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-composed-phylogeny" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny drawn in a Makie axis titled A composed phylogeny figure.">
+<div id="fig-composed-phylogeny" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-composed-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-composed-phylogeny-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny drawn in a Makie axis titled A composed phylogeny figure.">
+<img width="900" height="460" style="object-fit: contain; height: auto;" src="data:image/png;base64, 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xRdf8Nxzz9GlSxcuu+wyOnXqxNy5c6lTpw6bN2+moKCAcePG0bt3byRJe05AkrRfmjx5Mjt27KBz58506NCBRo0asWTJEt5//31at27NrhKJBDfccAMpKSm88847NGvWjK5du/LCCy8wZcoUWrVqxf3330/t2rVZuHAhhx9+OJdffjljxoxhyJAhPP7441To0KEDjzzyCPfccw/33HMPS5Ys4d1336W8vJy2bdvy2muvsWPHDiqsXbuWcePG0aNHD4YNG8add97J0KFDmT59OjfeeCPr169n0KBB3HvvvXz66aeceOKJDB8+nD59+rB69WqWLFlCfn4+b731Ft988w0nn3wyr7zyCjt37uQvf/kLhYWF3H333Vx33XU8/vjjXHLJJdx0001Mnz6d66+/nq1bt3Lbbbdxww03UFBQwPXXX89/s3btWsaNG0ePHj0YNmwYd955J0OHDmX69OlUqFmzJsuWLWPFihX89re/ZcaMGWzfvp1TTjmFww47jM8++4xly5bRtGlTZsyYQQiBrl27sqsxY8awaNEi8vPzefnll9m2bRtnnHEGb7zxBk8++SS9evViyJAhFBUVcf3113Pbbbfx4IMPcvXVV1Nh0qRJzJ07l3PPPZd//vOffP7557Ro0YLrr7+eCy+8kAobNmxgzpw5/OIXv+DXv/41y5Yt44033uD888/nsMMO47PPPmPZsmU0bdqUGTNmEEKga9eu7OrVV1+lU6dOvP7667zwwgu0b9+eefPmUdmQIUMoKiri+uuv57bbbuPBBx/k6quv5qeYP38+f/vb3zjttNOYNGkSc+fO5dxzz+Wf//wnn3/+OS1atOD666/nwgsvpHr16kiS9oyAJGm/NHHiRJL+93//l6SuXbsyYsQIJk+eTOvWrdnV8uXL2bRpE8cccwy//OUvSRo7diyffPIJeXl5zJw5k/Lycs4880yaNGlC0uDBgxkzZgxz586lsh49epCTk0PHjh2555576NixI23atCGpdu3abNiwgW3btlEhKyuLXr16EUJg8ODB3HXXXcybN4+kt956i6TLL7+clJQUWrRoQdeuXXn00UdZuHAhxx57LElz586lTZs2nHPOOUyYMIETTjiBpLlz55L06aef8qc//Ylt27aR9Prrr7N9+3bmz59PSkoKl112GampqfTv35+bbrqJ7du3sztZWVn06tWLEAKDBw/mrrvuYt68eVTWu3dvmjRpQpMmTahXrx7ffPMNW7ZsoVatWlx00UXcfffdTJs2jQsuuICPPvqIM888k0MPPZSioiIqe+utt0jq3bs3GRkZJA0cOJAePXowd+5cevXqxZtvvknSgAEDSEtLY8CAAQwePJitW7eSNHfuXJK2bt3KddddR1LdunVZt24dH3/8MRXOO+88OnToQNJpp53GsmXL2LhxI7FYjIsuuoi7776badOmccEFF/DRRx9x5plncuihh/JTvPnmmyQNGDCAtLQ0BgwYwODBg9m6dSs/1mWXXca1115L0iOPPELS1q1bue6660iqW7cu69at4+OPP+b4449HkrRnBCRJ+52lS5fy9ttvk3TttddSrVo1Nm7cSNLTTz/N8OHD2dWmTZtIatiwIRVyc3PJzc0lafPmzSQdffTRVEhLSyNp48aNVFa9enUqq169OruTk5NDCIGklJQUQghs2bKF8vJyiouLSU1NpUmTJlRIS0sjaePGjTRr1ox//vOf3Hfffbz11lu8//77/PWvf+Xcc8/l2WefZePGjSQtX76clJQUkjp27EjSV199xbZt2zjkkEOoVasWSVlZWdSpU4fCwkJ2JycnhxACSSkpKYQQ2LJlC+Xl5VSoWbMmFdLS0qjs4osv5u6772batGlkZGSQ1K1bN77P5s2bSTr66KOpkJaWRtLGjRspLy9n48aNpKamkpubS1I8Hic3N5fly5eTtHHjRpK+/vprysrKSGrevDnNmzenpKSECjVr1qRCCIHKLr74Yu6++26mTZtGRkYGSd26deOnKC8vZ+PGjaSmppKbm0tSPB4nNzeX5cuX82MdddRRVNi4cSNJX3/9NWVlZSQ1b96c5s2bU1JSgiRpzwlIkvY7EydOJCktLY1ly5ZRoVq1aqxatYp58+bRoUMHKjv88MNJWrx4MTt27KBatWpMnTqVqVOncsEFF3DkkUeS9MYbb3DzzTeT9OKLL5LUrFkzqmLZsmWsXr2ahg0bMnv2bMrKyjjmmGOIxWI0bdqUDz/8kPnz59OhQweSZsyYQVKzZs2YP38+RUVFPPTQQ9SrV4/nn3+ewYMH8/zzz/Pee++Rl5dHYWEhjz76KE2bNiXpiy++IOmwww7j0EMPZf369bz99tu0a9eODz/8kMLCQv6bZcuWsXr1aho2bMjs2bMpKyvjmGOOIRaL8UO0bNmSli1bMmfOHJLi8TjnnXce3+fII4/kpZde4o033uDEE08k6cUXXySpWbNmxGIxGjVqxMqVK3nrrbc49dRTWblyJcuXL6dCXl4eSVdeeSV9+/Ylad26dZSUlFC/fn1WrFjBf9OyZUtatmzJnDlzSIrH45x33nn8FLFYjEaNGrFy5UreeustTj31VFauXMny5cupkJqaStLq1aupsGjRIv6bvLw8kq688kr69u1L0rp16ygpKaF+/fpIkvacgCRpvzNp0iSSXn75ZTp16kSFq6++mpEjRzJ58mQ6dOhAZQ0aNOA3v/kNM2fO5Le//S2tW7fm0UcfZcuWLQwaNIimTZuSl5fHzJkz6dy5M82bN2fMmDEkDRw4kKo688wzOeOMM5g8eTJJAwYMIOmKK66gX79+dO7cmT/84Q+8++67rFq1ilatWtGpUycmTpxI3759Ofzww+nbty9lZWVs3bqVlJQUDj30UPr06cP8+fPp1q0bPXv25L333mPChAn87ne/4/nnn6d///7cfvvtXHjhhZx//vlMnTqVH+rMM8/kjDPOYPLkySQNGDCAH+P3v/89N954I7Nnz6Zr165kZWXxffr3789DDz3E0KFD+eqrrygrK+Opp56iRo0aXHrppST16NGDW2+9ld69e9OlSxdeeOEFKuvRowf33HMPQ4cOpbCwkLKyMoYPH06dOnVYsWIFP9Tvf/97brzxRmbPnk3Xrl3Jysrip+rRowe33norvXv3pkuXLrzwwgtUlpeXR3p6OmvWrOGMM84gPT2dGTNm8N/06NGDe+65h6FDh1JYWEhZWRnDhw+nTp06rFixAknSnhOQJO1XFixYwPLly8nJyeGUU06hsq5duzJy5Ej+8Y9/cO+991KtWjUqGz9+PH379uWll17i1VdfJTc3l7Fjx9KyZUuSXnzxRfr168fzzz/Ps88+S3Z2NqNHj+aCCy6gKo4//njq16/PyJEjSU9P59prr6V///4kXXrppRQVFXHnnXdy++23E0Lgt7/9LQ899BAhBHr27Mlnn33GAw88wE033URSTk4O9913Hw0bNuTSSy/l3//+NyNGjOBPf/oTIQS6d+/O6NGjSbrllltYu3YtTz31FAUFBZx//vmUl5ezcuVKduf444+nfv36jBw5kvT0dK699lr69+/Pj9G9e3f+/Oc/U15eTrdu3fhP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ee655/j2229p3749ffr0IYSAJEmSJEXRzJkz6dy5MxVisRh169alS5cu/O1vfyMlJYX9QaCKnnrqKfr27ctll11GkyZNuOuuu5g8eTKvvPIKKSkpSJIkSVLUzJs3j4YNGzJp0iSSSkpKePnll7n11ltp06YNF198MfuDQBXdfvvtDBkyhD//+c8k9erVi0aNGvH6669z6qmnIkmSJElRs2DBAvLz82ndujUVOnTowEMPPcSOHTvYXwSqYMeOHeTk5HD22WdTIScnh5o1a/LVV18hSZIkSVG0cOFC7rjjDipbsGAB3333HWeddRb7i0AVVKtWjdmzZ1PZQw89RCKRoGPHjuxq5cqVrFy5kso2bdpEZmYmiUQC7TulpaVs376d1NRUDjZlZWXs3LmTRCKBpL0vkUhQWlpKIpFA0r7xwQcfsGHDBg5G69evp27dusRiMaT9RcuWLalXrx4/1MqVK9mwYQMvvfQSixcvpry8nC+//JIPP/yQWbNmkZmZSSKRoKq2b99OCIGqCOwh69atY/DgwUyaNImnnnqKX/ziF+xqzpw5PPnkk1SWkZFBkyZNKC4uRvtOcXExIQTKy8s52JSUlLBt2zaKi4uRtPeVlpby7bffkp6ejqS9b+nSpVxxxRUccsghHIxKS0tJT09H2p9cd911tGvXjh/qzTffJB6Pk5mZSXFxMUnfffcd69atY9asWTRu3Jg9obS0lBACVRHYA5544gkGDRrEr3/9axYvXkxeXh7fp2fPnvTs2ZPKhg0bRlJ2djbad1JTUwkhkJmZycHmkEMOIT09nezsbCTtfYlEgvT0dLKzs5G0961YsYIaNWrw+uuvczBas2YNDRo0IBaLIR2oPv30U9q2bcuECROo7LrrruPhhx/mxhtvZE+oWbMmVRWookceeYSbb76ZKVOmcNpppyFJkiRJUbZgwQJOOukkdpWenk5ubi77k0AVlJaWctNNN1FQUMBpp52GJEmSJEXZtm3beO+997j66qupbMGCBYwePZqCggL2J4EqWLJkCevXr6dfv37079+fyp566inOO+88JEmSJCkqPvjgA0pLS7niiiu46qqrSEokEmzdupW//OUv9OzZk/1JoAoaNmzIa6+9xvdp0aIFkiRJkhQljRo14rXXXqOyzMxMWrRoQTweZ38TqILatWvTqVMnJEmSJElQr149OnXqxIEi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" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-composed-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: A phylogeny drawn into an explicitly constructed Makie axis.
+Figure&nbsp;2: A phylogeny drawn into an explicitly constructed Makie axis.
 </figcaption>
 </figure>
-</div>
 </div>
 </div>
 <p>The figure and axis remain available for additional panels, labels, legends, and annotations.</p>
 </section>
-<section id="query-the-plotted-node-positions" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="query-the-plotted-node-positions"><span class="header-section-number">8</span> Query the plotted node positions</h2>
-<p><code>node_positions</code> returns the coordinates calculated for the live plot:</p>
-<div id="cell-inspect-node-positions" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>node_table <span class="op">=</span> <span class="fu">node_positions</span>(composed_tree_plot)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tip_table <span class="op">=</span> node_table[node_table.isleaf, [<span class="op">:</span>name, <span class="op">:</span>x, <span class="op">:</span>y]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="inspect-node-positions" class="cell-output cell-output-display" data-execution_count="1">
-<div><div style="float: left;"><span>4×3 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
-<table class="data-frame caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">x</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">y</th>
-</tr>
-<tr class="subheader headerLastRow even">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">10.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">13.0</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">C</td>
-<td style="text-align: right;">5.0</td>
-<td style="text-align: right;">3.0</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">D</td>
-<td style="text-align: right;">9.0</td>
-<td style="text-align: right;">4.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="cell-display-tip-positions" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tip_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="display-tip-positions" class="cell-output cell-output-display" data-execution_count="1">
-<div><div style="float: left;"><span>4×3 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
-<table class="data-frame caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">x</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">y</th>
-</tr>
-<tr class="subheader headerLastRow even">
-<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="String">String</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">10.0</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">13.0</td>
-<td style="text-align: right;">2.0</td>
-</tr>
-<tr class="odd">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
-<td style="text-align: left;">C</td>
-<td style="text-align: right;">5.0</td>
-<td style="text-align: right;">3.0</td>
-</tr>
-<tr class="even">
-<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
-<td style="text-align: left;">D</td>
-<td style="text-align: right;">9.0</td>
-<td style="text-align: right;">4.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Query these coordinates instead of recreating the tree layout independently. For example, locate the root by its stored label and add a Makie annotation:</p>
-<div id="cell-add-root-annotation" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>root_row <span class="op">=</span> <span class="fu">only</span>(<span class="fu">eachrow</span>(node_table[node_table.name <span class="op">.==</span> <span class="st">"R"</span>, <span class="op">:</span>]))</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text!</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    composed_axis,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    root_row.x <span class="op">-</span> <span class="fl">0.25</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    root_row.y;</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">"root"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    align <span class="op">=</span> (<span class="op">:</span>right, <span class="op">:</span>center),</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    color <span class="op">=</span> <span class="op">:</span>firebrick,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>);</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>composed_figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/add-root-annotation-output-1.svg" id="add-root-annotation" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The annotation uses coordinates from the rendered <code>PhyloPlot</code>, so it remains aligned with the displayed layout.</p>
-</section>
-<section id="plotting-entry-points" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="plotting-entry-points"><span class="header-section-number">9</span> Plotting entry points</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Return value</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>plot(phylogeny)</code></td>
-<td><code>Makie.FigureAxisPlot</code></td>
-<td>Create a figure, axis, and phylogeny plot.</td>
-</tr>
-<tr class="even">
-<td><code>plot!(axis, phylogeny)</code></td>
-<td><code>PhyloPlot</code></td>
-<td>Draw into an existing axis.</td>
-</tr>
-<tr class="odd">
-<td><code>phyloplot(phylogeny)</code></td>
-<td><code>Makie.FigureAxisPlot</code></td>
-<td>Use PhyloMakie’s alias for <code>plot</code>.</td>
-</tr>
-<tr class="even">
-<td><code>phyloplot!(axis, phylogeny)</code></td>
-<td><code>PhyloPlot</code></td>
-<td>Use PhyloMakie’s alias for <code>plot!</code>.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="guided-practice" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="guided-practice"><span class="header-section-number">10</span> Guided practice</h2>
+<section id="practice" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="practice"><span class="header-section-number">7</span> Practice</h2>
 <p>Create a composed figure for this phylogeny:</p>
 <pre class="text"><code>((A:1,B:1)AB:2,(C:1,D:1)CD:2)root;</code></pre>
 <p>Required steps:</p>
@@ -885,54 +748,6 @@ Figure&nbsp;4: A phylogeny drawn into an explicitly constructed Makie axis.
 <li>Query and inspect the tip-position table.</li>
 <li>Add the text <code>"root"</code> at the calculated root position.</li>
 </ol>
-</section>
-<section id="common-failure-modes" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="common-failure-modes"><span class="header-section-number">11</span> Common failure modes</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Symptom</th>
-<th>Likely cause</th>
-<th>Direct check</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Branches do not scale by their lengths.</td>
-<td><code>useedgelength</code> is false.</td>
-<td>Set <code>useedgelength = true</code>.</td>
-</tr>
-<tr class="even">
-<td>Internal labels are absent.</td>
-<td><code>shownodelabel</code> is false.</td>
-<td>Set <code>shownodelabel = true</code>.</td>
-</tr>
-<tr class="odd">
-<td>A graphic misses its intended node.</td>
-<td>Its coordinates were guessed.</td>
-<td>Query <code>node_positions(plot_handle)</code>.</td>
-</tr>
-<tr class="even">
-<td>New content replaces the existing figure.</td>
-<td>The non-mutating entry point was used.</td>
-<td>Call <code>plot!(axis, phylogeny)</code>.</td>
-</tr>
-<tr class="odd">
-<td>Labels or annotations are clipped.</td>
-<td>The data limits reserve too little space.</td>
-<td>Set suitable <code>xlim</code> or <code>ylim</code> values.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="next-steps" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">12</span> Next steps</h2>
-<p>The basic composition in this tutorial uses ordinary Makie annotations. Continue with <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html">adding supplied images to phylogenies</a> or <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html">resolving PhyloPic images for phylogenies</a> when the added content is an image.</p>
 
 
 </section>

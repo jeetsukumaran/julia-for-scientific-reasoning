@@ -814,7 +814,7 @@
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html",
     "title": "Adding images to phylogenies",
     "section": "",
-    "text": "This tutorial develops 1 small analysis in the same order that we would work through it at the Julia REPL:\nWe will first confirm the tree topology and tip labels. We will then add 1 supplied image to each tip. No image discovery is required.",
+    "text": "NoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nLoad the packages with:\nusing GLMakie\nusing PhyloMakie",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -825,8 +825,8 @@
     "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#load-the-plotting-packages",
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#load-the-plotting-packages",
     "title": "Adding images to phylogenies",
-    "section": "1 Load the plotting packages",
-    "text": "1 Load the plotting packages\n\n\n\n\n\n\n\nNoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nLoad the packages with:\nusing GLMakie\nusing PhyloMakie",
+    "section": "",
+    "text": "NoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nLoad the packages with:\nusing GLMakie\nusing PhyloMakie",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -834,11 +834,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#store-the-phylogeny-as-a-newick-string",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#store-the-phylogeny-as-a-newick-string",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generate-the-phylogeny-from-a-string-source",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#generate-the-phylogeny-from-a-string-source",
     "title": "Adding images to phylogenies",
-    "section": "2 Store the phylogeny as a Newick string",
-    "text": "2 Store the phylogeny as a Newick string\nThe tip labels are the 7 colors red, orange, yellow, green, blue, indigo, and violet. The nested parentheses describe a fully bifurcating ladderized tree.\n\nphylogeny_newick = \"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\nRead the parentheses from the inside out. indigo and violet are sister tips. Their clade is successively joined by blue, green, yellow, orange, and red.",
+    "section": "2 Generate the phylogeny from a string source",
+    "text": "2 Generate the phylogeny from a string source\n\nphylogeny_newick = \"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\"(red,(orange,(yellow,(green,(blue,(indigo,violet))))));\"\n\n\n\nphylogeny = parsephylogeny(NewickFormat(), phylogeny_newick)\n\nLineageNetwork(13 nodes, 12 edges, 7 tips, 0 hybrid nodes, rooted)",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -846,11 +846,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#parse-the-newick-string",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#parse-the-newick-string",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-phylogeny",
     "title": "Adding images to phylogenies",
-    "section": "3 Parse the Newick string",
-    "text": "3 Parse the Newick string\n\nphylogeny = parsephylogeny(NewickFormat(), phylogeny_newick)\n\nLineageNetwork(13 nodes, 12 edges, 7 tips, 0 hybrid nodes, rooted)\n\n\nThe variable phylogeny_newick contains text. The variable phylogeny contains the phylogeny object that PhyloMakie can plot.",
+    "section": "3 Plot the phylogeny",
+    "text": "3 Plot the phylogeny\n\nplot_result = plot(\n    phylogeny;\n    useedgelength = false,\n    tipoffset = 0.12,\n)\n\n\n\n\n\n\nFigure 1: The ladderized phylogeny before tip images are added.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -858,23 +858,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-tree-before-adding-images",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-tree-before-adding-images",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#adding-images-to-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#adding-images-to-the-phylogeny",
     "title": "Adding images to phylogenies",
-    "section": "4 Plot the tree before adding images",
-    "text": "4 Plot the tree before adding images\n\ntree_result = plot(\n    phylogeny;\n    useedgelength = false,\n    tipoffset = 0.12,\n)\n\ntree_result.figure\n\n\n\n\n\n\n\nFigure 1: The ladderized phylogeny before tip images are added.\n\n\n\n\n\nThis first plot is a checkpoint. Before adding another layer, confirm that all 7 labels are present and that indigo and violet are sisters.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-03]{.indexed-content-number} [Adding images to phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#use-the-supplied-wikimedia-commons-images",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#use-the-supplied-wikimedia-commons-images",
-    "title": "Adding images to phylogenies",
-    "section": "5 Use the supplied Wikimedia Commons images",
-    "text": "5 Use the supplied Wikimedia Commons images\nEach source page records the image provenance and reuse terms.\n\n\n\nTip\nWikimedia Commons source\nCreator\nReuse status\n\n\n\n\nred\nRed-ff0000.png\nVcvfou698069\nPublic domain\n\n\norange\nSolid orange.png\nRocket000\nPublic domain\n\n\nyellow\nSolid yellow.png\nRocket000\nPublic domain\n\n\ngreen\nSolid green.png\nRocket000\nPublic domain\n\n\nblue\nSolid blue.png\nRocket000\nPublic domain\n\n\nindigo\nSolid indigo.svg\nFringio\nCC0 1.0\n\n\nviolet\nSolid violet.svg\nSangjinhwa\nPublic domain\n\n\n\nThe dictionary below gives us direct PNG URLs that PhyloMakie can download and decode. The indigo and violet values request PNG previews of SVG source files.\n\nimage_urls = Dict(\n    \"red\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/7/7f/Red-ff0000.png\",\n    \"orange\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/a/a8/Solid_orange.png\",\n    \"yellow\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/6/6d/Solid_yellow.png\",\n    \"green\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/c/c7/Solid_green.png\",\n    \"blue\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/e/e5/Solid_blue.png\",\n    \"indigo\" =&gt; \"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Solid_indigo.svg/960px-Solid_indigo.svg.png\",\n    \"violet\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Solid_violet.svg/960px-Solid_violet.svg.png\",\n)\n\nDict{String, String} with 7 entries:\n  \"indigo\" =&gt; \"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Solid_i…\n  \"yellow\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/6/6d/Solid_yellow…\n  \"orange\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/a/a8/Solid_orange…\n  \"blue\"   =&gt; \"https://upload.wikimedia.org/wikipedia/commons/e/e5/Solid_blue.p…\n  \"violet\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Solid_…\n  \"green\"  =&gt; \"https://upload.wikimedia.org/wikipedia/commons/c/c7/Solid_green.…\n  \"red\"    =&gt; \"https://upload.wikimedia.org/wikipedia/commons/7/7f/Red-ff0000.p…\n\n\nEvery dictionary key exactly matches 1 tip label in phylogeny_newick. That exact match tells PhyloMakie which image belongs to which tip.\n\n\n\n\n\n\n\nNoteInternet connection\n\n\n\nPhyloMakie downloads these images when the illustrated tree is first plotted. The plotting step therefore requires an internet connection.",
+    "section": "4 Adding images to the phylogeny",
+    "text": "4 Adding images to the phylogeny\n\n4.1 Adding images from URLs\nIn this example, we use color patches sources from Wikimedia Commons\n\n\n\nTip\nWikimedia Commons source\nCreator\nReuse status\n\n\n\n\nred\nRed-ff0000.png\nVcvfou698069\nPublic domain\n\n\norange\nSolid orange.png\nRocket000\nPublic domain\n\n\nyellow\nSolid yellow.png\nRocket000\nPublic domain\n\n\ngreen\nSolid green.png\nRocket000\nPublic domain\n\n\nblue\nSolid blue.png\nRocket000\nPublic domain\n\n\nindigo\nSolid indigo.svg\nFringio\nCC0 1.0\n\n\nviolet\nSolid violet.svg\nSangjinhwa\nPublic domain\n\n\n\nWe create a Dict (dictionary) value that maps the tips, as addressed by their labels, to the corresponding image URLs: below gives us direct PNG URLs that PhyloMakie can download\n\nimage_urls = Dict(\n    \"red\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/7/7f/Red-ff0000.png\",\n    \"orange\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/a/a8/Solid_orange.png\",\n    \"yellow\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/6/6d/Solid_yellow.png\",\n    \"green\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/c/c7/Solid_green.png\",\n    \"blue\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/e/e5/Solid_blue.png\",\n    \"indigo\" =&gt; \"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Solid_indigo.svg/960px-Solid_indigo.svg.png\",\n    \"violet\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Solid_violet.svg/960px-Solid_violet.svg.png\",\n)\n\nDict{String, String} with 7 entries:\n  \"indigo\" =&gt; \"https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Solid_i…\n  \"yellow\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/6/6d/Solid_yellow…\n  \"orange\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/a/a8/Solid_orange…\n  \"blue\"   =&gt; \"https://upload.wikimedia.org/wikipedia/commons/e/e5/Solid_blue.p…\n  \"violet\" =&gt; \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Solid_…\n  \"green\"  =&gt; \"https://upload.wikimedia.org/wikipedia/commons/c/c7/Solid_green.…\n  \"red\"    =&gt; \"https://upload.wikimedia.org/wikipedia/commons/7/7f/Red-ff0000.p…\n\n\n\n\n\n\n\n\n\nNoteInternet connection\n\n\n\nPhyloMakie downloads these images when the illustrated tree is first plotted. The plotting step therefore requires an internet connection.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -885,8 +873,8 @@
     "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describe-the-image-annotations",
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#describe-the-image-annotations",
     "title": "Adding images to phylogenies",
-    "section": "6 Describe the image annotations",
-    "text": "6 Describe the image annotations\nImageAnnotation controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.\n\nimage_height = 0.65\n\ntip_images = Dict(\n    label =&gt; ImageAnnotation(\n        url;\n        position = :right,\n        height = image_height,\n    ) for (label, url) in image_urls\n);\n\nWe now have 3 objects with separate jobs:\n\n\n\n\n\n\n\nObject\nRole\n\n\n\n\nphylogeny\nStores the topology parsed from the Newick string.\n\n\nimage_urls\nMaps each exact tip label to a supplied image URL.\n\n\ntip_images\nAdds placement and sizing instructions for each image.",
+    "section": "5 Describe the image annotations",
+    "text": "5 Describe the image annotations\nImageAnnotation controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.\n\nimage_height = 0.65\n\ntip_images = Dict(\n    label =&gt; ImageAnnotation(\n        url;\n        position = :right,\n        height = image_height,\n    ) for (label, url) in image_urls\n);\n\nWe now have 3 objects with separate jobs:\n\n\n\n\n\n\n\nObject\nRole\n\n\n\n\nphylogeny\nStores the topology parsed from the Newick string.\n\n\nimage_urls\nMaps each exact tip label to a supplied image URL.\n\n\ntip_images\nAdds placement and sizing instructions for each image.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -897,8 +885,8 @@
     "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-images-before-moving-the-labels",
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#plot-the-images-before-moving-the-labels",
     "title": "Adding images to phylogenies",
-    "section": "7 Plot the images before moving the labels",
-    "text": "7 Plot the images before moving the labels\nFirst, keep the small tipoffset from the original tree plot. This lets us see why image placement and text placement need to be adjusted separately.\n\nclose_labels_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.12,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nclose_labels_result.figure\n\n\n\n\n\n\n\nFigure 2: With the original tip-label offset, the labels begin inside the images.\n\n\n\n\n\nTwo arguments are doing different jobs:\n\nposition = :right places the left edge of each image at its tip node, so the image extends to the right of the tree.\ntipoffset = 0.12 places each tip label only 0.12 x-axis data units to the right of its tip node.\n\nThe image and the label therefore occupy some of the same space. Changing position would move the image. To move only the text, change tipoffset.",
+    "section": "6 Plot the images before moving the labels",
+    "text": "6 Plot the images before moving the labels\nFirst, keep the small tipoffset from the original tree plot. This lets us see why image placement and text placement need to be adjusted separately.\n\nclose_labels_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.12,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nclose_labels_result.figure\n\n\n\n\n\n\nFigure 2: With the original tip-label offset, the labels begin inside the images.\n\n\n\n\nTwo arguments are doing different jobs:\n\nposition = :right places the left edge of each image at its tip node, so the image extends to the right of the tree.\ntipoffset = 0.12 places each tip label only 0.12 x-axis data units to the right of its tip node.\n\nThe image and the label therefore occupy some of the same space. Changing position would move the image. To move only the text, change tipoffset.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -909,8 +897,8 @@
     "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#move-the-tip-labels-past-the-images",
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#move-the-tip-labels-past-the-images",
     "title": "Adding images to phylogenies",
-    "section": "8 Move the tip labels past the images",
-    "text": "8 Move the tip labels past the images\nIncrease tipoffset while leaving tip_images unchanged. The tree topology, image size, and image placement all remain the same.\n\nillustrated_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.9,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nillustrated_result.figure\n\n\n\n\n\n\n\nFigure 3: The ladderized phylogeny with a supplied color image mapped to each tip.\n\n\n\n\n\nThe nodeimages argument adds the image dictionary to the live tree plot. The larger tipoffset moves the tip-label text past the images, and the explicit axis limits reserve space for both the images and the labels.",
+    "section": "7 Move the tip labels past the images",
+    "text": "7 Move the tip labels past the images\nIncrease tipoffset while leaving tip_images unchanged. The tree topology, image size, and image placement all remain the same.\n\nillustrated_result = plot(\n    phylogeny;\n    nodeimages = tip_images,\n    useedgelength = false,\n    tipoffset = 0.9,\n    xlim = (0.5, 9.0),\n    ylim = (0.25, 7.75),\n)\n\nillustrated_result.figure\n\n\n\n\n\n\nFigure 3: The ladderized phylogeny with a supplied color image mapped to each tip.\n\n\n\n\nThe nodeimages argument adds the image dictionary to the live tree plot. The larger tipoffset moves the tip-label text past the images, and the explicit axis limits reserve space for both the images and the labels.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -921,8 +909,8 @@
     "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#repl-checkpoint",
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html#repl-checkpoint",
     "title": "Adding images to phylogenies",
-    "section": "9 REPL checkpoint",
-    "text": "9 REPL checkpoint\nFirst change the final plot’s tipoffset from 0.9 to 1.2 and rerun that plotting cell. Only the text should move. Then change image_height from 0.65 to 0.45, rebuild tip_images, and rerun the plotting cell again. Only the image size should change on the second pass. The topology and the tip-image matches should stay the same.\nIf a tip has no image, compare its Newick label with the corresponding image_urls key. The 2 strings must match exactly.",
+    "section": "8 REPL checkpoint",
+    "text": "8 REPL checkpoint\nFirst change the final plot’s tipoffset from 0.9 to 1.2 and rerun that plotting cell. Only the text should move. Then change image_height from 0.65 to 0.45, rebuild tip_images, and rerun the plotting cell again. Only the image size should change on the second pass. The topology and the tip-image matches should stay the same.\nIf a tip has no image, compare its Newick label with the corresponding image_urls key. The 2 strings must match exactly.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -1994,7 +1982,7 @@
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html",
     "title": "Representing and reading phylogenies",
     "section": "",
-    "text": "Phylogenetic data move through 2 representations in a Julia workflow:\nThe Newick primer explains Newick punctuation, labels, and branch lengths. This tutorial focuses on selecting the Julia function that converts a data source into a phylogeny object. The visualization tutorial begins after that object exists.",
+    "text": "The Newick primer explains Newick punctuation, labels, and branch lengths. This tutorial focuses on selecting the Julia function that converts a data source into a phylogeny object. The visualization tutorial begins after that object exists.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2138,7 +2126,7 @@
     "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html",
     "title": "Visualizing phylogenies",
     "section": "",
-    "text": "This tutorial develops a phylogeny visualization in the same order that we would work through it at the Julia REPL:\nThe phylogeny representations tutorial explains how to parse strings and read files. The Newick primer describes the format’s punctuation and grammar.",
+    "text": "Proficiencies\n\ncreate a phylogeny plot with plot;\ndistinguish topology-only and branch-length-scaled layouts;\ndisplay tip, node, and edge information;\ndraw a phylogeny into an existing Makie Axis with plot!; and\nuse the plotted node coordinates to add another Makie graphic.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2146,11 +2134,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#learning-goals",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#learning-goals",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#setting-up-the-environment",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#setting-up-the-environment",
     "title": "Visualizing phylogenies",
-    "section": "1 Learning goals",
-    "text": "1 Learning goals\nBy the end of this tutorial, you should be able to:\n\ncreate a phylogeny plot with plot;\ndistinguish topology-only and branch-length-scaled layouts;\ndisplay tip, node, and edge information;\ndraw a phylogeny into an existing Makie Axis with plot!; and\nuse the plotted node coordinates to add another Makie graphic.",
+    "section": "1 Setting up the environment",
+    "text": "1 Setting up the environment\n\n\n\n\n\n\n\nNoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nWe load the PhyloMakie library into the active environment using:\n\nusing PhyloMakie\n\nWe also load the “Makie backend” rendering engine:\n\nusing GLMakie",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2158,11 +2146,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#load-the-plotting-packages",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#load-the-plotting-packages",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#generating-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#generating-the-phylogeny",
     "title": "Visualizing phylogenies",
-    "section": "2 Load the plotting packages",
-    "text": "2 Load the plotting packages\n\n\n\n\n\n\n\nNoteRequired packages\n\n\n\nGLMakie and PhyloMakie.jl need to be installed in the active environment. If this has not already been done, run:\nusing Pkg\n\nPkg.add(\"GLMakie\")\nPkg.add(\"PhyloMakie\")\n\nLoad the packages with:\nusing GLMakie\nusing PhyloMakie\nThe interactive REPL workflow uses GLMakie. This rendered page uses CairoMakie to produce static SVG figures.",
+    "section": "2 Generating the phylogeny",
+    "text": "2 Generating the phylogeny\nThe newick string macro converts a phylogeny represented as a Julia string (that is, a value of the Julia type, Base.String) in Newick format to a representation that PhyloMakie knows how to work with (a value of the type PhyloMakie.LineageNetwork):\n\nphylogeny = newick\"((A:1,B:4)AB:8,(C:2,D:6)CD:2)R:2;\"\n\nLineageNetwork(7 nodes, 6 edges, 4 tips, 0 hybrid nodes, rooted)\n\n\n\n\nThe construct \"((A:1,B:4)AB:8,(C:2,D:6)CD:2)R:2;\" is evaluated by Julia as a Base.String literal value.\nThe newick macro provided by PhyloMakie calls PhyloMakie.parsephylogeny to create and return a value of LineageNetwork type corresponding to the string value passed to it as its input argument.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2170,11 +2158,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#store-a-small-phylogeny",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#store-a-small-phylogeny",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#plotting-the-phylogeny",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#plotting-the-phylogeny",
     "title": "Visualizing phylogenies",
-    "section": "3 Store a small phylogeny",
-    "text": "3 Store a small phylogeny\nUse the newick string macro when the source is 1 literal Newick expression:\n\nphylogeny = newick\"((A:1,B:4)AB:8,(C:2,D:6)CD:2)R:2;\"\n\nLineageNetwork(7 nodes, 6 edges, 4 tips, 0 hybrid nodes, rooted)\n\n\nThe variable phylogeny contains a phylogeny object rather than Newick text. The representations tutorial covers the other constructors and readers.",
+    "section": "3 Plotting the phylogeny",
+    "text": "3 Plotting the phylogeny\nplot(phylogeny) creates a new figure (a value of type Makie.Figure), a new axis (Makie.Axis), and then plots the given phylogeny onto the new axis, with the result being a FigureAxisPlot value.\n\nplot_result = plot(phylogeny)\n\n\n\n\n\n\nFigure 1\n\n\n\n\nThis value has the properties figure, axis, and plot, holding the new Figure, Axis, and the phylogeny PhyloMakie.PhyloPlot values respectively:\n\npropertynames(plot_result)\n\n(:figure, :axis, :plot)\n\n\n\nplot_result.figure is a Makie Figure, used to display or save as-is, or for additional composition with Makie.\nplot_result.axis is a Makie Axis, used as a destination if we want to plot additional elements to the same drawing region and coordinate reference system as the phylogeny.\nplot_result.plot is a PhyloMakie.PhyloPlot, the collectionh of points, lines, polygons, and other marks that make up the visualization of the phylogeny itself, used if we want to update the live plot with different values or aesthetics, or retrieve information about the phylogeny plot, such as the plotting coordinates of its nodes and iedges.\n\nFor example, to display the figure, just ask the REPL to evaluate its value:\n\nplot_result.figure\n\n\n\n\nwhile to save it to a file we would pass the figure to save:\nsave(\"phylogeny.png\", plot_result.figure)",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2182,11 +2170,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#create-a-complete-plot",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#create-a-complete-plot",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#setting-plot-attributes",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#setting-plot-attributes",
     "title": "Visualizing phylogenies",
-    "section": "4 Create a complete plot",
-    "text": "4 Create a complete plot\nplot(phylogeny) creates a new figure, a new axis, and a PhyloPlot:\n\ntree_result = plot(phylogeny)\ntree_result.figure\n\n\n\n\n\n\n\nFigure 1: A phylogeny displayed with PhyloMakie’s default topology-only layout.\n\n\n\n\n\nThe returned FigureAxisPlot provides all 3 objects:\n\ntree_result.figure\ntree_result.axis\ntree_result.plot\n\nPlot{phyloplot, Tuple{LineageNetwork{Nothing, Nothing, Nothing}}}\n\n\nUse .figure to display or save the figure, .axis to add Makie content, and .plot to query or update the live phylogeny plot.\nPhyloMakie also provides phyloplot(phylogeny) as a package-specific alias for plot(phylogeny).",
+    "section": "4 Setting plot attributes",
+    "text": "4 Setting plot attributes\nPlot attributes control various aspects of the render.\nFor example the default useedgelength = false draws the topology without scaling branches by their stored lengths, so we have to explicitly overrride this with useedgelength = true to have branch extension in the plot proportional to the phylogeny edge weight values:\n\nplot(phylogeny, useedgelength = true)\n\n\n\n\nThe full interface of the plotting function can be seen by inspecting the documentation of the plot type:\n\n\n\n\n\n\nTipjulia&gt; @doc PhyloMakie.phyloplot\n\n\n\n\n\n@doc PhyloMakie.phyloplot\n\n\n```\n  phyloplot(phylogeny; kwargs...) -&gt; Makie.FigureAxisPlot\n  phyloplot!(axis, phylogeny; kwargs...) -&gt; PhyloPlot\n\n  Plot any AbstractPhylogeny implementing the Phylogenies accessor interface\n  with the PhyloMakie Makie recipe.\n\n  Use plot(phylogeny; kwargs...) and plot!(axis, phylogeny; kwargs...) for the\n  standard Makie API. phyloplot and phyloplot! are package-specific aliases\n  generated by the recipe. Supported attributes control layout style, edge\n  lengths, tip labels, node labels, edge labels, colors, widths, hybrid-edge\n  arrows, and data limits. Use nodeimages and edgeimages to attach image\n  annotations without depending on implementation-assigned node or edge\n  indices.\n\n  Plot type\n  =========\n\n  The plot type alias for the phyloplot function is PhyloPlot.\n\n  Attributes\n  ==========\n\n  arrowlen = nothing — Set the minor hybrid edge arrow length.\n\n  clip_planes = @inherit clip_planes Makie.automatic — Inherited Makie clip\n  planes for the rendered primitives.\n\n  defaultedgecolor = nothing — Set the fallback edge color when edgecolor is a\n  dictionary.\n\n  edgecolor = \"black\" — Set one edge color or a dictionary keyed by edge\n  number.\n\n  edgefontsize = @inherit fontsize 16.0f0 — Set the edge label font size,\n  following Makie's fontsize convention.\n\n  edgeimages = nothing — Map edge endpoints or objects to images.\n\n  edgelabel = DataFrame() — Supply an edge label table.\n\n  edgelabeladj = [0.5, 0] — Set edge label alignment.\n\n  edgelabelcolor = \"black\" — Set edge label color.\n\n  edgenumbercolor = \"grey\" — Set edge number color.\n\n  edgewidth = 1 — Set one edge width or a dictionary keyed by edge number.\n\n  majorhybridedgecolor = \"deepskyblue4\" — Set the color for major hybrid edges.\n\n  minorhybridedgecolor = \"deepskyblue\" — Set the color for minor hybrid edges.\n\n  minorlinetype = nothing — Set the line style for minor hybrid edges, or\n  \"blank\" to hide them.\n\n  nodefontsize = @inherit fontsize 16.0f0 — Set the node label font size,\n  following Makie's fontsize convention.\n\n  nodeimages = nothing — Map node labels, regular expressions, or objects to\n  images.\n\n  nodelabel = DataFrame() — Supply a node label table.\n\n  nodelabeladj = 1 — Set node label alignment.\n\n  nodelabelcolor = \"black\" — Set node label color.\n\n  showedgelength = false — Show edge lengths.\n\n  showedgenumber = false — Show edge numbers.\n\n  showgamma = false — Show hybrid-edge inheritance probabilities.\n\n  shownodelabel = false — Show internal node names.\n\n  shownodenumber = false — Show node numbers.\n\n  showtiplabel = true — Show tip labels.\n\n  style = :fulltree — Choose :fulltree or :majortree layout style.\n\n  tipfontsize = @inherit fontsize 16.0f0 — Set the tip and internal-node label\n  font size, following Makie's fontsize convention.\n\n  tipoffset = 0 — Move tip labels away from tip positions.\n\n  useedgelength = false — Use phylogeny edge lengths on the x axis.\n\n  xlim = nothing — Set x data limits.\n\n  ylim = nothing — Set y data limits.\n```",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2194,11 +2182,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#compare-topology-and-branch-length-layouts",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#compare-topology-and-branch-length-layouts",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#interactive-and-live-updating",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#interactive-and-live-updating",
     "title": "Visualizing phylogenies",
-    "section": "5 Compare topology and branch-length layouts",
-    "text": "5 Compare topology and branch-length layouts\nThe default useedgelength = false draws the topology without scaling branches by their stored lengths. Set useedgelength = true when horizontal distance should represent branch length.\n\nlayout_figure = Figure(size = (1000, 400))\n\nfor (column, use_lengths, title) in (\n        (1, false, \"Topology only\"),\n        (2, true, \"Stored branch lengths\"),\n    )\n    layout_axis = Axis(layout_figure[1, column]; title = title)\n    hidedecorations!(layout_axis)\n    hidespines!(layout_axis)\n    plot!(\n        layout_axis,\n        phylogeny;\n        useedgelength = use_lengths,\n        tipoffset = 0.12,\n    )\nend\n\nlayout_figure\n\n\n\n\n\n\n\nFigure 2: The same phylogeny drawn as a topology-only tree and with branches scaled by their stored lengths.\n\n\n\n\n\nThe topology is identical in both panels. Only the horizontal placement of the nodes changes.",
+    "section": "5 Interactive and live updating",
+    "text": "5 Interactive and live updating\nSome attributes can be updated live in interactive figures.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2206,11 +2194,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#display-node-and-edge-information",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#display-node-and-edge-information",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#compose-using-an-existing-makie-axis",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#compose-using-an-existing-makie-axis",
     "title": "Visualizing phylogenies",
-    "section": "6 Display node and edge information",
-    "text": "6 Display node and edge information\nThe phylogeny stores labels on its internal nodes and lengths on its branches. Plot attributes control whether the figure displays that information.\n\nannotated_result = plot(\n    phylogeny;\n    useedgelength = true,\n    shownodelabel = true,\n    showedgelength = true,\n    tipoffset = 0.2,\n    edgefontsize = 13,\n    nodefontsize = 14,\n    xlim = (-1, 13),\n)\n\nannotated_result.figure\n\n\n\n\n\n\n\nFigure 3: A branch-length-scaled phylogeny with internal-node labels and branch-length annotations.\n\n\n\n\n\nHigh-value attributes include:\n\n\n\n\n\n\n\nAttribute\nEffect\n\n\n\n\nuseedgelength\nScale the horizontal layout with stored branch lengths.\n\n\nshowtiplabel\nDisplay terminal-node labels.\n\n\nshownodelabel\nDisplay internal-node labels.\n\n\nshowedgelength\nAnnotate branches with their stored lengths.\n\n\ntipoffset\nSeparate tip labels from terminal nodes.\n\n\ntipfontsize, nodefontsize, edgefontsize\nSet text sizes.\n\n\nedgecolor, edgewidth\nSet branch appearance.\n\n\nxlim, ylim\nReserve or restrict axis data space.\n\n\n\nChange 1 attribute at a time when diagnosing its effect.",
+    "section": "6 Compose using an existing Makie axis",
+    "text": "6 Compose using an existing Makie axis\nWhen composing complex figures with Makie, it is useful to develop the figure in layers, which typically has us being responsible for the Figure and Axis creation. We use the mutating function variant of plot, plot!, passing it the Axis to mutate by adding the phylogeny plot as the first argument, and the phylogeny to plot as the second.\n\ncomposed_figure = Figure(size = (900, 460))\n\ncomposed_axis = Axis(\n    composed_figure[1, 1];\n    title = \"A composed phylogeny figure\",\n)\n\ncomposed_tree_plot = plot!(\n    composed_axis,\n    phylogeny;\n    useedgelength = true,\n    tipoffset = 0.2,\n    xlim = (-1, 13),\n)\n\n\n\n\n\n\n\n\nFigure 2: A phylogeny drawn into an explicitly constructed Makie axis.\n\n\n\n\nThe figure and axis remain available for additional panels, labels, legends, and annotations.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
@@ -2218,71 +2206,11 @@
     ]
   },
   {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#draw-into-an-existing-makie-axis",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#draw-into-an-existing-makie-axis",
+    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#practice",
+    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#practice",
     "title": "Visualizing phylogenies",
-    "section": "7 Draw into an existing Makie axis",
-    "text": "7 Draw into an existing Makie axis\nUse plot! when the figure and axis already exist:\n\ncomposed_figure = Figure(size = (900, 460))\n\ncomposed_axis = Axis(\n    composed_figure[1, 1];\n    title = \"A composed phylogeny figure\",\n)\n\nhidedecorations!(composed_axis)\nhidespines!(composed_axis)\n\ncomposed_tree_plot = plot!(\n    composed_axis,\n    phylogeny;\n    useedgelength = true,\n    tipoffset = 0.2,\n    xlim = (-1, 13),\n)\n\nplot! returns the live PhyloPlot object. PhyloMakie’s phyloplot!(axis, phylogeny) is an alias for the same operation.\n\n\n\n\n\n\n\n\nFigure 4: A phylogeny drawn into an explicitly constructed Makie axis.\n\n\n\n\n\nThe figure and axis remain available for additional panels, labels, legends, and annotations.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-01]{.indexed-content-number} [Visualizing phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#query-the-plotted-node-positions",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#query-the-plotted-node-positions",
-    "title": "Visualizing phylogenies",
-    "section": "8 Query the plotted node positions",
-    "text": "8 Query the plotted node positions\nnode_positions returns the coordinates calculated for the live plot:\n\nnode_table = node_positions(composed_tree_plot)\ntip_table = node_table[node_table.isleaf, [:name, :x, :y]]\n\n4×3 DataFrame\n\n\n\nRow\nname\nx\ny\n\n\n\nString\nFloat64\nFloat64\n\n\n\n\n1\nA\n10.0\n1.0\n\n\n2\nB\n13.0\n2.0\n\n\n3\nC\n5.0\n3.0\n\n\n4\nD\n9.0\n4.0\n\n\n\n\n\n\n\ntip_table\n\n4×3 DataFrame\n\n\n\nRow\nname\nx\ny\n\n\n\nString\nFloat64\nFloat64\n\n\n\n\n1\nA\n10.0\n1.0\n\n\n2\nB\n13.0\n2.0\n\n\n3\nC\n5.0\n3.0\n\n\n4\nD\n9.0\n4.0\n\n\n\n\n\n\nQuery these coordinates instead of recreating the tree layout independently. For example, locate the root by its stored label and add a Makie annotation:\n\nroot_row = only(eachrow(node_table[node_table.name .== \"R\", :]))\n\ntext!(\n    composed_axis,\n    root_row.x - 0.25,\n    root_row.y;\n    text = \"root\",\n    align = (:right, :center),\n    color = :firebrick,\n);\n\ncomposed_figure\n\n\n\n\n\n\n\n\nThe annotation uses coordinates from the rendered PhyloPlot, so it remains aligned with the displayed layout.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-01]{.indexed-content-number} [Visualizing phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#plotting-entry-points",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#plotting-entry-points",
-    "title": "Visualizing phylogenies",
-    "section": "9 Plotting entry points",
-    "text": "9 Plotting entry points\n\n\n\n\n\n\n\n\nFunction\nReturn value\nUse\n\n\n\n\nplot(phylogeny)\nMakie.FigureAxisPlot\nCreate a figure, axis, and phylogeny plot.\n\n\nplot!(axis, phylogeny)\nPhyloPlot\nDraw into an existing axis.\n\n\nphyloplot(phylogeny)\nMakie.FigureAxisPlot\nUse PhyloMakie’s alias for plot.\n\n\nphyloplot!(axis, phylogeny)\nPhyloPlot\nUse PhyloMakie’s alias for plot!.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-01]{.indexed-content-number} [Visualizing phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#guided-practice",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#guided-practice",
-    "title": "Visualizing phylogenies",
-    "section": "10 Guided practice",
-    "text": "10 Guided practice\nCreate a composed figure for this phylogeny:\n((A:1,B:1)AB:2,(C:1,D:1)CD:2)root;\nRequired steps:\n\nConstruct the phylogeny object.\nCreate a Figure and Axis.\nDraw the phylogeny with plot! and useedgelength = true.\nDisplay internal-node labels.\nQuery and inspect the tip-position table.\nAdd the text \"root\" at the calculated root position.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-01]{.indexed-content-number} [Visualizing phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#common-failure-modes",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#common-failure-modes",
-    "title": "Visualizing phylogenies",
-    "section": "11 Common failure modes",
-    "text": "11 Common failure modes\n\n\n\n\n\n\n\n\nSymptom\nLikely cause\nDirect check\n\n\n\n\nBranches do not scale by their lengths.\nuseedgelength is false.\nSet useedgelength = true.\n\n\nInternal labels are absent.\nshownodelabel is false.\nSet shownodelabel = true.\n\n\nA graphic misses its intended node.\nIts coordinates were guessed.\nQuery node_positions(plot_handle).\n\n\nNew content replaces the existing figure.\nThe non-mutating entry point was used.\nCall plot!(axis, phylogeny).\n\n\nLabels or annotations are clipped.\nThe data limits reserve too little space.\nSet suitable xlim or ylim values.",
-    "crumbs": [
-      "Home",
-      "Phylogenetic reasoning and analyses",
-      "[[02-01]{.indexed-content-number} [Visualizing phylogenies]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#next-steps",
-    "href": "content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html#next-steps",
-    "title": "Visualizing phylogenies",
-    "section": "12 Next steps",
-    "text": "12 Next steps\nThe basic composition in this tutorial uses ordinary Makie annotations. Continue with adding supplied images to phylogenies or resolving PhyloPic images for phylogenies when the added content is an image.",
+    "section": "7 Practice",
+    "text": "7 Practice\nCreate a composed figure for this phylogeny:\n((A:1,B:1)AB:2,(C:1,D:1)CD:2)root;\nRequired steps:\n\nConstruct the phylogeny object.\nCreate a Figure and Axis.\nDraw the phylogeny with plot! and useedgelength = true.\nDisplay internal-node labels.\nQuery and inspect the tip-position table.\nAdd the text \"root\" at the calculated root position.",
     "crumbs": [
       "Home",
       "Phylogenetic reasoning and analyses",
