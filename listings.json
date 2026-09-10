@@ -1,66 +1,5 @@
 [
   {
-    "listing": "/tutorials.html",
-    "items": [
-      "/content/01-00__foundations/01-01__the-computing-ecosystem/index.html",
-      "/content/01-00__foundations/02-01__setting-up-and-running-julia/index.html",
-      "/content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html",
-      "/content/01-00__foundations/03-01__julia-programs-and-programming/index.html",
-      "/content/01-00__foundations/04-01__working-with-data-tables/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html",
-      "/content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html",
-      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html",
-      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
-    "items": [
-      "/content/01-00__foundations/01-01__the-computing-ecosystem/index.html",
-      "/content/01-00__foundations/02-01__setting-up-and-running-julia/index.html",
-      "/content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html",
-      "/content/01-00__foundations/03-01__julia-programs-and-programming/index.html",
-      "/content/01-00__foundations/04-01__working-with-data-tables/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html",
-      "/content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html",
-      "/content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html",
-      "/content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html",
-      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html",
-      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html",
-      "/content/07-00__recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html",
-      "/content/08-00__primers/01-01__bernoulli-trial.html",
-      "/content/08-00__primers/02-01__the-fasta-data-format.html",
-      "/content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
-      "/content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html",
-      "/content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html",
-      "/content/08-00__primers/05-01__julia-environment-provisioning.html",
-      "/content/08-00__primers/05-02__julia-environments-global-vs-project.html",
-      "/content/08-00__primers/05-03__julia-functions-methods-and-signatures.html",
-      "/content/08-00__primers/06-01__markov-property.html",
-      "/content/08-00__primers/07-01__the-newick-tree-format.html",
-      "/content/08-00__primers/07-02__the-nexus-phylogenetic-data-format.html",
-      "/content/08-00__primers/07-03__the-phylip-data-format.html",
-      "/content/08-00__primers/08-01__probability-distributions-essential-concepts.html",
-      "/content/08-00__primers/09-01__pseudo-random-number-generators.html",
-      "/content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html",
-      "/content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html"
-    ]
-  },
-  {
     "listing": "/content/08-00__primers/index.html",
     "items": [
       "/content/08-00__primers/01-01__bernoulli-trial.html",
@@ -84,9 +23,86 @@
     ]
   },
   {
+    "listing": "/tutorials.html",
+    "items": [
+      "/content/01-00__foundations/01-01__the-computing-ecosystem/index.html",
+      "/content/01-00__foundations/02-01__setting-up-and-running-julia/index.html",
+      "/content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html",
+      "/content/01-00__foundations/03-01__julia-programs-and-programming/index.html",
+      "/content/01-00__foundations/04-01__working-with-data-tables/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html",
+      "/content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html",
+      "/content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html",
+      "/content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html",
+      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html",
+      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html"
+    ]
+  },
+  {
+    "listing": "/content/01-00__foundations/index.html",
+    "items": [
+      "/content/01-00__foundations/01-01__the-computing-ecosystem/index.html",
+      "/content/01-00__foundations/02-01__setting-up-and-running-julia/index.html",
+      "/content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html",
+      "/content/01-00__foundations/03-01__julia-programs-and-programming/index.html",
+      "/content/01-00__foundations/04-01__working-with-data-tables/index.html"
+    ]
+  },
+  {
     "listing": "/content/07-00__recipes/index.html",
     "items": [
       "/content/07-00__recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/content/01-00__foundations/01-01__the-computing-ecosystem/index.html",
+      "/content/01-00__foundations/02-01__setting-up-and-running-julia/index.html",
+      "/content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html",
+      "/content/01-00__foundations/03-01__julia-programs-and-programming/index.html",
+      "/content/01-00__foundations/04-01__working-with-data-tables/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html",
+      "/content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html",
+      "/content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html",
+      "/content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html",
+      "/content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html",
+      "/content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html",
+      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html",
+      "/content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html",
+      "/content/07-00__recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html",
+      "/content/08-00__primers/01-01__bernoulli-trial.html",
+      "/content/08-00__primers/02-01__the-fasta-data-format.html",
+      "/content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
+      "/content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html",
+      "/content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html",
+      "/content/08-00__primers/05-01__julia-environment-provisioning.html",
+      "/content/08-00__primers/05-02__julia-environments-global-vs-project.html",
+      "/content/08-00__primers/05-03__julia-functions-methods-and-signatures.html",
+      "/content/08-00__primers/06-01__markov-property.html",
+      "/content/08-00__primers/07-01__the-newick-data-format.html",
+      "/content/08-00__primers/07-02__the-nexus-data-format.html",
+      "/content/08-00__primers/07-03__the-phylip-data-format.html",
+      "/content/08-00__primers/07-04__the-fasta-data-format.html",
+      "/content/08-00__primers/07-05__downloading-and-aligning-genbank-molecular-data.html",
+      "/content/08-00__primers/08-01__probability-distributions-essential-concepts.html",
+      "/content/08-00__primers/09-01__pseudo-random-number-generators.html",
+      "/content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html",
+      "/content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html"
     ]
   }
 ]

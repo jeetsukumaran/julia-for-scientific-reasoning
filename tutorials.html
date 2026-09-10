@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-fig-cap-location','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-date-created"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-fig-cap-location","listing-date-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -108,11 +108,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -297,14 +297,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Styling a figure</span></span></span></a>
+  <a href="./content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Plotting geometries</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-03</span> <span class="indexed-content-title">Plotting geometries</span></span></span></a>
+  <a href="./content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-04</span> <span class="indexed-content-title">Styling a figure</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,20 +343,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__working-with-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Working with phylogenies</span></span></span></a>
+  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Representing and reading phylogenies</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-03__adding-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-03</span> <span class="indexed-content-title">Adding images to phylogenies</span></span></span></a>
+  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">Visualizing phylogenies</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-04__adding-phylopic-images/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-04</span> <span class="indexed-content-title">Adding PhyloPic images to phylogenies</span></span></span></a>
+  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-03</span> <span class="indexed-content-title">Adding images to phylogenies</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-04</span> <span class="indexed-content-title">Adding PhyloPic images to phylogenies</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Acquiring molecular characters with EDirect from Julia</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -508,11 +520,11 @@ window.Quarto = {
 <section id="creating-a-figure" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-figure">05-01. <a href="./content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html">Creating a figure</a></h3>
 </section>
-<section id="styling-a-figure" class="level3">
-<h3 class="anchored" data-anchor-id="styling-a-figure">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html">Styling a figure</a></h3>
-</section>
 <section id="plotting-geometries" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-geometries">05-03. <a href="./content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+<h3 class="anchored" data-anchor-id="plotting-geometries">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+</section>
+<section id="styling-a-figure" class="level3">
+<h3 class="anchored" data-anchor-id="styling-a-figure">05-04. <a href="./content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html">Styling a figure</a></h3>
 </section>
 <section id="visualizing-mathematical-models" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-mathematical-models">06-01. <a href="./content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html">Visualizing mathematical models</a></h3>
@@ -548,14 +560,20 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<section id="working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__working-with-phylogenies/index.html">Working with phylogenies</a></h3>
+<section id="representing-and-reading-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="representing-and-reading-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">Representing and reading phylogenies</a></h3>
+</section>
+<section id="visualizing-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-phylogenies">02-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">Visualizing phylogenies</a></h3>
 </section>
 <section id="adding-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">01-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">02-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
 </section>
 <section id="adding-phylopic-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">01-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-04__adding-phylopic-images/index.html">Adding PhyloPic images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">02-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html">Adding PhyloPic images to phylogenies</a></h3>
+</section>
+<section id="acquiring-molecular-characters-with-edirect-from-julia" class="level3">
+<h3 class="anchored" data-anchor-id="acquiring-molecular-characters-with-edirect-from-julia">04-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html">Acquiring molecular characters with EDirect from Julia</a></h3>
 </section>
 </div>
 </div>

@@ -109,6 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
@@ -117,15 +121,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
 .model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -273,14 +273,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Styling a figure</span></span></span></a>
+  <a href="../../../content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Plotting geometries</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-03</span> <span class="indexed-content-title">Plotting geometries</span></span></span></a>
+  <a href="../../../content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-04</span> <span class="indexed-content-title">Styling a figure</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -319,20 +319,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__working-with-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Working with phylogenies</span></span></span></a>
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Representing and reading phylogenies</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-03__adding-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-03</span> <span class="indexed-content-title">Adding images to phylogenies</span></span></span></a>
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">Visualizing phylogenies</span></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/01-04__adding-phylopic-images/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-04</span> <span class="indexed-content-title">Adding PhyloPic images to phylogenies</span></span></span></a>
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-03</span> <span class="indexed-content-title">Adding images to phylogenies</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-04</span> <span class="indexed-content-title">Adding PhyloPic images to phylogenies</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Acquiring molecular characters with EDirect from Julia</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -395,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__basics-of-agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/08-02__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">08-02</span> <span class="indexed-content-title">Agent-based modeling: spatial epidemic dynamics with Agents.jl</span></span></span></a>
   </div>
 </li>

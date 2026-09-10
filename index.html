@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-content-part','listing-sidebar','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-fig-cap-location','listing-date-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-date-created"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-content-part","listing-sidebar","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-fig-cap-location","listing-date-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -140,9 +140,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-date-created','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-date-created','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-content-references','listing-fig-cap-location','listing-dated-created',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-date-created","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-dated-created"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-date-created","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-content-references","listing-fig-cap-location","listing-dated-created"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -160,11 +160,7 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-definition {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -176,7 +172,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -409,11 +409,11 @@ window.Quarto = {
 <section id="creating-a-figure" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-figure">05-01. <a href="./content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html">Creating a figure</a></h3>
 </section>
-<section id="styling-a-figure" class="level3">
-<h3 class="anchored" data-anchor-id="styling-a-figure">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__styling-a-figure/index.html">Styling a figure</a></h3>
-</section>
 <section id="plotting-geometries" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-geometries">05-03. <a href="./content/02-00__creative-visualization-with-makie/05-03__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+<h3 class="anchored" data-anchor-id="plotting-geometries">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+</section>
+<section id="styling-a-figure" class="level3">
+<h3 class="anchored" data-anchor-id="styling-a-figure">05-04. <a href="./content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html">Styling a figure</a></h3>
 </section>
 <section id="visualizing-mathematical-models" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-mathematical-models">06-01. <a href="./content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html">Visualizing mathematical models</a></h3>
@@ -449,14 +449,20 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<section id="working-with-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__working-with-phylogenies/index.html">Working with phylogenies</a></h3>
+<section id="representing-and-reading-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="representing-and-reading-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">Representing and reading phylogenies</a></h3>
+</section>
+<section id="visualizing-phylogenies" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-phylogenies">02-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">Visualizing phylogenies</a></h3>
 </section>
 <section id="adding-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">01-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">02-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
 </section>
 <section id="adding-phylopic-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">01-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-04__adding-phylopic-images/index.html">Adding PhyloPic images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">02-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html">Adding PhyloPic images to phylogenies</a></h3>
+</section>
+<section id="acquiring-molecular-characters-with-edirect-from-julia" class="level3">
+<h3 class="anchored" data-anchor-id="acquiring-molecular-characters-with-edirect-from-julia">04-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html">Acquiring molecular characters with EDirect from Julia</a></h3>
 </section>
 </div>
 </div>
@@ -549,14 +555,20 @@ window.Quarto = {
 <section id="markov-property" class="level2">
 <h2 class="anchored" data-anchor-id="markov-property">06-01. <a href="./content/08-00__primers/06-01__markov-property.html">Markov property</a></h2>
 </section>
-<section id="the-newick-tree-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-newick-tree-format">07-01. <a href="./content/08-00__primers/07-01__the-newick-tree-format.html">The Newick tree format</a></h2>
+<section id="the-newick-data-format" class="level2">
+<h2 class="anchored" data-anchor-id="the-newick-data-format">07-01. <a href="./content/08-00__primers/07-01__the-newick-data-format.html">The Newick data format</a></h2>
 </section>
 <section id="the-nexus-phylogenetic-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">07-02. <a href="./content/08-00__primers/07-02__the-nexus-phylogenetic-data-format.html">The NEXUS phylogenetic data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">07-02. <a href="./content/08-00__primers/07-02__the-nexus-data-format.html">The NEXUS phylogenetic data format</a></h2>
 </section>
 <section id="the-phylip-data-format" class="level2">
 <h2 class="anchored" data-anchor-id="the-phylip-data-format">07-03. <a href="./content/08-00__primers/07-03__the-phylip-data-format.html">The PHYLIP data format</a></h2>
+</section>
+<section id="the-fasta-data-format-1" class="level2">
+<h2 class="anchored" data-anchor-id="the-fasta-data-format-1">07-04. <a href="./content/08-00__primers/07-04__the-fasta-data-format.html">The fasta data format</a></h2>
+</section>
+<section id="downloading-and-aligning-genbank-molecular-data" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-and-aligning-genbank-molecular-data">07-05. <a href="./content/08-00__primers/07-05__downloading-and-aligning-genbank-molecular-data.html">Downloading and aligning GenBank molecular data</a></h2>
 </section>
 <section id="probabilty-distributionsessential-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">08-01. <a href="./content/08-00__primers/08-01__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h2>
