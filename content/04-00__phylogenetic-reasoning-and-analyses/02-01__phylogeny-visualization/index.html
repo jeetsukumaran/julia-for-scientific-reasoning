@@ -112,19 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -137,6 +125,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #000000;
 }
 .curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-alternate {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -265,6 +269,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Working with data tables</span></span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__01-fundamental-mechanisms-and-simple-tasks/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-01</span> <span class="indexed-content-title">Julia as an informatics shell: Fundamental mechanisms and simple tasks</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__02-running-pipelines/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Julia as an informatics shell: Running pipelines</span></span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -356,6 +372,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Acquiring molecular characters with EDirect from Julia</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/04-00__phylogenetic-reasoning-and-analyses/04-03__molecular-evolution-character-data-curation-and-alignment/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-03</span> <span class="indexed-content-title">Curating and aligning molecular character data</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -704,7 +726,7 @@ Figure&nbsp;1
 </section>
 <section id="compose-using-an-existing-makie-axis" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="compose-using-an-existing-makie-axis"><span class="header-section-number">6</span> Compose using an existing Makie axis</h2>
-<p>When composing complex figures with Makie, it is useful to develop the figure in layers, which typically has us being responsible for the <code>Figure</code> and <code>Axis</code> creation. We use the mutating function variant of <code>plot</code>, <code>plot!</code>, passing it the <code>Axis</code> to mutate by adding the phylogeny plot as the first argument, and the phylogeny to plot as the second.</p>
+<p>When composing complex figures with Makie, it is useful to develop the figure in layers, which typically has us being responsible for the <code>Figure</code> and <code>Axis</code> creation. We use the mutating function variant of <code>plot</code>, <code>plot!</code>, passing it the <code>Axis</code> to mutate by adding the phylogeny plot as the first argument, and the phylogeny to plot as the second. In constrast to the non-mutation function, <code>plot</code>, <code>plot!</code> returns the new <code>Plot</code> directly, rather than the <code>FigureAxisPlot</code> wrapper value, with the <code>Plot</code> value a field.</p>
 <div id="compose-phylogeny" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>composed_figure <span class="op">=</span> <span class="fu">Figure</span>(size <span class="op">=</span> (<span class="fl">900</span>, <span class="fl">460</span>))</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>

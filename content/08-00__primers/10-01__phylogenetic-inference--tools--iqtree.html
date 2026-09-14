@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeet Sukumaran">
+
+<title>Phylogenetic inference tools – IQ-TREE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-814259f4bb4f29d3679909d06d088a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/indexed-content-1.0.0/indexed-content.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.workflow-detail {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-alternate {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutorials.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/07-00__recipes/index.html"> 
+<span class="menu-text">Recipes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../content/08-00__primers/index.html" aria-current="page"> 
+<span class="menu-text">Primers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/08-00__primers/10-01__phylogenetic-inference--tools--iqtree.html"><span class="indexed-content-entry"><span class="indexed-content-number">10-01</span> <span class="indexed-content-title">Phylogenetic inference tools – IQ-TREE</span></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/01-01__bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Bernoulli trial</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/02-01__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">The FASTA data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-01</span> <span class="indexed-content-title">Pathogen fitness as a function of virulence (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-02</span> <span class="indexed-content-title">Virulence-transmission trade-off (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-01__julia-environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-02__julia-environments-global-vs-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-02</span> <span class="indexed-content-title">Julia – Environments – Global vs project</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-03__julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-03</span> <span class="indexed-content-title">Julia: Functions, methods, and signatures</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/05-04__julia-joinpath-homedir.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">05-04</span> <span class="indexed-content-title">Julia: on <code>homedir()</code> and <code>joinpath()</code></span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/06-01__markov-property.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">06-01</span> <span class="indexed-content-title">Markov property</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-01__the-newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-01</span> <span class="indexed-content-title">The Newick data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-02__the-nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-03__the-phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-03</span> <span class="indexed-content-title">The PHYLIP data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-04__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-04</span> <span class="indexed-content-title">The fasta data format</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/07-05__downloading-and-aligning-genbank-molecular-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">07-05</span> <span class="indexed-content-title">Downloading and aligning GenBank molecular data</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/08-01__probability-distributions-essential-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">08-01</span> <span class="indexed-content-title">Probabilty distributions–Essential concepts</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-01__pseudo-random-number-generators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-01</span> <span class="indexed-content-title">Pseudo-random number generators</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-02</span> <span class="indexed-content-title">Pseudo-random number generators: best practices</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-03</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/08-00__primers/10-01__phylogenetic-inference--tools--iqtree.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">10-01</span> <span class="indexed-content-title">Phylogenetic inference tools – IQ-TREE</span></span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation-and-command-names" id="toc-installation-and-command-names" class="nav-link active" data-scroll-target="#installation-and-command-names"><span class="header-section-number">1</span> Installation and command names</a></li>
+  <li><a href="#input-requirements" id="toc-input-requirements" class="nav-link" data-scroll-target="#input-requirements"><span class="header-section-number">2</span> Input requirements</a></li>
+  <li><a href="#a-standard-analysis" id="toc-a-standard-analysis" class="nav-link" data-scroll-target="#a-standard-analysis"><span class="header-section-number">3</span> A standard analysis</a></li>
+  <li><a href="#model-selection-and-model-strings" id="toc-model-selection-and-model-strings" class="nav-link" data-scroll-target="#model-selection-and-model-strings"><span class="header-section-number">4</span> Model selection and model strings</a></li>
+  <li><a href="#character-types" id="toc-character-types" class="nav-link" data-scroll-target="#character-types"><span class="header-section-number">5</span> Character types</a></li>
+  <li><a href="#partitioned-alignments" id="toc-partitioned-alignments" class="nav-link" data-scroll-target="#partitioned-alignments"><span class="header-section-number">6</span> Partitioned alignments</a></li>
+  <li><a href="#starting-trees-constraints-and-fixed-trees" id="toc-starting-trees-constraints-and-fixed-trees" class="nav-link" data-scroll-target="#starting-trees-constraints-and-fixed-trees"><span class="header-section-number">7</span> Starting trees, constraints, and fixed trees</a></li>
+  <li><a href="#resource-limits" id="toc-resource-limits" class="nav-link" data-scroll-target="#resource-limits"><span class="header-section-number">8</span> Resource limits</a></li>
+  <li><a href="#output-files" id="toc-output-files" class="nav-link" data-scroll-target="#output-files"><span class="header-section-number">9</span> Output files</a></li>
+  <li><a href="#branch-support-labels" id="toc-branch-support-labels" class="nav-link" data-scroll-target="#branch-support-labels"><span class="header-section-number">10</span> Branch-support labels</a></li>
+  <li><a href="#checkpoints-and-repeated-analyses" id="toc-checkpoints-and-repeated-analyses" class="nav-link" data-scroll-target="#checkpoints-and-repeated-analyses"><span class="header-section-number">11</span> Checkpoints and repeated analyses</a></li>
+  <li><a href="#operational-checklist" id="toc-operational-checklist" class="nav-link" data-scroll-target="#operational-checklist"><span class="header-section-number">12</span> Operational checklist</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">13</span> Further reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Phylogenetic inference tools – IQ-TREE</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeet Sukumaran </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>IQ-TREE infers maximum-likelihood phylogenies from aligned molecular or discrete-character data. A typical analysis selects or specifies an evolutionary model, searches for the maximum-likelihood tree, estimates branch support, and writes the tree in Newick format.</p>
+<section id="installation-and-command-names" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="installation-and-command-names"><span class="header-section-number">1</span> Installation and command names</h2>
+<p>Download a current binary from the <a href="https://iqtree.github.io/">IQ-TREE website</a> or use one of the package-manager methods in the <a href="https://iqtree.github.io/doc/Quickstart#installation">installation guide</a>.</p>
+<p>The commands below use the IQ-TREE 3 executable name, <code>iqtree3</code>. Some installations expose the executable as <code>iqtree</code> or <code>iqtree2</code>; substitute that name in each command if necessary.</p>
+<p>Confirm the installed version and display the command-line help:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="at">--version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Record the version reported by <code>--version</code> with the analysis results.</p>
+</section>
+<section id="input-requirements" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="input-requirements"><span class="header-section-number">2</span> Input requirements</h2>
+<p>IQ-TREE requires a multiple-sequence alignment, not raw unaligned sequences. It accepts FASTA, PHYLIP, NEXUS, CLUSTAL, and MSF alignments.</p>
+<p>Before starting an analysis, confirm that:</p>
+<ul>
+<li>every sequence represents homologous characters and has the same aligned length;</li>
+<li>every taxon has a unique, compact label;</li>
+<li>taxon labels avoid spaces and Newick punctuation such as parentheses, commas, colons, and semicolons;</li>
+<li>the alignment contains the intended character type;</li>
+<li>partition coordinates, if used, are one-based and match the alignment; and</li>
+<li>constant sites remain present unless the sampling process deliberately retained only variable sites.</li>
+</ul>
+<p>IQ-TREE treats gaps and missing or ambiguous characters as unknown states. Unsupported characters in taxon labels may be replaced with underscores, which can create duplicate labels. Correct such labels in the input alignment before analysis.</p>
+</section>
+<section id="a-standard-analysis" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="a-standard-analysis"><span class="header-section-number">3</span> A standard analysis</h2>
+<p>The following command selects a model, searches for a maximum-likelihood tree, and calculates two forms of branch support:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> alignment.fasta <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> MFP <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-B</span> 1000 <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--alrt</span> 1000 <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> AUTO <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seed</span> 20260912 <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> alignment_run1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The parameters have the following meanings:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-s alignment.fasta</code></td>
+<td>Reads the multiple-sequence alignment from <code>alignment.fasta</code>.</td>
+</tr>
+<tr class="even">
+<td><code>-m MFP</code></td>
+<td>Runs ModelFinder Plus, selects the best-fit model by the Bayesian information criterion by default, and uses that model for tree inference.</td>
+</tr>
+<tr class="odd">
+<td><code>-B 1000</code></td>
+<td>Runs 1,000 ultrafast bootstrap (UFBoot) replicates. IQ-TREE recommends at least 1,000 replicates.</td>
+</tr>
+<tr class="even">
+<td><code>--alrt 1000</code></td>
+<td>Runs 1,000 replicates of the SH-like approximate likelihood-ratio test (SH-aLRT).</td>
+</tr>
+<tr class="odd">
+<td><code>-T AUTO</code></td>
+<td>Benchmarks available CPU threads and selects an efficient thread count. On a managed cluster, replace <code>AUTO</code> with the number of CPU threads allocated to the job.</td>
+</tr>
+<tr class="even">
+<td><code>--seed 20260912</code></td>
+<td>Sets the random-number seed. Any fixed integer may be used. Record the IQ-TREE version and computing environment because a seed alone does not guarantee identical results across versions or platforms.</td>
+</tr>
+<tr class="odd">
+<td><code>--prefix alignment_run1</code></td>
+<td>Writes all output files with the prefix <code>alignment_run1</code> instead of deriving their names from the alignment filename. Use a distinct prefix for every analysis.</td>
+</tr>
+</tbody>
+</table>
+<p><code>-m MFP</code> is the default behavior in modern IQ-TREE versions, but stating it explicitly records the model-selection procedure in the command.</p>
+</section>
+<section id="model-selection-and-model-strings" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="model-selection-and-model-strings"><span class="header-section-number">4</span> Model selection and model strings</h2>
+<p>Run model selection without a subsequent full tree search when the selected model is needed for a separate workflow:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> alignment.fasta <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> MF <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> AUTO <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> alignment_model_test</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-m MF</code> performs ModelFinder model selection only. Read the selected model from <code>alignment_model_test.iqtree</code>. Supply that model directly in a later analysis:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> alignment.fasta <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> GTR+F+R4 <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-B</span> 1000 <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--alrt</span> 1000 <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> AUTO <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seed</span> 20260912 <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> alignment_gtr_f_r4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An IQ-TREE model string combines a base substitution model with optional components:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>GTR</code>, <code>HKY</code>, <code>JC</code></td>
+<td>Examples of nucleotide substitution models.</td>
+</tr>
+<tr class="even">
+<td><code>LG</code>, <code>WAG</code>, <code>JTT</code></td>
+<td>Examples of amino-acid exchangeability models.</td>
+</tr>
+<tr class="odd">
+<td><code>+F</code></td>
+<td>Uses empirical character frequencies counted from the alignment.</td>
+</tr>
+<tr class="even">
+<td><code>+FO</code></td>
+<td>Optimizes character frequencies by maximum likelihood.</td>
+</tr>
+<tr class="odd">
+<td><code>+I</code></td>
+<td>Estimates a proportion of invariable sites.</td>
+</tr>
+<tr class="even">
+<td><code>+G4</code></td>
+<td>Models among-site rate variation with a discrete gamma distribution and four rate categories.</td>
+</tr>
+<tr class="odd">
+<td><code>+R4</code></td>
+<td>Models among-site rate variation with four FreeRate categories.</td>
+</tr>
+<tr class="even">
+<td><code>+ASC</code></td>
+<td>Corrects for ascertainment bias when the input deliberately excludes constant sites, as in many SNP or morphological matrices.</td>
+</tr>
+</tbody>
+</table>
+<p>Do not add model components by convention alone. Use ModelFinder or provide a biological and statistical reason for fixing a model. <code>+ASC</code> is incompatible with an alignment that contains constant sites.</p>
+</section>
+<section id="character-types" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="character-types"><span class="header-section-number">5</span> Character types</h2>
+<p>IQ-TREE usually detects the character type. Use <code>--seqtype</code> when detection is incorrect or when the intended analysis requires an explicit type:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Character type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--seqtype DNA</code></td>
+<td>Nucleotide data.</td>
+</tr>
+<tr class="even">
+<td><code>--seqtype AA</code></td>
+<td>Amino-acid data.</td>
+</tr>
+<tr class="odd">
+<td><code>--seqtype CODON</code></td>
+<td>Protein-coding nucleotide data analyzed with the standard genetic code and a codon model.</td>
+</tr>
+<tr class="even">
+<td><code>--seqtype CODON5</code></td>
+<td>Codon data using genetic-code table 5, the invertebrate mitochondrial code.</td>
+</tr>
+<tr class="odd">
+<td><code>--seqtype MORPH</code></td>
+<td>Discrete morphological characters.</td>
+</tr>
+</tbody>
+</table>
+<p>Codon analysis requires <code>--seqtype CODON</code> or the appropriate numbered genetic code. The alignment length must be divisible by three, and the first alignment position must correspond to the first codon position.</p>
+<p>For an alignment that contains only ascertained variable nucleotide sites:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> snps.fasta <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seqtype</span> DNA <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> MFP+ASC <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-B</span> 1000 <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--alrt</span> 1000 <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> AUTO <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seed</span> 20260912 <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> snps_run1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="partitioned-alignments" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="partitioned-alignments"><span class="header-section-number">6</span> Partitioned alignments</h2>
+<p>Partition a concatenated alignment when defined site sets, such as genes or codon positions, require separate evolutionary models. A RAxML-style partition file named <code>partitions.txt</code> can contain:</p>
+<pre class="text"><code>DNA, gene1_pos1 = 1-900\3
+DNA, gene1_pos2 = 2-900\3
+DNA, gene1_pos3 = 3-900\3
+DNA, gene2 = 901-1500</code></pre>
+<p>The expression <code>1-900\3</code> selects sites 1, 4, 7, and so forth through site 898. The other two expressions select the second and third codon positions.</p>
+<p>Run an edge-proportional partition analysis and allow ModelFinder to merge similar partitions:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> concatenated.fasta <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-p</span> partitions.txt <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> MFP+MERGE <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-B</span> 1000 <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--alrt</span> 1000 <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> AUTO <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seed</span> 20260912 <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> concatenated_partitioned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The partition parameters differ in how they model branch lengths:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Partition model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-q partitions.txt</code></td>
+<td>Uses one shared set of branch lengths for all partitions.</td>
+</tr>
+<tr class="even">
+<td><code>-p partitions.txt</code></td>
+<td>Uses a shared topology and proportional branch lengths, allowing each partition to have a different overall evolutionary rate. This is the usual starting point for a partitioned analysis.</td>
+</tr>
+<tr class="odd">
+<td><code>-Q partitions.txt</code></td>
+<td>Uses a shared topology but an independent set of branch lengths for each partition. This model has many more parameters.</td>
+</tr>
+<tr class="even">
+<td><code>-m MFP+MERGE</code></td>
+<td>Selects models, searches for a lower-dimensional partitioning scheme by merging compatible partitions, and then infers the tree.</td>
+</tr>
+</tbody>
+</table>
+<p>Inspect the selected models and merged partition scheme in the <code>.iqtree</code> report and the generated <code>.best_scheme.nex</code> file.</p>
+</section>
+<section id="starting-trees-constraints-and-fixed-trees" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="starting-trees-constraints-and-fixed-trees"><span class="header-section-number">7</span> Starting trees, constraints, and fixed trees</h2>
+<p>These parameters have distinct effects:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-t start.tree</code></td>
+<td>Starts the search from the supplied Newick tree. The topology may change during the search.</td>
+</tr>
+<tr class="even">
+<td><code>-g constraint.tree</code></td>
+<td>Restricts the search to trees compatible with the supplied, possibly partial, topological constraint.</td>
+</tr>
+<tr class="odd">
+<td><code>-t fixed.tree --tree-fix</code></td>
+<td>Fixes the supplied topology, skips the topology search, and estimates its likelihood and other model quantities.</td>
+</tr>
+<tr class="even">
+<td><code>-o Outgroup</code></td>
+<td>Places the named taxon on the outgroup side of the reported tree. Under a reversible substitution model, this does not supply statistical information about the root.</td>
+</tr>
+</tbody>
+</table>
+<p>Use constraints only when they represent an explicit analysis assumption. A starting tree is not a constraint.</p>
+</section>
+<section id="resource-limits" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="resource-limits"><span class="header-section-number">8</span> Resource limits</h2>
+<p>Use a fixed thread count and memory limit when a scheduler or shared computer assigns finite resources:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree3</span> <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-s</span> alignment.fasta <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-m</span> MFP <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-B</span> 1000 <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--alrt</span> 1000 <span class="dt">\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-T</span> 8 <span class="dt">\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--mem</span> 16G <span class="dt">\</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--seed</span> 20260912 <span class="dt">\</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--prefix</span> alignment_run1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-T 8</code> uses up to eight CPU threads. <code>--mem 16G</code> limits IQ-TREE to approximately 16 GB of memory. These values must not exceed the resources allocated to the process.</p>
+</section>
+<section id="output-files" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="output-files"><span class="header-section-number">9</span> Output files</h2>
+<p>For <code>--prefix alignment_run1</code>, the main files are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>alignment_run1.treefile</code></td>
+<td>Best maximum-likelihood tree in Newick format, including requested branch-support labels.</td>
+</tr>
+<tr class="even">
+<td><code>alignment_run1.iqtree</code></td>
+<td>Main report with the input summary, selected model, estimated parameters, log-likelihood, branch-support legend, textual tree, and relevant citation list.</td>
+</tr>
+<tr class="odd">
+<td><code>alignment_run1.log</code></td>
+<td>Complete run log, including the IQ-TREE version, command, progress, warnings, and completion status.</td>
+</tr>
+<tr class="even">
+<td><code>alignment_run1.ckp.gz</code></td>
+<td>Checkpoint used to resume an interrupted analysis.</td>
+</tr>
+<tr class="odd">
+<td><code>alignment_run1.model.gz</code></td>
+<td>ModelFinder checkpoint and model-test results when model selection is performed.</td>
+</tr>
+<tr class="even">
+<td><code>alignment_run1.contree</code></td>
+<td>Consensus tree produced by an ultrafast bootstrap analysis.</td>
+</tr>
+<tr class="odd">
+<td><code>alignment_run1.splits.nex</code></td>
+<td>Bootstrap split frequencies in NEXUS format.</td>
+</tr>
+</tbody>
+</table>
+<p>Read the report and log before using the tree:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> alignment_run1.iqtree</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> alignment_run1.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Confirm the following information:</p>
+<ul>
+<li>the program completed normally;</li>
+<li>the detected character type and alignment dimensions are correct;</li>
+<li>the selected model or partition scheme is the intended one;</li>
+<li>warnings about duplicate sequences, composition, missing data, or numerical behavior have been evaluated;</li>
+<li>the maximum log-likelihood and random-number seed are recorded; and</li>
+<li>the branch-support label order matches the legend in the <code>.iqtree</code> report.</li>
+</ul>
+</section>
+<section id="branch-support-labels" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="branch-support-labels"><span class="header-section-number">10</span> Branch-support labels</h2>
+<p>When <code>--alrt 1000</code> and <code>-B 1000</code> are combined, internal branch labels normally have the form:</p>
+<pre class="text"><code>SH-aLRT/UFBoot</code></pre>
+<p>A label of <code>87.4/98</code> therefore reports 87.4% SH-aLRT support followed by 98% ultrafast bootstrap support.</p>
+<p>For a single-gene tree, the IQ-TREE documentation treats SH-aLRT support of at least 80% together with UFBoot support of at least 95% as strong support. These thresholds do not transfer directly to concatenated phylogenomic analyses, where support values can become uniformly high. Examine gene and site concordance factors for multi-locus data, and treat all branch-support values as measures conditional on the alignment, model, and analysis procedure.</p>
+</section>
+<section id="checkpoints-and-repeated-analyses" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="checkpoints-and-repeated-analyses"><span class="header-section-number">11</span> Checkpoints and repeated analyses</h2>
+<p>IQ-TREE periodically writes the <code>.ckp.gz</code> checkpoint. If a run stops before completion, rerun the same command with the same input and prefix to resume it.</p>
+<p>A completed checkpoint prevents accidental overwriting. To conduct another analysis, use a new prefix. The <code>--redo</code> parameter discards the completed checkpoint state and overwrites files for the existing prefix; use it only when the existing result is no longer needed.</p>
+<p>For analyses susceptible to local optima, add <code>--runs 10</code> to perform ten independent tree searches in one invocation, or run separate commands with different seeds and prefixes. Compare the final log-likelihoods and topologies, and retain the highest-likelihood result rather than selecting a tree by its branch-support values.</p>
+</section>
+<section id="operational-checklist" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="operational-checklist"><span class="header-section-number">12</span> Operational checklist</h2>
+<ol type="1">
+<li>Prepare and inspect the aligned input data.</li>
+<li>Select the character type and partition scheme.</li>
+<li>Choose model selection or state a fixed model.</li>
+<li>Set branch-support procedures, a fixed seed, resource limits, and a unique prefix.</li>
+<li>Save the exact command, IQ-TREE version, input alignment, and partition file.</li>
+<li>Read the <code>.log</code> and <code>.iqtree</code> files and resolve relevant warnings.</li>
+<li>Preserve the <code>.treefile</code>, report, log, checkpoint, selected model, and partition scheme.</li>
+<li>Root the inferred tree according to the biological study design and document that decision.</li>
+<li>Report the software version, model-selection procedure or fixed model, partition model, tree-search settings, support procedures, and replicate counts.</li>
+<li>Cite IQ-TREE and each feature-specific method listed in the <code>.iqtree</code> report.</li>
+</ol>
+</section>
+<section id="further-reading" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">13</span> Further reading</h2>
+<ul>
+<li><a href="https://iqtree.github.io/doc/Quickstart">Getting started</a></li>
+<li><a href="https://iqtree.github.io/doc/Tutorial">Beginner’s tutorial</a></li>
+<li><a href="https://iqtree.github.io/doc/Command-Reference">Command reference</a></li>
+<li><a href="https://iqtree.github.io/doc/Substitution-Models">Substitution models</a></li>
+<li><a href="https://iqtree.github.io/doc/Complex-Models">Partition and mixture models</a></li>
+<li><a href="https://iqtree.github.io/doc/Frequently-Asked-Questions">Frequently asked questions</a></li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="pagination-link" aria-label="[[09-03]{.indexed-content-number} [Pseudo-random number generators: continuous values from discrete machines]{.indexed-content-title}]{.indexed-content-entry}">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="indexed-content-entry"><span class="indexed-content-number">09-03</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:jeetsukumaran@gmail.com">
+<p>© Jeet Sukumaran</p>
+</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+<p>All rights reserved, but please share or use under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jeetsukumaran">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

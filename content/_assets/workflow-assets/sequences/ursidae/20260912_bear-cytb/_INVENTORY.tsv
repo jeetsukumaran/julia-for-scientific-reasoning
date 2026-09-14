@@ -1,0 +1,9 @@
+taxonPhylum	taxonClass	taxonOrder	taxonFamily	taxonGenus	taxonSpecies	gene	sequenceAccession	sequenceLength	sequenceFilename
+Chordata	Mammalia	Carnivora	Ursidae	Ailuropoda	Ailuropoda melanoleuca	CYTB	NC_009492.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Helarctos	Helarctos malayanus	CYTB	NC_009968.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Melursus	Melursus ursinus	CYTB	NC_009970.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Tremarctos	Tremarctos ornatus	CYTB	NC_009969.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Ursus	Ursus americanus	CYTB	NC_003426.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Ursus	Ursus arctos	CYTB	NC_003427.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Ursus	Ursus maritimus	CYTB	NC_003428.1	1140	bears-CYTB.fasta
+Chordata	Mammalia	Carnivora	Ursidae	Ursus	Ursus thibetanus	CYTB	NC_009971.1	1140	bears-CYTB.fasta
