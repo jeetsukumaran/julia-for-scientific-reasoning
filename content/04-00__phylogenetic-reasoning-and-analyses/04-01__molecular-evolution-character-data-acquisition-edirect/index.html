@@ -109,7 +109,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -122,18 +134,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #000000;
 }
 .model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -478,7 +478,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creating-a-taxon-by-marker-availability-matrix" id="toc-creating-a-taxon-by-marker-availability-matrix" class="nav-link" data-scroll-target="#creating-a-taxon-by-marker-availability-matrix"><span class="header-section-number">4.2</span> Creating a taxon-by-marker availability matrix</a></li>
   <li><a href="#posting-an-accession-collection" id="toc-posting-an-accession-collection" class="nav-link" data-scroll-target="#posting-an-accession-collection"><span class="header-section-number">4.3</span> Posting an accession collection</a></li>
   <li><a href="#extracting-annotated-cytb-sequences" id="toc-extracting-annotated-cytb-sequences" class="nav-link" data-scroll-target="#extracting-annotated-cytb-sequences"><span class="header-section-number">4.4</span> Extracting annotated CYTB sequences</a></li>
-  <li><a href="#saving-retrieval-details" id="toc-saving-retrieval-details" class="nav-link" data-scroll-target="#saving-retrieval-details"><span class="header-section-number">4.5</span> Saving retrieval details</a></li>
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5</span> Exercises</a></li>
   <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources"><span class="header-section-number">6</span> Further resources</a></li>
@@ -1259,31 +1258,6 @@ pkg&gt; add DataFrames</code></pre>
 <span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a> <span class="st">"Ursus_arctos|NC_003427.1|CYTB"</span></span>
 <span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a> <span class="st">"Ursus_maritimus|NC_003428.1|CYTB"</span></span>
 <span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a> <span class="st">"Ursus_thibetanus|NC_009971.1|CYTB"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="saving-retrieval-details" class="level3" data-number="4.5">
-<h3 data-number="4.5" class="anchored" data-anchor-id="saving-retrieval-details"><span class="header-section-number">4.5</span> Saving retrieval details</h3>
-<p>Record the retrieval time, EDirect version, query strings, and selected accessions beside the downloaded data:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="im">import</span> <span class="bu">Dates</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> retrieved_utc <span class="op">=</span> <span class="fu">string</span>(<span class="bu">Dates</span>.<span class="fu">now</span>(<span class="bu">Dates</span>.UTC));</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> edirect_version <span class="op">=</span> <span class="fu">readchomp</span>(<span class="ss">`esearch -version`</span>);</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> retrieval_details <span class="op">=</span> <span class="fu">join</span>(</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>           [</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>               <span class="st">"retrieved_utc</span><span class="sc">\t$</span>(retrieved_utc)<span class="st">"</span>,</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"edirect_version</span><span class="sc">\t$</span>(edirect_version)<span class="st">"</span>,</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"taxonomy_query</span><span class="sc">\t$</span>(bear_taxonomy_query)<span class="st">"</span>,</span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>               <span class="st">"panda_cytb_query</span><span class="sc">\t$</span>(panda_cytb_query)<span class="st">"</span>,</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>               <span class="st">"accessions</span><span class="sc">\t$</span>(<span class="fu">join</span>(accessions, <span class="ch">','</span>))<span class="st">"</span>,</span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>           ],</span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>           <span class="ch">'\n'</span>,</span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>       ) <span class="op">*</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>;</span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">write</span>(</span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>           <span class="fu">joinpath</span>(raw_dir, <span class="st">"bear-retrieval-details.tsv"</span>),</span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>           retrieval_details,</span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>       );</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="5">
