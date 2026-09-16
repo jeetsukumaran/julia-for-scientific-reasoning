@@ -112,15 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-exercise {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -128,15 +120,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.workflow-detail {
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -556,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>phylogeny <span class="op">=</span> <span class="fu">readphylogeny</span>(<span class="fu">NewickFormat</span>(), srcpath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>LineageNetwork(15 nodes, 14 edges, 8 tips, 0 hybrid nodes, rooted)</code></pre>
+<pre><code>LineageNetwork(15 nodes, 14 edges, 8 leaves, 0 hybrid nodes, rooted)</code></pre>
 </div>
 </div>
 </section>
@@ -569,7 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>"/home/student/projects/learning/scientific-julia/bear-phylogeny-project/data/raw/20260910_extant-bears"</code></pre>
 </div>
 </div>
-<p>We create a dictionary (<code>Dict</code>) value that maps each tip label to an <code>ImageAnnotation</code> containing the path to its corresponding image file:</p>
+<p>We create a dictionary (<code>Dict</code>) value that maps each leaf label to an <code>ImageAnnotation</code> containing the path to its corresponding image file:</p>
 <div id="14" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nodeimages_d <span class="op">=</span> <span class="fu">Dict</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ailuropoda_melanoleuca"</span> <span class="op">=&gt;</span> <span class="fu">ImageAnnotation</span>(<span class="fu">joinpath</span>(image_dir, <span class="st">"Ailuropoda_melanoleuca.png"</span>)),</span>
@@ -600,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>phylogeny_figaxplt <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> nodeimages_d,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This function returns a <code>FigureAxisPlot</code> value, with the <code>Figure</code> itself given by the <code>.figure</code> field:</p>
@@ -621,7 +621,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Tip label</th>
+<th style="text-align: left;">Leaf label</th>
 <th style="text-align: left;">Image source</th>
 </tr>
 </thead>
@@ -676,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mixed_source_phylogeny_figaxplt <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> mixed_nodeimages_d,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">11.0</span>),</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">8.75</span>),</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -691,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="adjust-image-placement" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="adjust-image-placement"><span class="header-section-number">5.2</span> Adjust image placement</h3>
 <p>By default, <code>ImageAnnotation</code> centers an image on its node. The <code>position</code> argument places the image to the left, right, above, or below its node. It also accepts <code>:upperleft</code>, <code>:upperright</code>, <code>:lowerleft</code>, and <code>:lowerright</code>.</p>
-<p>Here, <code>position = :right</code> places the left edge of every image at its tip node. The <code>offset</code> argument then adds 6 pixels of horizontal space between the node and the image:</p>
+<p>Here, <code>position = :right</code> places the left edge of every image at its leaf node. The <code>offset</code> argument then adds 6 pixels of horizontal space between the node and the image:</p>
 <div id="28" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>positioned_nodeimages_d <span class="op">=</span> <span class="fu">Dict</span>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ailuropoda_melanoleuca"</span> <span class="op">=&gt;</span> <span class="fu">ImageAnnotation</span>(</span>
@@ -736,12 +736,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>A small <code>tipoffset</code> places the node labels inside the images:</p>
+<p>A small <code>leafoffset</code> places the node labels inside the images:</p>
 <div id="30" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>close_labels_figaxplt <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> positioned_nodeimages_d,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">0.1</span>,</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">11.0</span>),</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">8.75</span>),</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -756,14 +756,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>position = :right</code> places the left edge of each image at its node.</li>
 <li><code>offset = (6, 0)</code> moves the image 6 pixels to the right of its node.</li>
-<li><code>tipoffset = 0.1</code> places each tip label 0.1 x-axis data units to the right of its node.</li>
+<li><code>leafoffset = 0.1</code> places each leaf label 0.1 x-axis data units to the right of its node.</li>
 </ul>
-<p>To move the labels without moving the images, we increase <code>tipoffset</code>. We also set <code>xlim</code> and <code>ylim</code> to reserve space around the images and labels:</p>
+<p>To move the labels without moving the images, we increase <code>leafoffset</code>. We also set <code>xlim</code> and <code>ylim</code> to reserve space around the images and labels:</p>
 <div id="34" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>adjusted_phylogeny_figaxplt <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> positioned_nodeimages_d,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">1.2</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">1.2</span>,</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">11.0</span>),</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">8.75</span>),</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -785,7 +785,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>aspect = :preserve</code> retains the image’s aspect ratio, while <code>aspect = :stretch</code> stretches the image into a square.</li>
 <li><code>align</code> provides precise control over the point in the image that is aligned with the node.</li>
 </ul>
-<p>In this example, a <code>height</code> of <code>0.55</code> leaves more space between images on adjacent tip rows:</p>
+<p>In this example, a <code>height</code> of <code>0.55</code> leaves more space between images on adjacent leaf rows:</p>
 <div id="38" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>smaller_nodeimages_d <span class="op">=</span> <span class="fu">Dict</span>(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ailuropoda_melanoleuca"</span> <span class="op">=&gt;</span> <span class="fu">ImageAnnotation</span>(</span>
@@ -842,7 +842,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>smaller_phylogeny_figaxplt <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> smaller_nodeimages_d,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">11.0</span>),</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">8.75</span>),</span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -903,7 +903,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Adjust the image size and label position</strong></p>
 <ol type="1">
 <li>Change every image height from <code>0.55</code> to <code>0.5</code>.</li>
-<li>Plot the phylogeny with <code>tipoffset</code> values of <code>0.5</code>, <code>0.8</code>, and <code>1.2</code>.</li>
+<li>Plot the phylogeny with <code>leafoffset</code> values of <code>0.5</code>, <code>0.8</code>, and <code>1.2</code>.</li>
 <li>Identify the smallest value that prevents the labels from overlapping the images.</li>
 <li>Adjust <code>xlim</code> if any label extends beyond the right edge of the plot.</li>
 </ol>
@@ -926,7 +926,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Find another reusable raster image of 1 bear species.</li>
 <li>Replace the corresponding source in <code>mixed_nodeimages_d</code> with its direct image URL.</li>
-<li>Confirm that the dictionary key still exactly matches the tip label.</li>
+<li>Confirm that the dictionary key still exactly matches the leaf label.</li>
 <li>Plot the phylogeny and record the image’s source, creator, and license.</li>
 </ol>
 </div></details>

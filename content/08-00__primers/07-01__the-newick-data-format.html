@@ -74,11 +74,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .workflow-alternate {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -90,19 +98,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
 .workflow-detail {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -325,8 +325,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#newick-tree-expressions" id="toc-newick-tree-expressions" class="nav-link active" data-scroll-target="#newick-tree-expressions"><span class="header-section-number">1</span> Newick tree expressions</a></li>
   <li><a href="#read-a-newick-expression-from-the-inside-out" id="toc-read-a-newick-expression-from-the-inside-out" class="nav-link" data-scroll-target="#read-a-newick-expression-from-the-inside-out"><span class="header-section-number">2</span> Read a Newick expression from the inside out</a></li>
   <li><a href="#internal-node-labels" id="toc-internal-node-labels" class="nav-link" data-scroll-target="#internal-node-labels"><span class="header-section-number">3</span> Internal-node labels</a></li>
-  <li><a href="#branch-lengths" id="toc-branch-lengths" class="nav-link" data-scroll-target="#branch-lengths"><span class="header-section-number">4</span> Branch lengths</a></li>
-  <li><a href="#labels-and-branch-lengths-together" id="toc-labels-and-branch-lengths-together" class="nav-link" data-scroll-target="#labels-and-branch-lengths-together"><span class="header-section-number">5</span> Labels and branch lengths together</a></li>
+  <li><a href="#edge-lengths" id="toc-edge-lengths" class="nav-link" data-scroll-target="#edge-lengths"><span class="header-section-number">4</span> Edge lengths</a></li>
+  <li><a href="#labels-and-edge-lengths-together" id="toc-labels-and-edge-lengths-together" class="nav-link" data-scroll-target="#labels-and-edge-lengths-together"><span class="header-section-number">5</span> Labels and edge lengths together</a></li>
   <li><a href="#portable-node-labels" id="toc-portable-node-labels" class="nav-link" data-scroll-target="#portable-node-labels"><span class="header-section-number">6</span> Portable node labels</a></li>
   <li><a href="#reserved-characters-and-quoted-labels" id="toc-reserved-characters-and-quoted-labels" class="nav-link" data-scroll-target="#reserved-characters-and-quoted-labels"><span class="header-section-number">7</span> Reserved characters and quoted labels</a></li>
   <li><a href="#newick-data-files" id="toc-newick-data-files" class="nav-link" data-scroll-target="#newick-data-files"><span class="header-section-number">8</span> Newick data files</a></li>
@@ -363,11 +363,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A Newick expression represents a phylogeny as nested text. Parentheses record hierarchical relationships, labels identify nodes, and optional numbers record branch lengths.</p>
+<p>A Newick expression represents a phylogeny as nested text. Parentheses record hierarchical relationships, labels identify nodes, and optional numbers record edge lengths.</p>
 <p>This primer describes the serialized format. The <a href="../../content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">phylogeny representations tutorial</a> explains how Julia parses Newick content and reads Newick files.</p>
 <section id="newick-tree-expressions" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="newick-tree-expressions"><span class="header-section-number">1</span> Newick tree expressions</h2>
-<p>The following expression represents a phylogeny with 5 labeled tips:</p>
+<p>The following expression represents a phylogeny with 5 labeled leaves:</p>
 <pre class="text"><code>((A,B),(C,(D,E)));</code></pre>
 <p>The core punctuation is:</p>
 <table class="caption-top table">
@@ -396,7 +396,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><code>:</code></td>
-<td>Introduce the incoming branch length for a node.</td>
+<td>Introduce the incoming edge length for a node.</td>
 <td><code>A:0.5</code></td>
 </tr>
 <tr class="even">
@@ -406,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>Tip nodes appear as labels such as <code>A</code> and <code>B</code>. A pair of parentheses represents an internal node, and the comma-separated expressions inside the parentheses represent its immediate descendants.</p>
+<p>Leaf nodes appear as labels such as <code>A</code> and <code>B</code>. A pair of parentheses represents an internal node, and the comma-separated expressions inside the parentheses represent its immediate descendants.</p>
 </section>
 <section id="read-a-newick-expression-from-the-inside-out" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="read-a-newick-expression-from-the-inside-out"><span class="header-section-number">2</span> Read a Newick expression from the inside out</h2>
@@ -424,10 +424,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Nested parentheses can describe pectinate, balanced, bifurcating, or multifurcating topologies.</p>
 <div id="cell-fig-newick-topology-ladder" class="cell" data-fig-width="12" data-fig-height="3.6" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-newick-topology-ladder" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three phylogenies with six tips progress from a highly pectinate topology to a balanced topology.">
+<div id="fig-newick-topology-ladder" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three phylogenies with six leaves progress from a highly pectinate topology to a balanced topology.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-newick-topology-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-ladder-output-1.svg" class="img-fluid figure-img" alt="Three phylogenies with six tips progress from a highly pectinate topology to a balanced topology.">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-ladder-output-1.svg" class="img-fluid figure-img" alt="Three phylogenies with six leaves progress from a highly pectinate topology to a balanced topology.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-topology-ladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Three Newick expressions with progressively more balanced topologies.
@@ -444,10 +444,10 @@ Figure&nbsp;1: Three Newick expressions with progressively more balanced topolog
 <p>The labels <code>hello</code> and <code>world</code> identify 2 internal nodes. The final label <code>apple</code> identifies the root.</p>
 <div id="cell-fig-newick-internal-node-labels" class="cell" data-fig-width="8" data-fig-height="3.2" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-newick-internal-node-labels" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny has internal nodes labeled hello and world and a root labeled apple.">
+<div id="fig-newick-internal-node-labels" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-leaf phylogeny has internal nodes labeled hello and world and a root labeled apple.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-newick-internal-node-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-internal-node-labels-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny has internal nodes labeled hello and world and a root labeled apple.">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-internal-node-labels-output-1.svg" class="img-fluid figure-img" alt="A four-leaf phylogeny has internal nodes labeled hello and world and a root labeled apple.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-internal-node-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: A Newick tree with labels on its internal nodes and root.
@@ -457,33 +457,33 @@ Figure&nbsp;2: A Newick tree with labels on its internal nodes and root.
 </div>
 </div>
 </section>
-<section id="branch-lengths" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="branch-lengths"><span class="header-section-number">4</span> Branch lengths</h2>
-<p>A colon followed by a number records the length of the branch leading to a node:</p>
+<section id="edge-lengths" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="edge-lengths"><span class="header-section-number">4</span> Edge lengths</h2>
+<p>A colon followed by a number records the length of the edge leading to a node:</p>
 <pre class="text"><code>((A:1,B:2):3,(C:4,D:5):6):7;</code></pre>
-<div id="cell-fig-newick-branch-lengths" class="cell" data-fig-width="8" data-fig-height="3.2" data-execution_count="1">
+<div id="cell-fig-newick-edge-lengths" class="cell" data-fig-width="8" data-fig-height="3.2" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-newick-branch-lengths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-tip phylogeny has unequal horizontal branch lengths and a number beside every branch.">
+<div id="fig-newick-edge-lengths" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-leaf phylogeny has unequal horizontal edge lengths and a number beside every edge.">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-newick-branch-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-branch-lengths-output-1.svg" class="img-fluid figure-img" alt="A four-tip phylogeny has unequal horizontal branch lengths and a number beside every branch.">
+<div aria-describedby="fig-newick-edge-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-edge-lengths-output-1.svg" class="img-fluid figure-img" alt="A four-leaf phylogeny has unequal horizontal edge lengths and a number beside every edge.">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-branch-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: A Newick tree scaled and annotated with its stored branch lengths.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-edge-lengths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: A Newick tree scaled and annotated with its stored edge lengths.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Branch lengths may represent time, expected substitutions, or another edge-associated quantity. Their biological meaning comes from the analysis or data source rather than from Newick punctuation itself.</p>
+<p>Edge lengths may represent time, expected substitutions, or another edge-associated quantity. Their biological meaning comes from the analysis or data source rather than from Newick punctuation itself.</p>
 </section>
-<section id="labels-and-branch-lengths-together" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="labels-and-branch-lengths-together"><span class="header-section-number">5</span> Labels and branch lengths together</h2>
-<p>A node label precedes its branch length:</p>
+<section id="labels-and-edge-lengths-together" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="labels-and-edge-lengths-together"><span class="header-section-number">5</span> Labels and edge lengths together</h2>
+<p>A node label precedes its edge length:</p>
 <pre class="text"><code>((A:1,B:2)hello:3,(C:4,D:5)world:6)root:7;</code></pre>
 <p>For an internal node, the order is:</p>
-<pre class="text"><code>( descendants ) node_label : incoming_branch_length</code></pre>
-<p>The node label and branch length are independently optional. The colon is required when a branch length is present.</p>
+<pre class="text"><code>( descendants ) node_label : incoming_edge_length</code></pre>
+<p>The node label and edge length are independently optional. The colon is required when an edge length is present.</p>
 </section>
 <section id="portable-node-labels" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="portable-node-labels"><span class="header-section-number">6</span> Portable node labels</h2>
@@ -511,7 +511,7 @@ Figure&nbsp;3: A Newick tree scaled and annotated with its stored branch lengths
 <pre class="text"><code>(A,(B,(C,D)));
 (D,(A,(B,C)));
 (A,(C,(D,B)));</code></pre>
-<p>The semicolon terminates each expression. Placing 1 expression on each line is a readable convention, not a format requirement. Outside an unquoted label or branch length, whitespace and line breaks may separate syntax elements.</p>
+<p>The semicolon terminates each expression. Placing 1 expression on each line is a readable convention, not a format requirement. Outside an unquoted label or edge length, whitespace and line breaks may separate syntax elements.</p>
 <p>NEXUS trees blocks also use Newick expressions, but NEXUS adds its own block structure and statements around those expressions.</p>
 </section>
 <section id="interpretation-checkpoint" class="level2" data-number="9">
@@ -519,22 +519,22 @@ Figure&nbsp;3: A Newick tree scaled and annotated with its stored branch lengths
 <p>Interpret this expression before plotting it:</p>
 <pre class="text"><code>((A:0.5,B:0.5)AB:1.0,C:1.5)root;</code></pre>
 <ol type="1">
-<li>Identify the sister tips.</li>
+<li>Identify the sister leaves.</li>
 <li>Identify the internal-node label.</li>
-<li>Identify the branch entering that internal node.</li>
-<li>Compare the total root-to-tip length for <code>A</code>, <code>B</code>, and <code>C</code>.</li>
+<li>Identify the edge entering that internal node.</li>
+<li>Compare the total root-to-leaf length for <code>A</code>, <code>B</code>, and <code>C</code>.</li>
 </ol>
-<p>All 3 root-to-tip lengths equal <code>1.5</code>.</p>
+<p>All 3 root-to-leaf lengths equal <code>1.5</code>.</p>
 </section>
 <section id="topology-exercises" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="topology-exercises"><span class="header-section-number">10</span> Topology exercises</h2>
 <p>The first row below contains alternative Newick representations of the same topology. Rotating descendants around an internal node changes the drawing but not the relationships. Each tree in the second row has a different topology.</p>
 <div id="cell-fig-newick-topology-exercises" class="cell" data-fig-width="12" data-fig-height="6" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-newick-topology-exercises" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Eight six-tip phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
+<div id="fig-newick-topology-exercises" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Eight six-leaf phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-newick-topology-exercises-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-exercises-output-1.svg" class="img-fluid figure-img" alt="Eight six-tip phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
+<img src="07-01__the-newick-data-format_files/figure-html/fig-newick-topology-exercises-output-1.svg" class="img-fluid figure-img" alt="Eight six-leaf phylogenies appear in two rows. Four trees in the first row differ only by node rotations, while four trees in the second row contain different relationships.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newick-topology-exercises-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Equivalent node rotations and genuinely different phylogenetic topologies.

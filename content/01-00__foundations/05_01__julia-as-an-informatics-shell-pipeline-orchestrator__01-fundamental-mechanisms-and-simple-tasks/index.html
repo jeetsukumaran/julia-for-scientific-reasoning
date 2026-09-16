@@ -109,15 +109,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -125,7 +121,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.workflow-detail {
+.shell-equivalent {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -133,11 +133,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.workflow-alternate {
+.workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -613,16 +613,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="constructing-and-running-a-command" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="constructing-and-running-a-command"><span class="header-section-number">2.1</span> Constructing and running a command</h3>
 <p>Use <code>seqkit stats</code> to inspect the number and lengths of the sequences in the FASTA file. <code>--tabular</code> requests tab-separated output, and <code>--basename</code> reports the filename rather than the complete input path.</p>
+<div id="shell-equivalent*-1" class="shell-equivalent">
+<p></p><details class="shell-equivalent fbx-simplebox fbx-default"><summary><strong>Shell commands</strong></summary><div>The direct shell command for this is:<p></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Shell</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit stats <span class="at">--tabular</span> <span class="at">--basename</span> data/raw/bears-CYTB.fasta</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span>    format  type    num_seqs    sum_len min_len avg_len max_len</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bears-CYTB.fasta</span>    FASTA   DNA 8   9120    1140    1140.0  1140</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>--tabular</code> requests tab-separated output. <code>--basename</code> reports only the filename rather than the complete input path.</p>
+</div></details>
+</div>
 <p>Construct the command with backticks:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> statistics_command <span class="op">=</span> <span class="ss">`seqkit stats --tabular --basename $fasta_path`</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">`seqkit stats --tabular --basename /home/student/projects/learning/scientific-julia/bear-sequence-workflows/data/raw/bears-CYTB.fasta`</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">typeof</span>(statistics_command)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Cmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> statistics_command <span class="op">=</span> <span class="ss">`seqkit stats --tabular --basename $fasta_path`</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ss">`seqkit stats --tabular --basename /home/student/projects/learning/scientific-julia/bear-sequence-workflows/data/raw/bears-CYTB.fasta`</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">typeof</span>(statistics_command)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">Cmd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Backticks construct a <code>Cmd</code> value. They do not run the program. The <code>$fasta_path</code> expression inserts the path as one command argument.</p>
 <p>Pass the command to <code>run</code>:</p>
@@ -630,9 +643,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">run</span>(statistics_command);</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>file    format  <span class="kw">type</span>    num_seqs    sum_len min_len avg_len max_len</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>bears<span class="op">-</span>CYTB.fasta    FASTA   DNA <span class="fl">8</span>   <span class="fl">9120</span>    <span class="fl">1140</span>    <span class="fl">1140.0</span>  <span class="fl">1140</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">run</span>(statistics_command);</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>file    format  <span class="kw">type</span>    num_seqs    sum_len min_len avg_len max_len</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>bears<span class="op">-</span>CYTB.fasta    FASTA   DNA <span class="fl">8</span>   <span class="fl">9120</span>    <span class="fl">1140</span>    <span class="fl">1140.0</span>  <span class="fl">1140</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>run</code> starts SeqKit and waits for it to finish. SeqKit’s standard output appears in the REPL as the program produces it.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Command arguments">
@@ -652,32 +665,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="workflow-alternate*-1" class="workflow-alternate" title="Inspecting a sequence file from the shell">
-<p></p><details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Inspecting a sequence file from the shell</summary><div>Run <code>seqkit stats</code> with the FASTA path as its input argument:<p></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit stats <span class="at">--tabular</span> <span class="at">--basename</span> data/raw/bears-CYTB.fasta</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span>    format  type    num_seqs    sum_len min_len avg_len max_len</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">bears-CYTB.fasta</span>    FASTA   DNA 8   9120    1140    1140.0  1140</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>--tabular</code> requests tab-separated output. <code>--basename</code> reports only the filename rather than the complete input path.</p>
-</div></details>
-</div>
 </section>
 <section id="capturing-output-as-text" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="capturing-output-as-text"><span class="header-section-number">2.2</span> Capturing output as text</h3>
 <p>Read the FASTA identifiers into Julia. <code>seqkit seq --name</code> writes record names without their sequences, and <code>--only-id</code> omits any description following each identifier.</p>
+<div id="shell-equivalent*-2" class="shell-equivalent">
+<details class="shell-equivalent fbx-simplebox fbx-default"><summary><strong>Shell commands</strong></summary><div>
+<p>The direct shell command for this is:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Shell</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit seq <span class="at">--name</span> <span class="at">--only-id</span> data/raw/bears-CYTB.fasta</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009492.1</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009968.1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009970.1</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009969.1</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003426.1</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003427.1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003428.1</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009971.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></details>
+</div>
 <p>Construct the command and capture its standard output with <code>read(command, String)</code>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> identifier_command <span class="op">=</span> <span class="ss">`seqkit seq --name --only-id $fasta_path`</span>;</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> identifier_text <span class="op">=</span> <span class="fu">read</span>(identifier_command, <span class="dt">String</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">"NC_009492.1</span><span class="sc">\n</span><span class="st">NC_009968.1</span><span class="sc">\n</span><span class="st">NC_009970.1</span><span class="sc">\n</span><span class="st">NC_009969.1</span><span class="sc">\n</span><span class="st">NC_003426.1</span><span class="sc">\n</span><span class="st">NC_003427.1</span><span class="sc">\n</span><span class="st">NC_003428.1</span><span class="sc">\n</span><span class="st">NC_009971.1</span><span class="sc">\n</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> identifier_command <span class="op">=</span> <span class="ss">`seqkit seq --name --only-id $fasta_path`</span>;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> identifier_text <span class="op">=</span> <span class="fu">read</span>(identifier_command, <span class="dt">String</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">"NC_009492.1</span><span class="sc">\n</span><span class="st">NC_009968.1</span><span class="sc">\n</span><span class="st">NC_009970.1</span><span class="sc">\n</span><span class="st">NC_009969.1</span><span class="sc">\n</span><span class="st">NC_003426.1</span><span class="sc">\n</span><span class="st">NC_003427.1</span><span class="sc">\n</span><span class="st">NC_003428.1</span><span class="sc">\n</span><span class="st">NC_009971.1</span><span class="sc">\n</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The first argument tells <code>read</code> where the data comes from. The second argument requests one <code>String</code>. <code>read</code> starts the command, waits for it to finish, and returns its complete standard output.</p>
 <p>Split the text at line endings when the individual identifiers are needed:</p>
@@ -685,164 +704,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> accessions <span class="op">=</span> <span class="fu">split</span>(<span class="fu">chomp</span>(identifier_text), <span class="ch">'\n'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fl">8</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">SubString</span>{<span class="dt">String</span>}}<span class="op">:</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009492.1"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009968.1"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009970.1"</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009969.1"</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003426.1"</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003427.1"</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003428.1"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009971.1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> accessions <span class="op">=</span> <span class="fu">split</span>(<span class="fu">chomp</span>(identifier_text), <span class="ch">'\n'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fl">8</span><span class="op">-</span>element <span class="dt">Vector</span>{<span class="dt">SubString</span>{<span class="dt">String</span>}}<span class="op">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009492.1"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009968.1"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009970.1"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009969.1"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003426.1"</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003427.1"</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_003428.1"</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a> <span class="st">"NC_009971.1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>chomp</code> removes the final line ending. <code>split</code> returns one element for each remaining line.</p>
-<div id="workflow-alternate*-2" class="workflow-alternate" title="Reading sequence identifiers from the shell">
-<details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Reading sequence identifiers from the shell</summary><div>
-<p><code>seqkit seq --name --only-id</code> writes one FASTA identifier per line:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit seq <span class="at">--name</span> <span class="at">--only-id</span> data/raw/bears-CYTB.fasta</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009492.1</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009968.1</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009970.1</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009969.1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003426.1</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003427.1</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_003428.1</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">NC_009971.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div></details>
-</div>
 </section>
 <section id="capturing-a-single-value" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="capturing-a-single-value"><span class="header-section-number">2.3</span> Capturing a single value</h3>
 <p>Count the records whose identifiers begin with <code>NC_003</code>. <code>seqkit grep</code> selects matching records; <code>--use-regexp</code> treats the supplied pattern as a regular expression, and <code>--count</code> returns only the number of matches. The initial <code>^</code> anchors the match at the beginning of each identifier.</p>
+<div id="shell-equivalent*-3" class="shell-equivalent">
+<p></p><details class="shell-equivalent fbx-simplebox fbx-default"><summary><strong>Shell commands</strong></summary><div>The direct shell command for this is:<p></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Shell</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit grep <span class="at">--use-regexp</span> <span class="at">--pattern</span> <span class="st">'^NC_003'</span> <span class="at">--count</span> data/raw/bears-CYTB.fasta</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>--use-regexp</code> treats the pattern as a regular expression. The initial <code>^</code> anchors the match at the beginning of each identifier.</p>
+</div></details>
+</div>
 <p>Capture the one-line result with <code>readchomp</code>, then parse the text as an integer:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> accession_pattern <span class="op">=</span> <span class="st">"^NC_003"</span>;</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> count_command <span class="op">=</span> <span class="ss">`seqkit grep --use-regexp --pattern $accession_pattern --count $fasta_path`</span>;</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> matching_record_count <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">Int</span>, <span class="fu">readchomp</span>(count_command))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> accession_pattern <span class="op">=</span> <span class="st">"^NC_003"</span>;</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> count_command <span class="op">=</span> <span class="ss">`seqkit grep --use-regexp --pattern $accession_pattern --count $fasta_path`</span>;</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> matching_record_count <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">Int</span>, <span class="fu">readchomp</span>(count_command))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fl">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>readchomp</code> removes one trailing line ending. <code>parse(Int, ...)</code> converts the captured text to an integer that Julia can use in later calculations.</p>
-<div id="workflow-alternate*-3" class="workflow-alternate" title="Counting matching records from the shell">
-<p></p><details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Counting matching records from the shell</summary><div>Count identifiers beginning with <code>NC_003</code>:<p></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit grep <span class="at">--use-regexp</span> <span class="at">--pattern</span> <span class="st">'^NC_003'</span> <span class="at">--count</span> data/raw/bears-CYTB.fasta</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>--use-regexp</code> treats the pattern as a regular expression. The initial <code>^</code> anchors the match at the beginning of each identifier.</p>
-</div></details>
-</div>
 </section>
 <section id="writing-program-output-to-a-file" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="writing-program-output-to-a-file"><span class="header-section-number">2.4</span> Writing program output to a file</h3>
 <p>Select three sequence records and save them as a new FASTA file. The <code>seqkit grep</code> subcommand reads one accession per line from the path supplied to <code>--pattern-file</code> and writes matching FASTA records to standard output. <code>--quiet</code> suppresses extra informational messages.</p>
+<div id="shell-equivalent*-4" class="shell-equivalent">
+<p></p><details class="shell-equivalent fbx-simplebox fbx-default"><summary><strong>Shell commands</strong></summary><div>The direct shell commands for this are:<p></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Shell</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> printf <span class="st">'%s\n'</span> <span class="dt">\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    NC_009492.1 <span class="dt">\</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    NC_003427.1 <span class="dt">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    NC_003428.1 <span class="dt">\</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> data/working/selected-accessions.txt</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit grep <span class="dt">\</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--quiet</span> <span class="dt">\</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--pattern-file</span> data/working/selected-accessions.txt <span class="dt">\</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    data/raw/bears-CYTB.fasta <span class="dt">\</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> data/working/selected-bears-CYTB.fasta</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit stats <span class="at">--tabular</span> <span class="at">--basename</span> data/working/selected-bears-CYTB.fasta</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span>    format  type    num_seqs    sum_len min_len avg_len max_len</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="ex">selected-bears-CYTB.fasta</span>   FASTA   DNA 3   3420    1140    1140.0  1140</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The shell’s <code>&gt;</code> operator connects a program’s standard output to a file.</p>
+</div></details>
+</div>
 <p>Create the accession collection and write the pattern file with Julia’s <code>write</code> function:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_accessions <span class="op">=</span> [</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_009492.1"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_003427.1"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_003428.1"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       ];</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> pattern_path <span class="op">=</span> <span class="fu">joinpath</span>(<span class="st">"data"</span>, <span class="st">"working"</span>, <span class="st">"selected-accessions.txt"</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">"data/working/selected-accessions.txt"</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">write</span>(pattern_path, <span class="fu">join</span>(selected_accessions, <span class="ch">'\n'</span>) <span class="op">*</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_accessions <span class="op">=</span> [</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_009492.1"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_003427.1"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"NC_003428.1"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       ];</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> pattern_path <span class="op">=</span> <span class="fu">joinpath</span>(<span class="st">"data"</span>, <span class="st">"working"</span>, <span class="st">"selected-accessions.txt"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">"data/working/selected-accessions.txt"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">write</span>(pattern_path, <span class="fu">join</span>(selected_accessions, <span class="ch">'\n'</span>) <span class="op">*</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Construct the SeqKit command:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selection_command <span class="op">=</span> <span class="ss">`seqkit grep --quiet --pattern-file $pattern_path $fasta_path`</span>;</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_fasta_path <span class="op">=</span> <span class="fu">joinpath</span>(</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"data"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"working"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">"selected-bears-CYTB.fasta"</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">"data/working/selected-bears-CYTB.fasta"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selection_command <span class="op">=</span> <span class="ss">`seqkit grep --quiet --pattern-file $pattern_path $fasta_path`</span>;</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_fasta_path <span class="op">=</span> <span class="fu">joinpath</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"data"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"working"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">"selected-bears-CYTB.fasta"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="st">"data/working/selected-bears-CYTB.fasta"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use <code>pipeline(command; stdout=path)</code> to connect standard output to the destination. This form describes the connection; <code>run</code> starts the process:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">run</span>(<span class="fu">pipeline</span>(selection_command; <span class="cn">stdout</span><span class="op">=</span>selected_fasta_path));</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">readchomp</span>(<span class="ss">`seqkit grep --use-regexp --pattern .+ --count $selected_fasta_path`</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">run</span>(<span class="fu">pipeline</span>(selection_command; <span class="cn">stdout</span><span class="op">=</span>selected_fasta_path));</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">readchomp</span>(<span class="ss">`seqkit grep --use-regexp --pattern .+ --count $selected_fasta_path`</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The output remains FASTA data throughout the operation. Julia controls its destination without parsing or rewriting the sequence records.</p>
-<div id="workflow-alternate*-4" class="workflow-alternate" title="Selecting sequence records from the shell">
-<p></p><details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Selecting sequence records from the shell</summary><div>Store three accessions in a pattern file, then retrieve their FASTA records:<p></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> printf <span class="st">'%s\n'</span> <span class="dt">\</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    NC_009492.1 <span class="dt">\</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    NC_003427.1 <span class="dt">\</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    NC_003428.1 <span class="dt">\</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> data/working/selected-accessions.txt</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit grep <span class="dt">\</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--quiet</span> <span class="dt">\</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--pattern-file</span> data/working/selected-accessions.txt <span class="dt">\</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    data/raw/bears-CYTB.fasta <span class="dt">\</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> data/working/selected-bears-CYTB.fasta</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> seqkit stats <span class="at">--tabular</span> <span class="at">--basename</span> data/working/selected-bears-CYTB.fasta</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span>    format  type    num_seqs    sum_len min_len avg_len max_len</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="ex">selected-bears-CYTB.fasta</span>   FASTA   DNA 3   3420    1140    1140.0  1140</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The shell’s <code>&gt;</code> operator connects a program’s standard output to a file.</p>
-</div></details>
-</div>
 </section>
 <section id="supplying-standard-input" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="supplying-standard-input"><span class="header-section-number">2.5</span> Supplying standard input</h3>
 <p>Select records from an in-memory accession collection without first creating a pattern file. SeqKit accepts <code>-</code> as the <code>--pattern-file</code> path, which tells <code>seqkit grep</code> to read the patterns from standard input.</p>
+<div id="shell-equivalent*-5" class="shell-equivalent">
+<p></p><details class="shell-equivalent fbx-simplebox fbx-default"><summary><strong>Shell commands</strong></summary><div>The direct shell command for this is:<p></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Shell</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> printf <span class="st">'%s\n'</span> NC_009492.1 NC_003428.1 <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> grep <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">--quiet</span> <span class="dt">\</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--pattern-file</span> <span class="at">-</span> <span class="dt">\</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        data/raw/bears-CYTB.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The pipe connects the output from <code>printf</code> to SeqKit’s standard input.</p>
+</div></details>
+</div>
 <p>Create the identifier stream as a Julia string:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> in_memory_accessions <span class="op">=</span> [<span class="st">"NC_009492.1"</span>, <span class="st">"NC_003428.1"</span>];</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> pattern_text <span class="op">=</span> <span class="fu">join</span>(in_memory_accessions, <span class="ch">'\n'</span>) <span class="op">*</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="st">"NC_009492.1</span><span class="sc">\n</span><span class="st">NC_003428.1</span><span class="sc">\n</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> in_memory_accessions <span class="op">=</span> [<span class="st">"NC_009492.1"</span>, <span class="st">"NC_003428.1"</span>];</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> pattern_text <span class="op">=</span> <span class="fu">join</span>(in_memory_accessions, <span class="ch">'\n'</span>) <span class="op">*</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="st">"NC_009492.1</span><span class="sc">\n</span><span class="st">NC_003428.1</span><span class="sc">\n</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Wrap the string in an <code>IOBuffer</code>, then attach that stream to the command’s standard input:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>REPL</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selection_from_memory <span class="op">=</span> <span class="fu">pipeline</span>(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>           <span class="ss">`seqkit grep --quiet --pattern-file - $fasta_path`</span>;</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>           <span class="cn">stdin</span> <span class="op">=</span> <span class="fu">IOBuffer</span>(pattern_text),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>       );</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_fasta <span class="op">=</span> <span class="fu">read</span>(selection_from_memory, <span class="dt">String</span>);</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">count</span>(<span class="op">==</span>(<span class="ch">'&gt;'</span>), selected_fasta)</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selection_from_memory <span class="op">=</span> <span class="fu">pipeline</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>           <span class="ss">`seqkit grep --quiet --pattern-file - $fasta_path`</span>;</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>           <span class="cn">stdin</span> <span class="op">=</span> <span class="fu">IOBuffer</span>(pattern_text),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       );</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> selected_fasta <span class="op">=</span> <span class="fu">read</span>(selection_from_memory, <span class="dt">String</span>);</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">count</span>(<span class="op">==</span>(<span class="ch">'&gt;'</span>), selected_fasta)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>IOBuffer(pattern_text)</code> presents the in-memory text as a readable stream. SeqKit reads its patterns from that stream and reads the FASTA records from the path argument.</p>
 <div class="callout callout-style-simple callout-tip callout-titled" title="Choosing an execution function">
@@ -866,21 +881,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The first three forms throw <code>ProcessFailedException</code> when a command exits unsuccessfully.</p>
 </div>
 </div>
-</div>
-<div id="workflow-alternate*-5" class="workflow-alternate" title="Supplying record identifiers from the shell">
-<p></p><details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Supplying record identifiers from the shell</summary><div>SeqKit accepts <code>-</code> as the pattern-file path to read identifiers from standard input:<p></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> printf <span class="st">'%s\n'</span> NC_009492.1 NC_003428.1 <span class="dt">\</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> grep <span class="dt">\</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">--quiet</span> <span class="dt">\</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--pattern-file</span> <span class="at">-</span> <span class="dt">\</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        data/raw/bears-CYTB.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The pipe connects the output from <code>printf</code> to SeqKit’s standard input.</p>
-</div></details>
 </div>
 </section>
 </section>

@@ -113,14 +113,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
@@ -129,7 +121,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#load-the-plotting-packages" id="toc-load-the-plotting-packages" class="nav-link active" data-scroll-target="#load-the-plotting-packages"><span class="header-section-number">1</span> Load the plotting packages</a></li>
   <li><a href="#store-and-parse-a-phylogeny" id="toc-store-and-parse-a-phylogeny" class="nav-link" data-scroll-target="#store-and-parse-a-phylogeny"><span class="header-section-number">2</span> Store and parse a phylogeny</a></li>
   <li><a href="#plot-the-tree-before-adding-silhouettes" id="toc-plot-the-tree-before-adding-silhouettes" class="nav-link" data-scroll-target="#plot-the-tree-before-adding-silhouettes"><span class="header-section-number">3</span> Plot the tree before adding silhouettes</a></li>
-  <li><a href="#convert-the-tip-labels-to-scientific-names" id="toc-convert-the-tip-labels-to-scientific-names" class="nav-link" data-scroll-target="#convert-the-tip-labels-to-scientific-names"><span class="header-section-number">4</span> Convert the tip labels to scientific names</a></li>
+  <li><a href="#convert-the-leaf-labels-to-scientific-names" id="toc-convert-the-leaf-labels-to-scientific-names" class="nav-link" data-scroll-target="#convert-the-leaf-labels-to-scientific-names"><span class="header-section-number">4</span> Convert the leaf labels to scientific names</a></li>
   <li><a href="#resolve-the-scientific-names-with-phylopic" id="toc-resolve-the-scientific-names-with-phylopic" class="nav-link" data-scroll-target="#resolve-the-scientific-names-with-phylopic"><span class="header-section-number">5</span> Resolve the scientific names with PhyloPic</a></li>
   <li><a href="#inspect-the-images-and-their-licenses" id="toc-inspect-the-images-and-their-licenses" class="nav-link" data-scroll-target="#inspect-the-images-and-their-licenses"><span class="header-section-number">6</span> Inspect the images and their licenses</a></li>
   <li><a href="#get-the-image-urls" id="toc-get-the-image-urls" class="nav-link" data-scroll-target="#get-the-image-urls"><span class="header-section-number">7</span> Get the image URLs</a></li>
@@ -496,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This tutorial develops 1 small analysis in the same order that we would work through it at the Julia REPL:</p>
 <pre class="text"><code>Newick string -&gt; phylogeny object -&gt; taxon resolution -&gt; image URLs -&gt; illustrated tree</code></pre>
-<p><a href="https://www.phylopic.org/">PhyloPic</a> provides reusable silhouettes of organisms. PhyloPicMakie will find 1 silhouette for each scientific name. PhyloMakie will attach the corresponding image URL directly to each tip.</p>
+<p><a href="https://www.phylopic.org/">PhyloPic</a> provides reusable silhouettes of organisms. PhyloPicMakie will find 1 silhouette for each scientific name. PhyloMakie will attach the corresponding image URL directly to each leaf.</p>
 <section id="load-the-plotting-packages" class="level2 page-columns page-full" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="load-the-plotting-packages"><span class="header-section-number">1</span> Load the plotting packages</h2>
 
@@ -524,13 +524,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="store-and-parse-a-phylogeny" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="store-and-parse-a-phylogeny"><span class="header-section-number">2</span> Store and parse a phylogeny</h2>
-<p>This phylogeny contains 4 living bear species. The branch lengths after each colon will determine the horizontal positions of the nodes.</p>
+<p>This phylogeny contains 4 living bear species. The edge lengths after each colon will determine the horizontal positions of the nodes.</p>
 <div id="4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>phylogeny_newick <span class="op">=</span> <span class="st">"(Ailuropoda_melanoleuca:1.0,(Ursus_americanus:1.0,(Ursus_arctos:0.5,Ursus_maritimus:0.5):0.5):1.0);"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>phylogeny <span class="op">=</span> <span class="fu">parsephylogeny</span>(<span class="fu">NewickFormat</span>(), phylogeny_newick)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>LineageNetwork(7 nodes, 6 edges, 4 tips, 0 hybrid nodes, rooted)</code></pre>
+<pre><code>LineageNetwork(7 nodes, 6 edges, 4 leaves, 0 hybrid nodes, rooted)</code></pre>
 </div>
 </div>
 <p>The underscores keep each scientific name together as 1 Newick label. We will replace them with spaces before asking PhyloPic to resolve the names.</p>
@@ -541,17 +541,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tree_result <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    useedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">0.2</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">5.0</span>),</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">4.75</span>),</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>tree_result.figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-bear-phylogeny" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A phylogeny with tips labeled Ailuropoda melanoleuca, Ursus americanus, Ursus arctos, and Ursus maritimus.">
+<div id="fig-bear-phylogeny" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A phylogeny with leaves labeled Ailuropoda melanoleuca, Ursus americanus, Ursus arctos, and Ursus maritimus.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bear-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-bear-phylogeny-output-1.svg" class="img-fluid figure-img" alt="A phylogeny with tips labeled Ailuropoda melanoleuca, Ursus americanus, Ursus arctos, and Ursus maritimus.">
+<img src="index_files/figure-html/fig-bear-phylogeny-output-1.svg" class="img-fluid figure-img" alt="A phylogeny with leaves labeled Ailuropoda melanoleuca, Ursus americanus, Ursus arctos, and Ursus maritimus.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bear-phylogeny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: A phylogeny of 4 living bear species before silhouettes are added.
@@ -560,19 +560,19 @@ Figure&nbsp;1: A phylogeny of 4 living bear species before silhouettes are added
 </div>
 </div>
 </div>
-<p>This is our first checkpoint. Confirm that the 4 tip labels are present and that <em>Ursus arctos</em> and <em>Ursus maritimus</em> are sister taxa.</p>
+<p>This is our first checkpoint. Confirm that the 4 leaf labels are present and that <em>Ursus arctos</em> and <em>Ursus maritimus</em> are sister taxa.</p>
 </section>
-<section id="convert-the-tip-labels-to-scientific-names" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="convert-the-tip-labels-to-scientific-names"><span class="header-section-number">4</span> Convert the tip labels to scientific names</h2>
-<p><code>tip_labels</code> returns the tip labels stored in the phylogeny. Replace each underscore with a space so that PhyloPic receives ordinary scientific names.</p>
+<section id="convert-the-leaf-labels-to-scientific-names" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="convert-the-leaf-labels-to-scientific-names"><span class="header-section-number">4</span> Convert the leaf labels to scientific names</h2>
+<p><code>leaf_labels</code> returns the leaf labels stored in the phylogeny. Replace each underscore with a space so that PhyloPic receives ordinary scientific names.</p>
 <div id="8" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tip_names <span class="op">=</span> <span class="fu">tip_labels</span>(phylogeny)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>leaf_names <span class="op">=</span> <span class="fu">leaf_labels</span>(phylogeny)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tip_taxa <span class="op">=</span> <span class="dt">String</span>[</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(tip_name, <span class="st">"_"</span> <span class="op">=&gt;</span> <span class="st">" "</span>) for tip_name <span class="kw">in</span> tip_names</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>leaf_taxa <span class="op">=</span> <span class="dt">String</span>[</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(leaf_name, <span class="st">"_"</span> <span class="op">=&gt;</span> <span class="st">" "</span>) for leaf_name <span class="kw">in</span> leaf_names</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>tip_taxa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>leaf_taxa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{String}:
  "Ailuropoda melanoleuca"
@@ -581,7 +581,7 @@ Figure&nbsp;1: A phylogeny of 4 living bear species before silhouettes are added
  "Ursus maritimus"</code></pre>
 </div>
 </div>
-<p>Keep <code>tip_names</code> and <code>tip_taxa</code> in the same order. Each item in <code>tip_names</code> identifies a tip in the tree; the item at the same position in <code>tip_taxa</code> is the scientific name that we will ask PhyloPic to resolve.</p>
+<p>Keep <code>leaf_names</code> and <code>leaf_taxa</code> in the same order. Each item in <code>leaf_names</code> identifies a leaf in the tree; the item at the same position in <code>leaf_taxa</code> is the scientific name that we will ask PhyloPic to resolve.</p>
 </section>
 <section id="resolve-the-scientific-names-with-phylopic" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="resolve-the-scientific-names-with-phylopic"><span class="header-section-number">5</span> Resolve the scientific names with PhyloPic</h2>
@@ -589,7 +589,7 @@ Figure&nbsp;1: A phylogeny of 4 living bear species before silhouettes are added
 <div id="10" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> PhyloPicDB <span class="op">=</span> PhyloPicMakie.PhyloPicDB</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>resolutions <span class="op">=</span> PhyloPicDB.<span class="fu">resolve_taxa</span>(tip_taxa)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>resolutions <span class="op">=</span> PhyloPicDB.<span class="fu">resolve_taxa</span>(leaf_taxa)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>resolutions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>4-element Vector{PhyloPicMakie.PhyloPicDB.TaxonResolution{PhyloPicMakie.PhyloPicDB.PhyloPicResolver}}:
@@ -606,7 +606,7 @@ Figure&nbsp;1: A phylogeny of 4 living bear species before silhouettes are added
 <pre><code>true</code></pre>
 </div>
 </div>
-<p>If the result is <code>false</code>, inspect the displayed resolutions before continuing. A misspelled or ambiguous name should be corrected explicitly. Do not silently attach an uncertain image to a tip.</p>
+<p>If the result is <code>false</code>, inspect the displayed resolutions before continuing. A misspelled or ambiguous name should be corrected explicitly. Do not silently attach an uncertain image to a leaf.</p>
 </section>
 <section id="inspect-the-images-and-their-licenses" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="inspect-the-images-and-their-licenses"><span class="header-section-number">6</span> Inspect the images and their licenses</h2>
@@ -652,38 +652,38 @@ Figure&nbsp;2: The resolved PhyloPic silhouettes with their image licenses.
 <pre><code>true</code></pre>
 </div>
 </div>
-<p>Create a dictionary that maps each exact Newick tip label to its resolved thumbnail URL.</p>
+<p>Create a dictionary that maps each exact Newick leaf label to its resolved thumbnail URL.</p>
 <div id="18" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>thumbnail_urls <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{String,String}</span>()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (tip_name, image_record) <span class="kw">in</span> <span class="fu">zip</span>(tip_names, image_records)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    thumbnail_urls[tip_name] <span class="op">=</span> image_record.thumbnail_url</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (leaf_name, image_record) <span class="kw">in</span> <span class="fu">zip</span>(leaf_names, image_records)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    thumbnail_urls[leaf_name] <span class="op">=</span> image_record.thumbnail_url</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>thumbnail_urls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Dict{String, String} with 4 entries:
+  "Ursus_americanus"       =&gt; "https://images.phylopic.org/images/5a5dafa2-6388…
   "Ursus_arctos"           =&gt; "https://images.phylopic.org/images/43e82541-0f4a…
   "Ailuropoda_melanoleuca" =&gt; "https://images.phylopic.org/images/4b1f7a58-8713…
-  "Ursus_americanus"       =&gt; "https://images.phylopic.org/images/5a5dafa2-6388…
   "Ursus_maritimus"        =&gt; "https://images.phylopic.org/images/c11b4873-aa21…</code></pre>
 </div>
 </div>
-<p>Every dictionary key exactly matches 1 tip label in <code>phylogeny_newick</code>. That exact match tells PhyloMakie which image belongs to which tip.</p>
+<p>Every dictionary key exactly matches 1 leaf label in <code>phylogeny_newick</code>. That exact match tells PhyloMakie which image belongs to which leaf.</p>
 </section>
 <section id="describe-the-image-annotations" class="level2" data-number="8">
 <h2 data-number="8" class="anchored" data-anchor-id="describe-the-image-annotations"><span class="header-section-number">8</span> Describe the image annotations</h2>
-<p><code>ImageAnnotation</code> controls where and how large an image appears. Tips are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.</p>
+<p><code>ImageAnnotation</code> controls where and how large an image appears. Leaves are 1 data unit apart vertically, so an image height below 1 leaves space between adjacent images.</p>
 <div id="22" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>image_height <span class="op">=</span> <span class="fl">0.75</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>tip_images <span class="op">=</span> <span class="fu">Dict</span>(</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    tip_name <span class="op">=&gt;</span> <span class="fu">ImageAnnotation</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>leaf_images <span class="op">=</span> <span class="fu">Dict</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    leaf_name <span class="op">=&gt;</span> <span class="fu">ImageAnnotation</span>(</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        image_url;</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> image_height,</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        position <span class="op">=</span> <span class="op">:</span>right,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        offset <span class="op">=</span> (<span class="fl">6</span>, <span class="fl">0</span>),</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="cf">for</span> (tip_name, image_url) <span class="kw">in</span> thumbnail_urls</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="cf">for</span> (leaf_name, image_url) <span class="kw">in</span> thumbnail_urls</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We now have 3 objects with separate jobs:</p>
@@ -705,10 +705,10 @@ Figure&nbsp;2: The resolved PhyloPic silhouettes with their image licenses.
 </tr>
 <tr class="even">
 <td style="text-align: left;"><code>thumbnail_urls</code></td>
-<td style="text-align: left;">Maps each exact tip label to its resolved image URL.</td>
+<td style="text-align: left;">Maps each exact leaf label to its resolved image URL.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>tip_images</code></td>
+<td style="text-align: left;"><code>leaf_images</code></td>
 <td style="text-align: left;">Adds placement and sizing instructions for each image.</td>
 </tr>
 </tbody>
@@ -720,22 +720,22 @@ Figure&nbsp;2: The resolved PhyloPic silhouettes with their image licenses.
 <div id="cell-fig-bear-phylogeny-phylopic" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>illustrated_result <span class="op">=</span> <span class="fu">plot</span>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    phylogeny;</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> tip_images,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    nodeimages <span class="op">=</span> leaf_images,</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    useedgelength <span class="op">=</span> <span class="cn">true</span>,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    tipoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    leafoffset <span class="op">=</span> <span class="fl">1.0</span>,</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> (<span class="fl">0.5</span>, <span class="fl">5.0</span>),</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> (<span class="fl">0.25</span>, <span class="fl">4.75</span>),</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>illustrated_result.figure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div id="fig-bear-phylogeny-phylopic" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A phylogeny of 4 living bear species with a black organism silhouette beside each labeled tip.">
+<div id="fig-bear-phylogeny-phylopic" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A phylogeny of 4 living bear species with a black organism silhouette beside each labeled leaf.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bear-phylogeny-phylopic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-bear-phylogeny-phylopic-output-1.svg" class="img-fluid figure-img" alt="A phylogeny of 4 living bear species with a black organism silhouette beside each labeled tip.">
+<img src="index_files/figure-html/fig-bear-phylogeny-phylopic-output-1.svg" class="img-fluid figure-img" alt="A phylogeny of 4 living bear species with a black organism silhouette beside each labeled leaf.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bear-phylogeny-phylopic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: The bear phylogeny with PhyloPic silhouettes attached to its tips.
+Figure&nbsp;3: The bear phylogeny with PhyloPic silhouettes attached to its leaves.
 </figcaption>
 </figure>
 </div>
@@ -743,16 +743,16 @@ Figure&nbsp;3: The bear phylogeny with PhyloPic silhouettes attached to its tips
 </div>
 <p>Three arguments control the layout:</p>
 <ul>
-<li><code>position = :right</code> places each image to the right of its tip node.</li>
+<li><code>position = :right</code> places each image to the right of its leaf node.</li>
 <li><code>offset = (6, 0)</code> adds 6 pixels of horizontal space between the node and the image.</li>
-<li><code>tipoffset = 1.0</code> moves the tip-label text far enough to clear the image.</li>
+<li><code>leafoffset = 1.0</code> moves the leaf-label text far enough to clear the image.</li>
 </ul>
 <p>PhyloMakie downloads, decodes, and caches each URL for this plot. We only need to provide the source URL and its image annotation.</p>
 </section>
 <section id="repl-checkpoint" class="level2 page-columns page-full" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="repl-checkpoint"><span class="header-section-number">10</span> REPL checkpoint</h2>
-<p>Change <code>image_height</code> from <code>0.75</code> to <code>0.55</code>, rebuild <code>tip_images</code>, and rerun the illustrated-tree cell. The silhouettes should become smaller while the tree and labels stay unchanged.</p>
-<p>Next change <code>tipoffset</code> from <code>1.0</code> to <code>1.2</code>. Only the label text should move. The tree topology, taxon matches, and image sizes should stay unchanged.</p>
+<p>Change <code>image_height</code> from <code>0.75</code> to <code>0.55</code>, rebuild <code>leaf_images</code>, and rerun the illustrated-tree cell. The silhouettes should become smaller while the tree and labels stay unchanged.</p>
+<p>Next change <code>leafoffset</code> from <code>1.0</code> to <code>1.2</code>. Only the label text should move. The tree topology, taxon matches, and image sizes should stay unchanged.</p>
 
 
 
