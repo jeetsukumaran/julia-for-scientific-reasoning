@@ -160,27 +160,11 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.workflow-alternate {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.workflow-detail {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-proficiencies {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.curriculum-related {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -188,7 +172,23 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.shell-equivalent {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -254,11 +254,11 @@ window.Quarto = {
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/07-00__recipes/index.html"> 
+    <a class="nav-link" href="./content/02_recipes/index.html"> 
 <span class="menu-text">Recipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/08-00__primers/index.html"> 
+    <a class="nav-link" href="./content/03_primers/index.html"> 
 <span class="menu-text">Primers</span></a>
   </li>  
   <li class="nav-item">
@@ -317,13 +317,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/07-00__recipes/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/02_recipes/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recipes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/08-00__primers/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./content/03_primers/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Primers</span></a>
   </div>
 </li>
@@ -389,25 +389,25 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <section id="the-computing-ecosystem" class="level3">
-<h3 class="anchored" data-anchor-id="the-computing-ecosystem">01-01. <a href="./content/01-00__foundations/01-01__the-computing-ecosystem/index.html">The computing ecosystem</a></h3>
+<h3 class="anchored" data-anchor-id="the-computing-ecosystem">01-01. <a href="./content/01_tutorials/01-00__foundations/01-01__the-computing-ecosystem/index.html">The computing ecosystem</a></h3>
 </section>
 <section id="setting-up-and-running-julia" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-and-running-julia">02-01. <a href="./content/01-00__foundations/02-01__setting-up-and-running-julia/index.html">Setting up and running Julia</a></h3>
+<h3 class="anchored" data-anchor-id="setting-up-and-running-julia">02-01. <a href="./content/01_tutorials/01-00__foundations/02-01__setting-up-and-running-julia/index.html">Setting up and running Julia</a></h3>
 </section>
 <section id="julia-help-and-documentation" class="level3">
-<h3 class="anchored" data-anchor-id="julia-help-and-documentation">02-02. <a href="./content/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html">Julia help and documentation</a></h3>
+<h3 class="anchored" data-anchor-id="julia-help-and-documentation">02-02. <a href="./content/01_tutorials/01-00__foundations/02-02__julia-help-documentation-and-learning/index.html">Julia help and documentation</a></h3>
 </section>
 <section id="julia-programs-and-programming" class="level3">
-<h3 class="anchored" data-anchor-id="julia-programs-and-programming">03-01. <a href="./content/01-00__foundations/03-01__julia-programs-and-programming/index.html">Julia programs and programming</a></h3>
+<h3 class="anchored" data-anchor-id="julia-programs-and-programming">03-01. <a href="./content/01_tutorials/01-00__foundations/03-01__julia-programs-and-programming/index.html">Julia programs and programming</a></h3>
 </section>
 <section id="working-with-data-tables" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-data-tables">04-01. <a href="./content/01-00__foundations/04-01__working-with-data-tables/index.html">Working with data tables</a></h3>
+<h3 class="anchored" data-anchor-id="working-with-data-tables">04-01. <a href="./content/01_tutorials/01-00__foundations/04-01__working-with-data-tables/index.html">Working with data tables</a></h3>
 </section>
-<section id="julia-as-an-informatics-shell-fundamental-mechanisms-and-simple-tasks" class="level3">
-<h3 class="anchored" data-anchor-id="julia-as-an-informatics-shell-fundamental-mechanisms-and-simple-tasks">05-01. <a href="./content/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__01-fundamental-mechanisms-and-simple-tasks/index.html">Julia as an informatics shell: Fundamental mechanisms and simple tasks</a></h3>
+<section id="running-external-programs-in-the-shell" class="level3">
+<h3 class="anchored" data-anchor-id="running-external-programs-in-the-shell">05-01. <a href="./content/01_tutorials/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__01-fundamental-mechanisms-and-simple-tasks/index.html">Running external programs in the shell</a></h3>
 </section>
-<section id="julia-as-an-informatics-shell-running-pipelines" class="level3">
-<h3 class="anchored" data-anchor-id="julia-as-an-informatics-shell-running-pipelines">05-02. <a href="./content/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__02-running-pipelines/index.html">Julia as an informatics shell: Running pipelines</a></h3>
+<section id="running-shell-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="running-shell-pipelines">05-02. <a href="./content/01_tutorials/01-00__foundations/05_01__julia-as-an-informatics-shell-pipeline-orchestrator__02-running-pipelines/index.html">Running shell pipelines</a></h3>
 </section>
 </div>
 </div>
@@ -425,16 +425,16 @@ window.Quarto = {
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <section id="creating-a-figure" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-figure">05-01. <a href="./content/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html">Creating a figure</a></h3>
+<h3 class="anchored" data-anchor-id="creating-a-figure">05-01. <a href="./content/01_tutorials/02-00__creative-visualization-with-makie/05-01__creating-a-figure/index.html">Creating a figure</a></h3>
 </section>
 <section id="plotting-geometries" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-geometries">05-02. <a href="./content/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
+<h3 class="anchored" data-anchor-id="plotting-geometries">05-02. <a href="./content/01_tutorials/02-00__creative-visualization-with-makie/05-02__drawing-geometries-in-a-figure/index.html">Plotting geometries</a></h3>
 </section>
 <section id="styling-a-figure" class="level3">
-<h3 class="anchored" data-anchor-id="styling-a-figure">05-04. <a href="./content/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html">Styling a figure</a></h3>
+<h3 class="anchored" data-anchor-id="styling-a-figure">05-04. <a href="./content/01_tutorials/02-00__creative-visualization-with-makie/05-04__styling-a-figure/index.html">Styling a figure</a></h3>
 </section>
 <section id="visualizing-mathematical-models" class="level3">
-<h3 class="anchored" data-anchor-id="visualizing-mathematical-models">06-01. <a href="./content/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html">Visualizing mathematical models</a></h3>
+<h3 class="anchored" data-anchor-id="visualizing-mathematical-models">06-01. <a href="./content/01_tutorials/02-00__creative-visualization-with-makie/06-01__visualizing-mathematical-models/index.html">Visualizing mathematical models</a></h3>
 </section>
 </div>
 </div>
@@ -451,7 +451,7 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <section id="working-with-randomness-and-probabilities" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="working-with-randomness-and-probabilities">07-01. <a href="./content/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html">Working with randomness and probabilities</a></h3>
+<h3 class="anchored" data-anchor-id="working-with-randomness-and-probabilities">07-01. <a href="./content/01_tutorials/03-00__probabilistic-reasoning-and-analyses/07-01__working-with-randomness-and-probabilities/index.html">Working with randomness and probabilities</a></h3>
 </section>
 </div>
 </div>
@@ -468,22 +468,22 @@ window.Quarto = {
 <div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <section id="representing-and-reading-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="representing-and-reading-phylogenies">01-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">Representing and reading phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="representing-and-reading-phylogenies">01-01. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/01-01__phylogeny-representations/index.html">Representing and reading phylogenies</a></h3>
 </section>
 <section id="visualizing-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="visualizing-phylogenies">02-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">Visualizing phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="visualizing-phylogenies">02-01. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">Visualizing phylogenies</a></h3>
 </section>
 <section id="adding-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">02-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-images-to-phylogenies">02-03. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/02-03__adding-images-to-phylogenies/index.html">Adding images to phylogenies</a></h3>
 </section>
 <section id="adding-phylopic-images-to-phylogenies" class="level3">
-<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">02-04. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html">Adding PhyloPic images to phylogenies</a></h3>
+<h3 class="anchored" data-anchor-id="adding-phylopic-images-to-phylogenies">02-04. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/02-04__adding-phylopic-images-to-phylogenies/index.html">Adding PhyloPic images to phylogenies</a></h3>
 </section>
 <section id="acquiring-molecular-characters-with-edirect-from-julia" class="level3">
-<h3 class="anchored" data-anchor-id="acquiring-molecular-characters-with-edirect-from-julia">04-01. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html">Acquiring molecular characters with EDirect from Julia</a></h3>
+<h3 class="anchored" data-anchor-id="acquiring-molecular-characters-with-edirect-from-julia">04-01. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/04-01__molecular-evolution-character-data-acquisition-edirect/index.html">Acquiring molecular characters with EDirect from Julia</a></h3>
 </section>
 <section id="curating-and-aligning-molecular-character-data" class="level3">
-<h3 class="anchored" data-anchor-id="curating-and-aligning-molecular-character-data">04-03. <a href="./content/04-00__phylogenetic-reasoning-and-analyses/04-03__molecular-evolution-character-data-curation-and-alignment/index.html">Curating and aligning molecular character data</a></h3>
+<h3 class="anchored" data-anchor-id="curating-and-aligning-molecular-character-data">04-03. <a href="./content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/04-03__molecular-evolution-character-data-curation-and-alignment/index.html">Curating and aligning molecular character data</a></h3>
 </section>
 </div>
 </div>
@@ -501,19 +501,19 @@ window.Quarto = {
 <div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <section id="geospatial-coordinate-reference-systems" class="level3">
-<h3 class="anchored" data-anchor-id="geospatial-coordinate-reference-systems">01-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html">Geospatial coordinate reference systems</a></h3>
+<h3 class="anchored" data-anchor-id="geospatial-coordinate-reference-systems">01-01. <a href="./content/01_tutorials/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/index.html">Geospatial coordinate reference systems</a></h3>
 </section>
 <section id="working-with-geospatial-data" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-geospatial-data">01-02. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html">Working with geospatial data</a></h3>
+<h3 class="anchored" data-anchor-id="working-with-geospatial-data">01-02. <a href="./content/01_tutorials/05-00__geospatial-reasoning-and-analyses/01-02__working-with-geospatial-data/index.html">Working with geospatial data</a></h3>
 </section>
 <section id="processing-data-for-plotting-across-the-antimeridian-with-vector-data" class="level3">
-<h3 class="anchored" data-anchor-id="processing-data-for-plotting-across-the-antimeridian-with-vector-data">01-03. <a href="./content/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html">Processing data for plotting across the antimeridian with vector data</a></h3>
+<h3 class="anchored" data-anchor-id="processing-data-for-plotting-across-the-antimeridian-with-vector-data">01-03. <a href="./content/01_tutorials/05-00__geospatial-reasoning-and-analyses/01-01__geospatial-coordinate-reference-systems/01-03__processing-data-for-plotting-across-the-antimeridian-with-vector-data.html">Processing data for plotting across the antimeridian with vector data</a></h3>
 </section>
 <section id="working-with-biodiversity-distribution-data" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-biodiversity-distribution-data">06-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html">Working with biodiversity distribution data</a></h3>
+<h3 class="anchored" data-anchor-id="working-with-biodiversity-distribution-data">06-01. <a href="./content/01_tutorials/05-00__geospatial-reasoning-and-analyses/06-01__working-with-biodiversity-distribution-data/index.html">Working with biodiversity distribution data</a></h3>
 </section>
 <section id="working-with-paleobiological-fossil-distribution-data" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-paleobiological-fossil-distribution-data">07-01. <a href="./content/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html">Working with paleobiological fossil distribution data</a></h3>
+<h3 class="anchored" data-anchor-id="working-with-paleobiological-fossil-distribution-data">07-01. <a href="./content/01_tutorials/05-00__geospatial-reasoning-and-analyses/07-01__working-with-paleobiological-fossil-distribution-data/index.html">Working with paleobiological fossil distribution data</a></h3>
 </section>
 </div>
 </div>
@@ -530,7 +530,7 @@ window.Quarto = {
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse show">
 <section id="agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl">08-01. <a href="./content/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html">Agent-based modeling: spatial epidemic dynamics with Agents.jl</a></h3>
+<h3 class="anchored" data-anchor-id="agent-based-modeling-spatial-epidemic-dynamics-with-agents.jl">08-01. <a href="./content/01_tutorials/06-00__simulation-based-reasoning-and-analyses/08-01__agent-based-modeling-spatial-epidemic-dynamics-with-agents-jl/index.html">Agent-based modeling: spatial epidemic dynamics with Agents.jl</a></h3>
 </section>
 </div>
 </div>
@@ -542,13 +542,13 @@ window.Quarto = {
 <div id="listing-recipes" class="quarto-listing quarto-listing-container-custom">
 <div class="indexed-content-listing">
 <section id="geospatial-data-visualization-with-geomakie.geoaxis" class="level2">
-<h2 class="anchored" data-anchor-id="geospatial-data-visualization-with-geomakie.geoaxis">01-01. <a href="./content/07-00__recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html">Geospatial data visualization with `GeoMakie.GeoAxis`</a></h2>
+<h2 class="anchored" data-anchor-id="geospatial-data-visualization-with-geomakie.geoaxis">01-01. <a href="./content/02_recipes/01-01__geospatial-data-visualization-with-geomakie-geoaxis.html">Geospatial data visualization with `GeoMakie.GeoAxis`</a></h2>
 </section>
 <section id="downloading-remote-files" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-remote-files">01-02. <a href="./content/07-00__recipes/01-02__downloading-remote-files.html">Downloading remote files</a></h2>
+<h2 class="anchored" data-anchor-id="downloading-remote-files">01-02. <a href="./content/02_recipes/01-02__downloading-remote-files.html">Downloading remote files</a></h2>
 </section>
 <section id="creating-dictionary-mappings" class="level2">
-<h2 class="anchored" data-anchor-id="creating-dictionary-mappings">01-03. <a href="./content/07-00__recipes/01-03__creating-dictionary-mappings.html">Creating dictionary mappings</a></h2>
+<h2 class="anchored" data-anchor-id="creating-dictionary-mappings">01-03. <a href="./content/02_recipes/01-03__creating-dictionary-mappings.html">Creating dictionary mappings</a></h2>
 </section>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -558,64 +558,64 @@ window.Quarto = {
 <div id="listing-primers" class="quarto-listing quarto-listing-container-custom">
 <div class="indexed-content-listing">
 <section id="bernoulli-trial" class="level2">
-<h2 class="anchored" data-anchor-id="bernoulli-trial">01-01. <a href="./content/08-00__primers/01-01__bernoulli-trial.html">Bernoulli trial</a></h2>
+<h2 class="anchored" data-anchor-id="bernoulli-trial">01-01. <a href="./content/03_primers/01-01__bernoulli-trial.html">Bernoulli trial</a></h2>
 </section>
 <section id="the-fasta-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-fasta-data-format">02-01. <a href="./content/08-00__primers/02-01__the-fasta-data-format.html">The FASTA data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-fasta-data-format">02-01. <a href="./content/03_primers/02-01__the-fasta-data-format.html">The FASTA data format</a></h2>
 </section>
 <section id="pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="pathogen-fitness-as-a-function-of-virulence-frank-1996">03-01. <a href="./content/08-00__primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+<h2 class="anchored" data-anchor-id="pathogen-fitness-as-a-function-of-virulence-frank-1996">03-01. <a href="./content/03_primers/03-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
 </section>
 <section id="virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="virulence-transmission-trade-off-frank-1996">03-02. <a href="./content/08-00__primers/03-02__virulence-transmission-trade-off-frank-1996.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
+<h2 class="anchored" data-anchor-id="virulence-transmission-trade-off-frank-1996">03-02. <a href="./content/03_primers/03-02__virulence-transmission-trade-off-frank-1996.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
 </section>
 <section id="geomakie.geoaxis-and-coordinate-reference-systems" class="level2">
-<h2 class="anchored" data-anchor-id="geomakie.geoaxis-and-coordinate-reference-systems">04-01. <a href="./content/08-00__primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h2>
+<h2 class="anchored" data-anchor-id="geomakie.geoaxis-and-coordinate-reference-systems">04-01. <a href="./content/03_primers/04-01__geomakie-geoaxis-and-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h2>
 </section>
 <section id="julia-environment-provisioning" class="level2">
-<h2 class="anchored" data-anchor-id="julia-environment-provisioning">05-01. <a href="./content/08-00__primers/05-01__julia-environment-provisioning.html">Julia – Environment provisioning</a></h2>
+<h2 class="anchored" data-anchor-id="julia-environment-provisioning">05-01. <a href="./content/03_primers/05-01__julia-environment-provisioning.html">Julia – Environment provisioning</a></h2>
 </section>
 <section id="julia-environments-global-vs-project" class="level2">
-<h2 class="anchored" data-anchor-id="julia-environments-global-vs-project">05-02. <a href="./content/08-00__primers/05-02__julia-environments-global-vs-project.html">Julia – Environments – Global vs project</a></h2>
+<h2 class="anchored" data-anchor-id="julia-environments-global-vs-project">05-02. <a href="./content/03_primers/05-02__julia-environments-global-vs-project.html">Julia – Environments – Global vs project</a></h2>
 </section>
 <section id="julia-functions-methods-and-signatures" class="level2">
-<h2 class="anchored" data-anchor-id="julia-functions-methods-and-signatures">05-03. <a href="./content/08-00__primers/05-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
+<h2 class="anchored" data-anchor-id="julia-functions-methods-and-signatures">05-03. <a href="./content/03_primers/05-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
 </section>
 <section id="julia-on-homedir-and-joinpath" class="level2">
-<h2 class="anchored" data-anchor-id="julia-on-homedir-and-joinpath">05-04. <a href="./content/08-00__primers/05-04__julia-joinpath-homedir.html">Julia: on `homedir()` and `joinpath()`</a></h2>
+<h2 class="anchored" data-anchor-id="julia-on-homedir-and-joinpath">05-04. <a href="./content/03_primers/05-04__julia-joinpath-homedir.html">Julia: on `homedir()` and `joinpath()`</a></h2>
 </section>
 <section id="markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="markov-property">06-01. <a href="./content/08-00__primers/06-01__markov-property.html">Markov property</a></h2>
+<h2 class="anchored" data-anchor-id="markov-property">06-01. <a href="./content/03_primers/06-01__markov-property.html">Markov property</a></h2>
 </section>
 <section id="the-newick-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-newick-data-format">07-01. <a href="./content/08-00__primers/07-01__the-newick-data-format.html">The Newick data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-newick-data-format">07-01. <a href="./content/03_primers/07-01__the-newick-data-format.html">The Newick data format</a></h2>
 </section>
 <section id="the-nexus-phylogenetic-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">07-02. <a href="./content/08-00__primers/07-02__the-nexus-data-format.html">The NEXUS phylogenetic data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">07-02. <a href="./content/03_primers/07-02__the-nexus-data-format.html">The NEXUS phylogenetic data format</a></h2>
 </section>
 <section id="the-phylip-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-phylip-data-format">07-03. <a href="./content/08-00__primers/07-03__the-phylip-data-format.html">The PHYLIP data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-phylip-data-format">07-03. <a href="./content/03_primers/07-03__the-phylip-data-format.html">The PHYLIP data format</a></h2>
 </section>
 <section id="the-fasta-data-format-1" class="level2">
-<h2 class="anchored" data-anchor-id="the-fasta-data-format-1">07-04. <a href="./content/08-00__primers/07-04__the-fasta-data-format.html">The fasta data format</a></h2>
+<h2 class="anchored" data-anchor-id="the-fasta-data-format-1">07-04. <a href="./content/03_primers/07-04__the-fasta-data-format.html">The fasta data format</a></h2>
 </section>
 <section id="downloading-and-aligning-genbank-molecular-data" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-and-aligning-genbank-molecular-data">07-05. <a href="./content/08-00__primers/07-05__downloading-and-aligning-genbank-molecular-data.html">Downloading and aligning GenBank molecular data</a></h2>
+<h2 class="anchored" data-anchor-id="downloading-and-aligning-genbank-molecular-data">07-05. <a href="./content/03_primers/07-05__downloading-and-aligning-genbank-molecular-data.html">Downloading and aligning GenBank molecular data</a></h2>
 </section>
 <section id="probabilty-distributionsessential-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">08-01. <a href="./content/08-00__primers/08-01__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h2>
+<h2 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">08-01. <a href="./content/03_primers/08-01__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h2>
 </section>
 <section id="pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators">09-01. <a href="./content/08-00__primers/09-01__pseudo-random-number-generators.html">Pseudo-random number generators</a></h2>
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators">09-01. <a href="./content/03_primers/09-01__pseudo-random-number-generators.html">Pseudo-random number generators</a></h2>
 </section>
 <section id="pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-best-practices">09-02. <a href="./content/08-00__primers/09-02__pseudo-random-number-generators-best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-best-practices">09-02. <a href="./content/03_primers/09-02__pseudo-random-number-generators-best-practices.html">Pseudo-random number generators: best practices</a></h2>
 </section>
 <section id="pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-continuous-values-from-discrete-machines">09-03. <a href="./content/08-00__primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-continuous-values-from-discrete-machines">09-03. <a href="./content/03_primers/09-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
 </section>
 <section id="phylogenetic-inference-tools-iq-tree" class="level2">
-<h2 class="anchored" data-anchor-id="phylogenetic-inference-tools-iq-tree">10-01. <a href="./content/08-00__primers/10-01__phylogenetic-inference--tools--iqtree.html">Phylogenetic inference tools – IQ-TREE</a></h2>
+<h2 class="anchored" data-anchor-id="phylogenetic-inference-tools-iq-tree">10-01. <a href="./content/03_primers/10-01__phylogenetic-inference--tools--iqtree.html">Phylogenetic inference tools – IQ-TREE</a></h2>
 </section>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
