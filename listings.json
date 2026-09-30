@@ -40,10 +40,10 @@
       "/content/03_primers/51-03__the-phylip-data-format.html",
       "/content/03_primers/51-04__the-fasta-data-format.html",
       "/content/03_primers/52-01__downloading-and-aligning-genbank-molecular-data.html",
-      "/content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html",
-      "/content/03_primers/55-02__phylogenetic-inference--tools--raxml.html",
-      "/content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html",
-      "/content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html"
+      "/content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html",
+      "/content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html",
+      "/content/03_primers/53-03__phylogenetic-inference--tools--raxml.html",
+      "/content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html"
     ]
   },
   {
@@ -119,10 +119,10 @@
       "/content/03_primers/51-03__the-phylip-data-format.html",
       "/content/03_primers/51-04__the-fasta-data-format.html",
       "/content/03_primers/52-01__downloading-and-aligning-genbank-molecular-data.html",
-      "/content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html",
-      "/content/03_primers/55-02__phylogenetic-inference--tools--raxml.html",
-      "/content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html",
-      "/content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html"
+      "/content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html",
+      "/content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html",
+      "/content/03_primers/53-03__phylogenetic-inference--tools--raxml.html",
+      "/content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html"
     ]
   }
 ]

@@ -1174,113 +1174,36 @@
     ]
   },
   {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html",
-    "title": "Distance-based phylogenetic inference with MEGA",
+    "objectID": "content/03_primers/20-02__julia-environments-global-vs-project.html",
+    "href": "content/03_primers/20-02__julia-environments-global-vs-project.html",
+    "title": "Julia – Environments – Global vs project",
     "section": "",
-    "text": "MEGA estimates evolutionary distances from aligned sequences and uses those distances to infer phylogenetic trees. This tutorial constructs a neighbor-joining tree for eight living bear species, examines its branch lengths, estimates bootstrap support, and compares the result with other distance-based methods.\nThe complete workflow uses MEGA’s graphical interface. It begins with one provided FASTA alignment and creates every other file named below.",
+    "text": "Global installs are convenient, with packages available to any Julia program you run. Some workflows benefit from a “heavy” global environment with most common packages installed there DataFrames.jl, CSV.jl, XLSX.jl, Makie.jl, Distributions.jl and universally available to every project, with project-specific installs limited to specialized needs.\nOn the other hand, the lack of isolation between global and project-specific environments can result in globally-installed packages leaking into project tests, dependency chains, and so on. Workflows incorporating software engineering best practices typically benefit from having light global environments and heavy project environments: little to no packages installed globally, with all packages installed into project specific environments.\nI prefer and recommend the latter approach, not just due to my software developer vocation, but also for robustness and replicability.\nOne way to achieve both the convenience of a global with just a little more friction is to created a dedicated scratch environment into which you can dump all the commonly used packages useful for many tasks and workflows before anything “escalates” into a fully-siloed project.\nalias jc='julia --project=~/.julia-calc`\nThis, as a full-fledged isolated environment, then gains the benefit of actually being able to be loaded up with useful packages, from fundamentals (e.g., DataFrames.jl, CSV, etc.) to more specialized domain-specific yet project-general ones (e.g. visualization libraries).\n\n\n\n Back to top",
     "crumbs": [
       "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[20-02]{.indexed-content-number} [Julia -- Environments -- Global vs project]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#preparation",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#preparation",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "1 Preparation",
-    "text": "1 Preparation\n\n1.1 Installing MEGA\nDownload the current graphical version of MEGA for the operating system from the MEGA website. Follow the installer provided for that platform.\nStart MEGA and select Help | About MEGA. Record the installed version. The menu paths below follow MEGA 12.\n\n\n1.2 Acquiring the example alignment\nDownload the course alignment:\nDownload bears-CYTB-aligned.fasta\nCreate the following project directories with the file manager:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/\n├── data/\n│   └── bears-CYTB-aligned.fasta\n└── results/\nSave the downloaded file as:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.fasta\nThis file contains one complete mitochondrial CYTB coding sequence from each of eight living bear species. It contains eight aligned sequences, 1,140 columns, and no alignment gaps. Each sequence label contains the species, accession version, and gene:\nAiluropoda_melanoleuca|NC_009492.1|CYTB\nHelarctos_malayanus|NC_009968.1|CYTB\nMelursus_ursinus|NC_009970.1|CYTB\nTremarctos_ornatus|NC_009969.1|CYTB\nUrsus_americanus|NC_003426.1|CYTB\nUrsus_arctos|NC_003427.1|CYTB\nUrsus_maritimus|NC_003428.1|CYTB\nUrsus_thibetanus|NC_009971.1|CYTB\nEvery analysis in this tutorial begins with this alignment. The tutorial next converts it to bears-CYTB-aligned.meg, then uses that converted file for tree inference.",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#basic-workflow",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#basic-workflow",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "2 Basic workflow",
-    "text": "2 Basic workflow\n\n2.1 Converting the FASTA alignment to MEGA format\nMEGA’s native text format records the aligned characters and the data type needed by its analysis tools.\n\nIn the main MEGA window, select File | Convert File Format to MEGA.\nSelect data/bears-CYTB-aligned.fasta from the project directory.\nIf MEGA asks for the source format, select FASTA.\nIn the Input Data Format dialog, select DNA.\nRetain ? for missing data and - for alignment gaps.\nComplete the conversion.\n\nMEGA opens the converted text in its editor. The beginning of the file should contain a #MEGA declaration followed by a title and the first labeled sequence.\nSelect File | Save As in the editor and save the converted file as:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.meg\nThe project now contains two data files:\n\n\n\n\n\n\n\nFile\nRole\n\n\n\n\nbears-CYTB-aligned.fasta\nProvided, portable multiple-sequence alignment.\n\n\nbears-CYTB-aligned.meg\nMEGA-formatted copy created in the preceding steps.\n\n\n\nClose the text editor after saving the .meg file.\n\n\n2.2 Opening and checking the alignment\n\nIn the main MEGA window, select Data | Open A File/Session.\nSelect data/bears-CYTB-aligned.meg.\nSelect Data | Explore Active Data.\n\nThe Sequence Data Explorer should report eight sequences and 1,140 sites. Confirm that all eight labels listed above are present. Scroll across the alignment and confirm that the displayed data are nucleotides and that no sequence contains a gap.\nClose the Sequence Data Explorer without closing the active data file.\n\n\n2.3 Constructing a neighbor-joining tree\nSelect Phylogeny | Construct/Test Neighbor-Joining Tree.\nSet the following analysis options:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nNone\n\n\nSubstitutions Type\nNucleotide\n\n\nModel/Method\np-distance\n\n\nSubstitutions to Include\nTransitions and transversions\n\n\nGaps/Missing Data Treatment\nComplete deletion\n\n\n\nRetain all 1,140 alignment sites. Select Compute.\nMEGA first calculates the proportion of different nucleotides for every pair of sequences. Neighbor joining then constructs one tree from that distance matrix. The Tree Explorer displays the result.\nThe tree is unrooted. Its rectangular display has a leftmost position, but that position does not identify an ancestor or biological root.\n\n\n2.4 Inspecting the inferred tree\nIn Tree Explorer:\n\nSelect View | Options.\nOpen the Branch settings.\nEnable the display of branch lengths.\nApply the change.\n\nFor this analysis, a branch length is an estimated p-distance: substitutions per aligned site along that branch. Longer branches represent greater estimated sequence divergence under the selected distance definition.\nOpen the Tree Explorer information box and confirm:\n\neight taxa were analyzed;\nthe tree is neighbor joining;\nthe distance is p-distance;\ngaps and missing data used complete deletion; and\n1,140 sites were retained.\n\nThe giant panda, Ailuropoda_melanoleuca, has the most divergent sequence in this set and appears on a long branch. The brown bear and polar bear, Ursus_arctos and Ursus_maritimus, should appear as close relatives. These observations provide simple checks that the expected records were analyzed; they do not validate every inferred relationship.\n\n\n2.5 Saving the tree and analysis record\nSelect the original tree tab in Tree Explorer, then save the following files:\n\nSelect File | Export Current Tree (Newick) and save:\nresults/bears-CYTB-nj-pdistance.nwk\nSelect File | Export Analysis Summary and save:\nresults/bears-CYTB-nj-pdistance-summary.txt\nSelect File | Save Current Session and use the name:\nresults/bears-CYTB-nj-pdistance\nAllow MEGA to add its native tree-session extension.\n\nThe Newick file stores the tree for use in other software. The analysis summary records the distance model, site treatment, and other settings. The native session reopens the interactive Tree Explorer state.",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#follow-up-workflows",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#follow-up-workflows",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "3 Follow-up workflows",
-    "text": "3 Follow-up workflows\n\n3.1 Estimating bootstrap support\nClose Tree Explorer while leaving the bear alignment active. Select Phylogeny | Construct/Test Neighbor-Joining Tree again.\nUse the same p-distance and complete-deletion settings, but change:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nBootstrap method\n\n\nNo. of Bootstrap Replications\n1000\n\n\n\nSelect Compute.\nMEGA resamples the 1,140 alignment columns with replacement, reconstructs a neighbor-joining tree from each resampled matrix, and reports how often each split in the original tree recurs. A value of 90 means that the split occurred in 90% of the bootstrap replicate trees.\nTree Explorer provides separate views of the original tree and the bootstrap consensus. Use the original-tree view for the inferred branch lengths. Use the support labels to describe repeatability under site resampling.\nExport the original tree with its displayed support labels as:\nresults/bears-CYTB-nj-pdistance-bootstrap.nwk\nExport the analysis summary as:\nresults/bears-CYTB-nj-pdistance-bootstrap-summary.txt\nIf the bootstrap consensus is also required, select its tab and export it separately as:\nresults/bears-CYTB-nj-pdistance-bootstrap-consensus.nwk\nBootstrap percentages are not posterior probabilities and do not state the probability that a clade is true. They are conditional on this alignment, distance definition, missing-data rule, and tree-building method.\n\n\n3.2 Applying a multiple-substitution correction\nP-distance counts observed differences. It does not account for sites that changed more than once during evolution. Repeat the neighbor-joining analysis with a corrected nucleotide distance:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nBootstrap method\n\n\nNo. of Bootstrap Replications\n1000\n\n\nSubstitutions Type\nNucleotide\n\n\nModel/Method\nTamura-Nei model\n\n\nSubstitutions to Include\nTransitions and transversions\n\n\nRates among Sites\nUniform rates\n\n\nGaps/Missing Data Treatment\nComplete deletion\n\n\n\nSelect Compute, inspect the original tree and support values, then export:\nresults/bears-CYTB-nj-tamura-nei-bootstrap.nwk\nresults/bears-CYTB-nj-tamura-nei-bootstrap-summary.txt\nCompare this topology and its branch lengths with the p-distance result. The Tamura-Nei model allows unequal nucleotide frequencies and different rates for the two transition classes while correcting for unobserved multiple changes. It changes the definition of every entry in the distance matrix; it does not change the neighbor-joining algorithm.\n\n\n3.3 Inspecting the distance matrix\nWith bears-CYTB-aligned.meg active, select Distance | Compute Pairwise Distances. Choose the same model and complete-deletion settings as the tree whose distances are being examined.\nThe result is an eight-by-eight symmetric matrix. Each off-diagonal entry is the estimated evolutionary distance between two bear sequences. The smallest values should correspond to the closest sequence pairs in the neighbor-joining tree. The matrix is the direct input to distance-based tree construction.\nIn the Distance Data Explorer, select File | Export/Print Distances or use the CSV export button. Select CSV output, choose Print/Save Matrix, then select File | Save As in the text editor and save:\nresults/bears-CYTB-tamura-nei-distances.csv\n\n\n3.4 Comparing neighbor joining and minimum evolution\nSelect Phylogeny | Construct/Test Minimum Evolution Tree. Use the same Tamura-Nei, uniform-rate, complete-deletion, and 1,000-replicate bootstrap settings used above.\nMEGA begins with a neighbor-joining tree and uses close-neighbor interchange to search for a topology with a smaller sum of branch lengths. Record the ME search level shown in the Analysis Preferences window.\nExport:\nresults/bears-CYTB-me-tamura-nei-bootstrap.nwk\nresults/bears-CYTB-me-tamura-nei-bootstrap-summary.txt\nDifferences between this result and the NJ result arise from the tree-building criterion and ME search, because the alignment and distance definition remain the same.\n\n\n3.5 Constructing a UPGMA tree\nSelect Phylogeny | Construct/Test UPGMA Tree and retain the same Tamura-Nei and complete-deletion settings.\nUPGMA assumes a constant rate of evolution among lineages. That assumption makes every tip equidistant from the root and produces a rooted ultrametric tree. The rooted result is meaningful only when rate constancy is defensible; the presence of a root in the display is not evidence that the assumption is true.\nExport the exploratory result and summary as:\nresults/bears-CYTB-upgma-tamura-nei.nwk\nresults/bears-CYTB-upgma-tamura-nei-summary.txt",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#analysis-choices",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#analysis-choices",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "4 Analysis choices",
-    "text": "4 Analysis choices\n\nWorkflow detail: Evolutionary-distance modelsThe distance model defines what a branch length measures.\n\n\n\n\n\n\n\nModel\nMain assumptions and effect\n\n\n\n\np-distance\nObserved proportion of different sites; no correction for multiple substitutions.\n\n\nJukes-Cantor\nCorrects for multiple substitutions while assuming equal nucleotide frequencies and equal substitution rates.\n\n\nKimura 2-parameter\nDistinguishes transitions from transversions while assuming equal equilibrium nucleotide frequencies.\n\n\nTamura-Nei\nAllows unequal nucleotide frequencies and distinct transition rates and corrects for multiple substitutions.\n\n\n\nA model with more parameters is not automatically more appropriate. Sequence composition, divergence, saturation, and the amount of information in the alignment determine which assumptions are defensible.\n\n\n\nWorkflow detail: Gaps and missing dataThe selected rule determines which aligned sites contribute to each distance.\n\n\n\n\n\n\n\nTreatment\nEffect\n\n\n\n\nComplete deletion\nRemoves every site containing a gap or missing state in any taxon, so all pairwise distances use the same retained columns.\n\n\nPairwise deletion\nRemoves incomplete sites separately for each pair, so different matrix entries may use different columns.\n\n\nPartial deletion\nRetains sites that meet a specified coverage threshold.\n\n\n\nThe course alignment contains no gaps or ambiguous bases, so all three rules retain the same 1,140 sites here. They need not agree for another alignment.",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#recording-the-analysis",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#recording-the-analysis",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "5 Recording the analysis",
-    "text": "5 Recording the analysis\nPreserve:\n\nbears-CYTB-aligned.fasta;\nbears-CYTB-aligned.meg;\neach exported Newick tree;\neach analysis summary;\nthe native Tree Explorer sessions needed for later interactive inspection; and\nthe MEGA version and operating system.\n\nReport the tree-building method, evolutionary-distance model, rate treatment, gap and missing-data treatment, number of retained sites, bootstrap replicate count, and any rooting performed after inference.\nNeighbor-joining and minimum-evolution results are unrooted. Rooting either tree is a separate biological analysis decision, even when MEGA draws the tree with a leftmost base.",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#further-reading",
-    "href": "content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html#further-reading",
-    "title": "Distance-based phylogenetic inference with MEGA",
-    "section": "6 Further reading",
-    "text": "6 Further reading\n\nMEGA website and downloads\nMEGA 12 online manual\nBuilding trees from sequence data\nNeighbor-joining tree construction\nMinimum-evolution tree construction\nUPGMA tree construction\nModels for estimating evolutionary distances\nBootstrap test of phylogeny",
-    "crumbs": [
-      "Home",
-      "[[55-04]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
-    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "objectID": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html",
+    "href": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html",
+    "title": "Pseudo-random number generators: continuous values from discrete machines",
     "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
     "crumbs": [
       "Home",
-      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[21-03]{.indexed-content-number} [Pseudo-random number generators: continuous values from discrete machines]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#pathogen-fitness-as-function-of-virulence",
-    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#pathogen-fitness-as-function-of-virulence",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "objectID": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html#how-a-discrete-valued-machine-generating-continuous-random-values",
+    "href": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html#how-a-discrete-valued-machine-generating-continuous-random-values",
+    "title": "Pseudo-random number generators: continuous values from discrete machines",
     "section": "",
-    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
     "crumbs": [
       "Home",
-      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#linear-decline-in-host-resources-due-to-virulence",
-    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#linear-decline-in-host-resources-due-to-virulence",
-    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
-    "section": "2 Linear decline in host resources due to virulence",
-    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]",
-    "crumbs": [
-      "Home",
-      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[21-03]{.indexed-content-number} [Pseudo-random number generators: continuous values from discrete machines]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -1372,14 +1295,157 @@
     ]
   },
   {
-    "objectID": "content/03_primers/31-02__bernoulli-trial.html",
-    "href": "content/03_primers/31-02__bernoulli-trial.html",
-    "title": "Bernoulli trial",
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html",
+    "title": "Phylogenetic inference tools – RAxML-NG",
     "section": "",
-    "text": "A “Bernoulli trial” is a model of randomness in which there are two possible elementary outcomes in the sample space, with the probability of one outcome given by the model parameter \\(p\\) (and the probability of the other is then \\(1-p\\)).\nThe iconic example is that of a single toss of a coin. If the coin is fair, that is, equally likely to land with either of its two sides, typically designated “heads” or “tails”, then it can be modeled as a Bernoulli trial with parameter \\(p = 0.5\\) giving the probability of “heads”. Conversely, a trick coin may have the a “heads” on both sides, thus always landing with a “heads” result, an or a “tails”\n\n\n\n Back to top",
+    "text": "RAxML-NG infers maximum-likelihood phylogenies from aligned molecular or discrete-character data. A typical analysis checks the alignment, selects or specifies an evolutionary model, searches for the maximum-likelihood tree, estimates branch support, and writes the resulting trees in Newick format.\nThe commands below use RAxML-NG 2.x. Automatic model selection and the adaptive tree-search defaults described here are not available in the same form in RAxML-NG 1.x.",
     "crumbs": [
       "Home",
-      "[[31-02]{.indexed-content-number} [Bernoulli trial]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#installation-and-command-line-help",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#installation-and-command-line-help",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "1 Installation and command-line help",
+    "text": "1 Installation and command-line help\nDownload a current binary from the RAxML-NG releases, or install the Bioconda package:\nconda install -c bioconda raxml-ng\nConfirm the installed version and display the available commands and parameters:\nraxml-ng --version\nraxml-ng --help\nRecord the version reported by --version with the analysis results. If automatic model selection is required, confirm that the installed version is 2.0 or later.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#input-requirements-and-validation",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#input-requirements-and-validation",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "2 Input requirements and validation",
+    "text": "2 Input requirements and validation\nRAxML-NG requires a multiple-sequence alignment, not raw unaligned sequences. FASTA and PHYLIP are the usual text formats; the program also accepts its binary RAxML Binary Alignment format.\nBefore starting an analysis, confirm that:\n\nevery sequence represents homologous characters and has the same aligned length;\nevery taxon has a unique label;\nlabels avoid spaces and Newick punctuation such as parentheses, commas, colons, and semicolons;\nthe alignment contains the intended character type;\npartition coordinates, if used, are one-based and match the alignment; and\nconstant sites remain present unless the sampling process deliberately retained only variable sites.\n\nCheck a nucleotide alignment before a full analysis:\nraxml-ng \\\n    --check \\\n    --msa alignment.fasta \\\n    --model GTR+G \\\n    --prefix alignment_check\n--check validates the alignment and identifies problems such as duplicate taxon names, sequences or columns containing only undetermined characters, and other incompatible input. If a corrected or reduced alignment is written, either use that file or correct the original data before inference.\nFor a large alignment, parse it once into RAxML-NG’s compressed binary format:\nraxml-ng \\\n    --parse \\\n    --msa alignment.fasta \\\n    --model GTR+G \\\n    --prefix alignment_parsed\nThe main output is alignment_parsed.raxml.rba. It can replace the text alignment in later commands and usually loads more quickly:\nraxml-ng \\\n    --search \\\n    --msa alignment_parsed.raxml.rba \\\n    --prefix alignment_search\nThe binary alignment contains the model and partition definitions used during parsing. RAxML-NG therefore ignores a separate --model argument when reading an .raxml.rba file. Reparse the original text alignment to change its model or partitions.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#a-standard-analysis",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#a-standard-analysis",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "3 A standard analysis",
+    "text": "3 A standard analysis\nThe following RAxML-NG 2.x command selects a nucleotide model, searches for a maximum-likelihood tree, runs nonparametric bootstrap replicates, and maps Felsenstein bootstrap proportions onto the best tree:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 'autoMRE{1000}' \\\n    --bs-metric fbp \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix alignment_run1\nThe parameters have the following meanings:\n\n\n\n\n\n\n\nParameter\nMeaning\n\n\n\n\n--all\nPerforms model fitting and maximum-likelihood tree search, bootstrap inference, and support mapping in one run.\n\n\n--msa alignment.fasta\nReads the multiple-sequence alignment from alignment.fasta.\n\n\n--model DNA\nIdentifies nucleotide data and invokes MOOSE automatic model selection. MOOSE uses the Bayesian information criterion by default. Use AA for amino-acid data or supply a fixed model string or partition file.\n\n\n--bs-trees 'autoMRE{1000}'\nUses the majority-rule extended convergence test to stop bootstrapping when the replicate trees have converged, with a maximum of 1,000 replicates. Inspect the log to confirm whether convergence was reached.\n\n\n--bs-metric fbp\nCalculates classical Felsenstein bootstrap proportions. This is the default metric, but stating it explicitly records the procedure in the command.\n\n\n--threads 'auto{8}'\nAutotunes parallel execution without using more than eight CPU threads. The quotes preserve the braces in common shells.\n\n\n--seed 20260921\nSets the pseudorandom-number seed. Any fixed non-negative integer may be used. Record the software version and computing environment because a seed alone does not guarantee identical results across versions or platforms.\n\n\n--prefix alignment_run1\nWrites output files with the prefix alignment_run1. Use a distinct prefix for every analysis.\n\n\n\nThe best tree with mapped support values is alignment_run1.raxml.support. The maximum-likelihood tree without support labels is alignment_run1.raxml.bestTree.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#analysis-commands",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#analysis-commands",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "4 Analysis commands",
+    "text": "4 Analysis commands\nRAxML-NG selects one main analysis command per invocation:\n\n\n\n\n\n\n\nCommand\nOperation\n\n\n\n\n--search\nSearches for maximum-likelihood tree topologies. This is the default when no command is given, but stating it explicitly makes the workflow clear.\n\n\n--all\nCombines tree search, bootstrapping, and support mapping.\n\n\n--fast\nPerforms a reduced, early-stopping tree search from one parsimony tree. Use it for exploratory work rather than as a replacement for a full search without evaluating the trade-off.\n\n\n--allfast\nCombines the fast search with the Educated Bootstrap Guesser support procedure.\n\n\n--moose\nPerforms model selection without a subsequent full topology search.\n\n\n--bootstrap\nInfers bootstrap replicate trees without performing the main maximum-likelihood search.\n\n\n--support\nMaps support from an existing collection of replicate trees onto a reference tree.\n\n\n--evaluate\nOptimizes model parameters and branch lengths on a supplied fixed topology.\n\n\n--check\nValidates an alignment and removes empty rows or columns when necessary.\n\n\n--parse\nValidates and compresses an alignment into the binary .raxml.rba format.\n\n\n--rfdist\nCalculates pairwise Robinson–Foulds distances among trees in a Newick file.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#model-selection-and-model-strings",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#model-selection-and-model-strings",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "5 Model selection and model strings",
+    "text": "5 Model selection and model strings\nRun MOOSE model selection without a subsequent full search:\nraxml-ng \\\n    --moose \\\n    --msa alignment.fasta \\\n    --data-type DNA \\\n    --prefix alignment_models\nThe selected model is written to alignment_models.raxml.moose.bestModel. Use it directly in a later search:\nraxml-ng \\\n    --search \\\n    --msa alignment.fasta \\\n    --model alignment_models.raxml.moose.bestModel \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix alignment_search\nThe accompanying alignment_models.raxml.rba file already contains the selected model and can instead be supplied with --msa without a --model argument.\nMOOSE uses BIC by default. Select another supported information criterion when required by the analysis design:\nraxml-ng \\\n    --moose \\\n    --msa alignment.fasta \\\n    --data-type DNA \\\n    --moose-options criterion=AICc \\\n    --prefix alignment_models_aicc\nAlternatively, provide a fixed model directly:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model GTR+G4+FO \\\n    --bs-trees 1000 \\\n    --threads 8 \\\n    --seed 20260921 \\\n    --prefix alignment_gtr_g4_fo\nA RAxML-NG model string combines a substitution model with optional components:\n\n\n\n\n\n\n\nComponent\nMeaning\n\n\n\n\nGTR, HKY, JC\nExamples of nucleotide substitution models.\n\n\nLG, WAG, JTT\nExamples of amino-acid exchangeability models.\n\n\n+F\nUses empirical state frequencies calculated from the alignment.\n\n\n+FO\nOptimizes state frequencies by maximum likelihood.\n\n\n+I\nEstimates a proportion of invariant sites.\n\n\n+G4\nModels among-site rate variation with a discrete gamma distribution and four rate categories. +G also defaults to four categories.\n\n\n+R4\nModels among-site rate variation with four FreeRate categories.\n\n\n+ASC_LEWIS\nApplies Lewis ascertainment-bias correction to data from which constant characters were deliberately excluded.\n\n\n\nDo not add model components by convention alone. Use MOOSE or provide a biological and statistical reason for fixing a model. Model-string syntax and defaults can differ among phylogenetic programs, so do not copy a model string from another program without checking its RAxML-NG meaning.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#partitioned-alignments",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#partitioned-alignments",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "6 Partitioned alignments",
+    "text": "6 Partitioned alignments\nPartition a concatenated alignment when defined site sets, such as genes or codon positions, require separate evolutionary models. A partition file named partitions.txt can contain:\nGTR+G4+FO, gene1_pos1 = 1-900\\3\nGTR+G4+FO, gene1_pos2 = 2-900\\3\nGTR+G4+FO, gene1_pos3 = 3-900\\3\nGTR+G4+FO, gene2 = 901-1500\nThe expression 1-900\\3 selects sites 1, 4, 7, and so forth through site 898. The other two expressions select the second and third codon positions.\nRun the partitioned analysis with proportional branch lengths:\nraxml-ng \\\n    --all \\\n    --msa concatenated.fasta \\\n    --model partitions.txt \\\n    --brlen scaled \\\n    --bs-trees 'autoMRE{1000}' \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix concatenated_partitioned\nThe branch-length linkage modes are:\n\n\n\n\n\n\n\nParameter\nPartition model\n\n\n\n\n--brlen linked\nUses one shared branch length for each edge across all partitions.\n\n\n--brlen scaled\nUses proportional branch lengths: partitions share the relative edge-length pattern but have separate overall rate scalers. This is the default.\n\n\n--brlen unlinked\nEstimates an independent branch length for every edge in every partition. This introduces many more parameters.\n\n\n\nFor automatic per-partition model selection in RAxML-NG 2.x, prefix the partition filename with auto=:\nraxml-ng \\\n    --search \\\n    --msa concatenated.fasta \\\n    --model auto=partitions.txt \\\n    --brlen scaled \\\n    --prefix concatenated_models_search",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#starting-trees-constraints-and-fixed-trees",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#starting-trees-constraints-and-fixed-trees",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "7 Starting trees, constraints, and fixed trees",
+    "text": "7 Starting trees, constraints, and fixed trees\nThese parameters have distinct effects:\n\n\n\n\n\n\n\nParameter\nEffect\n\n\n\n\nOmit --tree\nUses the RAxML-NG 2.x adaptive procedure to choose starting trees based on predicted alignment difficulty.\n\n\n--tree 'pars{10},rand{10}'\nRuns searches from ten randomized parsimony trees and ten random trees.\n\n\n--tree start.tree\nStarts the search from the supplied Newick tree. The topology may change during the search.\n\n\n--tree-constraint constraint.tree\nRestricts the topology search to trees compatible with the supplied, possibly incomplete, constraint tree.\n\n\n--evaluate --tree fixed.tree\nKeeps the supplied topology fixed while optimizing its branch lengths and free model parameters.\n\n\n--outgroup TaxonA,TaxonB\nDraws the reported tree with the named taxa on the outgroup side. This is an output-orientation option, not statistical evidence about the root.\n\n\n\nUse constraints only when they represent an explicit analysis assumption. A starting tree is not a constraint, and maximum likelihood under the usual reversible models infers an unrooted tree.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#bootstrap-support",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#bootstrap-support",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "8 Bootstrap support",
+    "text": "8 Bootstrap support\nUse a fixed number of classical bootstrap replicates when the analysis requires a predetermined count:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 1000 \\\n    --bs-metric fbp \\\n    --prefix alignment_fbp\nFor large trees, calculate both Felsenstein bootstrap proportions and transfer bootstrap expectation values from the same replicate trees:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 'autoMRE{1000}' \\\n    --bs-metric fbp,tbe \\\n    --prefix alignment_fbp_tbe\nWhen multiple support metrics are requested, RAxML-NG writes separate supported trees such as .raxml.supportFBP and .raxml.supportTBE. Support values are conditional on the alignment, model, search, and resampling procedure; they are not posterior probabilities and do not establish a root.\nMap support from previously generated replicate trees onto an existing reference tree:\nraxml-ng \\\n    --support \\\n    --tree alignment_run1.raxml.bestTree \\\n    --bs-trees alignment_run1.raxml.bootstraps \\\n    --bs-metric fbp,tbe \\\n    --prefix alignment_support",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#cpu-and-memory-use",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#cpu-and-memory-use",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "9 CPU and memory use",
+    "text": "9 CPU and memory use\nOn a scheduler or shared computer, never exceed the allocated CPU count:\n--threads 8\nUse bounded autotuning when the efficient thread count is unknown:\n--threads 'auto{8}'\n--workers N controls how many independent tree searches run concurrently within the available parallel resources. The default auto setting is usually appropriate. Increasing the worker count does not increase the CPU allocation and can reduce the threads available to each search.\nThe --parse command reports memory and thread-count guidance for the supplied alignment and model. RAxML-NG has no general command-line memory cap comparable to a scheduler memory request; request sufficient memory from the scheduler and inspect the parse estimate before submitting a large job.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#output-files",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#output-files",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "10 Output files",
+    "text": "10 Output files\nFor --prefix alignment_run1, the principal files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_run1.raxml.support\nBest maximum-likelihood tree with Felsenstein bootstrap support.\n\n\nalignment_run1.raxml.bestTree\nBest-scoring maximum-likelihood tree without mapped support values.\n\n\nalignment_run1.raxml.mlTrees\nResulting maximum-likelihood tree from each starting-tree search.\n\n\nalignment_run1.raxml.bootstraps\nTree inferred from each bootstrap replicate.\n\n\nalignment_run1.raxml.bestModel\nOptimized model specification and parameter estimates for the best tree.\n\n\nalignment_run1.raxml.startTree\nStarting trees used for the maximum-likelihood searches.\n\n\nalignment_run1.raxml.log\nProgram version, exact command, input summary, settings, warnings, progress, likelihoods, and completion status.\n\n\nalignment_run1.raxml.ckp\nIntermediate checkpoint used to resume an interrupted run; normally removed after successful completion.\n\n\nalignment_run1.raxml.rba\nCompressed binary representation of the alignment and its partitions.\n\n\n\nRead the log before using the tree:\nless alignment_run1.raxml.log\nConfirm that:\n\nthe program completed normally;\nthe data type, alignment dimensions, and partitions are correct;\nthe selected or fixed model is the intended one;\nthe number of searches and bootstrap replicates is adequate;\nautoMRE convergence was reached when bootstopping was requested;\nwarnings about duplicate sequences, missing data, numerical behavior, or constraints have been evaluated; and\nthe best log-likelihood, seed, program version, and exact command have been recorded.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#checkpoints-and-repeated-analyses",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#checkpoints-and-repeated-analyses",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "11 Checkpoints and repeated analyses",
+    "text": "11 Checkpoints and repeated analyses\nRAxML-NG periodically writes the .raxml.ckp checkpoint. If a run is interrupted, rerun the same command with the same inputs and prefix; RAxML-NG resumes from the checkpoint.\nA completed result prevents accidental overwriting. Use a new prefix for another analysis. The --redo parameter ignores the existing checkpoint, deletes or overwrites result files for that prefix, and starts from the beginning; use it only when the existing result is no longer needed.\nTo request a specified collection of independent searches in one run, use an explicit starting-tree set such as:\n--tree 'pars{10},rand{10}'\nCompare the final likelihoods in .raxml.mlTrees and .raxml.log. Retain the highest-likelihood result rather than selecting a tree by its support values.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#operational-checklist",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#operational-checklist",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "12 Operational checklist",
+    "text": "12 Operational checklist\n\nPrepare and inspect the aligned input data.\nRun --check; use --parse for large alignments.\nSelect the data type and partition scheme.\nUse MOOSE model selection or state a fixed model.\nChoose the tree-search and branch-support procedures.\nSet a fixed seed, allocated thread limit, and unique prefix.\nSave the exact command, RAxML-NG version, alignment, model, and partition file.\nRead the .raxml.log file and resolve relevant warnings.\nPreserve the supported tree, best tree, bootstrap trees, model file, log, and binary alignment.\nRoot the inferred tree according to the biological study design and document that decision.\nReport the software version, model-selection criterion or fixed model, partition branch-length mode, tree-search settings, support metric, and replicate or convergence rule.\nCite RAxML-NG and any feature-specific methods identified by the software documentation.",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#further-reading",
+    "href": "content/03_primers/53-03__phylogenetic-inference--tools--raxml.html#further-reading",
+    "title": "Phylogenetic inference tools – RAxML-NG",
+    "section": "13 Further reading",
+    "text": "13 Further reading\n\nRAxML-NG repository and installation instructions\nRAxML-NG tutorial\nInput data and analysis commands\nAutomatic model selection with MOOSE\nComputing branch-support metrics\nParallelization\nOutput files and settings\nRAxML-NG paper",
+    "crumbs": [
+      "Home",
+      "[[53-03]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -1449,157 +1515,146 @@
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html",
-    "title": "Phylogenetic inference tools – IQ-TREE",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html",
+    "title": "Phylogenetic inference tools – MrBayes",
     "section": "",
-    "text": "IQ-TREE infers maximum-likelihood phylogenies from aligned molecular or discrete-character data. A typical analysis selects or specifies an evolutionary model, searches for the maximum-likelihood tree, estimates branch support, and writes the tree in Newick format.",
+    "text": "MrBayes estimates posterior distributions of phylogenetic trees and model parameters with Markov chain Monte Carlo (MCMC). A typical analysis reads an aligned NEXUS data set, defines an evolutionary model and its priors, runs independent Metropolis-coupled MCMC analyses, checks convergence and mixing, and summarizes the retained posterior samples.\nThe commands below use MrBayes 3.2.8. Most also apply to earlier MrBayes 3.2 releases.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#installation-and-command-names",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#installation-and-command-names",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "1 Installation and command names",
-    "text": "1 Installation and command names\nDownload a current binary from the IQ-TREE website or use one of the package-manager methods in the installation guide.\nThe commands below use the IQ-TREE 3 executable name, iqtree3. Some installations expose the executable as iqtree or iqtree2; substitute that name in each command if necessary.\nConfirm the installed version and display the command-line help:\niqtree3 --version\niqtree3 -h\nRecord the version reported by --version with the analysis results.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#installation-and-help",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#installation-and-help",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "1 Installation and help",
+    "text": "1 Installation and help\nDownload the current source or a platform build from the MrBayes download page. On systems with Homebrew, install the available formula with:\nbrew tap brewsci/bio\nbrew install mrbayes\nThe Bioconda package can be installed with:\nconda install bioconda::mrbayes\nPackage-manager releases can lag the current official release. Confirm the installed version and display command-line options:\nmb -v\nmb -h\nStart an interactive session without a filename:\nmb\nMrBayes provides detailed help within the session:\nMrBayes &gt; help\nMrBayes &gt; help lset\nMrBayes &gt; help prset\nMrBayes &gt; help mcmc\nMrBayes &gt; help sump\nMrBayes &gt; help sumt\nThe manual command writes the complete built-in command reference to a text file. The reference reflects the options and defaults of the running executable.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#input-requirements",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#input-requirements",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "2 Input requirements",
-    "text": "2 Input requirements\nIQ-TREE requires a multiple-sequence alignment, not raw unaligned sequences. It accepts FASTA, PHYLIP, NEXUS, CLUSTAL, and MSF alignments.\nBefore starting an analysis, confirm that:\n\nevery sequence represents homologous characters and has the same aligned length;\nevery taxon has a unique, compact label;\ntaxon labels avoid spaces and Newick punctuation such as parentheses, commas, colons, and semicolons;\nthe alignment contains the intended character type;\npartition coordinates, if used, are one-based and match the alignment; and\nconstant sites remain present unless the sampling process deliberately retained only variable sites.\n\nIQ-TREE treats gaps and missing or ambiguous characters as unknown states. Unsupported characters in taxon labels may be replaced with underscores, which can create duplicate labels. Correct such labels in the input alignment before analysis.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#input-data-and-command-files",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#input-data-and-command-files",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "2 Input data and command files",
+    "text": "2 Input data and command files\nMrBayes reads aligned data in NEXUS format. Supported character types include DNA, RNA, protein, restriction-site, standard discrete morphological, and mixed data. A minimal DNA file has this structure:\n#NEXUS\n\nbegin data;\n    dimensions ntax=4 nchar=12;\n    format datatype=dna missing=? gap=-;\n    matrix\n        Taxon_A  ACGTACGTACGT\n        Taxon_B  ACGTACGTACGA\n        Taxon_C  ACGTACGTTCGA\n        Taxon_D  ACGTTCGTTCGA\n    ;\nend;\nBefore analysis, confirm that:\n\nthe matrix is an alignment of homologous characters;\nntax and nchar match the matrix;\nevery taxon has a unique label;\ntaxon labels avoid spaces and NEXUS or Newick punctuation;\ndatatype, missing, and gap describe the matrix correctly;\npartition coordinates are one-based and match the alignment; and\nthe ascertainment-bias setting matches whether constant or singleton characters were retained.\n\nKeep the data and analysis commands in separate files. This permits several analyses to use the same alignment without modifying it. Every command inside a begin mrbayes; ... end; block ends with a semicolon. Text in square brackets is a NEXUS comment.\nRun a command file non-interactively and preserve the screen output:\nmb analysis.nex &gt; alignment_gtrig.screen.log 2&gt;&1\nUse a unique output name for every analysis. MrBayes does not silently overwrite existing output files under its default warning behavior.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#a-standard-analysis",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#a-standard-analysis",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "3 A standard analysis",
-    "text": "3 A standard analysis\nThe following command selects a model, searches for a maximum-likelihood tree, and calculates two forms of branch support:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MFP \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix alignment_run1\nThe parameters have the following meanings:\n\n\n\n\n\n\n\nParameter\nMeaning\n\n\n\n\n-s alignment.fasta\nReads the multiple-sequence alignment from alignment.fasta.\n\n\n-m MFP\nRuns ModelFinder Plus, selects the best-fit model by the Bayesian information criterion by default, and uses that model for tree inference.\n\n\n-B 1000\nRuns 1,000 ultrafast bootstrap (UFBoot) replicates. IQ-TREE recommends at least 1,000 replicates.\n\n\n--alrt 1000\nRuns 1,000 replicates of the SH-like approximate likelihood-ratio test (SH-aLRT).\n\n\n-T AUTO\nBenchmarks available CPU threads and selects an efficient thread count. On a managed cluster, replace AUTO with the number of CPU threads allocated to the job.\n\n\n--seed 20260912\nSets the random-number seed. Any fixed integer may be used. Record the IQ-TREE version and computing environment because a seed alone does not guarantee identical results across versions or platforms.\n\n\n--prefix alignment_run1\nWrites all output files with the prefix alignment_run1 instead of deriving their names from the alignment filename. Use a distinct prefix for every analysis.\n\n\n\n-m MFP is the default behavior in modern IQ-TREE versions, but stating it explicitly records the model-selection procedure in the command.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#a-standard-nucleotide-analysis",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#a-standard-nucleotide-analysis",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "3 A standard nucleotide analysis",
+    "text": "3 A standard nucleotide analysis\nCreate analysis.nex with the following commands:\n#NEXUS\n\nbegin mrbayes;\n    set autoclose=yes nowarnings=no quitonerror=yes;\n    set seed=20260922 swapseed=4260901;\n    execute alignment.nex;\n\n    lset nst=6 rates=invgamma ngammacat=4;\n    prset statefreqpr=dirichlet(1,1,1,1);\n    showmodel;\n\n    mcmcp nruns=2 nchains=4 temp=0.1 ngen=2000000\n        samplefreq=1000 printfreq=1000\n        mcmcdiagn=yes diagnfreq=5000\n        diagnstat=avgstddev minpartfreq=0.10\n        relburnin=yes burninfrac=0.25\n        stoprule=no checkpoint=yes checkfreq=10000\n        filename=alignment_gtrig;\n    mcmc;\n\n    sump relburnin=yes burninfrac=0.25;\n    sumt relburnin=yes burninfrac=0.25;\nend;\nThe commands and parameters have the following meanings:\n\n\n\n\n\n\n\nCommand or parameter\nMeaning\n\n\n\n\nset autoclose=yes\nEnds the requested MCMC run without asking whether to add generations. This is appropriate for batch execution.\n\n\nnowarnings=no\nRetains prompts that protect existing output files. Use a fresh filename so a batch job does not stop at an overwrite prompt.\n\n\nquitonerror=yes\nTerminates batch execution after an error instead of waiting for more interactive input.\n\n\nseed\nSets the main pseudorandom-number seed. Set it before execute so default starting values derived while reading the matrix are reproducible.\n\n\nswapseed\nSets the pseudorandom-number seed for swaps among cold and heated chains.\n\n\nexecute alignment.nex\nReads the alignment and any definitions in alignment.nex.\n\n\nlset nst=6\nUses the general time-reversible (GTR) nucleotide substitution model.\n\n\nrates=invgamma\nEstimates both a proportion of invariable sites and gamma-distributed rate variation among the remaining sites.\n\n\nngammacat=4\nApproximates the gamma distribution with four discrete rate categories.\n\n\nprset statefreqpr=dirichlet(1,1,1,1)\nAssigns a flat Dirichlet prior to the four nucleotide frequencies. This is the default, but stating it records the assumption.\n\n\nshowmodel\nPrints the complete active model, parameter links, and priors. Save this output in the screen log.\n\n\nmcmcp\nChanges MCMC settings without starting the run. mcmc accepts the same settings and starts sampling immediately.\n\n\nnruns=2\nRuns two independent analyses. Comparison between their samples supplies several convergence diagnostics.\n\n\nnchains=4\nUses one cold chain and three heated chains in each run. Posterior samples come from the cold chain.\n\n\ntemp=0.1\nSets the heating coefficient for Metropolis coupling. Smaller values make adjacent chains more similar and increase swap acceptance; larger values make heated chains hotter.\n\n\nngen=2000000\nSets the target total to 2,000,000 MCMC generations. This example value must be increased when diagnostics remain inadequate.\n\n\nsamplefreq=1000\nWrites a parameter and tree sample every 1,000 generations. The run stores approximately ngen / samplefreq samples before burn-in removal.\n\n\nprintfreq=1000\nPrints progress every 1,000 generations. This affects the screen log, not the sampling interval.\n\n\nmcmcdiagn=yes\nWrites move, swap, and topology-convergence diagnostics to &lt;filename&gt;.mcmc.\n\n\ndiagnfreq=5000\nCalculates run-time diagnostics every 5,000 generations.\n\n\ndiagnstat=avgstddev\nUses the average standard deviation of split frequencies (ASDSF) as the run-time topology diagnostic.\n\n\nminpartfreq=0.10\nIncludes a split in ASDSF when its frequency is at least 0.10 in at least one run.\n\n\nrelburnin=yes\nExpresses burn-in as a fraction of saved samples rather than a fixed sample count.\n\n\nburninfrac=0.25\nExcludes the first 25% of saved samples from run-time diagnostics and the requested summaries. Check traces rather than treating 25% as universally adequate.\n\n\nstoprule=no\nRuns to ngen instead of stopping automatically at an ASDSF threshold.\n\n\ncheckpoint=yes\nWrites chain state to a checkpoint file so an interrupted analysis can resume.\n\n\ncheckfreq=10000\nUpdates the checkpoint every 10,000 generations.\n\n\nfilename=alignment_gtrig\nUses alignment_gtrig as the base name for output files.\n\n\nsump\nSummarizes sampled scalar parameters, including credible intervals, effective sample sizes, and potential scale reduction factors.\n\n\nsumt\nSummarizes sampled trees, split frequencies, branch parameters, consensus trees, and credible sets of trees.\n\n\n\nThe values of ngen, samplefreq, and burninfrac define the computational plan, not evidence that sampling is adequate. Extend the analysis when the retained samples fail the convergence and mixing checks below.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#model-selection-and-model-strings",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#model-selection-and-model-strings",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "4 Model selection and model strings",
-    "text": "4 Model selection and model strings\nRun model selection without a subsequent full tree search when the selected model is needed for a separate workflow:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MF \\\n    -T AUTO \\\n    --prefix alignment_model_test\n-m MF performs ModelFinder model selection only. Read the selected model from alignment_model_test.iqtree. Supply that model directly in a later analysis:\niqtree3 \\\n    -s alignment.fasta \\\n    -m GTR+F+R4 \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix alignment_gtr_f_r4\nAn IQ-TREE model string combines a base substitution model with optional components:\n\n\n\n\n\n\n\nComponent\nMeaning\n\n\n\n\nGTR, HKY, JC\nExamples of nucleotide substitution models.\n\n\nLG, WAG, JTT\nExamples of amino-acid exchangeability models.\n\n\n+F\nUses empirical character frequencies counted from the alignment.\n\n\n+FO\nOptimizes character frequencies by maximum likelihood.\n\n\n+I\nEstimates a proportion of invariable sites.\n\n\n+G4\nModels among-site rate variation with a discrete gamma distribution and four rate categories.\n\n\n+R4\nModels among-site rate variation with four FreeRate categories.\n\n\n+ASC\nCorrects for ascertainment bias when the input deliberately excludes constant sites, as in many SNP or morphological matrices.\n\n\n\nDo not add model components by convention alone. Use ModelFinder or provide a biological and statistical reason for fixing a model. +ASC is incompatible with an alignment that contains constant sites.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#likelihood-models-and-priors",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#likelihood-models-and-priors",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "4 Likelihood models and priors",
+    "text": "4 Likelihood models and priors\nlset defines the likelihood model. prset defines priors on its parameters. Review the combined result with showmodel before sampling.\nCommon nucleotide settings include:\n\n\n\n\n\n\n\nSetting\nEffect\n\n\n\n\nlset nst=1\nUses one substitution-rate class: F81 with estimated state frequencies, or JC when statefreqpr=fixed(equal).\n\n\nlset nst=2\nUses two substitution-rate classes: HKY with estimated state frequencies, or K80 when statefreqpr=fixed(equal).\n\n\nlset nst=6\nUses six reversible substitution rates: GTR with estimated state frequencies, or SYM when statefreqpr=fixed(equal).\n\n\nlset nst=mixed\nUses reversible-jump MCMC to average across reversible nucleotide substitution models.\n\n\nlset rates=equal\nUses one rate for all sites.\n\n\nlset rates=gamma\nEstimates gamma-distributed rate variation among sites.\n\n\nlset rates=propinv\nEstimates a proportion of invariable sites without gamma-distributed variation.\n\n\nlset rates=invgamma\nCombines an estimated invariable-site proportion with gamma-distributed variation.\n\n\n\nCommon prior settings include:\n\n\n\n\n\n\n\nSetting\nParameter controlled\n\n\n\n\nprset statefreqpr=dirichlet(...)\nStationary state frequencies.\n\n\nprset revmatpr=dirichlet(...)\nSix reversible rates in a GTR model.\n\n\nprset tratiopr=beta(...)\nTransition-to-transversion rate ratio in an nst=2 model.\n\n\nprset shapepr=exponential(...)\nShape of gamma-distributed among-site rate variation.\n\n\nprset pinvarpr=uniform(...)\nProportion of invariable sites.\n\n\nprset brlenspr=...\nBranch-length prior.\n\n\nprset topologypr=...\nTree-topology prior and enforced topological constraints.\n\n\n\nThe distribution arguments use program-specific parameterizations. Inspect help prset and showmodel rather than transferring numeric prior arguments from another program.\nFor protein data, choose a fixed empirical rate matrix or average over the supported matrices:\nprset aamodelpr=fixed(lg);\nlset rates=gamma ngammacat=4;\nprset aamodelpr=mixed;\nlset rates=gamma ngammacat=4;\nFor a standard-character morphology matrix that deliberately excludes all constant characters, apply the corresponding ascertainment correction:\nlset coding=variable rates=gamma;\nUse coding=informative when the matrix contains only parsimony-informative characters. Use coding=all when the sampling process retained all character classes. The correction must match the way the matrix was assembled.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#character-types",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#character-types",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "5 Character types",
-    "text": "5 Character types\nIQ-TREE usually detects the character type. Use --seqtype when detection is incorrect or when the intended analysis requires an explicit type:\n\n\n\n\n\n\n\nParameter\nCharacter type\n\n\n\n\n--seqtype DNA\nNucleotide data.\n\n\n--seqtype AA\nAmino-acid data.\n\n\n--seqtype CODON\nProtein-coding nucleotide data analyzed with the standard genetic code and a codon model.\n\n\n--seqtype CODON5\nCodon data using genetic-code table 5, the invertebrate mitochondrial code.\n\n\n--seqtype MORPH\nDiscrete morphological characters.\n\n\n\nCodon analysis requires --seqtype CODON or the appropriate numbered genetic code. The alignment length must be divisible by three, and the first alignment position must correspond to the first codon position.\nFor an alignment that contains only ascertained variable nucleotide sites:\niqtree3 \\\n    -s snps.fasta \\\n    --seqtype DNA \\\n    -m MFP+ASC \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix snps_run1",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#partitioned-analyses",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#partitioned-analyses",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "5 Partitioned analyses",
+    "text": "5 Partitioned analyses\nDefine character sets, assemble them into a partition, activate the partition, and specify which parameters are shared:\ncharset gene1_pos1 = 1-900\\3;\ncharset gene1_pos2 = 2-900\\3;\ncharset gene1_pos3 = 3-900\\3;\ncharset gene2 = 901-1500;\n\npartition genes = 4: gene1_pos1, gene1_pos2, gene1_pos3, gene2;\nset partition=genes;\n\nlset applyto=(all) nst=6 rates=gamma ngammacat=4;\nunlink revmat=(all) statefreq=(all) shape=(all);\nprset applyto=(all) ratepr=variable;\nshowmodel;\nThe expressions 1-900\\3, 2-900\\3, and 3-900\\3 select the three codon positions. applyto=(all) applies a setting to every active partition; a list such as applyto=(1,3) targets selected partitions.\nMrBayes initially links compatible parameters across partitions. unlink revmat=(all) statefreq=(all) shape=(all) gives each partition separate GTR rates, state frequencies, and gamma-shape parameters. Topology and branch lengths remain shared because the commands do not unlink them. ratepr=variable estimates relative rate multipliers across partitions. Use showmodel to verify every link and prior after changing the partition scheme.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#partitioned-alignments",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#partitioned-alignments",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "6 Partitioned alignments",
-    "text": "6 Partitioned alignments\nPartition a concatenated alignment when defined site sets, such as genes or codon positions, require separate evolutionary models. A RAxML-style partition file named partitions.txt can contain:\nDNA, gene1_pos1 = 1-900\\3\nDNA, gene1_pos2 = 2-900\\3\nDNA, gene1_pos3 = 3-900\\3\nDNA, gene2 = 901-1500\nThe expression 1-900\\3 selects sites 1, 4, 7, and so forth through site 898. The other two expressions select the second and third codon positions.\nRun an edge-proportional partition analysis and allow ModelFinder to merge similar partitions:\niqtree3 \\\n    -s concatenated.fasta \\\n    -p partitions.txt \\\n    -m MFP+MERGE \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix concatenated_partitioned\nThe partition parameters differ in how they model branch lengths:\n\n\n\n\n\n\n\nParameter\nPartition model\n\n\n\n\n-q partitions.txt\nUses one shared set of branch lengths for all partitions.\n\n\n-p partitions.txt\nUses a shared topology and proportional branch lengths, allowing each partition to have a different overall evolutionary rate. This is the usual starting point for a partitioned analysis.\n\n\n-Q partitions.txt\nUses a shared topology but an independent set of branch lengths for each partition. This model has many more parameters.\n\n\n-m MFP+MERGE\nSelects models, searches for a lower-dimensional partitioning scheme by merging compatible partitions, and then infers the tree.\n\n\n\nInspect the selected models and merged partition scheme in the .iqtree report and the generated .best_scheme.nex file.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#constraints-and-reported-rooting",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#constraints-and-reported-rooting",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "6 Constraints and reported rooting",
+    "text": "6 Constraints and reported rooting\nDefine and enforce a positive monophyly constraint with:\nconstraint focal_clade = Taxon_D Taxon_E;\nprset topologypr=constraints(focal_clade);\nDefining a constraint does not enforce it; topologypr=constraints(...) activates the named constraints. Constraints are prior assumptions and must be recorded with the analysis.\nFor a non-clock analysis under a reversible model, set the outgroup used to orient displayed and summarized trees:\noutgroup Taxon_A;\nThe outgroup command does not add statistical information about the root of an otherwise unrooted reversible-model analysis. Clock models infer rooted trees through their model and prior structure.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#starting-trees-constraints-and-fixed-trees",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#starting-trees-constraints-and-fixed-trees",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "7 Starting trees, constraints, and fixed trees",
-    "text": "7 Starting trees, constraints, and fixed trees\nThese parameters have distinct effects:\n\n\n\n\n\n\n\nParameter\nEffect\n\n\n\n\n-t start.tree\nStarts the search from the supplied Newick tree. The topology may change during the search.\n\n\n-g constraint.tree\nRestricts the search to trees compatible with the supplied, possibly partial, topological constraint.\n\n\n-t fixed.tree --tree-fix\nFixes the supplied topology, skips the topology search, and estimates its likelihood and other model quantities.\n\n\n-o Outgroup\nPlaces the named taxon on the outgroup side of the reported tree. Under a reversible substitution model, this does not supply statistical information about the root.\n\n\n\nUse constraints only when they represent an explicit analysis assumption. A starting tree is not a constraint.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#convergence-and-mixing-checks",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#convergence-and-mixing-checks",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "7 Convergence and mixing checks",
+    "text": "7 Convergence and mixing checks\nInspect the screen log, .mcmc, .pstat, .tstat, and .vstat files after every analysis. Use all relevant checks rather than a single threshold:\n\nASDSF compares split frequencies across independent runs and should approach zero. A value below 0.01 is a commonly used rough target, but agreement between runs does not prove that either run explored the complete posterior.\nPotential scale reduction factors (PSRFs) compare within-run and between-run variation and should approach 1.0. The MrBayes manual gives 1.0–1.2 as a rough range, not a universal acceptance rule.\nEffective sample size (ESS) estimates the amount of independent information in autocorrelated samples. Values below 100 indicate poor sampling in the MrBayes command reference. Larger values provide more stable posterior summaries.\nLikelihood and parameter traces should be stationary after burn-in, without long trends or persistent separation among runs.\nPosterior summaries and well-supported split frequencies should agree across independent runs.\nAdjacent-chain swap acceptance rates appear in .mcmc and at the end of the run. The manual gives approximately 10%–70% as a useful range. Decrease temp when adjacent-chain swaps are too rare; increase it when they are uniformly too frequent.\n\nIf diagnostics are inadequate, extend the runs, improve Metropolis coupling, reconsider parameterization or partitioning, and repeat the summaries with an appropriate burn-in. Do not pool runs that converged to incompatible posterior regions.\nEnable automatic stopping only when ASDSF is an appropriate stopping statistic and at least two runs are active:\nmcmcp stoprule=yes stopval=0.01;\nngen remains the maximum generation. The stopping rule can terminate earlier when the run-time ASDSF falls below stopval; post-run diagnostics remain necessary.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#resource-limits",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#resource-limits",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "8 Resource limits",
-    "text": "8 Resource limits\nUse a fixed thread count and memory limit when a scheduler or shared computer assigns finite resources:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MFP \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T 8 \\\n    --mem 16G \\\n    --seed 20260912 \\\n    --prefix alignment_run1\n-T 8 uses up to eight CPU threads. --mem 16G limits IQ-TREE to approximately 16 GB of memory. These values must not exceed the resources allocated to the process.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#checkpoints-and-extending-a-run",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#checkpoints-and-extending-a-run",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "8 Checkpoints and extending a run",
+    "text": "8 Checkpoints and extending a run\nMrBayes writes &lt;filename&gt;.ckp when checkpointing is enabled. To resume or extend an analysis, use the same data, model, number of runs, number of chains, sampling settings, and output filename. Set ngen to a total generation greater than the generation stored in the checkpoint, then use append=yes:\nmcmcp ngen=4000000 filename=alignment_gtrig;\nmcmc append=yes;\nIf the checkpoint contains generation 2,000,000, this command continues to generation 4,000,000; it does not add 4,000,000 generations. Preserve the checkpoint and existing .p and .t files together. After the extension, rerun sump and sumt with the selected burn-in.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#output-files",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#output-files",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "9 Output files",
-    "text": "9 Output files\nFor --prefix alignment_run1, the main files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_run1.treefile\nBest maximum-likelihood tree in Newick format, including requested branch-support labels.\n\n\nalignment_run1.iqtree\nMain report with the input summary, selected model, estimated parameters, log-likelihood, branch-support legend, textual tree, and relevant citation list.\n\n\nalignment_run1.log\nComplete run log, including the IQ-TREE version, command, progress, warnings, and completion status.\n\n\nalignment_run1.ckp.gz\nCheckpoint used to resume an interrupted analysis.\n\n\nalignment_run1.model.gz\nModelFinder checkpoint and model-test results when model selection is performed.\n\n\nalignment_run1.contree\nConsensus tree produced by an ultrafast bootstrap analysis.\n\n\nalignment_run1.splits.nex\nBootstrap split frequencies in NEXUS format.\n\n\n\nRead the report and log before using the tree:\nless alignment_run1.iqtree\nless alignment_run1.log\nConfirm the following information:\n\nthe program completed normally;\nthe detected character type and alignment dimensions are correct;\nthe selected model or partition scheme is the intended one;\nwarnings about duplicate sequences, composition, missing data, or numerical behavior have been evaluated;\nthe maximum log-likelihood and random-number seed are recorded; and\nthe branch-support label order matches the legend in the .iqtree report.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#parallel-execution",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#parallel-execution",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "9 Parallel execution",
+    "text": "9 Parallel execution\nThe serial executable uses one operating-system process. An MPI-enabled build distributes the nruns * nchains chains across MPI processes. For the standard two-run, four-chain analysis, there are eight chains and therefore no benefit from requesting more than eight MPI processes.\nRun an MPI-enabled executable with resources granted by the scheduler:\nmpirun -np 8 mb analysis.nex &gt; alignment_gtrig.screen.log 2&gt;&1\nChoose a process count no greater than the total number of chains and, when practical, make the total chain count a multiple of the process count. Confirm with mb -v that the executable reports MPI support. Keep checkpointing enabled for scheduled jobs.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#branch-support-labels",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#branch-support-labels",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "10 Branch-support labels",
-    "text": "10 Branch-support labels\nWhen --alrt 1000 and -B 1000 are combined, internal branch labels normally have the form:\nSH-aLRT/UFBoot\nA label of 87.4/98 therefore reports 87.4% SH-aLRT support followed by 98% ultrafast bootstrap support.\nFor a single-gene tree, the IQ-TREE documentation treats SH-aLRT support of at least 80% together with UFBoot support of at least 95% as strong support. These thresholds do not transfer directly to concatenated phylogenomic analyses, where support values can become uniformly high. Examine gene and site concordance factors for multi-locus data, and treat all branch-support values as measures conditional on the alignment, model, and analysis procedure.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#output-files",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#output-files",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "10 Output files",
+    "text": "10 Output files\nFor filename=alignment_gtrig and nruns=2, the principal files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_gtrig.run1.p, .run2.p\nTab-delimited scalar-parameter samples from each cold chain.\n\n\nalignment_gtrig.run1.t, .run2.t\nSampled trees and branch lengths from each cold chain in NEXUS tree format.\n\n\nalignment_gtrig.mcmc\nProposal acceptance, chain-swap, and run-time convergence diagnostics.\n\n\nalignment_gtrig.ckp\nCheckpoint state used by mcmc append=yes.\n\n\nalignment_gtrig.pstat\nParameter posterior summaries from sump, including credible intervals, ESS, and PSRF.\n\n\nalignment_gtrig.lstat\nLikelihood summaries from sump. Harmonic-mean estimates are not a substitute for stepping-stone sampling in model comparison.\n\n\nalignment_gtrig.parts\nKey that maps split or clade identifiers to taxon bipartitions.\n\n\nalignment_gtrig.tstat\nSplit-frequency and topology-convergence summaries from sumt.\n\n\nalignment_gtrig.vstat\nBranch and node parameter summaries from sumt.\n\n\nalignment_gtrig.con.tre\nConsensus trees with posterior split or clade probabilities and branch summaries.\n\n\nalignment_gtrig.trprobs\nSampled topologies sorted by posterior probability, including cumulative credible sets.\n\n\n\nValues on the consensus tree are posterior split or clade probabilities, not bootstrap proportions. Their interpretation is conditional on the data, likelihood model, priors, partition scheme, constraints, and adequacy of posterior sampling.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#checkpoints-and-repeated-analyses",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#checkpoints-and-repeated-analyses",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "11 Checkpoints and repeated analyses",
-    "text": "11 Checkpoints and repeated analyses\nIQ-TREE periodically writes the .ckp.gz checkpoint. If a run stops before completion, rerun the same command with the same input and prefix to resume it.\nA completed checkpoint prevents accidental overwriting. To conduct another analysis, use a new prefix. The --redo parameter discards the completed checkpoint state and overwrites files for the existing prefix; use it only when the existing result is no longer needed.\nFor analyses susceptible to local optima, add --runs 10 to perform ten independent tree searches in one invocation, or run separate commands with different seeds and prefixes. Compare the final log-likelihoods and topologies, and retain the highest-likelihood result rather than selecting a tree by its branch-support values.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#operational-checklist",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#operational-checklist",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "11 Operational checklist",
+    "text": "11 Operational checklist\n\nPrepare and inspect the aligned NEXUS matrix.\nPut analysis commands in a separate NEXUS file.\nSet seed and swapseed before executing the data file when exact starting-value reproducibility is required.\nDefine the likelihood model, priors, partitions, and constraints.\nRun showmodel and preserve its output.\nUse at least two independent runs, adequate chain heating, checkpointing, and a unique output name.\nRun sump and sumt with a burn-in justified by the traces.\nInspect ASDSF, PSRF, ESS, traces, split frequencies, proposal acceptance, and chain-swap acceptance.\nExtend the run with append=yes when posterior sampling is inadequate.\nPreserve the command file, input matrix, screen log, sample files, checkpoint, and summary files.\nReport the MrBayes version, likelihood model, priors, partition links, constraints, MCMC settings, burn-in, convergence diagnostics, and posterior summary procedure.\nUse the citations command to identify MrBayes and feature-specific methods that require citation.",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#operational-checklist",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#operational-checklist",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "12 Operational checklist",
-    "text": "12 Operational checklist\n\nPrepare and inspect the aligned input data.\nSelect the character type and partition scheme.\nChoose model selection or state a fixed model.\nSet branch-support procedures, a fixed seed, resource limits, and a unique prefix.\nSave the exact command, IQ-TREE version, input alignment, and partition file.\nRead the .log and .iqtree files and resolve relevant warnings.\nPreserve the .treefile, report, log, checkpoint, selected model, and partition scheme.\nRoot the inferred tree according to the biological study design and document that decision.\nReport the software version, model-selection procedure or fixed model, partition model, tree-search settings, support procedures, and replicate counts.\nCite IQ-TREE and each feature-specific method listed in the .iqtree report.",
+    "objectID": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#further-reading",
+    "href": "content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html#further-reading",
+    "title": "Phylogenetic inference tools – MrBayes",
+    "section": "12 Further reading",
+    "text": "12 Further reading\n\nMrBayes website\nMrBayes 3.2 manual and command-reference instructions\nMrBayes 3.2.8 manual\nMrBayes installation instructions\nMrBayes releases\nMrBayes 3.2 paper",
     "crumbs": [
       "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#further-reading",
-    "href": "content/03_primers/55-01__phylogenetic-inference--tools--iqtree.html#further-reading",
-    "title": "Phylogenetic inference tools – IQ-TREE",
-    "section": "13 Further reading",
-    "text": "13 Further reading\n\nGetting started\nBeginner’s tutorial\nCommand reference\nSubstitution models\nPartition and mixture models\nFrequently asked questions",
-    "crumbs": [
-      "Home",
-      "[[55-01]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-04]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -1879,146 +1934,80 @@
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html",
-    "title": "Phylogenetic inference tools – MrBayes",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html",
+    "title": "Distance-based phylogenetic inference with MEGA",
     "section": "",
-    "text": "MrBayes estimates posterior distributions of phylogenetic trees and model parameters with Markov chain Monte Carlo (MCMC). A typical analysis reads an aligned NEXUS data set, defines an evolutionary model and its priors, runs independent Metropolis-coupled MCMC analyses, checks convergence and mixing, and summarizes the retained posterior samples.\nThe commands below use MrBayes 3.2.8. Most also apply to earlier MrBayes 3.2 releases.",
+    "text": "MEGA estimates evolutionary distances from aligned sequences and uses those distances to infer phylogenetic trees. This tutorial constructs a neighbor-joining tree for eight living bear species, examines its branch lengths, estimates bootstrap support, and compares the result with other distance-based methods.\nThe complete workflow uses MEGA’s graphical interface. It begins with one provided FASTA alignment and creates every other file named below.",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#installation-and-help",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#installation-and-help",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "1 Installation and help",
-    "text": "1 Installation and help\nDownload the current source or a platform build from the MrBayes download page. On systems with Homebrew, install the available formula with:\nbrew tap brewsci/bio\nbrew install mrbayes\nThe Bioconda package can be installed with:\nconda install bioconda::mrbayes\nPackage-manager releases can lag the current official release. Confirm the installed version and display command-line options:\nmb -v\nmb -h\nStart an interactive session without a filename:\nmb\nMrBayes provides detailed help within the session:\nMrBayes &gt; help\nMrBayes &gt; help lset\nMrBayes &gt; help prset\nMrBayes &gt; help mcmc\nMrBayes &gt; help sump\nMrBayes &gt; help sumt\nThe manual command writes the complete built-in command reference to a text file. The reference reflects the options and defaults of the running executable.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#preparation",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#preparation",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "1 Preparation",
+    "text": "1 Preparation\n\n1.1 Installing MEGA\nDownload the current graphical version of MEGA for the operating system from the MEGA website. Follow the installer provided for that platform.\nStart MEGA and select Help | About MEGA. Record the installed version. The menu paths below follow MEGA 12.\n\n\n1.2 Acquiring the example alignment\nDownload the course alignment:\nDownload bears-CYTB-aligned.fasta\nCreate the following project directories with the file manager:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/\n├── data/\n│   └── bears-CYTB-aligned.fasta\n└── results/\nSave the downloaded file as:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.fasta\nThis file contains one complete mitochondrial CYTB coding sequence from each of eight living bear species. It contains eight aligned sequences, 1,140 columns, and no alignment gaps. Each sequence label contains the species, accession version, and gene:\nAiluropoda_melanoleuca|NC_009492.1|CYTB\nHelarctos_malayanus|NC_009968.1|CYTB\nMelursus_ursinus|NC_009970.1|CYTB\nTremarctos_ornatus|NC_009969.1|CYTB\nUrsus_americanus|NC_003426.1|CYTB\nUrsus_arctos|NC_003427.1|CYTB\nUrsus_maritimus|NC_003428.1|CYTB\nUrsus_thibetanus|NC_009971.1|CYTB\nEvery analysis in this tutorial begins with this alignment. The tutorial next converts it to bears-CYTB-aligned.meg, then uses that converted file for tree inference.",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#input-data-and-command-files",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#input-data-and-command-files",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "2 Input data and command files",
-    "text": "2 Input data and command files\nMrBayes reads aligned data in NEXUS format. Supported character types include DNA, RNA, protein, restriction-site, standard discrete morphological, and mixed data. A minimal DNA file has this structure:\n#NEXUS\n\nbegin data;\n    dimensions ntax=4 nchar=12;\n    format datatype=dna missing=? gap=-;\n    matrix\n        Taxon_A  ACGTACGTACGT\n        Taxon_B  ACGTACGTACGA\n        Taxon_C  ACGTACGTTCGA\n        Taxon_D  ACGTTCGTTCGA\n    ;\nend;\nBefore analysis, confirm that:\n\nthe matrix is an alignment of homologous characters;\nntax and nchar match the matrix;\nevery taxon has a unique label;\ntaxon labels avoid spaces and NEXUS or Newick punctuation;\ndatatype, missing, and gap describe the matrix correctly;\npartition coordinates are one-based and match the alignment; and\nthe ascertainment-bias setting matches whether constant or singleton characters were retained.\n\nKeep the data and analysis commands in separate files. This permits several analyses to use the same alignment without modifying it. Every command inside a begin mrbayes; ... end; block ends with a semicolon. Text in square brackets is a NEXUS comment.\nRun a command file non-interactively and preserve the screen output:\nmb analysis.nex &gt; alignment_gtrig.screen.log 2&gt;&1\nUse a unique output name for every analysis. MrBayes does not silently overwrite existing output files under its default warning behavior.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#basic-workflow",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#basic-workflow",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "2 Basic workflow",
+    "text": "2 Basic workflow\n\n2.1 Converting the FASTA alignment to MEGA format\nMEGA’s native text format records the aligned characters and the data type needed by its analysis tools.\n\nIn the main MEGA window, select File | Convert File Format to MEGA.\nSelect data/bears-CYTB-aligned.fasta from the project directory.\nIf MEGA asks for the source format, select FASTA.\nIn the Input Data Format dialog, select DNA.\nRetain ? for missing data and - for alignment gaps.\nComplete the conversion.\n\nMEGA opens the converted text in its editor. The beginning of the file should contain a #MEGA declaration followed by a title and the first labeled sequence.\nSelect File | Save As in the editor and save the converted file as:\n/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.meg\nThe project now contains two data files:\n\n\n\n\n\n\n\nFile\nRole\n\n\n\n\nbears-CYTB-aligned.fasta\nProvided, portable multiple-sequence alignment.\n\n\nbears-CYTB-aligned.meg\nMEGA-formatted copy created in the preceding steps.\n\n\n\nClose the text editor after saving the .meg file.\n\n\n2.2 Opening and checking the alignment\n\nIn the main MEGA window, select Data | Open A File/Session.\nSelect data/bears-CYTB-aligned.meg.\nSelect Data | Explore Active Data.\n\nThe Sequence Data Explorer should report eight sequences and 1,140 sites. Confirm that all eight labels listed above are present. Scroll across the alignment and confirm that the displayed data are nucleotides and that no sequence contains a gap.\nClose the Sequence Data Explorer without closing the active data file.\n\n\n2.3 Constructing a neighbor-joining tree\nSelect Phylogeny | Construct/Test Neighbor-Joining Tree.\nSet the following analysis options:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nNone\n\n\nSubstitutions Type\nNucleotide\n\n\nModel/Method\np-distance\n\n\nSubstitutions to Include\nTransitions and transversions\n\n\nGaps/Missing Data Treatment\nComplete deletion\n\n\n\nRetain all 1,140 alignment sites. Select Compute.\nMEGA first calculates the proportion of different nucleotides for every pair of sequences. Neighbor joining then constructs one tree from that distance matrix. The Tree Explorer displays the result.\nThe tree is unrooted. Its rectangular display has a leftmost position, but that position does not identify an ancestor or biological root.\n\n\n2.4 Inspecting the inferred tree\nIn Tree Explorer:\n\nSelect View | Options.\nOpen the Branch settings.\nEnable the display of branch lengths.\nApply the change.\n\nFor this analysis, a branch length is an estimated p-distance: substitutions per aligned site along that branch. Longer branches represent greater estimated sequence divergence under the selected distance definition.\nOpen the Tree Explorer information box and confirm:\n\neight taxa were analyzed;\nthe tree is neighbor joining;\nthe distance is p-distance;\ngaps and missing data used complete deletion; and\n1,140 sites were retained.\n\nThe giant panda, Ailuropoda_melanoleuca, has the most divergent sequence in this set and appears on a long branch. The brown bear and polar bear, Ursus_arctos and Ursus_maritimus, should appear as close relatives. These observations provide simple checks that the expected records were analyzed; they do not validate every inferred relationship.\n\n\n2.5 Saving the tree and analysis record\nSelect the original tree tab in Tree Explorer, then save the following files:\n\nSelect File | Export Current Tree (Newick) and save:\nresults/bears-CYTB-nj-pdistance.nwk\nSelect File | Export Analysis Summary and save:\nresults/bears-CYTB-nj-pdistance-summary.txt\nSelect File | Save Current Session and use the name:\nresults/bears-CYTB-nj-pdistance\nAllow MEGA to add its native tree-session extension.\n\nThe Newick file stores the tree for use in other software. The analysis summary records the distance model, site treatment, and other settings. The native session reopens the interactive Tree Explorer state.",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#a-standard-nucleotide-analysis",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#a-standard-nucleotide-analysis",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "3 A standard nucleotide analysis",
-    "text": "3 A standard nucleotide analysis\nCreate analysis.nex with the following commands:\n#NEXUS\n\nbegin mrbayes;\n    set autoclose=yes nowarnings=no quitonerror=yes;\n    set seed=20260922 swapseed=4260901;\n    execute alignment.nex;\n\n    lset nst=6 rates=invgamma ngammacat=4;\n    prset statefreqpr=dirichlet(1,1,1,1);\n    showmodel;\n\n    mcmcp nruns=2 nchains=4 temp=0.1 ngen=2000000\n        samplefreq=1000 printfreq=1000\n        mcmcdiagn=yes diagnfreq=5000\n        diagnstat=avgstddev minpartfreq=0.10\n        relburnin=yes burninfrac=0.25\n        stoprule=no checkpoint=yes checkfreq=10000\n        filename=alignment_gtrig;\n    mcmc;\n\n    sump relburnin=yes burninfrac=0.25;\n    sumt relburnin=yes burninfrac=0.25;\nend;\nThe commands and parameters have the following meanings:\n\n\n\n\n\n\n\nCommand or parameter\nMeaning\n\n\n\n\nset autoclose=yes\nEnds the requested MCMC run without asking whether to add generations. This is appropriate for batch execution.\n\n\nnowarnings=no\nRetains prompts that protect existing output files. Use a fresh filename so a batch job does not stop at an overwrite prompt.\n\n\nquitonerror=yes\nTerminates batch execution after an error instead of waiting for more interactive input.\n\n\nseed\nSets the main pseudorandom-number seed. Set it before execute so default starting values derived while reading the matrix are reproducible.\n\n\nswapseed\nSets the pseudorandom-number seed for swaps among cold and heated chains.\n\n\nexecute alignment.nex\nReads the alignment and any definitions in alignment.nex.\n\n\nlset nst=6\nUses the general time-reversible (GTR) nucleotide substitution model.\n\n\nrates=invgamma\nEstimates both a proportion of invariable sites and gamma-distributed rate variation among the remaining sites.\n\n\nngammacat=4\nApproximates the gamma distribution with four discrete rate categories.\n\n\nprset statefreqpr=dirichlet(1,1,1,1)\nAssigns a flat Dirichlet prior to the four nucleotide frequencies. This is the default, but stating it records the assumption.\n\n\nshowmodel\nPrints the complete active model, parameter links, and priors. Save this output in the screen log.\n\n\nmcmcp\nChanges MCMC settings without starting the run. mcmc accepts the same settings and starts sampling immediately.\n\n\nnruns=2\nRuns two independent analyses. Comparison between their samples supplies several convergence diagnostics.\n\n\nnchains=4\nUses one cold chain and three heated chains in each run. Posterior samples come from the cold chain.\n\n\ntemp=0.1\nSets the heating coefficient for Metropolis coupling. Smaller values make adjacent chains more similar and increase swap acceptance; larger values make heated chains hotter.\n\n\nngen=2000000\nSets the target total to 2,000,000 MCMC generations. This example value must be increased when diagnostics remain inadequate.\n\n\nsamplefreq=1000\nWrites a parameter and tree sample every 1,000 generations. The run stores approximately ngen / samplefreq samples before burn-in removal.\n\n\nprintfreq=1000\nPrints progress every 1,000 generations. This affects the screen log, not the sampling interval.\n\n\nmcmcdiagn=yes\nWrites move, swap, and topology-convergence diagnostics to &lt;filename&gt;.mcmc.\n\n\ndiagnfreq=5000\nCalculates run-time diagnostics every 5,000 generations.\n\n\ndiagnstat=avgstddev\nUses the average standard deviation of split frequencies (ASDSF) as the run-time topology diagnostic.\n\n\nminpartfreq=0.10\nIncludes a split in ASDSF when its frequency is at least 0.10 in at least one run.\n\n\nrelburnin=yes\nExpresses burn-in as a fraction of saved samples rather than a fixed sample count.\n\n\nburninfrac=0.25\nExcludes the first 25% of saved samples from run-time diagnostics and the requested summaries. Check traces rather than treating 25% as universally adequate.\n\n\nstoprule=no\nRuns to ngen instead of stopping automatically at an ASDSF threshold.\n\n\ncheckpoint=yes\nWrites chain state to a checkpoint file so an interrupted analysis can resume.\n\n\ncheckfreq=10000\nUpdates the checkpoint every 10,000 generations.\n\n\nfilename=alignment_gtrig\nUses alignment_gtrig as the base name for output files.\n\n\nsump\nSummarizes sampled scalar parameters, including credible intervals, effective sample sizes, and potential scale reduction factors.\n\n\nsumt\nSummarizes sampled trees, split frequencies, branch parameters, consensus trees, and credible sets of trees.\n\n\n\nThe values of ngen, samplefreq, and burninfrac define the computational plan, not evidence that sampling is adequate. Extend the analysis when the retained samples fail the convergence and mixing checks below.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#follow-up-workflows",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#follow-up-workflows",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "3 Follow-up workflows",
+    "text": "3 Follow-up workflows\n\n3.1 Estimating bootstrap support\nClose Tree Explorer while leaving the bear alignment active. Select Phylogeny | Construct/Test Neighbor-Joining Tree again.\nUse the same p-distance and complete-deletion settings, but change:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nBootstrap method\n\n\nNo. of Bootstrap Replications\n1000\n\n\n\nSelect Compute.\nMEGA resamples the 1,140 alignment columns with replacement, reconstructs a neighbor-joining tree from each resampled matrix, and reports how often each split in the original tree recurs. A value of 90 means that the split occurred in 90% of the bootstrap replicate trees.\nTree Explorer provides separate views of the original tree and the bootstrap consensus. Use the original-tree view for the inferred branch lengths. Use the support labels to describe repeatability under site resampling.\nExport the original tree with its displayed support labels as:\nresults/bears-CYTB-nj-pdistance-bootstrap.nwk\nExport the analysis summary as:\nresults/bears-CYTB-nj-pdistance-bootstrap-summary.txt\nIf the bootstrap consensus is also required, select its tab and export it separately as:\nresults/bears-CYTB-nj-pdistance-bootstrap-consensus.nwk\nBootstrap percentages are not posterior probabilities and do not state the probability that a clade is true. They are conditional on this alignment, distance definition, missing-data rule, and tree-building method.\n\n\n3.2 Applying a multiple-substitution correction\nP-distance counts observed differences. It does not account for sites that changed more than once during evolution. Repeat the neighbor-joining analysis with a corrected nucleotide distance:\n\n\n\nOption\nSetting\n\n\n\n\nTest of Phylogeny\nBootstrap method\n\n\nNo. of Bootstrap Replications\n1000\n\n\nSubstitutions Type\nNucleotide\n\n\nModel/Method\nTamura-Nei model\n\n\nSubstitutions to Include\nTransitions and transversions\n\n\nRates among Sites\nUniform rates\n\n\nGaps/Missing Data Treatment\nComplete deletion\n\n\n\nSelect Compute, inspect the original tree and support values, then export:\nresults/bears-CYTB-nj-tamura-nei-bootstrap.nwk\nresults/bears-CYTB-nj-tamura-nei-bootstrap-summary.txt\nCompare this topology and its branch lengths with the p-distance result. The Tamura-Nei model allows unequal nucleotide frequencies and different rates for the two transition classes while correcting for unobserved multiple changes. It changes the definition of every entry in the distance matrix; it does not change the neighbor-joining algorithm.\n\n\n3.3 Inspecting the distance matrix\nWith bears-CYTB-aligned.meg active, select Distance | Compute Pairwise Distances. Choose the same model and complete-deletion settings as the tree whose distances are being examined.\nThe result is an eight-by-eight symmetric matrix. Each off-diagonal entry is the estimated evolutionary distance between two bear sequences. The smallest values should correspond to the closest sequence pairs in the neighbor-joining tree. The matrix is the direct input to distance-based tree construction.\nIn the Distance Data Explorer, select File | Export/Print Distances or use the CSV export button. Select CSV output, choose Print/Save Matrix, then select File | Save As in the text editor and save:\nresults/bears-CYTB-tamura-nei-distances.csv\n\n\n3.4 Comparing neighbor joining and minimum evolution\nSelect Phylogeny | Construct/Test Minimum Evolution Tree. Use the same Tamura-Nei, uniform-rate, complete-deletion, and 1,000-replicate bootstrap settings used above.\nMEGA begins with a neighbor-joining tree and uses close-neighbor interchange to search for a topology with a smaller sum of branch lengths. Record the ME search level shown in the Analysis Preferences window.\nExport:\nresults/bears-CYTB-me-tamura-nei-bootstrap.nwk\nresults/bears-CYTB-me-tamura-nei-bootstrap-summary.txt\nDifferences between this result and the NJ result arise from the tree-building criterion and ME search, because the alignment and distance definition remain the same.\n\n\n3.5 Constructing a UPGMA tree\nSelect Phylogeny | Construct/Test UPGMA Tree and retain the same Tamura-Nei and complete-deletion settings.\nUPGMA assumes a constant rate of evolution among lineages. That assumption makes every tip equidistant from the root and produces a rooted ultrametric tree. The rooted result is meaningful only when rate constancy is defensible; the presence of a root in the display is not evidence that the assumption is true.\nExport the exploratory result and summary as:\nresults/bears-CYTB-upgma-tamura-nei.nwk\nresults/bears-CYTB-upgma-tamura-nei-summary.txt",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#likelihood-models-and-priors",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#likelihood-models-and-priors",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "4 Likelihood models and priors",
-    "text": "4 Likelihood models and priors\nlset defines the likelihood model. prset defines priors on its parameters. Review the combined result with showmodel before sampling.\nCommon nucleotide settings include:\n\n\n\n\n\n\n\nSetting\nEffect\n\n\n\n\nlset nst=1\nUses one substitution-rate class: F81 with estimated state frequencies, or JC when statefreqpr=fixed(equal).\n\n\nlset nst=2\nUses two substitution-rate classes: HKY with estimated state frequencies, or K80 when statefreqpr=fixed(equal).\n\n\nlset nst=6\nUses six reversible substitution rates: GTR with estimated state frequencies, or SYM when statefreqpr=fixed(equal).\n\n\nlset nst=mixed\nUses reversible-jump MCMC to average across reversible nucleotide substitution models.\n\n\nlset rates=equal\nUses one rate for all sites.\n\n\nlset rates=gamma\nEstimates gamma-distributed rate variation among sites.\n\n\nlset rates=propinv\nEstimates a proportion of invariable sites without gamma-distributed variation.\n\n\nlset rates=invgamma\nCombines an estimated invariable-site proportion with gamma-distributed variation.\n\n\n\nCommon prior settings include:\n\n\n\n\n\n\n\nSetting\nParameter controlled\n\n\n\n\nprset statefreqpr=dirichlet(...)\nStationary state frequencies.\n\n\nprset revmatpr=dirichlet(...)\nSix reversible rates in a GTR model.\n\n\nprset tratiopr=beta(...)\nTransition-to-transversion rate ratio in an nst=2 model.\n\n\nprset shapepr=exponential(...)\nShape of gamma-distributed among-site rate variation.\n\n\nprset pinvarpr=uniform(...)\nProportion of invariable sites.\n\n\nprset brlenspr=...\nBranch-length prior.\n\n\nprset topologypr=...\nTree-topology prior and enforced topological constraints.\n\n\n\nThe distribution arguments use program-specific parameterizations. Inspect help prset and showmodel rather than transferring numeric prior arguments from another program.\nFor protein data, choose a fixed empirical rate matrix or average over the supported matrices:\nprset aamodelpr=fixed(lg);\nlset rates=gamma ngammacat=4;\nprset aamodelpr=mixed;\nlset rates=gamma ngammacat=4;\nFor a standard-character morphology matrix that deliberately excludes all constant characters, apply the corresponding ascertainment correction:\nlset coding=variable rates=gamma;\nUse coding=informative when the matrix contains only parsimony-informative characters. Use coding=all when the sampling process retained all character classes. The correction must match the way the matrix was assembled.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#analysis-choices",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#analysis-choices",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "4 Analysis choices",
+    "text": "4 Analysis choices\n\nWorkflow detail: Evolutionary-distance modelsThe distance model defines what a branch length measures.\n\n\n\n\n\n\n\nModel\nMain assumptions and effect\n\n\n\n\np-distance\nObserved proportion of different sites; no correction for multiple substitutions.\n\n\nJukes-Cantor\nCorrects for multiple substitutions while assuming equal nucleotide frequencies and equal substitution rates.\n\n\nKimura 2-parameter\nDistinguishes transitions from transversions while assuming equal equilibrium nucleotide frequencies.\n\n\nTamura-Nei\nAllows unequal nucleotide frequencies and distinct transition rates and corrects for multiple substitutions.\n\n\n\nA model with more parameters is not automatically more appropriate. Sequence composition, divergence, saturation, and the amount of information in the alignment determine which assumptions are defensible.\n\n\n\nWorkflow detail: Gaps and missing dataThe selected rule determines which aligned sites contribute to each distance.\n\n\n\n\n\n\n\nTreatment\nEffect\n\n\n\n\nComplete deletion\nRemoves every site containing a gap or missing state in any taxon, so all pairwise distances use the same retained columns.\n\n\nPairwise deletion\nRemoves incomplete sites separately for each pair, so different matrix entries may use different columns.\n\n\nPartial deletion\nRetains sites that meet a specified coverage threshold.\n\n\n\nThe course alignment contains no gaps or ambiguous bases, so all three rules retain the same 1,140 sites here. They need not agree for another alignment.",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#partitioned-analyses",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#partitioned-analyses",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "5 Partitioned analyses",
-    "text": "5 Partitioned analyses\nDefine character sets, assemble them into a partition, activate the partition, and specify which parameters are shared:\ncharset gene1_pos1 = 1-900\\3;\ncharset gene1_pos2 = 2-900\\3;\ncharset gene1_pos3 = 3-900\\3;\ncharset gene2 = 901-1500;\n\npartition genes = 4: gene1_pos1, gene1_pos2, gene1_pos3, gene2;\nset partition=genes;\n\nlset applyto=(all) nst=6 rates=gamma ngammacat=4;\nunlink revmat=(all) statefreq=(all) shape=(all);\nprset applyto=(all) ratepr=variable;\nshowmodel;\nThe expressions 1-900\\3, 2-900\\3, and 3-900\\3 select the three codon positions. applyto=(all) applies a setting to every active partition; a list such as applyto=(1,3) targets selected partitions.\nMrBayes initially links compatible parameters across partitions. unlink revmat=(all) statefreq=(all) shape=(all) gives each partition separate GTR rates, state frequencies, and gamma-shape parameters. Topology and branch lengths remain shared because the commands do not unlink them. ratepr=variable estimates relative rate multipliers across partitions. Use showmodel to verify every link and prior after changing the partition scheme.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#recording-the-analysis",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#recording-the-analysis",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "5 Recording the analysis",
+    "text": "5 Recording the analysis\nPreserve:\n\nbears-CYTB-aligned.fasta;\nbears-CYTB-aligned.meg;\neach exported Newick tree;\neach analysis summary;\nthe native Tree Explorer sessions needed for later interactive inspection; and\nthe MEGA version and operating system.\n\nReport the tree-building method, evolutionary-distance model, rate treatment, gap and missing-data treatment, number of retained sites, bootstrap replicate count, and any rooting performed after inference.\nNeighbor-joining and minimum-evolution results are unrooted. Rooting either tree is a separate biological analysis decision, even when MEGA draws the tree with a leftmost base.",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#constraints-and-reported-rooting",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#constraints-and-reported-rooting",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "6 Constraints and reported rooting",
-    "text": "6 Constraints and reported rooting\nDefine and enforce a positive monophyly constraint with:\nconstraint focal_clade = Taxon_D Taxon_E;\nprset topologypr=constraints(focal_clade);\nDefining a constraint does not enforce it; topologypr=constraints(...) activates the named constraints. Constraints are prior assumptions and must be recorded with the analysis.\nFor a non-clock analysis under a reversible model, set the outgroup used to orient displayed and summarized trees:\noutgroup Taxon_A;\nThe outgroup command does not add statistical information about the root of an otherwise unrooted reversible-model analysis. Clock models infer rooted trees through their model and prior structure.",
+    "objectID": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#further-reading",
+    "href": "content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html#further-reading",
+    "title": "Distance-based phylogenetic inference with MEGA",
+    "section": "6 Further reading",
+    "text": "6 Further reading\n\nMEGA website and downloads\nMEGA 12 online manual\nBuilding trees from sequence data\nNeighbor-joining tree construction\nMinimum-evolution tree construction\nUPGMA tree construction\nModels for estimating evolutionary distances\nBootstrap test of phylogeny",
     "crumbs": [
       "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#convergence-and-mixing-checks",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#convergence-and-mixing-checks",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "7 Convergence and mixing checks",
-    "text": "7 Convergence and mixing checks\nInspect the screen log, .mcmc, .pstat, .tstat, and .vstat files after every analysis. Use all relevant checks rather than a single threshold:\n\nASDSF compares split frequencies across independent runs and should approach zero. A value below 0.01 is a commonly used rough target, but agreement between runs does not prove that either run explored the complete posterior.\nPotential scale reduction factors (PSRFs) compare within-run and between-run variation and should approach 1.0. The MrBayes manual gives 1.0–1.2 as a rough range, not a universal acceptance rule.\nEffective sample size (ESS) estimates the amount of independent information in autocorrelated samples. Values below 100 indicate poor sampling in the MrBayes command reference. Larger values provide more stable posterior summaries.\nLikelihood and parameter traces should be stationary after burn-in, without long trends or persistent separation among runs.\nPosterior summaries and well-supported split frequencies should agree across independent runs.\nAdjacent-chain swap acceptance rates appear in .mcmc and at the end of the run. The manual gives approximately 10%–70% as a useful range. Decrease temp when adjacent-chain swaps are too rare; increase it when they are uniformly too frequent.\n\nIf diagnostics are inadequate, extend the runs, improve Metropolis coupling, reconsider parameterization or partitioning, and repeat the summaries with an appropriate burn-in. Do not pool runs that converged to incompatible posterior regions.\nEnable automatic stopping only when ASDSF is an appropriate stopping statistic and at least two runs are active:\nmcmcp stoprule=yes stopval=0.01;\nngen remains the maximum generation. The stopping rule can terminate earlier when the run-time ASDSF falls below stopval; post-run diagnostics remain necessary.",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#checkpoints-and-extending-a-run",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#checkpoints-and-extending-a-run",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "8 Checkpoints and extending a run",
-    "text": "8 Checkpoints and extending a run\nMrBayes writes &lt;filename&gt;.ckp when checkpointing is enabled. To resume or extend an analysis, use the same data, model, number of runs, number of chains, sampling settings, and output filename. Set ngen to a total generation greater than the generation stored in the checkpoint, then use append=yes:\nmcmcp ngen=4000000 filename=alignment_gtrig;\nmcmc append=yes;\nIf the checkpoint contains generation 2,000,000, this command continues to generation 4,000,000; it does not add 4,000,000 generations. Preserve the checkpoint and existing .p and .t files together. After the extension, rerun sump and sumt with the selected burn-in.",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#parallel-execution",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#parallel-execution",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "9 Parallel execution",
-    "text": "9 Parallel execution\nThe serial executable uses one operating-system process. An MPI-enabled build distributes the nruns * nchains chains across MPI processes. For the standard two-run, four-chain analysis, there are eight chains and therefore no benefit from requesting more than eight MPI processes.\nRun an MPI-enabled executable with resources granted by the scheduler:\nmpirun -np 8 mb analysis.nex &gt; alignment_gtrig.screen.log 2&gt;&1\nChoose a process count no greater than the total number of chains and, when practical, make the total chain count a multiple of the process count. Confirm with mb -v that the executable reports MPI support. Keep checkpointing enabled for scheduled jobs.",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#output-files",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#output-files",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "10 Output files",
-    "text": "10 Output files\nFor filename=alignment_gtrig and nruns=2, the principal files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_gtrig.run1.p, .run2.p\nTab-delimited scalar-parameter samples from each cold chain.\n\n\nalignment_gtrig.run1.t, .run2.t\nSampled trees and branch lengths from each cold chain in NEXUS tree format.\n\n\nalignment_gtrig.mcmc\nProposal acceptance, chain-swap, and run-time convergence diagnostics.\n\n\nalignment_gtrig.ckp\nCheckpoint state used by mcmc append=yes.\n\n\nalignment_gtrig.pstat\nParameter posterior summaries from sump, including credible intervals, ESS, and PSRF.\n\n\nalignment_gtrig.lstat\nLikelihood summaries from sump. Harmonic-mean estimates are not a substitute for stepping-stone sampling in model comparison.\n\n\nalignment_gtrig.parts\nKey that maps split or clade identifiers to taxon bipartitions.\n\n\nalignment_gtrig.tstat\nSplit-frequency and topology-convergence summaries from sumt.\n\n\nalignment_gtrig.vstat\nBranch and node parameter summaries from sumt.\n\n\nalignment_gtrig.con.tre\nConsensus trees with posterior split or clade probabilities and branch summaries.\n\n\nalignment_gtrig.trprobs\nSampled topologies sorted by posterior probability, including cumulative credible sets.\n\n\n\nValues on the consensus tree are posterior split or clade probabilities, not bootstrap proportions. Their interpretation is conditional on the data, likelihood model, priors, partition scheme, constraints, and adequacy of posterior sampling.",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#operational-checklist",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#operational-checklist",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "11 Operational checklist",
-    "text": "11 Operational checklist\n\nPrepare and inspect the aligned NEXUS matrix.\nPut analysis commands in a separate NEXUS file.\nSet seed and swapseed before executing the data file when exact starting-value reproducibility is required.\nDefine the likelihood model, priors, partitions, and constraints.\nRun showmodel and preserve its output.\nUse at least two independent runs, adequate chain heating, checkpointing, and a unique output name.\nRun sump and sumt with a burn-in justified by the traces.\nInspect ASDSF, PSRF, ESS, traces, split frequencies, proposal acceptance, and chain-swap acceptance.\nExtend the run with append=yes when posterior sampling is inadequate.\nPreserve the command file, input matrix, screen log, sample files, checkpoint, and summary files.\nReport the MrBayes version, likelihood model, priors, partition links, constraints, MCMC settings, burn-in, convergence diagnostics, and posterior summary procedure.\nUse the citations command to identify MrBayes and feature-specific methods that require citation.",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#further-reading",
-    "href": "content/03_primers/55-03__phylogenetic-inference--tools--mrbayes.html#further-reading",
-    "title": "Phylogenetic inference tools – MrBayes",
-    "section": "12 Further reading",
-    "text": "12 Further reading\n\nMrBayes website\nMrBayes 3.2 manual and command-reference instructions\nMrBayes 3.2.8 manual\nMrBayes installation instructions\nMrBayes releases\nMrBayes 3.2 paper",
-    "crumbs": [
-      "Home",
-      "[[55-03]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-01]{.indexed-content-number} [Distance-based phylogenetic inference with MEGA]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -2077,157 +2066,14 @@
     ]
   },
   {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html",
-    "title": "Phylogenetic inference tools – RAxML-NG",
+    "objectID": "content/03_primers/31-02__bernoulli-trial.html",
+    "href": "content/03_primers/31-02__bernoulli-trial.html",
+    "title": "Bernoulli trial",
     "section": "",
-    "text": "RAxML-NG infers maximum-likelihood phylogenies from aligned molecular or discrete-character data. A typical analysis checks the alignment, selects or specifies an evolutionary model, searches for the maximum-likelihood tree, estimates branch support, and writes the resulting trees in Newick format.\nThe commands below use RAxML-NG 2.x. Automatic model selection and the adaptive tree-search defaults described here are not available in the same form in RAxML-NG 1.x.",
+    "text": "A “Bernoulli trial” is a model of randomness in which there are two possible elementary outcomes in the sample space, with the probability of one outcome given by the model parameter \\(p\\) (and the probability of the other is then \\(1-p\\)).\nThe iconic example is that of a single toss of a coin. If the coin is fair, that is, equally likely to land with either of its two sides, typically designated “heads” or “tails”, then it can be modeled as a Bernoulli trial with parameter \\(p = 0.5\\) giving the probability of “heads”. Conversely, a trick coin may have the a “heads” on both sides, thus always landing with a “heads” result, an or a “tails”\n\n\n\n Back to top",
     "crumbs": [
       "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#installation-and-command-line-help",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#installation-and-command-line-help",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "1 Installation and command-line help",
-    "text": "1 Installation and command-line help\nDownload a current binary from the RAxML-NG releases, or install the Bioconda package:\nconda install -c bioconda raxml-ng\nConfirm the installed version and display the available commands and parameters:\nraxml-ng --version\nraxml-ng --help\nRecord the version reported by --version with the analysis results. If automatic model selection is required, confirm that the installed version is 2.0 or later.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#input-requirements-and-validation",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#input-requirements-and-validation",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "2 Input requirements and validation",
-    "text": "2 Input requirements and validation\nRAxML-NG requires a multiple-sequence alignment, not raw unaligned sequences. FASTA and PHYLIP are the usual text formats; the program also accepts its binary RAxML Binary Alignment format.\nBefore starting an analysis, confirm that:\n\nevery sequence represents homologous characters and has the same aligned length;\nevery taxon has a unique label;\nlabels avoid spaces and Newick punctuation such as parentheses, commas, colons, and semicolons;\nthe alignment contains the intended character type;\npartition coordinates, if used, are one-based and match the alignment; and\nconstant sites remain present unless the sampling process deliberately retained only variable sites.\n\nCheck a nucleotide alignment before a full analysis:\nraxml-ng \\\n    --check \\\n    --msa alignment.fasta \\\n    --model GTR+G \\\n    --prefix alignment_check\n--check validates the alignment and identifies problems such as duplicate taxon names, sequences or columns containing only undetermined characters, and other incompatible input. If a corrected or reduced alignment is written, either use that file or correct the original data before inference.\nFor a large alignment, parse it once into RAxML-NG’s compressed binary format:\nraxml-ng \\\n    --parse \\\n    --msa alignment.fasta \\\n    --model GTR+G \\\n    --prefix alignment_parsed\nThe main output is alignment_parsed.raxml.rba. It can replace the text alignment in later commands and usually loads more quickly:\nraxml-ng \\\n    --search \\\n    --msa alignment_parsed.raxml.rba \\\n    --prefix alignment_search\nThe binary alignment contains the model and partition definitions used during parsing. RAxML-NG therefore ignores a separate --model argument when reading an .raxml.rba file. Reparse the original text alignment to change its model or partitions.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#a-standard-analysis",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#a-standard-analysis",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "3 A standard analysis",
-    "text": "3 A standard analysis\nThe following RAxML-NG 2.x command selects a nucleotide model, searches for a maximum-likelihood tree, runs nonparametric bootstrap replicates, and maps Felsenstein bootstrap proportions onto the best tree:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 'autoMRE{1000}' \\\n    --bs-metric fbp \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix alignment_run1\nThe parameters have the following meanings:\n\n\n\n\n\n\n\nParameter\nMeaning\n\n\n\n\n--all\nPerforms model fitting and maximum-likelihood tree search, bootstrap inference, and support mapping in one run.\n\n\n--msa alignment.fasta\nReads the multiple-sequence alignment from alignment.fasta.\n\n\n--model DNA\nIdentifies nucleotide data and invokes MOOSE automatic model selection. MOOSE uses the Bayesian information criterion by default. Use AA for amino-acid data or supply a fixed model string or partition file.\n\n\n--bs-trees 'autoMRE{1000}'\nUses the majority-rule extended convergence test to stop bootstrapping when the replicate trees have converged, with a maximum of 1,000 replicates. Inspect the log to confirm whether convergence was reached.\n\n\n--bs-metric fbp\nCalculates classical Felsenstein bootstrap proportions. This is the default metric, but stating it explicitly records the procedure in the command.\n\n\n--threads 'auto{8}'\nAutotunes parallel execution without using more than eight CPU threads. The quotes preserve the braces in common shells.\n\n\n--seed 20260921\nSets the pseudorandom-number seed. Any fixed non-negative integer may be used. Record the software version and computing environment because a seed alone does not guarantee identical results across versions or platforms.\n\n\n--prefix alignment_run1\nWrites output files with the prefix alignment_run1. Use a distinct prefix for every analysis.\n\n\n\nThe best tree with mapped support values is alignment_run1.raxml.support. The maximum-likelihood tree without support labels is alignment_run1.raxml.bestTree.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#analysis-commands",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#analysis-commands",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "4 Analysis commands",
-    "text": "4 Analysis commands\nRAxML-NG selects one main analysis command per invocation:\n\n\n\n\n\n\n\nCommand\nOperation\n\n\n\n\n--search\nSearches for maximum-likelihood tree topologies. This is the default when no command is given, but stating it explicitly makes the workflow clear.\n\n\n--all\nCombines tree search, bootstrapping, and support mapping.\n\n\n--fast\nPerforms a reduced, early-stopping tree search from one parsimony tree. Use it for exploratory work rather than as a replacement for a full search without evaluating the trade-off.\n\n\n--allfast\nCombines the fast search with the Educated Bootstrap Guesser support procedure.\n\n\n--moose\nPerforms model selection without a subsequent full topology search.\n\n\n--bootstrap\nInfers bootstrap replicate trees without performing the main maximum-likelihood search.\n\n\n--support\nMaps support from an existing collection of replicate trees onto a reference tree.\n\n\n--evaluate\nOptimizes model parameters and branch lengths on a supplied fixed topology.\n\n\n--check\nValidates an alignment and removes empty rows or columns when necessary.\n\n\n--parse\nValidates and compresses an alignment into the binary .raxml.rba format.\n\n\n--rfdist\nCalculates pairwise Robinson–Foulds distances among trees in a Newick file.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#model-selection-and-model-strings",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#model-selection-and-model-strings",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "5 Model selection and model strings",
-    "text": "5 Model selection and model strings\nRun MOOSE model selection without a subsequent full search:\nraxml-ng \\\n    --moose \\\n    --msa alignment.fasta \\\n    --data-type DNA \\\n    --prefix alignment_models\nThe selected model is written to alignment_models.raxml.moose.bestModel. Use it directly in a later search:\nraxml-ng \\\n    --search \\\n    --msa alignment.fasta \\\n    --model alignment_models.raxml.moose.bestModel \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix alignment_search\nThe accompanying alignment_models.raxml.rba file already contains the selected model and can instead be supplied with --msa without a --model argument.\nMOOSE uses BIC by default. Select another supported information criterion when required by the analysis design:\nraxml-ng \\\n    --moose \\\n    --msa alignment.fasta \\\n    --data-type DNA \\\n    --moose-options criterion=AICc \\\n    --prefix alignment_models_aicc\nAlternatively, provide a fixed model directly:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model GTR+G4+FO \\\n    --bs-trees 1000 \\\n    --threads 8 \\\n    --seed 20260921 \\\n    --prefix alignment_gtr_g4_fo\nA RAxML-NG model string combines a substitution model with optional components:\n\n\n\n\n\n\n\nComponent\nMeaning\n\n\n\n\nGTR, HKY, JC\nExamples of nucleotide substitution models.\n\n\nLG, WAG, JTT\nExamples of amino-acid exchangeability models.\n\n\n+F\nUses empirical state frequencies calculated from the alignment.\n\n\n+FO\nOptimizes state frequencies by maximum likelihood.\n\n\n+I\nEstimates a proportion of invariant sites.\n\n\n+G4\nModels among-site rate variation with a discrete gamma distribution and four rate categories. +G also defaults to four categories.\n\n\n+R4\nModels among-site rate variation with four FreeRate categories.\n\n\n+ASC_LEWIS\nApplies Lewis ascertainment-bias correction to data from which constant characters were deliberately excluded.\n\n\n\nDo not add model components by convention alone. Use MOOSE or provide a biological and statistical reason for fixing a model. Model-string syntax and defaults can differ among phylogenetic programs, so do not copy a model string from another program without checking its RAxML-NG meaning.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#partitioned-alignments",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#partitioned-alignments",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "6 Partitioned alignments",
-    "text": "6 Partitioned alignments\nPartition a concatenated alignment when defined site sets, such as genes or codon positions, require separate evolutionary models. A partition file named partitions.txt can contain:\nGTR+G4+FO, gene1_pos1 = 1-900\\3\nGTR+G4+FO, gene1_pos2 = 2-900\\3\nGTR+G4+FO, gene1_pos3 = 3-900\\3\nGTR+G4+FO, gene2 = 901-1500\nThe expression 1-900\\3 selects sites 1, 4, 7, and so forth through site 898. The other two expressions select the second and third codon positions.\nRun the partitioned analysis with proportional branch lengths:\nraxml-ng \\\n    --all \\\n    --msa concatenated.fasta \\\n    --model partitions.txt \\\n    --brlen scaled \\\n    --bs-trees 'autoMRE{1000}' \\\n    --threads 'auto{8}' \\\n    --seed 20260921 \\\n    --prefix concatenated_partitioned\nThe branch-length linkage modes are:\n\n\n\n\n\n\n\nParameter\nPartition model\n\n\n\n\n--brlen linked\nUses one shared branch length for each edge across all partitions.\n\n\n--brlen scaled\nUses proportional branch lengths: partitions share the relative edge-length pattern but have separate overall rate scalers. This is the default.\n\n\n--brlen unlinked\nEstimates an independent branch length for every edge in every partition. This introduces many more parameters.\n\n\n\nFor automatic per-partition model selection in RAxML-NG 2.x, prefix the partition filename with auto=:\nraxml-ng \\\n    --search \\\n    --msa concatenated.fasta \\\n    --model auto=partitions.txt \\\n    --brlen scaled \\\n    --prefix concatenated_models_search",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#starting-trees-constraints-and-fixed-trees",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#starting-trees-constraints-and-fixed-trees",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "7 Starting trees, constraints, and fixed trees",
-    "text": "7 Starting trees, constraints, and fixed trees\nThese parameters have distinct effects:\n\n\n\n\n\n\n\nParameter\nEffect\n\n\n\n\nOmit --tree\nUses the RAxML-NG 2.x adaptive procedure to choose starting trees based on predicted alignment difficulty.\n\n\n--tree 'pars{10},rand{10}'\nRuns searches from ten randomized parsimony trees and ten random trees.\n\n\n--tree start.tree\nStarts the search from the supplied Newick tree. The topology may change during the search.\n\n\n--tree-constraint constraint.tree\nRestricts the topology search to trees compatible with the supplied, possibly incomplete, constraint tree.\n\n\n--evaluate --tree fixed.tree\nKeeps the supplied topology fixed while optimizing its branch lengths and free model parameters.\n\n\n--outgroup TaxonA,TaxonB\nDraws the reported tree with the named taxa on the outgroup side. This is an output-orientation option, not statistical evidence about the root.\n\n\n\nUse constraints only when they represent an explicit analysis assumption. A starting tree is not a constraint, and maximum likelihood under the usual reversible models infers an unrooted tree.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#bootstrap-support",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#bootstrap-support",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "8 Bootstrap support",
-    "text": "8 Bootstrap support\nUse a fixed number of classical bootstrap replicates when the analysis requires a predetermined count:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 1000 \\\n    --bs-metric fbp \\\n    --prefix alignment_fbp\nFor large trees, calculate both Felsenstein bootstrap proportions and transfer bootstrap expectation values from the same replicate trees:\nraxml-ng \\\n    --all \\\n    --msa alignment.fasta \\\n    --model DNA \\\n    --bs-trees 'autoMRE{1000}' \\\n    --bs-metric fbp,tbe \\\n    --prefix alignment_fbp_tbe\nWhen multiple support metrics are requested, RAxML-NG writes separate supported trees such as .raxml.supportFBP and .raxml.supportTBE. Support values are conditional on the alignment, model, search, and resampling procedure; they are not posterior probabilities and do not establish a root.\nMap support from previously generated replicate trees onto an existing reference tree:\nraxml-ng \\\n    --support \\\n    --tree alignment_run1.raxml.bestTree \\\n    --bs-trees alignment_run1.raxml.bootstraps \\\n    --bs-metric fbp,tbe \\\n    --prefix alignment_support",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#cpu-and-memory-use",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#cpu-and-memory-use",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "9 CPU and memory use",
-    "text": "9 CPU and memory use\nOn a scheduler or shared computer, never exceed the allocated CPU count:\n--threads 8\nUse bounded autotuning when the efficient thread count is unknown:\n--threads 'auto{8}'\n--workers N controls how many independent tree searches run concurrently within the available parallel resources. The default auto setting is usually appropriate. Increasing the worker count does not increase the CPU allocation and can reduce the threads available to each search.\nThe --parse command reports memory and thread-count guidance for the supplied alignment and model. RAxML-NG has no general command-line memory cap comparable to a scheduler memory request; request sufficient memory from the scheduler and inspect the parse estimate before submitting a large job.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#output-files",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#output-files",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "10 Output files",
-    "text": "10 Output files\nFor --prefix alignment_run1, the principal files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_run1.raxml.support\nBest maximum-likelihood tree with Felsenstein bootstrap support.\n\n\nalignment_run1.raxml.bestTree\nBest-scoring maximum-likelihood tree without mapped support values.\n\n\nalignment_run1.raxml.mlTrees\nResulting maximum-likelihood tree from each starting-tree search.\n\n\nalignment_run1.raxml.bootstraps\nTree inferred from each bootstrap replicate.\n\n\nalignment_run1.raxml.bestModel\nOptimized model specification and parameter estimates for the best tree.\n\n\nalignment_run1.raxml.startTree\nStarting trees used for the maximum-likelihood searches.\n\n\nalignment_run1.raxml.log\nProgram version, exact command, input summary, settings, warnings, progress, likelihoods, and completion status.\n\n\nalignment_run1.raxml.ckp\nIntermediate checkpoint used to resume an interrupted run; normally removed after successful completion.\n\n\nalignment_run1.raxml.rba\nCompressed binary representation of the alignment and its partitions.\n\n\n\nRead the log before using the tree:\nless alignment_run1.raxml.log\nConfirm that:\n\nthe program completed normally;\nthe data type, alignment dimensions, and partitions are correct;\nthe selected or fixed model is the intended one;\nthe number of searches and bootstrap replicates is adequate;\nautoMRE convergence was reached when bootstopping was requested;\nwarnings about duplicate sequences, missing data, numerical behavior, or constraints have been evaluated; and\nthe best log-likelihood, seed, program version, and exact command have been recorded.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#checkpoints-and-repeated-analyses",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#checkpoints-and-repeated-analyses",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "11 Checkpoints and repeated analyses",
-    "text": "11 Checkpoints and repeated analyses\nRAxML-NG periodically writes the .raxml.ckp checkpoint. If a run is interrupted, rerun the same command with the same inputs and prefix; RAxML-NG resumes from the checkpoint.\nA completed result prevents accidental overwriting. Use a new prefix for another analysis. The --redo parameter ignores the existing checkpoint, deletes or overwrites result files for that prefix, and starts from the beginning; use it only when the existing result is no longer needed.\nTo request a specified collection of independent searches in one run, use an explicit starting-tree set such as:\n--tree 'pars{10},rand{10}'\nCompare the final likelihoods in .raxml.mlTrees and .raxml.log. Retain the highest-likelihood result rather than selecting a tree by its support values.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#operational-checklist",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#operational-checklist",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "12 Operational checklist",
-    "text": "12 Operational checklist\n\nPrepare and inspect the aligned input data.\nRun --check; use --parse for large alignments.\nSelect the data type and partition scheme.\nUse MOOSE model selection or state a fixed model.\nChoose the tree-search and branch-support procedures.\nSet a fixed seed, allocated thread limit, and unique prefix.\nSave the exact command, RAxML-NG version, alignment, model, and partition file.\nRead the .raxml.log file and resolve relevant warnings.\nPreserve the supported tree, best tree, bootstrap trees, model file, log, and binary alignment.\nRoot the inferred tree according to the biological study design and document that decision.\nReport the software version, model-selection criterion or fixed model, partition branch-length mode, tree-search settings, support metric, and replicate or convergence rule.\nCite RAxML-NG and any feature-specific methods identified by the software documentation.",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
-    ]
-  },
-  {
-    "objectID": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#further-reading",
-    "href": "content/03_primers/55-02__phylogenetic-inference--tools--raxml.html#further-reading",
-    "title": "Phylogenetic inference tools – RAxML-NG",
-    "section": "13 Further reading",
-    "text": "13 Further reading\n\nRAxML-NG repository and installation instructions\nRAxML-NG tutorial\nInput data and analysis commands\nAutomatic model selection with MOOSE\nComputing branch-support metrics\nParallelization\nOutput files and settings\nRAxML-NG paper",
-    "crumbs": [
-      "Home",
-      "[[55-02]{.indexed-content-number} [Phylogenetic inference tools -- RAxML-NG]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[31-02]{.indexed-content-number} [Bernoulli trial]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -2253,36 +2099,190 @@
     ]
   },
   {
-    "objectID": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html",
-    "href": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html",
-    "title": "Pseudo-random number generators: continuous values from discrete machines",
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html",
+    "title": "Phylogenetic inference tools – IQ-TREE",
     "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "text": "IQ-TREE infers maximum-likelihood phylogenies from aligned molecular or discrete-character data. A typical analysis selects or specifies an evolutionary model, searches for the maximum-likelihood tree, estimates branch support, and writes the tree in Newick format.",
     "crumbs": [
       "Home",
-      "[[21-03]{.indexed-content-number} [Pseudo-random number generators: continuous values from discrete machines]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html#how-a-discrete-valued-machine-generating-continuous-random-values",
-    "href": "content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html#how-a-discrete-valued-machine-generating-continuous-random-values",
-    "title": "Pseudo-random number generators: continuous values from discrete machines",
-    "section": "",
-    "text": "A computer’s RNG (Random Number Generator), generates (pseudo-)random integer values. For continous value, the computer will generate values by sampling from a grid in \\([0, 1)\\).\nAs with the challenges of a deterministic machine generating random values, when requiring random continuous value, we are faced with the challenge of a discrete-value calculating machine dealing with non-integer values. A computer can generate a pseudo-random integer value, \\(k\\), using its Pseudo-Random Number Generator. For continuous values, the generated integer value, \\(k\\) is then scaled to a floating-point \\(x\\) by, for e.g., \\(\\frac{k}{2p}\\), where \\(p\\) is the number usable bits and \\(0 \\le k \\le 2^p - 1\\). The result in floating point value in the range \\(0 \\le x &lt; 1\\).\nWhile 1 is excluded from the range, this does not change the distribution. A continuous uniform distribution on \\([0, 1]\\) assigns probability zero to any single point, include \\(0\\) or \\(1\\) in that range, so this exclusion of 1 does not change the characteristics of the distribution. (With continuous distributions, we do not ask what is the probability of observing any particular value. We ask is the probability of observing a range of values.)\nLet\n\n\\(p\\) = number of mantissa bits of the target floating-point type (\\(p=53\\) for Float64)\n\\(k\\) drawn uniformly from\n\n\\[\n{0,1,\\dots,2^p - 1}\n\\]\nDefine\n\\[\nx = \\frac{k}{2^p}.\n\\]\nThen:\n\nThe mapping \\(k \\mapsto x\\) is bijective\nEach possible \\(x\\) has probability exactly \\(2^{-p}\\)\nThe support is\n\n\\[\n\\left\\{ 0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\dots, \\frac{2^p-1}{2^p} \\right\\}\n\\subset [0,1)\n\\]\nNote this is a discrete uniform distribution over the set of values \\(\\{0, \\frac{1}{2^p}, \\frac{2}{2^p}, \\ldots, \\frac{2^p-1}{2^p}\\}\\), not a continuous one. The operation bins the range \\([0, 1)\\) into \\(2^p\\) equal width bins of \\(\\frac{1}{1^p}\\) width. For Float64 this result in \\(2^{53} \\approx 9 \\times 10^{15}\\) bins of width \\(2^{-53} \\approx 1.11 \\times 10^{-16}\\).",
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#installation-and-command-names",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#installation-and-command-names",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "1 Installation and command names",
+    "text": "1 Installation and command names\nDownload a current binary from the IQ-TREE website or use one of the package-manager methods in the installation guide.\nThe commands below use the IQ-TREE 3 executable name, iqtree3. Some installations expose the executable as iqtree or iqtree2; substitute that name in each command if necessary.\nConfirm the installed version and display the command-line help:\niqtree3 --version\niqtree3 -h\nRecord the version reported by --version with the analysis results.",
     "crumbs": [
       "Home",
-      "[[21-03]{.indexed-content-number} [Pseudo-random number generators: continuous values from discrete machines]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
-    "objectID": "content/03_primers/20-02__julia-environments-global-vs-project.html",
-    "href": "content/03_primers/20-02__julia-environments-global-vs-project.html",
-    "title": "Julia – Environments – Global vs project",
-    "section": "",
-    "text": "Global installs are convenient, with packages available to any Julia program you run. Some workflows benefit from a “heavy” global environment with most common packages installed there DataFrames.jl, CSV.jl, XLSX.jl, Makie.jl, Distributions.jl and universally available to every project, with project-specific installs limited to specialized needs.\nOn the other hand, the lack of isolation between global and project-specific environments can result in globally-installed packages leaking into project tests, dependency chains, and so on. Workflows incorporating software engineering best practices typically benefit from having light global environments and heavy project environments: little to no packages installed globally, with all packages installed into project specific environments.\nI prefer and recommend the latter approach, not just due to my software developer vocation, but also for robustness and replicability.\nOne way to achieve both the convenience of a global with just a little more friction is to created a dedicated scratch environment into which you can dump all the commonly used packages useful for many tasks and workflows before anything “escalates” into a fully-siloed project.\nalias jc='julia --project=~/.julia-calc`\nThis, as a full-fledged isolated environment, then gains the benefit of actually being able to be loaded up with useful packages, from fundamentals (e.g., DataFrames.jl, CSV, etc.) to more specialized domain-specific yet project-general ones (e.g. visualization libraries).\n\n\n\n Back to top",
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#input-requirements",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#input-requirements",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "2 Input requirements",
+    "text": "2 Input requirements\nIQ-TREE requires a multiple-sequence alignment, not raw unaligned sequences. It accepts FASTA, PHYLIP, NEXUS, CLUSTAL, and MSF alignments.\nBefore starting an analysis, confirm that:\n\nevery sequence represents homologous characters and has the same aligned length;\nevery taxon has a unique, compact label;\ntaxon labels avoid spaces and Newick punctuation such as parentheses, commas, colons, and semicolons;\nthe alignment contains the intended character type;\npartition coordinates, if used, are one-based and match the alignment; and\nconstant sites remain present unless the sampling process deliberately retained only variable sites.\n\nIQ-TREE treats gaps and missing or ambiguous characters as unknown states. Unsupported characters in taxon labels may be replaced with underscores, which can create duplicate labels. Correct such labels in the input alignment before analysis.",
     "crumbs": [
       "Home",
-      "[[20-02]{.indexed-content-number} [Julia -- Environments -- Global vs project]{.indexed-content-title}]{.indexed-content-entry}"
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#a-standard-analysis",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#a-standard-analysis",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "3 A standard analysis",
+    "text": "3 A standard analysis\nThe following command selects a model, searches for a maximum-likelihood tree, and calculates two forms of branch support:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MFP \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix alignment_run1\nThe parameters have the following meanings:\n\n\n\n\n\n\n\nParameter\nMeaning\n\n\n\n\n-s alignment.fasta\nReads the multiple-sequence alignment from alignment.fasta.\n\n\n-m MFP\nRuns ModelFinder Plus, selects the best-fit model by the Bayesian information criterion by default, and uses that model for tree inference.\n\n\n-B 1000\nRuns 1,000 ultrafast bootstrap (UFBoot) replicates. IQ-TREE recommends at least 1,000 replicates.\n\n\n--alrt 1000\nRuns 1,000 replicates of the SH-like approximate likelihood-ratio test (SH-aLRT).\n\n\n-T AUTO\nBenchmarks available CPU threads and selects an efficient thread count. On a managed cluster, replace AUTO with the number of CPU threads allocated to the job.\n\n\n--seed 20260912\nSets the random-number seed. Any fixed integer may be used. Record the IQ-TREE version and computing environment because a seed alone does not guarantee identical results across versions or platforms.\n\n\n--prefix alignment_run1\nWrites all output files with the prefix alignment_run1 instead of deriving their names from the alignment filename. Use a distinct prefix for every analysis.\n\n\n\n-m MFP is the default behavior in modern IQ-TREE versions, but stating it explicitly records the model-selection procedure in the command.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#model-selection-and-model-strings",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#model-selection-and-model-strings",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "4 Model selection and model strings",
+    "text": "4 Model selection and model strings\nRun model selection without a subsequent full tree search when the selected model is needed for a separate workflow:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MF \\\n    -T AUTO \\\n    --prefix alignment_model_test\n-m MF performs ModelFinder model selection only. Read the selected model from alignment_model_test.iqtree. Supply that model directly in a later analysis:\niqtree3 \\\n    -s alignment.fasta \\\n    -m GTR+F+R4 \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix alignment_gtr_f_r4\nAn IQ-TREE model string combines a base substitution model with optional components:\n\n\n\n\n\n\n\nComponent\nMeaning\n\n\n\n\nGTR, HKY, JC\nExamples of nucleotide substitution models.\n\n\nLG, WAG, JTT\nExamples of amino-acid exchangeability models.\n\n\n+F\nUses empirical character frequencies counted from the alignment.\n\n\n+FO\nOptimizes character frequencies by maximum likelihood.\n\n\n+I\nEstimates a proportion of invariable sites.\n\n\n+G4\nModels among-site rate variation with a discrete gamma distribution and four rate categories.\n\n\n+R4\nModels among-site rate variation with four FreeRate categories.\n\n\n+ASC\nCorrects for ascertainment bias when the input deliberately excludes constant sites, as in many SNP or morphological matrices.\n\n\n\nDo not add model components by convention alone. Use ModelFinder or provide a biological and statistical reason for fixing a model. +ASC is incompatible with an alignment that contains constant sites.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#character-types",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#character-types",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "5 Character types",
+    "text": "5 Character types\nIQ-TREE usually detects the character type. Use --seqtype when detection is incorrect or when the intended analysis requires an explicit type:\n\n\n\n\n\n\n\nParameter\nCharacter type\n\n\n\n\n--seqtype DNA\nNucleotide data.\n\n\n--seqtype AA\nAmino-acid data.\n\n\n--seqtype CODON\nProtein-coding nucleotide data analyzed with the standard genetic code and a codon model.\n\n\n--seqtype CODON5\nCodon data using genetic-code table 5, the invertebrate mitochondrial code.\n\n\n--seqtype MORPH\nDiscrete morphological characters.\n\n\n\nCodon analysis requires --seqtype CODON or the appropriate numbered genetic code. The alignment length must be divisible by three, and the first alignment position must correspond to the first codon position.\nFor an alignment that contains only ascertained variable nucleotide sites:\niqtree3 \\\n    -s snps.fasta \\\n    --seqtype DNA \\\n    -m MFP+ASC \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix snps_run1",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#partitioned-alignments",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#partitioned-alignments",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "6 Partitioned alignments",
+    "text": "6 Partitioned alignments\nPartition a concatenated alignment when defined site sets, such as genes or codon positions, require separate evolutionary models. A RAxML-style partition file named partitions.txt can contain:\nDNA, gene1_pos1 = 1-900\\3\nDNA, gene1_pos2 = 2-900\\3\nDNA, gene1_pos3 = 3-900\\3\nDNA, gene2 = 901-1500\nThe expression 1-900\\3 selects sites 1, 4, 7, and so forth through site 898. The other two expressions select the second and third codon positions.\nRun an edge-proportional partition analysis and allow ModelFinder to merge similar partitions:\niqtree3 \\\n    -s concatenated.fasta \\\n    -p partitions.txt \\\n    -m MFP+MERGE \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T AUTO \\\n    --seed 20260912 \\\n    --prefix concatenated_partitioned\nThe partition parameters differ in how they model branch lengths:\n\n\n\n\n\n\n\nParameter\nPartition model\n\n\n\n\n-q partitions.txt\nUses one shared set of branch lengths for all partitions.\n\n\n-p partitions.txt\nUses a shared topology and proportional branch lengths, allowing each partition to have a different overall evolutionary rate. This is the usual starting point for a partitioned analysis.\n\n\n-Q partitions.txt\nUses a shared topology but an independent set of branch lengths for each partition. This model has many more parameters.\n\n\n-m MFP+MERGE\nSelects models, searches for a lower-dimensional partitioning scheme by merging compatible partitions, and then infers the tree.\n\n\n\nInspect the selected models and merged partition scheme in the .iqtree report and the generated .best_scheme.nex file.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#starting-trees-constraints-and-fixed-trees",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#starting-trees-constraints-and-fixed-trees",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "7 Starting trees, constraints, and fixed trees",
+    "text": "7 Starting trees, constraints, and fixed trees\nThese parameters have distinct effects:\n\n\n\n\n\n\n\nParameter\nEffect\n\n\n\n\n-t start.tree\nStarts the search from the supplied Newick tree. The topology may change during the search.\n\n\n-g constraint.tree\nRestricts the search to trees compatible with the supplied, possibly partial, topological constraint.\n\n\n-t fixed.tree --tree-fix\nFixes the supplied topology, skips the topology search, and estimates its likelihood and other model quantities.\n\n\n-o Outgroup\nPlaces the named taxon on the outgroup side of the reported tree. Under a reversible substitution model, this does not supply statistical information about the root.\n\n\n\nUse constraints only when they represent an explicit analysis assumption. A starting tree is not a constraint.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#resource-limits",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#resource-limits",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "8 Resource limits",
+    "text": "8 Resource limits\nUse a fixed thread count and memory limit when a scheduler or shared computer assigns finite resources:\niqtree3 \\\n    -s alignment.fasta \\\n    -m MFP \\\n    -B 1000 \\\n    --alrt 1000 \\\n    -T 8 \\\n    --mem 16G \\\n    --seed 20260912 \\\n    --prefix alignment_run1\n-T 8 uses up to eight CPU threads. --mem 16G limits IQ-TREE to approximately 16 GB of memory. These values must not exceed the resources allocated to the process.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#output-files",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#output-files",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "9 Output files",
+    "text": "9 Output files\nFor --prefix alignment_run1, the main files are:\n\n\n\n\n\n\n\nFile\nContents\n\n\n\n\nalignment_run1.treefile\nBest maximum-likelihood tree in Newick format, including requested branch-support labels.\n\n\nalignment_run1.iqtree\nMain report with the input summary, selected model, estimated parameters, log-likelihood, branch-support legend, textual tree, and relevant citation list.\n\n\nalignment_run1.log\nComplete run log, including the IQ-TREE version, command, progress, warnings, and completion status.\n\n\nalignment_run1.ckp.gz\nCheckpoint used to resume an interrupted analysis.\n\n\nalignment_run1.model.gz\nModelFinder checkpoint and model-test results when model selection is performed.\n\n\nalignment_run1.contree\nConsensus tree produced by an ultrafast bootstrap analysis.\n\n\nalignment_run1.splits.nex\nBootstrap split frequencies in NEXUS format.\n\n\n\nRead the report and log before using the tree:\nless alignment_run1.iqtree\nless alignment_run1.log\nConfirm the following information:\n\nthe program completed normally;\nthe detected character type and alignment dimensions are correct;\nthe selected model or partition scheme is the intended one;\nwarnings about duplicate sequences, composition, missing data, or numerical behavior have been evaluated;\nthe maximum log-likelihood and random-number seed are recorded; and\nthe branch-support label order matches the legend in the .iqtree report.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#branch-support-labels",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#branch-support-labels",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "10 Branch-support labels",
+    "text": "10 Branch-support labels\nWhen --alrt 1000 and -B 1000 are combined, internal branch labels normally have the form:\nSH-aLRT/UFBoot\nA label of 87.4/98 therefore reports 87.4% SH-aLRT support followed by 98% ultrafast bootstrap support.\nFor a single-gene tree, the IQ-TREE documentation treats SH-aLRT support of at least 80% together with UFBoot support of at least 95% as strong support. These thresholds do not transfer directly to concatenated phylogenomic analyses, where support values can become uniformly high. Examine gene and site concordance factors for multi-locus data, and treat all branch-support values as measures conditional on the alignment, model, and analysis procedure.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#checkpoints-and-repeated-analyses",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#checkpoints-and-repeated-analyses",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "11 Checkpoints and repeated analyses",
+    "text": "11 Checkpoints and repeated analyses\nIQ-TREE periodically writes the .ckp.gz checkpoint. If a run stops before completion, rerun the same command with the same input and prefix to resume it.\nA completed checkpoint prevents accidental overwriting. To conduct another analysis, use a new prefix. The --redo parameter discards the completed checkpoint state and overwrites files for the existing prefix; use it only when the existing result is no longer needed.\nFor analyses susceptible to local optima, add --runs 10 to perform ten independent tree searches in one invocation, or run separate commands with different seeds and prefixes. Compare the final log-likelihoods and topologies, and retain the highest-likelihood result rather than selecting a tree by its branch-support values.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#operational-checklist",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#operational-checklist",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "12 Operational checklist",
+    "text": "12 Operational checklist\n\nPrepare and inspect the aligned input data.\nSelect the character type and partition scheme.\nChoose model selection or state a fixed model.\nSet branch-support procedures, a fixed seed, resource limits, and a unique prefix.\nSave the exact command, IQ-TREE version, input alignment, and partition file.\nRead the .log and .iqtree files and resolve relevant warnings.\nPreserve the .treefile, report, log, checkpoint, selected model, and partition scheme.\nRoot the inferred tree according to the biological study design and document that decision.\nReport the software version, model-selection procedure or fixed model, partition model, tree-search settings, support procedures, and replicate counts.\nCite IQ-TREE and each feature-specific method listed in the .iqtree report.",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#further-reading",
+    "href": "content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html#further-reading",
+    "title": "Phylogenetic inference tools – IQ-TREE",
+    "section": "13 Further reading",
+    "text": "13 Further reading\n\nGetting started\nBeginner’s tutorial\nCommand reference\nSubstitution models\nPartition and mixture models\nFrequently asked questions",
+    "crumbs": [
+      "Home",
+      "[[53-02]{.indexed-content-number} [Phylogenetic inference tools -- IQ-TREE]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
+    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "",
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Home",
+      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#pathogen-fitness-as-function-of-virulence",
+    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#pathogen-fitness-as-function-of-virulence",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "",
+    "text": "(Frank 1996) provides an alternate formulation of virulence-transmission trade-off which defines pathogen fitness as a product of increase in capacity for transmission success for a particular pathogen reproductive intensity, weighted or scaled by the reduction in opportunity, duration, or effectiveness in transmission due to damage to the host due to the virulence of that reproductive intensity.\nThe fitness of a pathogen can be measured by the net gain in infected hosts, \\(w\\),\n\\[\nw = z f(z),\n\\tag{1}\\]\nwhere:\n\n\\(w\\) is the pathogen fitness (corresponding to \\(R_0\\), the net total reproductive output of the virus in terms of newly infected hosts),\n\\(z\\) is a measure correlated positively with parasite reproductive intensity, which correlates positively with capacity for transmission success, as measured by the number of hosts infected by a single infected host given full transmission opportunity (if host fitness, longevity, resources, mobility, etc. were not impacted by virus reproductive activity),\n\\(f(z)\\), a “declining function of \\(z\\)” (meaning that \\(f(z)\\) decreases as \\(z\\) increases), which is the cost or penalty factor accounting for reduction in transmission success due to depletion of host resources, fitness, longevity and so on as a result of pa.",
+    "crumbs": [
+      "Home",
+      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
+    ]
+  },
+  {
+    "objectID": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#linear-decline-in-host-resources-due-to-virulence",
+    "href": "content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html#linear-decline-in-host-resources-due-to-virulence",
+    "title": "Pathogen fitness as a function of virulence (Frank, 1996)",
+    "section": "2 Linear decline in host resources due to virulence",
+    "text": "2 Linear decline in host resources due to virulence\n(Frank 1996) describes a linear function to model the degradation of the host resources available due to virulence, \\(f(z) = 1 - \\alpha z\\), where \\(\\alpha\\) is a scaling relation between transmission (\\(z\\)) and virulence (\\(\\alpha z\\)).\nThe pathogen fitness function under this linear scaling is\n\\[\n\\begin{align}\nw = z (1 - \\alpha z)\n\\end{align}\n\\tag{2}\\]",
+    "crumbs": [
+      "Home",
+      "[[40-01]{.indexed-content-number} [Pathogen fitness as a function of virulence (Frank, 1996)]{.indexed-content-title}]{.indexed-content-entry}"
     ]
   },
   {
@@ -3845,11 +3845,21 @@
     ]
   },
   {
+    "objectID": "index.html#distance-based-phylogenetic-inference-with-mega",
+    "href": "index.html#distance-based-phylogenetic-inference-with-mega",
+    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
+    "section": "53-01. Distance-based phylogenetic inference with MEGA",
+    "text": "53-01. Distance-based phylogenetic inference with MEGA",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
     "objectID": "index.html#phylogenetic-inference-tools-iq-tree",
     "href": "index.html#phylogenetic-inference-tools-iq-tree",
     "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
-    "section": "55-01. Phylogenetic inference tools – IQ-TREE",
-    "text": "55-01. Phylogenetic inference tools – IQ-TREE",
+    "section": "53-02. Phylogenetic inference tools – IQ-TREE",
+    "text": "53-02. Phylogenetic inference tools – IQ-TREE",
     "crumbs": [
       "Home"
     ]
@@ -3858,8 +3868,8 @@
     "objectID": "index.html#phylogenetic-inference-tools-raxml-ng",
     "href": "index.html#phylogenetic-inference-tools-raxml-ng",
     "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
-    "section": "55-02. Phylogenetic inference tools – RAxML-NG",
-    "text": "55-02. Phylogenetic inference tools – RAxML-NG",
+    "section": "53-03. Phylogenetic inference tools – RAxML-NG",
+    "text": "53-03. Phylogenetic inference tools – RAxML-NG",
     "crumbs": [
       "Home"
     ]
@@ -3868,18 +3878,8 @@
     "objectID": "index.html#phylogenetic-inference-tools-mrbayes",
     "href": "index.html#phylogenetic-inference-tools-mrbayes",
     "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
-    "section": "55-03. Phylogenetic inference tools – MrBayes",
-    "text": "55-03. Phylogenetic inference tools – MrBayes",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#distance-based-phylogenetic-inference-with-mega",
-    "href": "index.html#distance-based-phylogenetic-inference-with-mega",
-    "title": "(Just enough) Julia for scientific informatics, modeling, and reasoning",
-    "section": "55-04. Distance-based phylogenetic inference with MEGA",
-    "text": "55-04. Distance-based phylogenetic inference with MEGA",
+    "section": "53-04. Phylogenetic inference tools – MrBayes",
+    "text": "53-04. Phylogenetic inference tools – MrBayes",
     "crumbs": [
       "Home"
     ]
