@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.curriculum-proficiencies {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -117,11 +117,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-related {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -129,15 +133,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
+.curriculum-proficiencies {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -495,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The <a href="../../../../content/03_primers/07-01__the-newick-data-format.html">Newick primer</a> explains Newick punctuation, labels, and branch lengths. This tutorial focuses on selecting the Julia function that converts a data source into a phylogeny object. The <a href="../../../../content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">visualization tutorial</a> begins after that object exists.</p>
+<p>The <a href="../../../../content/03_primers/07-01__the-newick-data-format.qmd">Newick primer</a> explains Newick punctuation, labels, and branch lengths. This tutorial focuses on selecting the Julia function that converts a data source into a phylogeny object. The <a href="../../../../content/01_tutorials/04-00__phylogenetic-reasoning-and-analyses/02-01__phylogeny-visualization/index.html">visualization tutorial</a> begins after that object exists.</p>
 <section id="learning-goals" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1</span> Learning goals</h2>
 <p>By the end of this tutorial, you should be able to:</p>
@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>PhyloMakie.jl</code> needs to be <a href="../../../../content/03_primers/05-01__julia-environment-provisioning.html">installed in the active environment</a>. If this has not already been done, run:</p>
+<p><code>PhyloMakie.jl</code> needs to be <a href="../../../../content/03_primers/05-01__julia-environment-provisioning.qmd">installed in the active environment</a>. If this has not already been done, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Pkg</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">add</span>(<span class="st">"PhyloMakie"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

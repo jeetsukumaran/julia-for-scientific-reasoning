@@ -112,19 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
-.curriculum-definition {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.workflow-detail {
-  --color1: #ffffff;
-  --color2: #000000;
-}
 .curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -132,11 +120,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.workflow-detail {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
 .shell-equivalent {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -555,7 +555,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>In Julia, a <em>function</em> is a operation that can accept inputs and returns outputs. A function of a particular name (e.g.&nbsp;<code>range</code>, <code>rand</code>, <code>my_custom_function</code>) may have a number of different <em>methods</em>, or implementation that are distinguished by the pattern of <em>arguments</em> the function takes (called the <em>signature</em> of the function).</p>
-<p>See: <a href="../../../../content/03_primers/05-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></p>
+<p>See: <a href="../../../../content/03_primers/05-03__julia-functions-methods-and-signatures.qmd">Julia: Functions, methods, and signatures</a></p>
 </div>
 </div></div><p>The <code>rand</code> function is the function we will most often use to generate random variates of different shapes, and sizes and characteristics. The <code>rand</code> function has a number of different <em>methods</em>, that is, different approaches for generating random values of various different data types, structures, and ranges, depending on the arguments passed to it.</p>
 </section>
@@ -830,7 +830,7 @@ window.Quarto = {
 <p>If we consider a uniform distribution on a subset of real number line between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, and divide it at <span class="math inline">\(p\)</span> of various values, we can see the larger segment of the range assigned to one or the other outcome depending the parameter.</p>
 <p>If we consider that <code>rand()</code> will return a sample anywhere in that range with equal probability, we can see how a larger <span class="math inline">\(p\)</span> means a value will fall in the part of the range that maps to the first outcome and vice versa.</p>
 <p>if the result of a<code>rand()</code> is less than <span class="math inline">\(p\)</span>, then we have simulated a sample in which the event has occurred, and conversely, if greater than or equal to <span class="math inline">\(p\)</span>, to <em>not</em> have occured.</p>
-<p>For example, consider the classical <a href="../../../../content/03_primers/01-01__bernoulli-trial.html">Bernoulli trial</a> modeling an idealized fair coin toss, where there are two possible outcomes, “heads” or “tails”, with the probability of “heads” in any single realization being given by the model parameter <span class="math inline">\(p=0.5\)</span>.</p>
+<p>For example, consider the classical <a href="../../../../content/03_primers/01-01__bernoulli-trial.qmd">Bernoulli trial</a> modeling an idealized fair coin toss, where there are two possible outcomes, “heads” or “tails”, with the probability of “heads” in any single realization being given by the model parameter <span class="math inline">\(p=0.5\)</span>.</p>
 <p>The short-hand Julia expression for this is:</p>
 <div id="30" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rand</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> ? <span class="st">"heads"</span> <span class="op">:</span> <span class="st">"tails"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

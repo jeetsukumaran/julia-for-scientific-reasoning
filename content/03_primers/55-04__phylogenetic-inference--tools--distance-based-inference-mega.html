@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeet Sukumaran">
 
-<title>Phylogenetic inference tools – distance-based inference with MEGA</title>
+<title>Distance-based phylogenetic inference with MEGA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -108,7 +73,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.workflow-alternate {
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.shell-equivalent {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -176,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html"><span class="indexed-content-entry"><span class="indexed-content-number">55-04</span> <span class="indexed-content-title">Phylogenetic inference tools – distance-based inference with MEGA</span></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html"><span class="indexed-content-entry"><span class="indexed-content-number">55-04</span> <span class="indexed-content-title">Distance-based phylogenetic inference with MEGA</span></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -327,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/03_primers/55-04__phylogenetic-inference--tools--distance-based-inference-mega.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">55-04</span> <span class="indexed-content-title">Phylogenetic inference tools – distance-based inference with MEGA</span></span></span></a>
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">55-04</span> <span class="indexed-content-title">Distance-based phylogenetic inference with MEGA</span></span></span></a>
   </div>
 </li>
     </ul>
@@ -340,19 +333,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#installation-and-interfaces" id="toc-installation-and-interfaces" class="nav-link active" data-scroll-target="#installation-and-interfaces"><span class="header-section-number">1</span> Installation and interfaces</a></li>
-  <li><a href="#input-requirements-and-conversion" id="toc-input-requirements-and-conversion" class="nav-link" data-scroll-target="#input-requirements-and-conversion"><span class="header-section-number">2</span> Input requirements and conversion</a></li>
-  <li><a href="#distance-based-tree-building-methods" id="toc-distance-based-tree-building-methods" class="nav-link" data-scroll-target="#distance-based-tree-building-methods"><span class="header-section-number">3</span> Distance-based tree-building methods</a></li>
-  <li><a href="#a-standard-neighbor-joining-analysis" id="toc-a-standard-neighbor-joining-analysis" class="nav-link" data-scroll-target="#a-standard-neighbor-joining-analysis"><span class="header-section-number">4</span> A standard neighbor-joining analysis</a></li>
-  <li><a href="#repeating-an-analysis-with-mega-cc" id="toc-repeating-an-analysis-with-mega-cc" class="nav-link" data-scroll-target="#repeating-an-analysis-with-mega-cc"><span class="header-section-number">5</span> Repeating an analysis with MEGA-CC</a></li>
-  <li><a href="#choosing-an-evolutionary-distance-model" id="toc-choosing-an-evolutionary-distance-model" class="nav-link" data-scroll-target="#choosing-an-evolutionary-distance-model"><span class="header-section-number">6</span> Choosing an evolutionary-distance model</a></li>
-  <li><a href="#gaps-and-missing-data" id="toc-gaps-and-missing-data" class="nav-link" data-scroll-target="#gaps-and-missing-data"><span class="header-section-number">7</span> Gaps and missing data</a></li>
-  <li><a href="#minimum-evolution-analyses" id="toc-minimum-evolution-analyses" class="nav-link" data-scroll-target="#minimum-evolution-analyses"><span class="header-section-number">8</span> Minimum-evolution analyses</a></li>
-  <li><a href="#upgma-analyses" id="toc-upgma-analyses" class="nav-link" data-scroll-target="#upgma-analyses"><span class="header-section-number">9</span> UPGMA analyses</a></li>
-  <li><a href="#bootstrap-support" id="toc-bootstrap-support" class="nav-link" data-scroll-target="#bootstrap-support"><span class="header-section-number">10</span> Bootstrap support</a></li>
-  <li><a href="#output-and-reporting" id="toc-output-and-reporting" class="nav-link" data-scroll-target="#output-and-reporting"><span class="header-section-number">11</span> Output and reporting</a></li>
-  <li><a href="#operational-checklist" id="toc-operational-checklist" class="nav-link" data-scroll-target="#operational-checklist"><span class="header-section-number">12</span> Operational checklist</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">13</span> Further reading</a></li>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation"><span class="header-section-number">1</span> Preparation</a>
+  <ul class="collapse">
+  <li><a href="#installing-mega" id="toc-installing-mega" class="nav-link" data-scroll-target="#installing-mega"><span class="header-section-number">1.1</span> Installing MEGA</a></li>
+  <li><a href="#acquiring-the-example-alignment" id="toc-acquiring-the-example-alignment" class="nav-link" data-scroll-target="#acquiring-the-example-alignment"><span class="header-section-number">1.2</span> Acquiring the example alignment</a></li>
+  </ul></li>
+  <li><a href="#basic-workflow" id="toc-basic-workflow" class="nav-link" data-scroll-target="#basic-workflow"><span class="header-section-number">2</span> Basic workflow</a>
+  <ul class="collapse">
+  <li><a href="#converting-the-fasta-alignment-to-mega-format" id="toc-converting-the-fasta-alignment-to-mega-format" class="nav-link" data-scroll-target="#converting-the-fasta-alignment-to-mega-format"><span class="header-section-number">2.1</span> Converting the FASTA alignment to MEGA format</a></li>
+  <li><a href="#opening-and-checking-the-alignment" id="toc-opening-and-checking-the-alignment" class="nav-link" data-scroll-target="#opening-and-checking-the-alignment"><span class="header-section-number">2.2</span> Opening and checking the alignment</a></li>
+  <li><a href="#constructing-a-neighbor-joining-tree" id="toc-constructing-a-neighbor-joining-tree" class="nav-link" data-scroll-target="#constructing-a-neighbor-joining-tree"><span class="header-section-number">2.3</span> Constructing a neighbor-joining tree</a></li>
+  <li><a href="#inspecting-the-inferred-tree" id="toc-inspecting-the-inferred-tree" class="nav-link" data-scroll-target="#inspecting-the-inferred-tree"><span class="header-section-number">2.4</span> Inspecting the inferred tree</a></li>
+  <li><a href="#saving-the-tree-and-analysis-record" id="toc-saving-the-tree-and-analysis-record" class="nav-link" data-scroll-target="#saving-the-tree-and-analysis-record"><span class="header-section-number">2.5</span> Saving the tree and analysis record</a></li>
+  </ul></li>
+  <li><a href="#follow-up-workflows" id="toc-follow-up-workflows" class="nav-link" data-scroll-target="#follow-up-workflows"><span class="header-section-number">3</span> Follow-up workflows</a>
+  <ul class="collapse">
+  <li><a href="#estimating-bootstrap-support" id="toc-estimating-bootstrap-support" class="nav-link" data-scroll-target="#estimating-bootstrap-support"><span class="header-section-number">3.1</span> Estimating bootstrap support</a></li>
+  <li><a href="#applying-a-multiple-substitution-correction" id="toc-applying-a-multiple-substitution-correction" class="nav-link" data-scroll-target="#applying-a-multiple-substitution-correction"><span class="header-section-number">3.2</span> Applying a multiple-substitution correction</a></li>
+  <li><a href="#inspecting-the-distance-matrix" id="toc-inspecting-the-distance-matrix" class="nav-link" data-scroll-target="#inspecting-the-distance-matrix"><span class="header-section-number">3.3</span> Inspecting the distance matrix</a></li>
+  <li><a href="#comparing-neighbor-joining-and-minimum-evolution" id="toc-comparing-neighbor-joining-and-minimum-evolution" class="nav-link" data-scroll-target="#comparing-neighbor-joining-and-minimum-evolution"><span class="header-section-number">3.4</span> Comparing neighbor joining and minimum evolution</a></li>
+  <li><a href="#constructing-a-upgma-tree" id="toc-constructing-a-upgma-tree" class="nav-link" data-scroll-target="#constructing-a-upgma-tree"><span class="header-section-number">3.5</span> Constructing a UPGMA tree</a></li>
+  </ul></li>
+  <li><a href="#analysis-choices" id="toc-analysis-choices" class="nav-link" data-scroll-target="#analysis-choices"><span class="header-section-number">4</span> Analysis choices</a></li>
+  <li><a href="#recording-the-analysis" id="toc-recording-the-analysis" class="nav-link" data-scroll-target="#recording-the-analysis"><span class="header-section-number">5</span> Recording the analysis</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">6</span> Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -361,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Phylogenetic inference tools – distance-based inference with MEGA</h1>
+<h1 class="title">Distance-based phylogenetic inference with MEGA</h1>
 </div>
 
 
@@ -384,17 +388,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://www.megasoftware.net/">MEGA</a> estimates evolutionary distances and uses them to infer neighbor-joining, minimum-evolution, and UPGMA trees. The graphical interface supports interactive analysis and inspection. MEGA-CC exposes the same analyses through the <code>megacc</code> command for scripted and repeated execution.</p>
-<p>Distance-based inference has two distinct stages:</p>
+<p><a href="https://www.megasoftware.net/">MEGA</a> estimates evolutionary distances from aligned sequences and uses those distances to infer phylogenetic trees. This tutorial constructs a neighbor-joining tree for eight living bear species, examines its branch lengths, estimates bootstrap support, and compares the result with other distance-based methods.</p>
+<p>The complete workflow uses MEGA’s graphical interface. It begins with one provided FASTA alignment and creates every other file named below.</p>
+<section id="preparation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">1</span> Preparation</h2>
+<section id="installing-mega" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="installing-mega"><span class="header-section-number">1.1</span> Installing MEGA</h3>
+<p>Download the current graphical version of MEGA for the operating system from the <a href="https://www.megasoftware.net/">MEGA website</a>. Follow the installer provided for that platform.</p>
+<p>Start MEGA and select <strong>Help | About MEGA</strong>. Record the installed version. The menu paths below follow MEGA 12.</p>
+</section>
+<section id="acquiring-the-example-alignment" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="acquiring-the-example-alignment"><span class="header-section-number">1.2</span> Acquiring the example alignment</h3>
+<p>Download the course alignment:</p>
+<p><a href="../../content/_assets/workflow-assets/sequences/ursidae/20260930_bear-cytb-alignment/bears-CYTB-aligned.fasta">Download <code>bears-CYTB-aligned.fasta</code></a></p>
+<p>Create the following project directories with the file manager:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/bear-cytb-mega/
+├── data/
+│   └── bears-CYTB-aligned.fasta
+└── results/</code></pre>
+<p>Save the downloaded file as:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.fasta</code></pre>
+<p>This file contains one complete mitochondrial <code>CYTB</code> coding sequence from each of eight living bear species. It contains eight aligned sequences, 1,140 columns, and no alignment gaps. Each sequence label contains the species, accession version, and gene:</p>
+<pre class="text"><code>Ailuropoda_melanoleuca|NC_009492.1|CYTB
+Helarctos_malayanus|NC_009968.1|CYTB
+Melursus_ursinus|NC_009970.1|CYTB
+Tremarctos_ornatus|NC_009969.1|CYTB
+Ursus_americanus|NC_003426.1|CYTB
+Ursus_arctos|NC_003427.1|CYTB
+Ursus_maritimus|NC_003428.1|CYTB
+Ursus_thibetanus|NC_009971.1|CYTB</code></pre>
+<p>Every analysis in this tutorial begins with this alignment. The tutorial next converts it to <code>bears-CYTB-aligned.meg</code>, then uses that converted file for tree inference.</p>
+</section>
+</section>
+<section id="basic-workflow" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="basic-workflow"><span class="header-section-number">2</span> Basic workflow</h2>
+<section id="converting-the-fasta-alignment-to-mega-format" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="converting-the-fasta-alignment-to-mega-format"><span class="header-section-number">2.1</span> Converting the FASTA alignment to MEGA format</h3>
+<p>MEGA’s native text format records the aligned characters and the data type needed by its analysis tools.</p>
 <ol type="1">
-<li>MEGA converts each pair of aligned sequences into one evolutionary-distance estimate.</li>
-<li>A tree-building method uses the resulting distance matrix to infer a topology and branch lengths.</li>
+<li>In the main MEGA window, select <strong>File | Convert File Format to MEGA</strong>.</li>
+<li>Select <code>data/bears-CYTB-aligned.fasta</code> from the project directory.</li>
+<li>If MEGA asks for the source format, select <strong>FASTA</strong>.</li>
+<li>In the Input Data Format dialog, select <strong>DNA</strong>.</li>
+<li>Retain <code>?</code> for missing data and <code>-</code> for alignment gaps.</li>
+<li>Complete the conversion.</li>
 </ol>
-<p>The distance model, site subset, and missing-data treatment therefore affect the matrix before the tree-building algorithm begins.</p>
-<section id="installation-and-interfaces" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="installation-and-interfaces"><span class="header-section-number">1</span> Installation and interfaces</h2>
-<p>Download MEGA for the operating system from the <a href="https://www.megasoftware.net/">MEGA website</a>. The MEGA-GUI and MEGA-CC downloads both contain the graphical interface and the command-line computational core. The graphical interface is required to create MEGA Analysis Options (<code>.mao</code>) files, so the MEGA-GUI download is the usual choice.</p>
-<p>MEGA provides three relevant interfaces:</p>
+<p>MEGA opens the converted text in its editor. The beginning of the file should contain a <code>#MEGA</code> declaration followed by a title and the first labeled sequence.</p>
+<p>Select <strong>File | Save As</strong> in the editor and save the converted file as:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/bear-cytb-mega/data/bears-CYTB-aligned.meg</code></pre>
+<p>The project now contains two data files:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -402,80 +444,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Interface</th>
-<th>Purpose</th>
+<th>File</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>MEGA Analyze mode</td>
-<td>Opens data, runs analyses interactively, and displays results.</td>
+<td><code>bears-CYTB-aligned.fasta</code></td>
+<td>Provided, portable multiple-sequence alignment.</td>
 </tr>
 <tr class="even">
-<td>MEGA Prototype mode</td>
-<td>Defines an analysis without running it and saves the settings in a <code>.mao</code> file.</td>
-</tr>
-<tr class="odd">
-<td>MEGA-CC</td>
-<td>Runs the analysis recorded in a <code>.mao</code> file from the <code>megacc</code> command.</td>
+<td><code>bears-CYTB-aligned.meg</code></td>
+<td>MEGA-formatted copy created in the preceding steps.</td>
 </tr>
 </tbody>
 </table>
-<p>Display the MEGA-CC command-line help after installation:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">megacc</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Record the MEGA version shown under <strong>Help | About MEGA</strong> with the analysis results. The menu paths and command-line examples below follow MEGA 12.</p>
+<p>Close the text editor after saving the <code>.meg</code> file.</p>
 </section>
-<section id="input-requirements-and-conversion" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="input-requirements-and-conversion"><span class="header-section-number">2</span> Input requirements and conversion</h2>
-<p>Distance estimation from sequence data requires a multiple-sequence alignment, not raw unaligned sequences. Before inference, confirm that:</p>
+<section id="opening-and-checking-the-alignment" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="opening-and-checking-the-alignment"><span class="header-section-number">2.2</span> Opening and checking the alignment</h3>
+<ol type="1">
+<li>In the main MEGA window, select <strong>Data | Open A File/Session</strong>.</li>
+<li>Select <code>data/bears-CYTB-aligned.meg</code>.</li>
+<li>Select <strong>Data | Explore Active Data</strong>.</li>
+</ol>
+<p>The Sequence Data Explorer should report eight sequences and 1,140 sites. Confirm that all eight labels listed above are present. Scroll across the alignment and confirm that the displayed data are nucleotides and that no sequence contains a gap.</p>
+<p>Close the Sequence Data Explorer without closing the active data file.</p>
+</section>
+<section id="constructing-a-neighbor-joining-tree" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="constructing-a-neighbor-joining-tree"><span class="header-section-number">2.3</span> Constructing a neighbor-joining tree</h3>
+<p>Select <strong>Phylogeny | Construct/Test Neighbor-Joining Tree</strong>.</p>
+<p>Set the following analysis options:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Test of Phylogeny</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>Substitutions Type</td>
+<td>Nucleotide</td>
+</tr>
+<tr class="odd">
+<td>Model/Method</td>
+<td>p-distance</td>
+</tr>
+<tr class="even">
+<td>Substitutions to Include</td>
+<td>Transitions and transversions</td>
+</tr>
+<tr class="odd">
+<td>Gaps/Missing Data Treatment</td>
+<td>Complete deletion</td>
+</tr>
+</tbody>
+</table>
+<p>Retain all 1,140 alignment sites. Select <strong>Compute</strong>.</p>
+<p>MEGA first calculates the proportion of different nucleotides for every pair of sequences. Neighbor joining then constructs one tree from that distance matrix. The Tree Explorer displays the result.</p>
+<p>The tree is unrooted. Its rectangular display has a leftmost position, but that position does not identify an ancestor or biological root.</p>
+</section>
+<section id="inspecting-the-inferred-tree" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="inspecting-the-inferred-tree"><span class="header-section-number">2.4</span> Inspecting the inferred tree</h3>
+<p>In Tree Explorer:</p>
+<ol type="1">
+<li>Select <strong>View | Options</strong>.</li>
+<li>Open the <strong>Branch</strong> settings.</li>
+<li>Enable the display of branch lengths.</li>
+<li>Apply the change.</li>
+</ol>
+<p>For this analysis, a branch length is an estimated p-distance: substitutions per aligned site along that branch. Longer branches represent greater estimated sequence divergence under the selected distance definition.</p>
+<p>Open the Tree Explorer information box and confirm:</p>
 <ul>
-<li>every sequence represents homologous characters and has the same aligned length;</li>
-<li>every taxon has a unique label;</li>
-<li>labels are compact and avoid whitespace and Newick punctuation such as parentheses, commas, colons, and semicolons;</li>
-<li>the declared data type matches the alignment;</li>
-<li>protein-coding annotations and codon positions, when used, match the alignment coordinates;</li>
-<li>the selected sites contain enough comparable characters for every required pairwise distance; and</li>
-<li>alignment uncertainty has been evaluated before the alignment is treated as fixed input.</li>
+<li>eight taxa were analyzed;</li>
+<li>the tree is neighbor joining;</li>
+<li>the distance is p-distance;</li>
+<li>gaps and missing data used complete deletion; and</li>
+<li>1,140 sites were retained.</li>
 </ul>
-<p>MEGA can convert aligned FASTA, NEXUS, PHYLIP, CLUSTAL, and several other text formats to its native <code>.meg</code> format. In the graphical interface, select <strong>File | Convert File Format to MEGA</strong>, choose the source alignment, confirm the data type and special characters, and save the converted file.</p>
-<p>For FASTA input, MEGA uses the first word after <code>&gt;</code> as the sequence name during conversion. Labels that differ only after the first whitespace therefore collide. Normalize and verify the labels before inference.</p>
-<p>Keep the original alignment and the converted <code>.meg</code> file together. The converted file is analysis input, not a replacement for the curated source alignment.</p>
+<p>The giant panda, <code>Ailuropoda_melanoleuca</code>, has the most divergent sequence in this set and appears on a long branch. The brown bear and polar bear, <code>Ursus_arctos</code> and <code>Ursus_maritimus</code>, should appear as close relatives. These observations provide simple checks that the expected records were analyzed; they do not validate every inferred relationship.</p>
 </section>
-<section id="distance-based-tree-building-methods" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="distance-based-tree-building-methods"><span class="header-section-number">3</span> Distance-based tree-building methods</h2>
-<p>MEGA provides three principal distance-based methods:</p>
+<section id="saving-the-tree-and-analysis-record" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="saving-the-tree-and-analysis-record"><span class="header-section-number">2.5</span> Saving the tree and analysis record</h3>
+<p>Select the original tree tab in Tree Explorer, then save the following files:</p>
+<ol type="1">
+<li><p>Select <strong>File | Export Current Tree (Newick)</strong> and save:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance.nwk</code></pre></li>
+<li><p>Select <strong>File | Export Analysis Summary</strong> and save:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance-summary.txt</code></pre></li>
+<li><p>Select <strong>File | Save Current Session</strong> and use the name:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance</code></pre>
+<p>Allow MEGA to add its native tree-session extension.</p></li>
+</ol>
+<p>The Newick file stores the tree for use in other software. The analysis summary records the distance model, site treatment, and other settings. The native session reopens the interactive Tree Explorer state.</p>
+</section>
+</section>
+<section id="follow-up-workflows" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="follow-up-workflows"><span class="header-section-number">3</span> Follow-up workflows</h2>
+<section id="estimating-bootstrap-support" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="estimating-bootstrap-support"><span class="header-section-number">3.1</span> Estimating bootstrap support</h3>
+<p>Close Tree Explorer while leaving the bear alignment active. Select <strong>Phylogeny | Construct/Test Neighbor-Joining Tree</strong> again.</p>
+<p>Use the same p-distance and complete-deletion settings, but change:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Method</th>
-<th>Result and principal assumption</th>
+<th>Option</th>
+<th>Setting</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Neighbor joining (NJ)</td>
-<td>Constructs one unrooted tree without assuming equal evolutionary rates among lineages. It is the usual starting method for distance-based exploration.</td>
+<td>Test of Phylogeny</td>
+<td>Bootstrap method</td>
 </tr>
 <tr class="even">
-<td>Minimum evolution (ME)</td>
-<td>Searches from an initial tree, normally an NJ tree, for a topology with a smaller sum of branch lengths. MEGA uses close-neighbor interchange, so the search does not guarantee the global minimum. The result is unrooted.</td>
-</tr>
-<tr class="odd">
-<td>UPGMA</td>
-<td>Builds a rooted ultrametric tree under the assumption that evolutionary rates are constant among lineages. Use it for phylogenetic inference only when that assumption is defensible.</td>
+<td>No.&nbsp;of Bootstrap Replications</td>
+<td><code>1000</code></td>
 </tr>
 </tbody>
 </table>
-<p>MEGA may display an NJ or ME tree with a root-like orientation. That display does not identify a biological root. Root the exported tree according to the study design, such as with a justified outgroup, and record that separate decision.</p>
+<p>Select <strong>Compute</strong>.</p>
+<p>MEGA resamples the 1,140 alignment columns with replacement, reconstructs a neighbor-joining tree from each resampled matrix, and reports how often each split in the original tree recurs. A value of 90 means that the split occurred in 90% of the bootstrap replicate trees.</p>
+<p>Tree Explorer provides separate views of the original tree and the bootstrap consensus. Use the original-tree view for the inferred branch lengths. Use the support labels to describe repeatability under site resampling.</p>
+<p>Export the original tree with its displayed support labels as:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance-bootstrap.nwk</code></pre>
+<p>Export the analysis summary as:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance-bootstrap-summary.txt</code></pre>
+<p>If the bootstrap consensus is also required, select its tab and export it separately as:</p>
+<pre class="text"><code>results/bears-CYTB-nj-pdistance-bootstrap-consensus.nwk</code></pre>
+<p>Bootstrap percentages are not posterior probabilities and do not state the probability that a clade is true. They are conditional on this alignment, distance definition, missing-data rule, and tree-building method.</p>
 </section>
-<section id="a-standard-neighbor-joining-analysis" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="a-standard-neighbor-joining-analysis"><span class="header-section-number">4</span> A standard neighbor-joining analysis</h2>
-<p>Open the aligned <code>.meg</code> file with <strong>Data | Open a File/Session</strong>. Select <strong>Phylogeny | Construct/Test Neighbor-Joining Tree</strong>.</p>
-<p>The Analysis Preferences window contains the complete analysis definition. For an illustrative nucleotide analysis, set:</p>
+<section id="applying-a-multiple-substitution-correction" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="applying-a-multiple-substitution-correction"><span class="header-section-number">3.2</span> Applying a multiple-substitution correction</h3>
+<p>P-distance counts observed differences. It does not account for sites that changed more than once during evolution. Repeat the neighbor-joining analysis with a corrected nucleotide distance:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -512,155 +618,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Gaps/Missing Data Treatment</td>
 <td>Complete deletion</td>
 </tr>
-<tr class="even">
-<td>Codon Positions</td>
-<td>All positions represented by the alignment</td>
-</tr>
 </tbody>
 </table>
-<p>These settings define an example, not a universal default. The Tamura-Nei distance corrects for multiple substitutions while allowing unequal nucleotide frequencies and different transition rates. Uniform rates assume no among-site rate variation. Complete deletion uses the same gap-free, unambiguous columns for every pairwise distance. Each assumption must be evaluated for the data under study.</p>
-<p>Select <strong>Compute</strong>. MEGA opens the result in Tree Explorer. Before interpreting the topology:</p>
-<ol type="1">
-<li>Open the Tree Explorer information box and confirm the number of taxa, the distance model, the site subset, and the missing-data treatment.</li>
-<li>Inspect the original NJ tree and its branch lengths.</li>
-<li>Inspect the bootstrap consensus and the support values on the original topology.</li>
-<li>Confirm that the analysis contains every expected taxon and no duplicate or truncated labels.</li>
-<li>Export the analysis summary from <strong>File | Export Analysis Summary</strong>.</li>
-<li>Export the tree from <strong>File | Export Current Tree (Newick)</strong> and give it a <code>.nwk</code> extension.</li>
-</ol>
-<p>Save a native Tree Explorer session when the interactive display must be reopened. Preserve the Newick tree for exchange with other software and preserve the text summary as the record of the analysis settings.</p>
+<p>Select <strong>Compute</strong>, inspect the original tree and support values, then export:</p>
+<pre class="text"><code>results/bears-CYTB-nj-tamura-nei-bootstrap.nwk
+results/bears-CYTB-nj-tamura-nei-bootstrap-summary.txt</code></pre>
+<p>Compare this topology and its branch lengths with the p-distance result. The Tamura-Nei model allows unequal nucleotide frequencies and different rates for the two transition classes while correcting for unobserved multiple changes. It changes the definition of every entry in the distance matrix; it does not change the neighbor-joining algorithm.</p>
 </section>
-<section id="repeating-an-analysis-with-mega-cc" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="repeating-an-analysis-with-mega-cc"><span class="header-section-number">5</span> Repeating an analysis with MEGA-CC</h2>
-<p>MEGA-CC requires a <code>.mao</code> file created by MEGA’s graphical interface. The file records both the requested analysis and its settings.</p>
-<p>Create the file as follows:</p>
-<ol type="1">
-<li>Select <strong>Prototype</strong> in the main MEGA window.</li>
-<li>Select the data type, such as <strong>Nucleotide</strong>.</li>
-<li>Select <strong>Phylogeny | Construct/Test Neighbor-Joining Tree</strong>.</li>
-<li>Enter the distance model, site subset, missing-data treatment, bootstrap procedure, and replicate count.</li>
-<li>Select <strong>Save Settings</strong> and save the file as <code>neighbor-joining-tamura-nei.mao</code>.</li>
-</ol>
-<p>Do not construct a <code>.mao</code> file from undocumented text copied from another MEGA version. Generate it in the installed MEGA version, inspect the displayed options, and preserve it with the analysis.</p>
-<p>The <code>megacc</code> parameters supply the saved analysis, input alignment, and output prefix:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Parameter</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>-a neighbor-joining-tamura-nei.mao</code></td>
-<td>Reads the analysis and its settings from the <code>.mao</code> file.</td>
-</tr>
-<tr class="even">
-<td><code>-d alignment.meg</code></td>
-<td>Reads the aligned sequence data from the <code>.meg</code> file.</td>
-</tr>
-<tr class="odd">
-<td><code>-o alignment_nj_tn93</code></td>
-<td>Writes results with the supplied path and prefix.</td>
-</tr>
-</tbody>
-</table>
-<p>Set the paths and construct the command in Julia:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>REPL</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> project_dir <span class="op">=</span> <span class="st">"/home/student/projects/learning/scientific-julia/phylogenetic-inference"</span>;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> alignment_path <span class="op">=</span> <span class="fu">joinpath</span>(project_dir, <span class="st">"data"</span>, <span class="st">"processed"</span>, <span class="st">"alignment.meg"</span>);</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> analysis_options_path <span class="op">=</span> <span class="fu">joinpath</span>(project_dir, <span class="st">"config"</span>, <span class="st">"neighbor-joining-tamura-nei.mao"</span>);</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> results_dir <span class="op">=</span> <span class="fu">joinpath</span>(project_dir, <span class="st">"results"</span>);</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">mkpath</span>(results_dir);</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> output_prefix <span class="op">=</span> <span class="fu">joinpath</span>(results_dir, <span class="st">"alignment_nj_tn93"</span>);</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> mega_command <span class="op">=</span> <span class="ss">`megacc -a $analysis_options_path -d $alignment_path -o $output_prefix`</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>joinpath</code> constructs paths with the separator used by the operating system. Interpolation with <code>$</code> inserts each path as one argument in the command. Constructing the <code>Cmd</code> value does not start MEGA-CC.</p>
-<p>Run the command and wait for it to finish:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>REPL</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">run</span>(mega_command)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>For an output prefix of <code>alignment_nj_tn93</code>, a neighbor-joining analysis normally produces:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>File</th>
-<th>Contents</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>alignment_nj_tn93.nwk</code></td>
-<td>Inferred tree in Newick format.</td>
-</tr>
-<tr class="even">
-<td><code>alignment_nj_tn93_summary.txt</code></td>
-<td>Input details, analysis settings, numerical summaries, warnings, and errors.</td>
-</tr>
-</tbody>
-</table>
-<p>Confirm that both files exist, then read the summary in Julia:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>REPL</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="REPL"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> tree_path <span class="op">=</span> output_prefix <span class="op">*</span> <span class="st">".nwk"</span>;</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> summary_path <span class="op">=</span> output_prefix <span class="op">*</span> <span class="st">"_summary.txt"</span>;</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">isfile</span>(tree_path), <span class="fu">isfile</span>(summary_path)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>(<span class="cn">true</span>, <span class="cn">true</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> summary_text <span class="op">=</span> <span class="fu">read</span>(summary_path, <span class="dt">String</span>);</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>julia<span class="op">&gt;</span> <span class="fu">print</span>(summary_text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>read(summary_path, String)</code> reads the complete text file and returns it as a <code>String</code>. Inspect the summary before using the tree. A process that writes an output file can still report warnings that materially affect the result.</p>
-<div id="workflow-alternate*-1" class="workflow-alternate" title="Running the neighbor-joining analysis from the shell">
-<details class="workflow-alternate fbx-simplebox fbx-default"><summary><strong>Workflow alternate: </strong>Running the neighbor-joining analysis from the shell</summary><div>
-<p>The same <code>megacc</code> invocation can be run directly from the shell:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">megacc</span> <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-a</span> config/neighbor-joining-tamura-nei.mao <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> data/processed/alignment.meg <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> results/alignment_nj_tn93</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Inspect the summary after the process finishes:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Shell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="Shell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> results/alignment_nj_tn93_summary.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div></details>
-</div>
+<section id="inspecting-the-distance-matrix" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="inspecting-the-distance-matrix"><span class="header-section-number">3.3</span> Inspecting the distance matrix</h3>
+<p>With <code>bears-CYTB-aligned.meg</code> active, select <strong>Distance | Compute Pairwise Distances</strong>. Choose the same model and complete-deletion settings as the tree whose distances are being examined.</p>
+<p>The result is an eight-by-eight symmetric matrix. Each off-diagonal entry is the estimated evolutionary distance between two bear sequences. The smallest values should correspond to the closest sequence pairs in the neighbor-joining tree. The matrix is the direct input to distance-based tree construction.</p>
+<p>In the Distance Data Explorer, select <strong>File | Export/Print Distances</strong> or use the CSV export button. Select CSV output, choose <strong>Print/Save Matrix</strong>, then select <strong>File | Save As</strong> in the text editor and save:</p>
+<pre class="text"><code>results/bears-CYTB-tamura-nei-distances.csv</code></pre>
 </section>
-<section id="choosing-an-evolutionary-distance-model" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="choosing-an-evolutionary-distance-model"><span class="header-section-number">6</span> Choosing an evolutionary-distance model</h2>
-<p>The distance model determines how observed character differences become estimates of evolutionary change. Common nucleotide choices include:</p>
+<section id="comparing-neighbor-joining-and-minimum-evolution" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="comparing-neighbor-joining-and-minimum-evolution"><span class="header-section-number">3.4</span> Comparing neighbor joining and minimum evolution</h3>
+<p>Select <strong>Phylogeny | Construct/Test Minimum Evolution Tree</strong>. Use the same Tamura-Nei, uniform-rate, complete-deletion, and 1,000-replicate bootstrap settings used above.</p>
+<p>MEGA begins with a neighbor-joining tree and uses close-neighbor interchange to search for a topology with a smaller sum of branch lengths. Record the ME search level shown in the Analysis Preferences window.</p>
+<p>Export:</p>
+<pre class="text"><code>results/bears-CYTB-me-tamura-nei-bootstrap.nwk
+results/bears-CYTB-me-tamura-nei-bootstrap-summary.txt</code></pre>
+<p>Differences between this result and the NJ result arise from the tree-building criterion and ME search, because the alignment and distance definition remain the same.</p>
+</section>
+<section id="constructing-a-upgma-tree" class="level3" data-number="3.5">
+<h3 data-number="3.5" class="anchored" data-anchor-id="constructing-a-upgma-tree"><span class="header-section-number">3.5</span> Constructing a UPGMA tree</h3>
+<p>Select <strong>Phylogeny | Construct/Test UPGMA Tree</strong> and retain the same Tamura-Nei and complete-deletion settings.</p>
+<p>UPGMA assumes a constant rate of evolution among lineages. That assumption makes every tip equidistant from the root and produces a rooted ultrametric tree. The rooted result is meaningful only when rate constancy is defensible; the presence of a root in the display is not evidence that the assumption is true.</p>
+<p>Export the exploratory result and summary as:</p>
+<pre class="text"><code>results/bears-CYTB-upgma-tamura-nei.nwk
+results/bears-CYTB-upgma-tamura-nei-summary.txt</code></pre>
+</section>
+</section>
+<section id="analysis-choices" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="analysis-choices"><span class="header-section-number">4</span> Analysis choices</h2>
+<div id="workflow-detail*-1" class="workflow-detail" title="Evolutionary-distance models">
+<p></p><details class="workflow-detail fbx-simplebox fbx-default" open=""><summary><strong>Workflow detail: </strong>Evolutionary-distance models</summary><div>The distance model defines what a branch length measures.<p></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -668,44 +661,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Model or method</th>
-<th>Principal features</th>
+<th>Model</th>
+<th>Main assumptions and effect</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>p-distance</td>
-<td>Uses the observed proportion of differing sites. It does not correct for multiple substitutions at the same site.</td>
+<td>Observed proportion of different sites; no correction for multiple substitutions.</td>
 </tr>
 <tr class="even">
 <td>Jukes-Cantor</td>
-<td>Corrects for multiple substitutions under equal nucleotide frequencies and equal substitution rates.</td>
+<td>Corrects for multiple substitutions while assuming equal nucleotide frequencies and equal substitution rates.</td>
 </tr>
 <tr class="odd">
 <td>Kimura 2-parameter</td>
-<td>Distinguishes transitions from transversions while retaining equal equilibrium nucleotide frequencies.</td>
+<td>Distinguishes transitions from transversions while assuming equal equilibrium nucleotide frequencies.</td>
 </tr>
 <tr class="even">
-<td>Tamura 3-parameter</td>
-<td>Distinguishes transition classes and accommodates unequal GC content under its stated assumptions.</td>
-</tr>
-<tr class="odd">
 <td>Tamura-Nei</td>
-<td>Accommodates unequal nucleotide frequencies and distinct transition and transversion rates.</td>
-</tr>
-<tr class="even">
-<td>Maximum composite likelihood</td>
-<td>Estimates Tamura-Nei distances jointly through a composite-likelihood procedure and offers additional rate and pattern options.</td>
+<td>Allows unequal nucleotide frequencies and distinct transition rates and corrects for multiple substitutions.</td>
 </tr>
 </tbody>
 </table>
-<p>A more parameter-rich correction is not automatically more appropriate. Examine sequence composition, divergence, saturation, the amount of information in the alignment, and the assumptions of the available models. State the exact distance model rather than reporting only “neighbor joining,” because the same tree-building algorithm can receive substantially different distance matrices.</p>
-<p>Some models permit gamma-distributed rate variation among sites. MEGA then requires a gamma shape parameter. Record how that value was estimated; do not transfer a value from an unrelated data set.</p>
-<p>For amino-acid data, select <strong>Amino Acid</strong> under Substitutions Type and choose an amino-acid distance model. For protein-coding nucleotide data, verify the genetic code and codon-position annotations before selecting nucleotide, synonymous–nonsynonymous, or translated amino-acid distances.</p>
-</section>
-<section id="gaps-and-missing-data" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="gaps-and-missing-data"><span class="header-section-number">7</span> Gaps and missing data</h2>
-<p>The missing-data rule determines which alignment columns contribute to each distance:</p>
+<p>A model with more parameters is not automatically more appropriate. Sequence composition, divergence, saturation, and the amount of information in the alignment determine which assumptions are defensible.</p>
+</div></details>
+</div>
+<div id="workflow-detail*-2" class="workflow-detail" title="Gaps and missing data">
+<p></p><details class="workflow-detail fbx-simplebox fbx-default" open=""><summary><strong>Workflow detail: </strong>Gaps and missing data</summary><div>The selected rule determines which aligned sites contribute to each distance.<p></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -720,97 +703,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Complete deletion</td>
-<td>Removes every site that contains a gap or missing state in any taxon. Every distance uses the same retained columns, but a few incomplete sequences can discard much of the alignment.</td>
+<td>Removes every site containing a gap or missing state in any taxon, so all pairwise distances use the same retained columns.</td>
 </tr>
 <tr class="even">
 <td>Pairwise deletion</td>
-<td>Removes incomplete sites separately for each sequence pair. It retains more observations, but different entries in the distance matrix may be based on different site sets.</td>
+<td>Removes incomplete sites separately for each pair, so different matrix entries may use different columns.</td>
 </tr>
 <tr class="odd">
 <td>Partial deletion</td>
-<td>Retains sites that meet a specified coverage threshold. The threshold must be stated and justified.</td>
+<td>Retains sites that meet a specified coverage threshold.</td>
 </tr>
 </tbody>
 </table>
-<p>Inspect how many sites remain under the selected rule. Pairwise deletion can produce a distance matrix whose entries have very different precision and site composition. Complete deletion can leave too little data. Partial deletion moves the decision into the coverage threshold rather than removing it.</p>
-<p>If MEGA reports that no common sites are available for a sequence pair, identify the taxa and columns responsible. Do not change to pairwise deletion only to silence the error without evaluating the resulting site sets.</p>
+<p>The course alignment contains no gaps or ambiguous bases, so all three rules retain the same 1,140 sites here. They need not agree for another alignment.</p>
+</div></details>
+</div>
 </section>
-<section id="minimum-evolution-analyses" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="minimum-evolution-analyses"><span class="header-section-number">8</span> Minimum-evolution analyses</h2>
-<p>Select <strong>Phylogeny | Construct/Test Minimum Evolution Tree</strong> to run a minimum-evolution analysis. Specify the same distance-model, site-subset, missing-data, and support decisions used for the corresponding NJ analysis when the purpose is to compare the tree-building criteria.</p>
-<p>MEGA starts the search from an NJ tree and applies close-neighbor interchange. The search level controls how extensively the program examines neighboring topologies. Record the search level, initial-tree method, distance model, gap treatment, and bootstrap settings.</p>
-<p>Generate a separate <code>.mao</code> file for command-line execution, such as <code>minimum-evolution-tamura-nei.mao</code>, and use a distinct output prefix. Do not reuse the NJ <code>.mao</code> file and rename its output: the requested tree-building method is stored inside the options file.</p>
-</section>
-<section id="upgma-analyses" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="upgma-analyses"><span class="header-section-number">9</span> UPGMA analyses</h2>
-<p>Select <strong>Phylogeny | Construct/Test UPGMA Tree</strong> only when a constant rate of evolution among lineages is a defensible assumption. UPGMA produces a rooted ultrametric tree because that rate assumption makes every tip equidistant from the root.</p>
-<p>A rooted display is not, by itself, evidence for UPGMA’s molecular-clock assumption. Evaluate rate constancy independently and report the evidence used. If the assumption is not supported, NJ or ME provides an unrooted distance-based analysis without imposing the UPGMA clock structure.</p>
-<p>As with NJ and ME, save a method-specific <code>.mao</code> file and use a distinct output prefix.</p>
-</section>
-<section id="bootstrap-support" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="bootstrap-support"><span class="header-section-number">10</span> Bootstrap support</h2>
-<p>MEGA’s bootstrap test resamples alignment columns with replacement, recalculates the distance matrix, and reconstructs a tree for each replicate. The value on an internal branch is the percentage of replicate trees containing the corresponding split.</p>
-<p>Use enough replicates for the reported percentages to stabilize; 1,000 replicates is a common starting point. Preserve the replicate count in the <code>.mao</code> file and analysis summary. If the interface exposes a starting random seed for the selected analysis, set and record it. Also record the MEGA version and computing platform because a seed alone does not guarantee identical results across software versions or systems.</p>
-<p>Bootstrap percentages are not posterior probabilities and do not measure the probability that a clade is true. They describe repeatability under resampling, conditional on the alignment, distance model, missing-data rule, and tree-building method.</p>
-<p>The original inferred tree and the bootstrap consensus answer different questions. MEGA does not assign meaningful branch lengths to a bootstrap consensus tree when unsupported splits collapse. Use branch lengths from the original tree and support values to describe the repeatability of its splits.</p>
-</section>
-<section id="output-and-reporting" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="output-and-reporting"><span class="header-section-number">11</span> Output and reporting</h2>
-<p>Preserve the following materials for every analysis:</p>
+<section id="recording-the-analysis" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="recording-the-analysis"><span class="header-section-number">5</span> Recording the analysis</h2>
+<p>Preserve:</p>
 <ul>
-<li>the original curated alignment;</li>
-<li>the converted <code>.meg</code> input file;</li>
-<li>the <code>.mao</code> analysis-options file;</li>
-<li>the exported <code>.nwk</code> tree;</li>
-<li>the analysis-summary text file;</li>
-<li>the native Tree Explorer session when interactive formatting or inspection must be reproduced; and</li>
-<li>the MEGA version and operating-system information.</li>
+<li><code>bears-CYTB-aligned.fasta</code>;</li>
+<li><code>bears-CYTB-aligned.meg</code>;</li>
+<li>each exported Newick tree;</li>
+<li>each analysis summary;</li>
+<li>the native Tree Explorer sessions needed for later interactive inspection; and</li>
+<li>the MEGA version and operating system.</li>
 </ul>
-<p>The <code>.mao</code> file records settings, but it does not replace the input data or result summary. The Newick file records the tree, but it does not record the bootstrap replicate count or every analysis assumption. Keep the files together under a unique analysis name.</p>
-<p>Report at least:</p>
-<ul>
-<li>the MEGA version;</li>
-<li>the tree-building method;</li>
-<li>the distance model and its parameter settings;</li>
-<li>the character type and included site or codon subsets;</li>
-<li>the among-site rate treatment;</li>
-<li>the gap and missing-data treatment;</li>
-<li>the number of retained sites;</li>
-<li>the bootstrap procedure and replicate count;</li>
-<li>the ME search settings, if applicable; and</li>
-<li>the rooting procedure applied after inference, if applicable.</li>
-</ul>
+<p>Report the tree-building method, evolutionary-distance model, rate treatment, gap and missing-data treatment, number of retained sites, bootstrap replicate count, and any rooting performed after inference.</p>
+<p>Neighbor-joining and minimum-evolution results are unrooted. Rooting either tree is a separate biological analysis decision, even when MEGA draws the tree with a leftmost base.</p>
 </section>
-<section id="operational-checklist" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="operational-checklist"><span class="header-section-number">12</span> Operational checklist</h2>
-<ol type="1">
-<li>Curate and inspect the multiple-sequence alignment.</li>
-<li>Normalize and verify unique taxon labels.</li>
-<li>Convert the alignment to <code>.meg</code> format and confirm its data type and annotations.</li>
-<li>Choose the tree-building method independently of the evolutionary-distance model.</li>
-<li>Specify the distance model, rate treatment, site subset, and missing-data treatment.</li>
-<li>Set the bootstrap procedure and replicate count when branch support is required.</li>
-<li>Review every setting in the Analysis Preferences window before computation.</li>
-<li>Save a method-specific <code>.mao</code> file for scripted or repeated execution.</li>
-<li>Inspect the analysis summary and resolve relevant warnings or errors.</li>
-<li>Export the tree in Newick format and preserve the summary, options file, and input data.</li>
-<li>Treat NJ and ME results as unrooted until a separate rooting decision is applied.</li>
-<li>Report the settings that defined both the distance matrix and the tree-building procedure.</li>
-</ol>
-</section>
-<section id="further-reading" class="level2" data-number="13">
-<h2 data-number="13" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">13</span> Further reading</h2>
+<section id="further-reading" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">6</span> Further reading</h2>
 <ul>
 <li><a href="https://www.megasoftware.net/">MEGA website and downloads</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/index.htm">MEGA 12 online manual</a></li>
-<li><a href="https://www.megasoftware.net/web_help_12/Running_in_Command-Line_Mode.htm">Running MEGA in command-line mode</a></li>
-<li><a href="https://www.megasoftware.net/web_help_12/MEGA-CC.htm">MEGA-CC</a></li>
-<li><a href="https://www.megasoftware.net/web_help_12/MEGA_Analysis_Options_File.htm">MEGA Analysis Options files</a></li>
+<li><a href="https://www.megasoftware.net/web_help_12/Part_I_Getting_Started/A_Walk_Through_MEGA/Building_Trees_From_Sequence_Data.htm">Building trees from sequence data</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/Neighbor_Joining_Construct_Phylogeny.htm">Neighbor-joining tree construction</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/Minimum_Evolution_Construct_Phylogeny.htm">Minimum-evolution tree construction</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/UPGMA_Construct_Phylogeny.htm">UPGMA tree construction</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/Models_for_estimating_distances.htm">Models for estimating evolutionary distances</a></li>
-<li><a href="https://www.megasoftware.net/web_help_12/Analysis_Preferences_NJ_UPGMA.htm">NJ and UPGMA analysis preferences</a></li>
 <li><a href="https://www.megasoftware.net/web_help_12/Bootstrap_Test_of_Phylogeny.htm">Bootstrap test of phylogeny</a></li>
 </ul>
 
