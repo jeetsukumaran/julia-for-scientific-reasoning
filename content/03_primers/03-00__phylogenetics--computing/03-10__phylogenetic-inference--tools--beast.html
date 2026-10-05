@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeet Sukumaran">
+
+<title>Relaxed-clock phylogenetic inference with BEAST</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/03_primers/04-00__models--virulence-transmission-tradeoff/index.html" rel="next">
+<link href="../../../content/03_primers/03-00__phylogenetics--computing/03-09__phylogenetic-inference--tools--mrbayes.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-814259f4bb4f29d3679909d06d088a68.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/indexed-content-1.0.0/indexed-content.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.curriculum-proficiencies {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-related {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.shell-equivalent {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.curriculum-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-notation {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.workflow-detail {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo light-content">
+    <img src="../../../_quarto/decor/sdsu-logo.svg" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../tutorials.html"> 
+<span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/02_recipes/index.html"> 
+<span class="menu-text">Recipes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../content/03_primers/index.html" aria-current="page"> 
+<span class="menu-text">Primers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../references.html"> 
+<span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/03_primers/03-00__phylogenetics--computing/index.html">Phylogenetics–computing</a></li><li class="breadcrumb-item"><a href="../../../content/03_primers/03-00__phylogenetics--computing/03-10__phylogenetic-inference--tools--beast.html"><span class="indexed-content-entry"><span class="indexed-content-number">03-10</span> <span class="indexed-content-title">Relaxed-clock phylogenetic inference with BEAST</span></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Primers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/03_primers/01-00__julia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-01__julia-environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-02__julia-environments-global-vs-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-02</span> <span class="indexed-content-title">Julia – Environments – Global vs project</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-03__julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-03</span> <span class="indexed-content-title">Julia: Functions, methods, and signatures</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-04__julia-joinpath-homedir.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-04</span> <span class="indexed-content-title">Julia: on <code>homedir()</code> and <code>joinpath()</code></span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-05__pseudo-random-number-generators-best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-05</span> <span class="indexed-content-title">Pseudo-random number generators: best practices</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/01-00__julia/01-06__geomakie-geoaxis-and-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-06</span> <span class="indexed-content-title"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/03_primers/02-00__mathematics--probability/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mathematics--probability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/02-00__mathematics--probability/02-01__pseudo-random-number-generators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">Pseudo-random number generators</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/02-00__mathematics--probability/02-02__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-02</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/02-00__mathematics--probability/02-03__probability-distributions-essential-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-03</span> <span class="indexed-content-title">Probabilty distributions–Essential concepts</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/02-00__mathematics--probability/02-04__bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-04</span> <span class="indexed-content-title">Bernoulli trial</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/02-00__mathematics--probability/02-05__markov-property.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-05</span> <span class="indexed-content-title">Markov property</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/03_primers/03-00__phylogenetics--computing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenetics--computing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-01__the-newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-01</span> <span class="indexed-content-title">The Newick data format</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-02__the-nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-03__the-phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-03</span> <span class="indexed-content-title">The PHYLIP data format</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-04__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-04</span> <span class="indexed-content-title">The FASTA data format</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-05__downloading-and-aligning-genbank-molecular-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-05</span> <span class="indexed-content-title">Downloading and aligning GenBank molecular data</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-06__phylogenetic-inference--tools--distance-based-inference-mega.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-06</span> <span class="indexed-content-title">Distance-based phylogenetic inference with MEGA</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-07__phylogenetic-inference--tools--iqtree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-07</span> <span class="indexed-content-title">Phylogenetic inference tools – IQ-TREE</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-08__phylogenetic-inference--tools--raxml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-08</span> <span class="indexed-content-title">Phylogenetic inference tools – RAxML-NG</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-09__phylogenetic-inference--tools--mrbayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-09</span> <span class="indexed-content-title">Phylogenetic inference tools – MrBayes</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-10__phylogenetic-inference--tools--beast.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-10</span> <span class="indexed-content-title">Relaxed-clock phylogenetic inference with BEAST</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/03_primers/04-00__models--virulence-transmission-tradeoff/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Models--Virulence-transmission-tradeoff</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Pathogen fitness as a function of virulence (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-02__virulence-transmission-trade-off-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-02</span> <span class="indexed-content-title">Virulence-transmission trade-off (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation"><span class="header-section-number">1</span> Preparation</a>
+  <ul class="collapse">
+  <li><a href="#installing-beast-and-its-companion-applications" id="toc-installing-beast-and-its-companion-applications" class="nav-link" data-scroll-target="#installing-beast-and-its-companion-applications"><span class="header-section-number">1.1</span> Installing BEAST and its companion applications</a></li>
+  <li><a href="#acquiring-the-example-alignments" id="toc-acquiring-the-example-alignments" class="nav-link" data-scroll-target="#acquiring-the-example-alignments"><span class="header-section-number">1.2</span> Acquiring the example alignments</a></li>
+  </ul></li>
+  <li><a href="#basic-workflow" id="toc-basic-workflow" class="nav-link" data-scroll-target="#basic-workflow"><span class="header-section-number">2</span> Basic workflow</a>
+  <ul class="collapse">
+  <li><a href="#importing-and-linking-the-alignments" id="toc-importing-and-linking-the-alignments" class="nav-link" data-scroll-target="#importing-and-linking-the-alignments"><span class="header-section-number">2.1</span> Importing and linking the alignments</a></li>
+  <li><a href="#defining-the-site-models" id="toc-defining-the-site-models" class="nav-link" data-scroll-target="#defining-the-site-models"><span class="header-section-number">2.2</span> Defining the site models</a></li>
+  <li><a href="#defining-the-relaxed-clock" id="toc-defining-the-relaxed-clock" class="nav-link" data-scroll-target="#defining-the-relaxed-clock"><span class="header-section-number">2.3</span> Defining the relaxed clock</a></li>
+  <li><a href="#defining-the-constrained-taxon-sets" id="toc-defining-the-constrained-taxon-sets" class="nav-link" data-scroll-target="#defining-the-constrained-taxon-sets"><span class="header-section-number">2.4</span> Defining the constrained taxon sets</a></li>
+  <li><a href="#calibrating-the-root-age" id="toc-calibrating-the-root-age" class="nav-link" data-scroll-target="#calibrating-the-root-age"><span class="header-section-number">2.5</span> Calibrating the root age</a></li>
+  <li><a href="#defining-the-tree-prior" id="toc-defining-the-tree-prior" class="nav-link" data-scroll-target="#defining-the-tree-prior"><span class="header-section-number">2.6</span> Defining the tree prior</a></li>
+  <li><a href="#defining-the-mcmc-and-output-files" id="toc-defining-the-mcmc-and-output-files" class="nav-link" data-scroll-target="#defining-the-mcmc-and-output-files"><span class="header-section-number">2.7</span> Defining the MCMC and output files</a></li>
+  <li><a href="#running-the-mcmc-analysis" id="toc-running-the-mcmc-analysis" class="nav-link" data-scroll-target="#running-the-mcmc-analysis"><span class="header-section-number">2.8</span> Running the MCMC analysis</a></li>
+  <li><a href="#checking-sampling-in-tracer" id="toc-checking-sampling-in-tracer" class="nav-link" data-scroll-target="#checking-sampling-in-tracer"><span class="header-section-number">2.9</span> Checking sampling in Tracer</a></li>
+  <li><a href="#constructing-a-posterior-summary-tree" id="toc-constructing-a-posterior-summary-tree" class="nav-link" data-scroll-target="#constructing-a-posterior-summary-tree"><span class="header-section-number">2.10</span> Constructing a posterior summary tree</a></li>
+  <li><a href="#viewing-the-dated-tree" id="toc-viewing-the-dated-tree" class="nav-link" data-scroll-target="#viewing-the-dated-tree"><span class="header-section-number">2.11</span> Viewing the dated tree</a></li>
+  </ul></li>
+  <li><a href="#follow-up-workflows" id="toc-follow-up-workflows" class="nav-link" data-scroll-target="#follow-up-workflows"><span class="header-section-number">3</span> Follow-up workflows</a>
+  <ul class="collapse">
+  <li><a href="#comparing-independent-runs" id="toc-comparing-independent-runs" class="nav-link" data-scroll-target="#comparing-independent-runs"><span class="header-section-number">3.1</span> Comparing independent runs</a></li>
+  <li><a href="#assigning-separate-relaxed-clocks-to-the-partitions" id="toc-assigning-separate-relaxed-clocks-to-the-partitions" class="nav-link" data-scroll-target="#assigning-separate-relaxed-clocks-to-the-partitions"><span class="header-section-number">3.2</span> Assigning separate relaxed clocks to the partitions</a></li>
+  </ul></li>
+  <li><a href="#recording-the-analysis" id="toc-recording-the-analysis" class="nav-link" data-scroll-target="#recording-the-analysis"><span class="header-section-number">4</span> Recording the analysis</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">5</span> Further reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/03_primers/03-00__phylogenetics--computing/index.html">Phylogenetics–computing</a></li><li class="breadcrumb-item"><a href="../../../content/03_primers/03-00__phylogenetics--computing/03-10__phylogenetic-inference--tools--beast.html"><span class="indexed-content-entry"><span class="indexed-content-number">03-10</span> <span class="indexed-content-title">Relaxed-clock phylogenetic inference with BEAST</span></span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Relaxed-clock phylogenetic inference with BEAST</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeet Sukumaran </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://www.beast2.org/">BEAST 2</a> estimates posterior distributions of rooted, time-scaled phylogenetic trees and evolutionary-model parameters with Markov chain Monte Carlo (MCMC). This tutorial estimates the evolutionary timescale of 20 passerine birds from two mitochondrial sequence partitions. It uses an uncorrelated lognormal relaxed clock and an explicit calibration prior on the age of crown Passeriformes.</p>
+<p>The workflow follows the Taming the BEAST beginner tutorial <a href="https://taming-the-beast.org/tutorials/Molecular-clock-dating-and-modelling-rate-variation/">Molecular clock dating and modelling rate variation</a>. The complete analysis uses BEAST’s graphical applications. It begins with two provided NEXUS alignments and creates every other file named below.</p>
+<section id="preparation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">1</span> Preparation</h2>
+<section id="installing-beast-and-its-companion-applications" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="installing-beast-and-its-companion-applications"><span class="header-section-number">1.1</span> Installing BEAST and its companion applications</h3>
+<p>Download the current BEAST 2 release for the operating system from the <a href="https://www.beast2.org/">BEAST 2 website</a>. The installation includes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BEAUti</td>
+<td>Defines the evolutionary model and writes the BEAST XML analysis file.</td>
+</tr>
+<tr class="even">
+<td>BEAST</td>
+<td>Samples trees and parameters from the posterior distribution.</td>
+</tr>
+<tr class="odd">
+<td>LogCombiner</td>
+<td>Combines samples from independent BEAST runs.</td>
+</tr>
+<tr class="even">
+<td>TreeAnnotator</td>
+<td>Constructs and annotates a summary tree from sampled trees.</td>
+</tr>
+</tbody>
+</table>
+<p>Install <a href="https://www.beast2.org/tracer-2/">Tracer</a> separately for examining parameter traces and effective sample sizes. Install <a href="https://github.com/rambaut/figtree/releases">FigTree</a> for viewing the annotated tree.</p>
+<p>Start BEAUti and select <strong>File | Manage Packages</strong>. Install the following BEAST packages:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Use in this analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bModelTest</td>
+<td>Averages the likelihood over nucleotide substitution models.</td>
+</tr>
+<tr class="even">
+<td>CCD</td>
+<td>Supplies the CCD0 posterior-tree summary used by TreeAnnotator.</td>
+</tr>
+</tbody>
+</table>
+<p>Close and restart BEAUti after installing the packages. BEAUti loads newly installed templates when it starts. Record the installed BEAST, bModelTest, CCD, Tracer, and FigTree versions.</p>
+</section>
+<section id="acquiring-the-example-alignments" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="acquiring-the-example-alignments"><span class="header-section-number">1.2</span> Acquiring the example alignments</h3>
+<p>Download both course alignments:</p>
+<ul>
+<li><a href="../../../content/_assets/workflow-assets/sequences/passeriformes/20261001_passerine-mitochondrial-codon-positions/passerines_pc1.nex">Download <code>passerines_pc1.nex</code></a></li>
+<li><a href="../../../content/_assets/workflow-assets/sequences/passeriformes/20261001_passerine-mitochondrial-codon-positions/passerines_pc2.nex">Download <code>passerines_pc2.nex</code></a></li>
+</ul>
+<p>Create the following project directories with the file manager:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/passerine-beast/
+├── data/
+│   ├── passerines_pc1.nex
+│   └── passerines_pc2.nex
+└── results/</code></pre>
+<p>Save the downloaded files as:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/passerine-beast/data/passerines_pc1.nex
+/home/student/projects/learning/scientific-julia/passerine-beast/data/passerines_pc2.nex</code></pre>
+<p>Both files contain the same 20 passerine species. <code>passerines_pc1.nex</code> contains the first codon positions and <code>passerines_pc2.nex</code> contains the second codon positions from the 13 mitochondrial protein-coding genes. Each alignment contains 3,616 nucleotide sites, for 7,232 sites in total. Third codon positions are excluded because their rapid evolution has produced substantial substitution saturation at this phylogenetic depth.</p>
+<p>The first component of every sequence label identifies one of the three passerine suborders represented in the data:</p>
+<pre class="text"><code>ACANTHISITTI_Acanthisitta_chloris
+TYRANNI_Pitta_nympha
+PASSERI_Turdus_migratorius</code></pre>
+<p>The remaining labels follow the same <code>SUBORDER_Genus_species</code> form. These prefixes will be used to define taxon sets in BEAUti.</p>
+</section>
+</section>
+<section id="basic-workflow" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="basic-workflow"><span class="header-section-number">2</span> Basic workflow</h2>
+<section id="importing-and-linking-the-alignments" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="importing-and-linking-the-alignments"><span class="header-section-number">2.1</span> Importing and linking the alignments</h3>
+<p>Start BEAUti with its <strong>Standard</strong> analysis template, then:</p>
+<ol type="1">
+<li>Select <strong>File | Import Alignment</strong> and open <code>data/passerines_pc1.nex</code>.</li>
+<li>Select <strong>File | Import Alignment</strong> again and open <code>data/passerines_pc2.nex</code>.</li>
+<li>Confirm that each partition contains 20 taxa and 3,616 sites.</li>
+<li>Select both partitions with Shift-click.</li>
+<li>Select <strong>Unlink Site Models</strong>.</li>
+<li>Select <strong>Link Clock Models</strong>.</li>
+<li>Select <strong>Link Trees</strong>.</li>
+</ol>
+<p>The partitions describe different codon positions, so each receives its own site model. They describe the same taxa and evolutionary history, so they share one tree. The basic analysis also gives both partitions one shared pattern of branch-to-branch rate variation.</p>
+<p>Double-click the linked clock-model name and rename it <code>passerinesClock</code>. Double-click the linked tree name and rename it <code>passerinesTree</code>.</p>
+</section>
+<section id="defining-the-site-models" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="defining-the-site-models"><span class="header-section-number">2.2</span> Defining the site models</h3>
+<p>Open the <strong>Site Model</strong> panel. For each partition:</p>
+<ol type="1">
+<li>Select the partition.</li>
+<li>Select <strong>BEAST Model Test</strong> as its substitution model.</li>
+<li>Select <strong>estimate</strong> for <strong>Mutation Rate</strong>.</li>
+</ol>
+<p>bModelTest averages the phylogenetic likelihood over supported nucleotide substitution models instead of conditioning the analysis on one selected model. Separate site models allow the two codon-position partitions to differ in base frequencies, substitution patterns, and among-site rate variation.</p>
+<p>Estimating both mutation-rate multipliers allows the partitions to have different relative evolutionary rates. Their scale is relative to their weighted mean; the shared calibrated clock supplies the absolute time scale.</p>
+</section>
+<section id="defining-the-relaxed-clock" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="defining-the-relaxed-clock"><span class="header-section-number">2.3</span> Defining the relaxed clock</h3>
+<p>Open the <strong>Clock Model</strong> panel and select <strong>Relaxed Clock Log Normal</strong> for <code>passerinesClock</code>. Retain <code>-1</code> for <strong>Number Of Discrete Rates</strong>.</p>
+<p>This uncorrelated lognormal relaxed clock draws the rate on each branch independently from one lognormal distribution. A strict clock would force one rate across all branches. Here, both codon-position partitions share the same branch-rate pattern while retaining the relative-rate multipliers defined in their site models.</p>
+<p>The clock mean and the node ages cannot both be identified from contemporaneous sequences alone. The root-age calibration defined below supplies the absolute time information needed to estimate rates in substitutions per site per million years.</p>
+</section>
+<section id="defining-the-constrained-taxon-sets" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="defining-the-constrained-taxon-sets"><span class="header-section-number">2.4</span> Defining the constrained taxon sets</h3>
+<p>Open the <strong>Priors</strong> panel. Select <strong>+ Add Prior</strong>, choose <strong>MRCA prior</strong>, and create each of the following taxon sets:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Taxon set</th>
+<th>Select</th>
+<th style="text-align: right;">Number of taxa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Tyranni</code></td>
+<td>Every label beginning <code>TYRANNI_</code></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td><code>Passeri</code></td>
+<td>Every label beginning <code>PASSERI_</code></td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td><code>Eupasseres</code></td>
+<td>Every label beginning <code>TYRANNI_</code> or <code>PASSERI_</code></td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td><code>Passeriformes</code></td>
+<td>All labels</td>
+<td style="text-align: right;">20</td>
+</tr>
+</tbody>
+</table>
+<p>After creating the four MRCA priors, select <strong>monophyletic</strong> for each one. Monophyly of <code>Eupasseres</code> places the root between <em>Acanthisitta chloris</em> and the other 19 species.</p>
+<div id="workflow-detail*-1" class="workflow-detail" title="Exact membership of the taxon sets">
+<details class="workflow-detail fbx-simplebox fbx-default" open=""><summary><strong>Workflow detail: </strong>Exact membership of the taxon sets</summary><div>
+<p><code>Tyranni</code> contains:</p>
+<pre class="text"><code>TYRANNI_Pitta_nympha
+TYRANNI_Mionectes_oleagineus
+TYRANNI_Thamnophilus_nigrocinereus</code></pre>
+<p><code>Passeri</code> contains:</p>
+<pre class="text"><code>PASSERI_Menura_novaehollandiae
+PASSERI_Malurus_melanocephalus
+PASSERI_Epthianura_albifrons
+PASSERI_Pericrocotus_ethologus
+PASSERI_Vireo_olivaceus
+PASSERI_Corvus_brachyrhynchos
+PASSERI_Oedistoma_iliolophum
+PASSERI_Picathartes_gymnocephalus
+PASSERI_Parus_major
+PASSERI_Acrocephalus_scirpaceus
+PASSERI_Sylvia_atricapilla
+PASSERI_Turdus_migratorius
+PASSERI_Sitta_carolinensis
+PASSERI_Passer_domesticus
+PASSERI_Cardinalis_cardinalis
+PASSERI_Agelaius_phoeniceus</code></pre>
+<p><code>Eupasseres</code> contains all three <code>TYRANNI_</code> taxa and all 16 <code>PASSERI_</code> taxa. <code>Passeriformes</code> also contains:</p>
+<pre class="text"><code>ACANTHISITTI_Acanthisitta_chloris</code></pre>
+</div></details>
+</div>
+</section>
+<section id="calibrating-the-root-age" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="calibrating-the-root-age"><span class="header-section-number">2.5</span> Calibrating the root age</h3>
+<p>Find <code>Passeriformes.prior</code> in the <strong>Priors</strong> panel. Set its distribution to <strong>Log Normal</strong>, expand its options, and set:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th style="text-align: right;">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean In Real Space</td>
+<td style="text-align: right;">Selected</td>
+</tr>
+<tr class="even">
+<td>M</td>
+<td style="text-align: right;"><code>5.0</code></td>
+</tr>
+<tr class="odd">
+<td>S</td>
+<td style="text-align: right;"><code>0.5</code></td>
+</tr>
+<tr class="even">
+<td>Offset</td>
+<td style="text-align: right;"><code>43.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>This is an offset lognormal prior on the age of the most recent common ancestor of all 20 species. Its lower bound is 43 million years. Adding the real-space mean of 5 million years places the prior near 48 million years, with the distribution approximating the source estimate of 43–53 million years.</p>
+<p>The calibration is a model input, not a result inferred from these alignments. It is a secondary calibration based on a fossil-informed estimate of crown Passeriformes from Luo and colleagues. The sequence data can update this prior, but every posterior divergence time remains conditional on it.</p>
+<div id="workflow-detail*-2" class="workflow-detail" title="What the calibration contributes">
+<p></p><details class="workflow-detail fbx-simplebox fbx-default" open=""><summary><strong>Workflow detail: </strong>What the calibration contributes</summary><div>The alignment informs genetic branch lengths in expected substitutions per site. The calibration informs the age scale in millions of years. Combining the two lets BEAST estimate both dated node heights and absolute substitution rates.<p></p>
+<p>An offset lognormal distribution is asymmetric. It prohibits ages below 43 million years while allowing a diminishing probability of substantially older ages. It does not fix the root age to 48 million years.</p>
+</div></details>
+</div>
+</section>
+<section id="defining-the-tree-prior" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="defining-the-tree-prior"><span class="header-section-number">2.6</span> Defining the tree prior</h3>
+<p>In the <strong>Priors</strong> panel, set <code>Tree.t:passerinesTree</code> to <strong>Birth Death Model</strong>. Retain the remaining default priors for this exercise.</p>
+<p>The birth-death tree prior models diversification through speciation and extinction. It contributes a probability distribution over tree topologies and branching times; it does not add observed characters to the alignment.</p>
+</section>
+<section id="defining-the-mcmc-and-output-files" class="level3" data-number="2.7">
+<h3 data-number="2.7" class="anchored" data-anchor-id="defining-the-mcmc-and-output-files"><span class="header-section-number">2.7</span> Defining the MCMC and output files</h3>
+<p>Open the <strong>MCMC</strong> panel and set <strong>Chain Length</strong> to <code>2000000</code>.</p>
+<p>Expand <code>tracelog</code> and set:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Log Every</td>
+<td><code>200</code></td>
+</tr>
+<tr class="even">
+<td>File Name</td>
+<td><code>/home/student/projects/learning/scientific-julia/passerine-beast/results/passerines_LinkedClocks.log</code></td>
+</tr>
+</tbody>
+</table>
+<p>Expand <code>treelog</code> and set:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Log Every</td>
+<td><code>200</code></td>
+</tr>
+<tr class="even">
+<td>File Name</td>
+<td><code>/home/student/projects/learning/scientific-julia/passerine-beast/results/passerines_LinkedClocks.trees</code></td>
+</tr>
+</tbody>
+</table>
+<p>Select <strong>File | Save As</strong> and save the analysis specification as:</p>
+<pre class="text"><code>/home/student/projects/learning/scientific-julia/passerine-beast/results/passerines_LinkedClocks.xml</code></pre>
+<p>The chain will attempt two million MCMC states and record a trace and tree every 200 states. This is the initial run length used in the source tutorial. It is not evidence that sampling will be adequate; that is assessed from the output.</p>
+</section>
+<section id="running-the-mcmc-analysis" class="level3" data-number="2.8">
+<h3 data-number="2.8" class="anchored" data-anchor-id="running-the-mcmc-analysis"><span class="header-section-number">2.8</span> Running the MCMC analysis</h3>
+<p>Close BEAUti and start the BEAST application.</p>
+<ol type="1">
+<li>Select <strong>Choose File</strong> and open <code>results/passerines_LinkedClocks.xml</code>.</li>
+<li>Enter <code>20261001</code> as the random-number seed.</li>
+<li>Leave <strong>Allow overwriting of log files</strong> unselected.</li>
+<li>Retain the default computational options unless the computer has a configured BEAGLE installation.</li>
+<li>Select <strong>Run</strong>.</li>
+</ol>
+<p>Confirm in the initial console output that BEAST loaded two alignments of 20 taxa, the bModelTest site models, <code>passerinesClock</code>, the birth-death tree prior, the four monophyly constraints, and the <code>Passeriformes</code> age prior.</p>
+<p>After the run finishes normally, the <code>results</code> directory contains:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>passerines_LinkedClocks.xml</code></td>
+<td>Complete analysis specification.</td>
+</tr>
+<tr class="even">
+<td><code>passerines_LinkedClocks.log</code></td>
+<td>Sampled scalar parameters and probability densities.</td>
+</tr>
+<tr class="odd">
+<td><code>passerines_LinkedClocks.trees</code></td>
+<td>Sampled rooted, time-scaled trees and their metadata.</td>
+</tr>
+<tr class="even">
+<td><code>passerines_LinkedClocks.xml.state</code></td>
+<td>Most recently stored MCMC state, used to resume an interrupted run.</td>
+</tr>
+</tbody>
+</table>
+<p>Do not overwrite these files when starting an independent run.</p>
+</section>
+<section id="checking-sampling-in-tracer" class="level3" data-number="2.9">
+<h3 data-number="2.9" class="anchored" data-anchor-id="checking-sampling-in-tracer"><span class="header-section-number">2.9</span> Checking sampling in Tracer</h3>
+<p>Start Tracer and select <strong>File | Import Trace File</strong>. Open:</p>
+<pre class="text"><code>results/passerines_LinkedClocks.log</code></pre>
+<p>Set <strong>Burn-In</strong> to <code>10</code> percent provisionally. Inspect the trace plots and effective sample sizes for at least:</p>
+<ul>
+<li><code>posterior</code>, <code>likelihood</code>, and <code>prior</code>;</li>
+<li><code>mrca.age(Passeriformes)</code>;</li>
+<li>the relaxed-clock mean rate and coefficient of variation;</li>
+<li>the first- and second-codon relative mutation rates; and</li>
+<li>the birth-death diversification parameters.</li>
+</ul>
+<p>Parameter names can include partition or model prefixes. In the source configuration, the clock summaries appear as <code>rate.mean</code> and <code>rate.coefficientOfVariation</code>, and the relative partition rates appear as <code>BMT_mutationRate.1</code> and <code>BMT_mutationRate.2</code>.</p>
+<p>For every important estimated quantity, confirm that:</p>
+<ul>
+<li>the retained trace fluctuates around a stable region rather than showing a sustained trend;</li>
+<li>the trace repeatedly traverses that region rather than remaining in long, distinct plateaus; and</li>
+<li>the effective sample size (ESS) is at least 200.</li>
+</ul>
+<p>Compare the posterior for <code>mrca.age(Passeriformes)</code> with the calibration prior. The mean clock rate is measured in substitutions per site per million years. The coefficient of variation describes relative rate variation among branches: a value near zero approaches a strict clock, while larger values indicate greater among-lineage rate heterogeneity.</p>
+<p>If the initial transient extends beyond 10 percent, increase the burn-in. If an important ESS remains below 200, extend the chain or run a longer analysis and inspect it again. Record the final burn-in percentage. Do not construct the final summary tree until the retained samples are adequate.</p>
+<div id="workflow-detail*-3" class="workflow-detail" title="What MCMC contributes">
+<p></p><details class="workflow-detail fbx-simplebox fbx-default" open=""><summary><strong>Workflow detail: </strong>What MCMC contributes</summary><div>BEAST does not return one optimized tree. Each retained state contains a tree, node times, branch rates, substitution-model indicators, and other parameter values. After convergence, the retained states approximate samples from their joint posterior distribution under the alignments, likelihood models, relaxed clock, calibration, topological constraints, tree prior, and parameter priors.<p></p>
+<p>Tracer examines sampled scalar quantities. Stable scalar traces do not by themselves demonstrate that the chain explored tree space adequately. Independent runs provide an additional check.</p>
+</div></details>
+</div>
+</section>
+<section id="constructing-a-posterior-summary-tree" class="level3" data-number="2.10">
+<h3 data-number="2.10" class="anchored" data-anchor-id="constructing-a-posterior-summary-tree"><span class="header-section-number">2.10</span> Constructing a posterior summary tree</h3>
+<p>Start TreeAnnotator and set:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Burn in percentage</td>
+<td>The final percentage established in Tracer</td>
+</tr>
+<tr class="even">
+<td>Target tree type</td>
+<td>MAP (CCD0)</td>
+</tr>
+<tr class="odd">
+<td>Node heights</td>
+<td>Common Ancestor heights</td>
+</tr>
+<tr class="even">
+<td>Input Tree File</td>
+<td><code>results/passerines_LinkedClocks.trees</code></td>
+</tr>
+<tr class="odd">
+<td>Output File</td>
+<td><code>results/passerines_LinkedClocks.summary.tree</code></td>
+</tr>
+</tbody>
+</table>
+<p>Select <strong>Run</strong>. CCD0 selects a tree topology from conditional clade distributions estimated from the posterior tree sample. Common-ancestor heights summarize the sampled ages associated with the clades on that tree. The output retains node annotations such as posterior clade probabilities and credible intervals for node ages.</p>
+</section>
+<section id="viewing-the-dated-tree" class="level3" data-number="2.11">
+<h3 data-number="2.11" class="anchored" data-anchor-id="viewing-the-dated-tree"><span class="header-section-number">2.11</span> Viewing the dated tree</h3>
+<p>Start FigTree and open:</p>
+<pre class="text"><code>results/passerines_LinkedClocks.summary.tree</code></pre>
+<p>Configure the display:</p>
+<ol type="1">
+<li><p>Select <strong>Tree | Decreasing Node Order</strong>.</p></li>
+<li><p>Enable <strong>Scale Axis</strong>, expand its options, and enable <strong>Reverse axis</strong> so the tips are at time zero and older ages increase toward the root.</p></li>
+<li><p>Enable <strong>Node Labels</strong> and display <code>posterior</code>.</p></li>
+<li><p>Enable <strong>Node Bars</strong> and display <code>height_95%_HPD</code>.</p></li>
+<li><p>Export the figure as:</p>
+<pre class="text"><code>results/passerines_LinkedClocks.summary.svg</code></pre></li>
+</ol>
+<p>The horizontal axis is time in millions of years because the analysis was calibrated on that scale. Node bars show 95% highest-posterior-density intervals for node ages. Node labels show posterior clade probabilities, not bootstrap percentages.</p>
+</section>
+</section>
+<section id="follow-up-workflows" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="follow-up-workflows"><span class="header-section-number">3</span> Follow-up workflows</h2>
+<section id="comparing-independent-runs" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="comparing-independent-runs"><span class="header-section-number">3.1</span> Comparing independent runs</h3>
+<p>Create an independent replicate before treating the posterior summary as a final analysis.</p>
+<ol type="1">
+<li>Open <code>passerines_LinkedClocks.xml</code> in BEAUti.</li>
+<li>Change the trace filename to <code>passerines_LinkedClocks.rep2.log</code> and the tree filename to <code>passerines_LinkedClocks.rep2.trees</code>.</li>
+<li>Save the XML as <code>passerines_LinkedClocks.rep2.xml</code>.</li>
+<li>Run it in BEAST with a different random-number seed.</li>
+<li>Import both <code>.log</code> files into Tracer.</li>
+<li>Select both runs and compare their marginal posterior densities after applying the same independently justified burn-in rule.</li>
+</ol>
+<p>The two runs should converge on the same posterior distributions and each should provide adequate ESS values. Similar means without overlapping density shapes are not sufficient evidence of convergence.</p>
+<p>After both runs pass the checks, open LogCombiner:</p>
+<ol type="1">
+<li>Set <strong>File type</strong> to <strong>Tree Files</strong>.</li>
+<li>Add <code>passerines_LinkedClocks.trees</code> and <code>passerines_LinkedClocks.rep2.trees</code>.</li>
+<li>Enter the established burn-in percentage separately for each file.</li>
+<li>Write <code>results/passerines_LinkedClocks.combined.trees</code>.</li>
+</ol>
+<p>Run TreeAnnotator on the combined file with <strong>Burn in percentage</strong> set to <code>0</code>, because LogCombiner already removed the burn-in. Write:</p>
+<pre class="text"><code>results/passerines_LinkedClocks.combined.summary.tree</code></pre>
+</section>
+<section id="assigning-separate-relaxed-clocks-to-the-partitions" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="assigning-separate-relaxed-clocks-to-the-partitions"><span class="header-section-number">3.2</span> Assigning separate relaxed clocks to the partitions</h3>
+<p>The basic workflow gives the two codon-position partitions different relative rates but one shared pattern of rate variation among branches. The source tutorial also compares that model with two separate relaxed clocks.</p>
+<p>Create a second analysis in BEAUti:</p>
+<ol type="1">
+<li>Import <code>passerines_pc1.nex</code> and <code>passerines_pc2.nex</code> again.</li>
+<li>Select both partitions, then select <strong>Unlink Site Models</strong>, <strong>Unlink Clock Models</strong>, and <strong>Link Trees</strong>.</li>
+<li>Rename the shared tree <code>passerinesTree</code>.</li>
+<li>Select <strong>BEAST Model Test</strong> for both site models, but leave <strong>Mutation Rate</strong> unestimated. Each clock now supplies its partition’s absolute rate.</li>
+<li>Select <strong>Relaxed Clock Log Normal</strong> for each partition.</li>
+<li>Recreate the <code>Tyranni</code>, <code>Passeri</code>, <code>Eupasseres</code>, and <code>Passeriformes</code> taxon sets and enforce their monophyly.</li>
+<li>Apply the same offset lognormal root calibration to <code>Passeriformes.prior</code>.</li>
+<li>Select <strong>Birth Death Model</strong> for <code>Tree.t:passerinesTree</code>.</li>
+<li>Set the chain length to <code>2000000</code> and both log intervals to <code>200</code>.</li>
+</ol>
+<p>Use these filenames:</p>
+<pre class="text"><code>results/passerines_UnlinkedClocks.xml
+results/passerines_UnlinkedClocks.log
+results/passerines_UnlinkedClocks.trees</code></pre>
+<p>Run and diagnose the analysis in the same way as the linked-clock analysis. The output now contains separate mean rates and coefficients of variation for the first- and second-codon partitions. Compare their posterior distributions, not only their point estimates. Greater flexibility does not by itself make the unlinked-clock model preferable; the biological interpretation and model comparison must justify the extra parameters.</p>
+</section>
+</section>
+<section id="recording-the-analysis" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="recording-the-analysis"><span class="header-section-number">4</span> Recording the analysis</h2>
+<p>Preserve the following with the results:</p>
+<ul>
+<li>the two original NEXUS alignments;</li>
+<li>every BEAST XML file;</li>
+<li>the <code>.log</code>, <code>.trees</code>, and <code>.xml.state</code> files from each run;</li>
+<li>the software and package versions;</li>
+<li>the random-number seed for each run;</li>
+<li>the burn-in removed from each run and the diagnostic evidence supporting it;</li>
+<li>the combined tree sample and TreeAnnotator settings; and</li>
+<li>the annotated summary tree and exported figure.</li>
+</ul>
+<p>The XML records the executable model specification. The alignment and XML are both required to reproduce the likelihood, clock, calibration, constraints, priors, operators, and output configuration.</p>
+</section>
+<section id="further-reading" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">5</span> Further reading</h2>
+<ul>
+<li><a href="https://taming-the-beast.org/tutorials/Molecular-clock-dating-and-modelling-rate-variation/">Molecular clock dating and modelling rate variation</a></li>
+<li><a href="https://github.com/taming-the-beast/Molecular-clock-dating-and-modelling-rate-variation">Tutorial source and data</a></li>
+<li><a href="https://www.beast2.org/">BEAST 2 documentation</a></li>
+<li><a href="https://www.beast2.org/tracer-2/">Tracer</a></li>
+<li><a href="https://www.beast2.org/treeannotator/">TreeAnnotator</a></li>
+<li><a href="https://doi.org/10.1111/jav.00928">Nguyen and Ho (2016), mitochondrial rate variation among passerine lineages</a></li>
+<li><a href="https://doi.org/10.1101/2025.04.28.650918">Luo and colleagues (2025), fossil-informed passerine timescale</a></li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/03_primers/03-00__phylogenetics--computing/03-09__phylogenetic-inference--tools--mrbayes.html" class="pagination-link" aria-label="[[03-09]{.indexed-content-number} [Phylogenetic inference tools -- MrBayes]{.indexed-content-title}]{.indexed-content-entry}">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-09</span> <span class="indexed-content-title">Phylogenetic inference tools – MrBayes</span></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/03_primers/04-00__models--virulence-transmission-tradeoff/index.html" class="pagination-link" aria-label="Models--Virulence-transmission-tradeoff">
+        <span class="nav-page-text">Models–Virulence-transmission-tradeoff</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="mailto:jeetsukumaran@gmail.com">
+<p>© Jeet Sukumaran</p>
+</a>
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+<p>All rights reserved, but please share or use under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jeetsukumaran">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

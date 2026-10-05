@@ -112,15 +112,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <style>
+.shell-equivalent {
+  --color1: #ffffff;
+  --color2: #000000;
+}
 .curriculum-related {
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-notation {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.shell-equivalent {
+.curriculum-exercise {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -132,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.curriculum-exercise {
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #ffffff;
   --color2: #000000;
 }
-.model-definition {
+.model-notation {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -649,7 +649,7 @@ Examine your map and address the following questions:
 Try swapping out the taxon and time interval to see a very different
 biogeographic pattern — the Cambrian Explosion of marine invertebrates.
 
-```ajcnsxd
+```bdkayeo
 trilobites = pbdb_occurrences(
     base_name = "Trilobita",
     interval  = "Cambrian",
@@ -712,26 +712,26 @@ about marine versus terrestrial dispersal during these two intervals?
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-green-fg ansi-bold">Status</span> `~/site/storage/local/authoring/teaching/20260820_julia-for-scientific-informatics-modeling-and-reasoning/productions/julia-for-scientific-informatics-modeling-and-reasoning/Project.toml`
-  <span class="ansi-bright-black-fg">[46ada45e] </span>Agents v7.0.3
+<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[46ada45e] </span>Agents v7.0.3
   <span class="ansi-bright-black-fg">[c9ce4bd3] </span>ArchGDAL v0.10.12
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[13f3f980] </span>CairoMakie v0.15.13
+<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[13f3f980] </span>CairoMakie v0.15.14
   <span class="ansi-bright-black-fg">[a93c6f00] </span>DataFrames v1.8.2
   <span class="ansi-bright-black-fg">[31c24e10] </span>Distributions v0.25.131
   <span class="ansi-bright-black-fg">[dedd4f52] </span>GBIF2 v0.2.1
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[e9467ef8] </span>GLMakie v0.13.13
+<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[e9467ef8] </span>GLMakie v0.13.14
 <span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[2a3f1dca] </span>GeoArtifacts v1.2.8
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[db073c08] </span>GeoMakie v0.7.16
-<span class="ansi-yellow-fg">⌅</span> <span class="ansi-bright-black-fg">[ee78f7c6] </span>Makie v0.24.13
+  <span class="ansi-bright-black-fg">[db073c08] </span>GeoMakie v0.7.17
+<span class="ansi-yellow-fg">⌅</span> <span class="ansi-bright-black-fg">[ee78f7c6] </span>Makie v0.24.14
   <span class="ansi-bright-black-fg">[436b0209] </span>NaturalEarth v0.1.1
   <span class="ansi-bright-black-fg">[ee6415c8] </span>OccurrencesInterface v1.2.2
-  <span class="ansi-bright-black-fg">[c9cb2f45] </span>PaleobiologyDB v1.1.2
+<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[c9cb2f45] </span>PaleobiologyDB v1.1.2
   <span class="ansi-bright-black-fg">[ccbd7354] </span>PhyloMakie v0.1.0 `~/site/storage/local/computing/research/20260508_phylogenetic-graph-visualization/phylomakie-workspace/PhyloMakie.jl`
   <span class="ansi-bright-black-fg">[29f7fcc2] </span>PhyloPicMakie v0.1.0 `~/site/storage/local/computing/research/20260414_PhyloPicMakie.jl/PhyloPicMakie.jl`
   <span class="ansi-bright-black-fg">[91a5bcdd] </span>Plots v1.41.7
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[3cb90ccd] </span>RasterDataSources v0.7.1
+  <span class="ansi-bright-black-fg">[3cb90ccd] </span>RasterDataSources v0.7.5
   <span class="ansi-bright-black-fg">[a3a2b9e3] </span>Rasters v0.15.0
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[72b53823] </span>SpeciesDistributionToolkit v1.9.3
-<span class="ansi-green-fg">⌃</span> <span class="ansi-bright-black-fg">[2913bbd2] </span>StatsBase v0.34.12
+  <span class="ansi-bright-black-fg">[72b53823] </span>SpeciesDistributionToolkit v1.9.5
+  <span class="ansi-bright-black-fg">[2913bbd2] </span>StatsBase v0.34.13
   <span class="ansi-bright-black-fg">[a5390f91] </span>ZipFile v0.10.1
   <span class="ansi-bright-black-fg">[9a3f8284] </span>Random v1.11.0
 <span class="ansi-cyan-fg ansi-bold">Info</span> Packages marked with <span class="ansi-green-fg">⌃</span> and <span class="ansi-yellow-fg">⌅</span> have new versions available. Those with <span class="ansi-green-fg">⌃</span> may be upgradable, but those with <span class="ansi-yellow-fg">⌅</span> are restricted by compatibility constraints from upgrading. To see why use `status --outdated`

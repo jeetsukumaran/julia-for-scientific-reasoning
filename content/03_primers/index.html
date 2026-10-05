@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/03_primers/20-01__julia-environment-provisioning.html" rel="next">
+<link href="../../content/03_primers/01-00__julia/index.html" rel="next">
 <script src="../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -84,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-date-created','listing-order','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-dated-created','listing-content-references','listing-fig-cap-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-author','listing-title','listing-number-sections','listing-number-depth','listing-project','listing-bibliography','listing-engines','listing-execute','listing-reference-location','listing-indexed-content','listing-format','listing-custom-numbered-blocks','listing-filters','listing-website','listing-language','listing-draft-mode','listing-sidebar','listing-date-created','listing-aliases','listing-path','listing-outputHref','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-href','listing-index','listing-collection','listing-collection-title','listing-section','listing-dated-created','listing-fig-cap-location','listing-content-references',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-date-created","listing-order","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-dated-created","listing-content-references","listing-fig-cap-location"],
+      searchColumns: ["listing-author","listing-title","listing-number-sections","listing-number-depth","listing-project","listing-bibliography","listing-engines","listing-execute","listing-reference-location","listing-indexed-content","listing-format","listing-custom-numbered-blocks","listing-filters","listing-website","listing-language","listing-draft-mode","listing-sidebar","listing-date-created","listing-aliases","listing-path","listing-outputHref","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-href","listing-index","listing-collection","listing-collection-title","listing-section","listing-dated-created","listing-fig-cap-location","listing-content-references"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -104,15 +104,11 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>
-.curriculum-exercise {
+.shell-equivalent {
   --color1: #ffffff;
   --color2: #000000;
 }
 .curriculum-related {
-  --color1: #ffffff;
-  --color2: #000000;
-}
-.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -132,7 +128,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #ffffff;
   --color2: #000000;
 }
-.shell-equivalent {
+.curriculum-exercise {
+  --color1: #ffffff;
+  --color2: #000000;
+}
+.model-definition {
   --color1: #ffffff;
   --color2: #000000;
 }
@@ -251,138 +251,188 @@ window.Quarto = {
  <span class="menu-text">Primers</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/03_primers/01-00__julia/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/20-01__julia-environment-provisioning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">20-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-01__julia-environment-provisioning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/20-02__julia-environments-global-vs-project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">20-02</span> <span class="indexed-content-title">Julia – Environments – Global vs project</span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-02__julia-environments-global-vs-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-02</span> <span class="indexed-content-title">Julia – Environments – Global vs project</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/20-03__julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">20-03</span> <span class="indexed-content-title">Julia: Functions, methods, and signatures</span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-03__julia-functions-methods-and-signatures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-03</span> <span class="indexed-content-title">Julia: Functions, methods, and signatures</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/20-04__julia-joinpath-homedir.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">20-04</span> <span class="indexed-content-title">Julia: on <code>homedir()</code> and <code>joinpath()</code></span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-04__julia-joinpath-homedir.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-04</span> <span class="indexed-content-title">Julia: on <code>homedir()</code> and <code>joinpath()</code></span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/21-01__pseudo-random-number-generators.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">21-01</span> <span class="indexed-content-title">Pseudo-random number generators</span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-05__pseudo-random-number-generators-best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-05</span> <span class="indexed-content-title">Pseudo-random number generators: best practices</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/21-02__pseudo-random-number-generators-best-practices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">21-02</span> <span class="indexed-content-title">Pseudo-random number generators: best practices</span></span></span></a>
+  <a href="../../content/03_primers/01-00__julia/01-06__geomakie-geoaxis-and-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">01-06</span> <span class="indexed-content-title"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/03_primers/02-00__mathematics--probability/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mathematics--probability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">21-03</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span></a>
+  <a href="../../content/03_primers/02-00__mathematics--probability/02-01__pseudo-random-number-generators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-01</span> <span class="indexed-content-title">Pseudo-random number generators</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/25-01__geomakie-geoaxis-and-coordinate-reference-systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">25-01</span> <span class="indexed-content-title"><code>GeoMakie.GeoAxis</code> and coordinate reference systems</span></span></span></a>
+  <a href="../../content/03_primers/02-00__mathematics--probability/02-02__pseudo-random-number-generators-continuous-values-from-discrete-machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-02</span> <span class="indexed-content-title">Pseudo-random number generators: continuous values from discrete machines</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/31-01__probability-distributions-essential-concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">31-01</span> <span class="indexed-content-title">Probabilty distributions–Essential concepts</span></span></span></a>
+  <a href="../../content/03_primers/02-00__mathematics--probability/02-03__probability-distributions-essential-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-03</span> <span class="indexed-content-title">Probabilty distributions–Essential concepts</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/31-02__bernoulli-trial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">31-02</span> <span class="indexed-content-title">Bernoulli trial</span></span></span></a>
+  <a href="../../content/03_primers/02-00__mathematics--probability/02-04__bernoulli-trial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-04</span> <span class="indexed-content-title">Bernoulli trial</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/35-01__markov-property.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">35-01</span> <span class="indexed-content-title">Markov property</span></span></span></a>
+  <a href="../../content/03_primers/02-00__mathematics--probability/02-05__markov-property.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">02-05</span> <span class="indexed-content-title">Markov property</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/03_primers/03-00__phylogenetics--computing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phylogenetics--computing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">40-01</span> <span class="indexed-content-title">Pathogen fitness as a function of virulence (Frank, 1996)</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-01__the-newick-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-01</span> <span class="indexed-content-title">The Newick data format</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/40-02__virulence-transmission-trade-off-frank-1996.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">40-02</span> <span class="indexed-content-title">Virulence-transmission trade-off (Frank, 1996)</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-02__the-nexus-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/51-01__the-newick-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">51-01</span> <span class="indexed-content-title">The Newick data format</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-03__the-phylip-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-03</span> <span class="indexed-content-title">The PHYLIP data format</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/51-02__the-nexus-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">51-02</span> <span class="indexed-content-title">The NEXUS phylogenetic data format</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-04__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-04</span> <span class="indexed-content-title">The FASTA data format</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/51-03__the-phylip-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">51-03</span> <span class="indexed-content-title">The PHYLIP data format</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-05__downloading-and-aligning-genbank-molecular-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-05</span> <span class="indexed-content-title">Downloading and aligning GenBank molecular data</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/51-04__the-fasta-data-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">51-04</span> <span class="indexed-content-title">The FASTA data format</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-06__phylogenetic-inference--tools--distance-based-inference-mega.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-06</span> <span class="indexed-content-title">Distance-based phylogenetic inference with MEGA</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/52-01__downloading-and-aligning-genbank-molecular-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">52-01</span> <span class="indexed-content-title">Downloading and aligning GenBank molecular data</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-07__phylogenetic-inference--tools--iqtree.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-07</span> <span class="indexed-content-title">Phylogenetic inference tools – IQ-TREE</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">53-01</span> <span class="indexed-content-title">Distance-based phylogenetic inference with MEGA</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-08__phylogenetic-inference--tools--raxml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-08</span> <span class="indexed-content-title">Phylogenetic inference tools – RAxML-NG</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">53-02</span> <span class="indexed-content-title">Phylogenetic inference tools – IQ-TREE</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-09__phylogenetic-inference--tools--mrbayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-09</span> <span class="indexed-content-title">Phylogenetic inference tools – MrBayes</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/53-03__phylogenetic-inference--tools--raxml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">53-03</span> <span class="indexed-content-title">Phylogenetic inference tools – RAxML-NG</span></span></span></a>
+  <a href="../../content/03_primers/03-00__phylogenetics--computing/03-10__phylogenetic-inference--tools--beast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">03-10</span> <span class="indexed-content-title">Relaxed-clock phylogenetic inference with BEAST</span></span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../content/03_primers/04-00__models--virulence-transmission-tradeoff/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Models--Virulence-transmission-tradeoff</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">53-04</span> <span class="indexed-content-title">Phylogenetic inference tools – MrBayes</span></span></span></a>
+  <a href="../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-01</span> <span class="indexed-content-title">Pathogen fitness as a function of virulence (Frank, 1996)</span></span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-02__virulence-transmission-trade-off-frank-1996.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="indexed-content-entry"><span class="indexed-content-number">04-02</span> <span class="indexed-content-title">Virulence-transmission trade-off (Frank, 1996)</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -425,72 +475,135 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 <div class="indexed-content-listing">
-<section id="julia-environment-provisioning" class="level2">
-<h2 class="anchored" data-anchor-id="julia-environment-provisioning">20-01. <a href="../../content/03_primers/20-01__julia-environment-provisioning.html">Julia – Environment provisioning</a></h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Julia
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="julia-environment-provisioning" class="level3">
+<h3 class="anchored" data-anchor-id="julia-environment-provisioning">01-01. <a href="../../content/03_primers/01-00__julia/01-01__julia-environment-provisioning.html">Julia – Environment provisioning</a></h3>
 </section>
-<section id="julia-environments-global-vs-project" class="level2">
-<h2 class="anchored" data-anchor-id="julia-environments-global-vs-project">20-02. <a href="../../content/03_primers/20-02__julia-environments-global-vs-project.html">Julia – Environments – Global vs project</a></h2>
+<section id="julia-environments-global-vs-project" class="level3">
+<h3 class="anchored" data-anchor-id="julia-environments-global-vs-project">01-02. <a href="../../content/03_primers/01-00__julia/01-02__julia-environments-global-vs-project.html">Julia – Environments – Global vs project</a></h3>
 </section>
-<section id="julia-functions-methods-and-signatures" class="level2">
-<h2 class="anchored" data-anchor-id="julia-functions-methods-and-signatures">20-03. <a href="../../content/03_primers/20-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h2>
+<section id="julia-functions-methods-and-signatures" class="level3">
+<h3 class="anchored" data-anchor-id="julia-functions-methods-and-signatures">01-03. <a href="../../content/03_primers/01-00__julia/01-03__julia-functions-methods-and-signatures.html">Julia: Functions, methods, and signatures</a></h3>
 </section>
-<section id="julia-on-homedir-and-joinpath" class="level2">
-<h2 class="anchored" data-anchor-id="julia-on-homedir-and-joinpath">20-04. <a href="../../content/03_primers/20-04__julia-joinpath-homedir.html">Julia: on `homedir()` and `joinpath()`</a></h2>
+<section id="julia-on-homedir-and-joinpath" class="level3">
+<h3 class="anchored" data-anchor-id="julia-on-homedir-and-joinpath">01-04. <a href="../../content/03_primers/01-00__julia/01-04__julia-joinpath-homedir.html">Julia: on `homedir()` and `joinpath()`</a></h3>
 </section>
-<section id="pseudo-random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators">21-01. <a href="../../content/03_primers/21-01__pseudo-random-number-generators.html">Pseudo-random number generators</a></h2>
+<section id="pseudo-random-number-generators-best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="pseudo-random-number-generators-best-practices">01-05. <a href="../../content/03_primers/01-00__julia/01-05__pseudo-random-number-generators-best-practices.html">Pseudo-random number generators: best practices</a></h3>
 </section>
-<section id="pseudo-random-number-generators-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-best-practices">21-02. <a href="../../content/03_primers/21-02__pseudo-random-number-generators-best-practices.html">Pseudo-random number generators: best practices</a></h2>
+<section id="geomakie.geoaxis-and-coordinate-reference-systems" class="level3">
+<h3 class="anchored" data-anchor-id="geomakie.geoaxis-and-coordinate-reference-systems">01-06. <a href="../../content/03_primers/01-00__julia/01-06__geomakie-geoaxis-and-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h3>
 </section>
-<section id="pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level2">
-<h2 class="anchored" data-anchor-id="pseudo-random-number-generators-continuous-values-from-discrete-machines">21-03. <a href="../../content/03_primers/21-03__pseudo-random-number-generators-continuous-values-from-discrete-machines.html">Pseudo-random number generators: continuous values from discrete machines</a></h2>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Mathematics–probability
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="pseudo-random-number-generators" class="level3">
+<h3 class="anchored" data-anchor-id="pseudo-random-number-generators">02-01. <a href="../../content/03_primers/02-00__mathematics--probability/02-01__pseudo-random-number-generators.html">Pseudo-random number generators</a></h3>
 </section>
-<section id="geomakie.geoaxis-and-coordinate-reference-systems" class="level2">
-<h2 class="anchored" data-anchor-id="geomakie.geoaxis-and-coordinate-reference-systems">25-01. <a href="../../content/03_primers/25-01__geomakie-geoaxis-and-coordinate-reference-systems.html">`GeoMakie.GeoAxis` and coordinate reference systems</a></h2>
+<section id="pseudo-random-number-generators-continuous-values-from-discrete-machines" class="level3">
+<h3 class="anchored" data-anchor-id="pseudo-random-number-generators-continuous-values-from-discrete-machines">02-02. <a href="../../content/03_primers/02-00__mathematics--probability/02-02__pseudo-random-number-generators-continuous-values-from-discrete-machines.html">Pseudo-random number generators: continuous values from discrete machines</a></h3>
 </section>
-<section id="probabilty-distributionsessential-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">31-01. <a href="../../content/03_primers/31-01__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h2>
+<section id="probabilty-distributionsessential-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="probabilty-distributionsessential-concepts">02-03. <a href="../../content/03_primers/02-00__mathematics--probability/02-03__probability-distributions-essential-concepts.html">Probabilty distributions–Essential concepts</a></h3>
 </section>
-<section id="bernoulli-trial" class="level2">
-<h2 class="anchored" data-anchor-id="bernoulli-trial">31-02. <a href="../../content/03_primers/31-02__bernoulli-trial.html">Bernoulli trial</a></h2>
+<section id="bernoulli-trial" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-trial">02-04. <a href="../../content/03_primers/02-00__mathematics--probability/02-04__bernoulli-trial.html">Bernoulli trial</a></h3>
 </section>
-<section id="markov-property" class="level2">
-<h2 class="anchored" data-anchor-id="markov-property">35-01. <a href="../../content/03_primers/35-01__markov-property.html">Markov property</a></h2>
+<section id="markov-property" class="level3">
+<h3 class="anchored" data-anchor-id="markov-property">02-05. <a href="../../content/03_primers/02-00__mathematics--probability/02-05__markov-property.html">Markov property</a></h3>
 </section>
-<section id="pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="pathogen-fitness-as-a-function-of-virulence-frank-1996">40-01. <a href="../../content/03_primers/40-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h2>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Phylogenetics–computing
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-newick-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="the-newick-data-format">03-01. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-01__the-newick-data-format.html">The Newick data format</a></h3>
 </section>
-<section id="virulence-transmission-trade-off-frank-1996" class="level2">
-<h2 class="anchored" data-anchor-id="virulence-transmission-trade-off-frank-1996">40-02. <a href="../../content/03_primers/40-02__virulence-transmission-trade-off-frank-1996.html">Virulence-transmission trade-off (Frank, 1996)</a></h2>
+<section id="the-nexus-phylogenetic-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">03-02. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-02__the-nexus-data-format.html">The NEXUS phylogenetic data format</a></h3>
 </section>
-<section id="the-newick-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-newick-data-format">51-01. <a href="../../content/03_primers/51-01__the-newick-data-format.html">The Newick data format</a></h2>
+<section id="the-phylip-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="the-phylip-data-format">03-03. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-03__the-phylip-data-format.html">The PHYLIP data format</a></h3>
 </section>
-<section id="the-nexus-phylogenetic-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-nexus-phylogenetic-data-format">51-02. <a href="../../content/03_primers/51-02__the-nexus-data-format.html">The NEXUS phylogenetic data format</a></h2>
+<section id="the-fasta-data-format" class="level3">
+<h3 class="anchored" data-anchor-id="the-fasta-data-format">03-04. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-04__the-fasta-data-format.html">The FASTA data format</a></h3>
 </section>
-<section id="the-phylip-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-phylip-data-format">51-03. <a href="../../content/03_primers/51-03__the-phylip-data-format.html">The PHYLIP data format</a></h2>
+<section id="downloading-and-aligning-genbank-molecular-data" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-and-aligning-genbank-molecular-data">03-05. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-05__downloading-and-aligning-genbank-molecular-data.html">Downloading and aligning GenBank molecular data</a></h3>
 </section>
-<section id="the-fasta-data-format" class="level2">
-<h2 class="anchored" data-anchor-id="the-fasta-data-format">51-04. <a href="../../content/03_primers/51-04__the-fasta-data-format.html">The FASTA data format</a></h2>
+<section id="distance-based-phylogenetic-inference-with-mega" class="level3">
+<h3 class="anchored" data-anchor-id="distance-based-phylogenetic-inference-with-mega">03-06. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-06__phylogenetic-inference--tools--distance-based-inference-mega.html">Distance-based phylogenetic inference with MEGA</a></h3>
 </section>
-<section id="downloading-and-aligning-genbank-molecular-data" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-and-aligning-genbank-molecular-data">52-01. <a href="../../content/03_primers/52-01__downloading-and-aligning-genbank-molecular-data.html">Downloading and aligning GenBank molecular data</a></h2>
+<section id="phylogenetic-inference-tools-iq-tree" class="level3">
+<h3 class="anchored" data-anchor-id="phylogenetic-inference-tools-iq-tree">03-07. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-07__phylogenetic-inference--tools--iqtree.html">Phylogenetic inference tools – IQ-TREE</a></h3>
 </section>
-<section id="distance-based-phylogenetic-inference-with-mega" class="level2">
-<h2 class="anchored" data-anchor-id="distance-based-phylogenetic-inference-with-mega">53-01. <a href="../../content/03_primers/53-01__phylogenetic-inference--tools--distance-based-inference-mega.html">Distance-based phylogenetic inference with MEGA</a></h2>
+<section id="phylogenetic-inference-tools-raxml-ng" class="level3">
+<h3 class="anchored" data-anchor-id="phylogenetic-inference-tools-raxml-ng">03-08. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-08__phylogenetic-inference--tools--raxml.html">Phylogenetic inference tools – RAxML-NG</a></h3>
 </section>
-<section id="phylogenetic-inference-tools-iq-tree" class="level2">
-<h2 class="anchored" data-anchor-id="phylogenetic-inference-tools-iq-tree">53-02. <a href="../../content/03_primers/53-02__phylogenetic-inference--tools--iqtree.html">Phylogenetic inference tools – IQ-TREE</a></h2>
+<section id="phylogenetic-inference-tools-mrbayes" class="level3">
+<h3 class="anchored" data-anchor-id="phylogenetic-inference-tools-mrbayes">03-09. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-09__phylogenetic-inference--tools--mrbayes.html">Phylogenetic inference tools – MrBayes</a></h3>
 </section>
-<section id="phylogenetic-inference-tools-raxml-ng" class="level2">
-<h2 class="anchored" data-anchor-id="phylogenetic-inference-tools-raxml-ng">53-03. <a href="../../content/03_primers/53-03__phylogenetic-inference--tools--raxml.html">Phylogenetic inference tools – RAxML-NG</a></h2>
+<section id="relaxed-clock-phylogenetic-inference-with-beast" class="level3">
+<h3 class="anchored" data-anchor-id="relaxed-clock-phylogenetic-inference-with-beast">03-10. <a href="../../content/03_primers/03-00__phylogenetics--computing/03-10__phylogenetic-inference--tools--beast.html">Relaxed-clock phylogenetic inference with BEAST</a></h3>
 </section>
-<section id="phylogenetic-inference-tools-mrbayes" class="level2">
-<h2 class="anchored" data-anchor-id="phylogenetic-inference-tools-mrbayes">53-04. <a href="../../content/03_primers/53-04__phylogenetic-inference--tools--mrbayes.html">Phylogenetic inference tools – MrBayes</a></h2>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Models–Virulence-transmission-tradeoff
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="pathogen-fitness-as-a-function-of-virulence-frank-1996" class="level3">
+<h3 class="anchored" data-anchor-id="pathogen-fitness-as-a-function-of-virulence-frank-1996">04-01. <a href="../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-01__pathogen-fitness-as-a-function-of-virulence-frank-1996.html">Pathogen fitness as a function of virulence (Frank, 1996)</a></h3>
 </section>
+<section id="virulence-transmission-trade-off-frank-1996" class="level3">
+<h3 class="anchored" data-anchor-id="virulence-transmission-trade-off-frank-1996">04-02. <a href="../../content/03_primers/04-00__models--virulence-transmission-tradeoff/04-02__virulence-transmission-trade-off-frank-1996.html">Virulence-transmission trade-off (Frank, 1996)</a></h3>
+</section>
+</div>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -898,8 +1011,8 @@ window.Quarto = {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/03_primers/20-01__julia-environment-provisioning.html" class="pagination-link" aria-label="[[20-01]{.indexed-content-number} [Julia -- Environment provisioning]{.indexed-content-title}]{.indexed-content-entry}">
-        <span class="nav-page-text"><span class="indexed-content-entry"><span class="indexed-content-number">20-01</span> <span class="indexed-content-title">Julia – Environment provisioning</span></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/03_primers/01-00__julia/index.html" class="pagination-link" aria-label="Julia">
+        <span class="nav-page-text">Julia</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
